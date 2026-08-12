@@ -93,7 +93,11 @@ Local sandbox, 2 CPU cores, Lighthouse 12.8.2.
 | Local desktop | 99 | 99 | 100 | 100 | 0.8s | 0 |
 | Local mobile | 82 | 100 | 100 | 100 | 4.5s | 0 |
 | Live desktop | 99 | 100 | 100 | 100 | 0.8s | 0 |
-| Live mobile | 90 | 100 | 100 | 100 | 3.4s | 0 |
+| Live mobile home | 90 | 100 | 100 | 100 | 3.4s | 0 |
+| Live mobile gallery | 94 | 100 | 100 | 100 | n/a | 0 |
+
+Final live audit: zero axe-core violations across all nine routes, zero failing
+Lighthouse binary audits, zero console errors on desktop and mobile.
 
 Live URL measured: `https://emerald-spa-wellness.vercel.app`
 
@@ -109,6 +113,9 @@ Live URL measured: `https://emerald-spa-wellness.vercel.app`
 | Deploy | Verify TLS | live origin | curl -I | HTTP/2, HSTS preload, nosniff, SAMEORIGIN | headers | 2026-08-12 07:22 | Pass |
 | Deploy | Verify routes | 13 live paths | curl | All expected codes including 404 | terminal | 2026-08-12 07:22 | Pass |
 | Deploy | Verify caching | media asset | curl -I | `immutable`, one year, correct AVIF type | headers | 2026-08-12 07:23 | Pass |
+| Deploy | Redeploy corrected build | Vercel | Files API | READY, aliased | `dpl_HDm67w7P24u1nochqYuZjzdgCRZt` | 2026-08-12 07:41 | Pass |
+| Verify | Final live axe | 9 routes | axe-core | 0 violations | terminal | 2026-08-12 07:42 | Pass |
+| Verify | Final live console | 6 routes, 2 viewports | Playwright | 0 errors | `qa/final/` | 2026-08-12 07:43 | Pass |
 
 ## Open items
 
