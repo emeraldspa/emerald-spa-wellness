@@ -3,7 +3,7 @@ import { Picture } from '@/components/Picture';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { GALLERY_SLUGS, getImage, site } from '@/lib/site';
+import { GALLERY_SLUGS, POSTER_SLUGS, getImage, site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Gallery',
@@ -25,11 +25,7 @@ const SPANS: Record<string, string> = {
   'spa-retreat': 'md:col-span-5',
   candlescape: 'md:col-span-7',
   'serenity-garden': 'md:col-span-12',
-  'green-escape': 'md:col-span-6',
-  'portfolio-1': 'md:col-span-3',
-  'portfolio-2': 'md:col-span-3',
-  'portfolio-3': 'md:col-span-3',
-  'portfolio-4': 'md:col-span-3',
+  'green-escape': 'md:col-span-12',
 };
 
 export default function GalleryPage() {
@@ -72,6 +68,32 @@ export default function GalleryPage() {
                     </div>
                     <figcaption className="mt-3 text-sm text-ink/65">{img.alt}</figcaption>
                   </figure>
+                </FadeUp>
+              );
+            })}
+          </ul>
+        </section>
+
+        <section className="shell border-t border-ink/10 py-16 md:py-20">
+          <p className="eyebrow text-emerald-600">From Our Feed</p>
+          <h2 className="display mt-4 text-3xl sm:text-4xl">Announcements and offers.</h2>
+          <p className="mt-6 max-w-2xl text-ink/70 text-pretty">
+            Artwork the spa publishes on its own channels. These are designed
+            graphics rather than photographs of the rooms.
+          </p>
+          <ul className="mt-10 grid grid-cols-2 gap-6 lg:grid-cols-4">
+            {POSTER_SLUGS.map((slug, i) => {
+              const img = getImage(slug);
+              return (
+                <FadeUp key={slug} delay={(i % 4) * 0.06} as="li">
+                  <div className="overflow-hidden bg-emerald-900/5">
+                    <Picture
+                      slug={slug}
+                      sizes="(max-width: 640px) 50vw, 25vw"
+                      imgClassName="w-full object-cover"
+                    />
+                  </div>
+                  <p className="sr-only">{img.alt}</p>
                 </FadeUp>
               );
             })}

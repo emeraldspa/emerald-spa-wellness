@@ -72,7 +72,10 @@ export const SITE_URL =
 
 export const WHATSAPP_URL = `https://wa.me/${site.phoneE164.replace('+', '')}`;
 
-/** Gallery order is deliberate: arrival, treatment, water, garden, detail. */
+/**
+ * Photographs of the actual rooms. Order is deliberate: arrival, treatment,
+ * candlelight, garden.
+ */
 export const GALLERY_SLUGS = [
   'reception',
   'treatment-room',
@@ -80,6 +83,13 @@ export const GALLERY_SLUGS = [
   'candlescape',
   'serenity-garden',
   'green-escape',
+] as const;
+
+/**
+ * The spa's own promotional graphics from its Fresha portfolio. Kept separate
+ * from the room photographs because they are designed artwork, not interiors.
+ */
+export const POSTER_SLUGS = [
   'portfolio-1',
   'portfolio-2',
   'portfolio-3',
