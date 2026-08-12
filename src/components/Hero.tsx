@@ -2,14 +2,14 @@ import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { HeroMenuButton } from '@/components/HeroMenuButton';
 import { HeroVideo } from '@/components/HeroVideo';
-import { site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, LISTED_SERVICE_COUNT, site } from '@/lib/site';
 
 /**
  * Stats are verified Fresha figures pulled from the live venue record,
  * not the agency placeholders in the original spec.
  */
 const STATS = [
-  { value: site.serviceCount, prefix: '+', label: 'SPA\nTREATMENTS' },
+  { value: LISTED_SERVICE_COUNT, prefix: '+', label: 'SPA\nTREATMENTS' },
   { value: site.reviewCount, prefix: '+', label: 'VERIFIED\nREVIEWS' },
   { value: site.rating, prefix: '', label: 'GUEST\nRATING' },
 ];
@@ -123,19 +123,17 @@ export function Hero({ menuButtonId }: { menuButtonId: string }) {
               Windhoek West
             </p>
 
-            <a
-              href={site.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={BOOKING_PATH}
               className="hero-up flex items-center gap-1 whitespace-nowrap font-semibold text-emerald-600 transition-opacity hover:opacity-70"
               style={{ animationDelay: '0.72s', fontWeight: 600 }}
             >
-              <span className="text-base sm:text-xl md:text-2xl">Book Your Escape</span>
+              <span className="text-base sm:text-xl md:text-2xl">{BOOKING_CTA}</span>
               <ArrowUpRight
                 className="h-[18px] w-[18px] sm:h-[22px] sm:w-[22px]"
                 aria-hidden="true"
               />
-            </a>
+            </Link>
           </div>
 
           <div className="flex items-end justify-between gap-3 sm:gap-4">

@@ -34,8 +34,8 @@ export default function TermsPage() {
             <div>
               <h2 className="display text-2xl text-ink">Prices and treatments</h2>
               <p className="mt-3 leading-relaxed">
-                Prices shown are the listings published on our Fresha booking page at the time
-                this site was built. Prices, durations, and availability can change. The price
+                Prices shown are the listings published on our online booking system at the
+                time this site was built. Prices, durations, and availability can change. The price
                 confirmed at the time of booking is the price that applies.
               </p>
             </div>
@@ -63,7 +63,7 @@ export default function TermsPage() {
               <h2 className="display text-2xl text-ink">Reviews shown on this site</h2>
               <p className="mt-3 leading-relaxed">
                 Guest reviews and the overall rating shown on this site are taken from our
-                verified Fresha listing and are reproduced as written by the guest. We do not
+                verified booking record and are reproduced as written by the guest. We do not
                 edit them.
               </p>
             </div>

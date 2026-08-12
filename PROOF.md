@@ -127,3 +127,83 @@ Live URL measured: `https://emerald-spa-wellness.vercel.app`
 - Live mobile LCP is 3.4s against a 2.5s goal. The dominant remaining factor is
   the 22MB hero video the brief specified. Re-encoding it to roughly 3MB at
   720p, or serving a WebM variant, is the single highest impact next change.
+
+
+---
+
+# ROUND 2
+
+Refinement pass against `docs/NEXT_STEPS-feedback-round2.md`. Design direction
+was approved and was not revisited.
+
+## Assets received
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Discovery | Download round 2 bundle | filebin.net/548ey4mlwujugncr | curl with verification cookie | 3.6 MB zip, 31 files | `downloads/emerald-spa-project.zip` | 2026-08-12 09:12 | Pass |
+| Discovery | Read priority feedback | NEXT_STEPS-feedback-round2.md | read | 5 items, 1 blocked | doc | 2026-08-12 09:13 | Pass |
+| Discovery | Check for new photography | zip contents | find | None present. Only logo assets. Item 1 stays blocked | file listing | 2026-08-12 09:13 | Confirmed blocked |
+| Media | Install real logo suite | assets/logos | copy | 9 brand files, 7 favicon files | `public/brand/`, `public/icons/` | 2026-08-12 09:16 | Pass |
+| Media | Generate logo derivatives | 3 lockups | Pillow AVIF and WebP | 12 derivatives, PNG fallbacks shrunk to fit | `public/brand/` | 2026-08-12 09:17 | Pass |
+| Media | Preserve client original | emerald-spa-logo-original.png | copy | Unmodified | `assets/` | 2026-08-12 09:16 | Pass |
+
+## Item 2, booking without naming the platform
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Debug | Test the iframe requirement | provider booking URL | curl header inspection | `frame-ancestors 'self' https://*.fresha.com https://*.adyen.com`. This origin is not permitted | response headers | 2026-08-12 09:14 | Blocked by provider |
+| Debug | Confirm in a real browser | local iframe harness | Playwright with console capture | Browser refused: "Framing violates the following Content Security Policy directive". `contentDocument` null | `qa/iframe-test.png` | 2026-08-12 09:20 | Root cause proven |
+| Debug | Check for an official embed | provider help centre | fetch | Provider documents a booking **link** and a "Book Now" **button**, no embeddable widget | help centre article 434 | 2026-08-12 09:21 | No embed exists |
+| Build | Implement `/book` on our domain | new route | tsx | Own-domain booking page. Address bar stays on our host through the whole page | `src/app/book/page.tsx` | 2026-08-12 09:24 | Pass |
+| Verify | Platform name in visible copy | 10 routes | rendered-text extraction | 0 mentions in marketing copy. 5 remain in privacy and terms only, where naming the data processor is a legal duty | terminal | 2026-08-12 09:38 | Pass |
+| Verify | CTA copy and destination | all CTAs | Playwright | Every CTA reads "Book Now" and points at `/book` | terminal | 2026-08-12 09:40 | Pass |
+| Verify | Stays on our domain | hero CTA click | Playwright | Lands on `/book`, host unchanged | terminal | 2026-08-12 09:42 | Pass |
+
+## Item 3, site-wide widgets
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Build | WhatsApp floating button | FloatingActions | tsx | `wa.me/264856077143`, verified number, real chat not a fake widget | `src/components/FloatingActions.tsx` | 2026-08-12 09:26 | Pass |
+| Build | Scroll to top button | FloatingActions | tsx | Appears past 90% of first viewport, hidden from tab order while invisible | same | 2026-08-12 09:26 | Pass |
+| Build | Social links | footer | tsx | Instagram, Facebook, WhatsApp, all verified URLs | `src/components/SiteFooter.tsx` | 2026-08-12 09:30 | Pass |
+| Verify | Widget behaviour | home | Playwright | WhatsApp always visible; scroll button hidden at top, revealed after scroll, returns to top on click | terminal | 2026-08-12 09:41 | Pass |
+| Verify | Tap targets | 375px | Playwright | 48x48 and 56x56, both clear the 44px minimum | terminal | 2026-08-12 09:47 | Pass |
+| Verify | Reduced motion | home | Playwright reduced-motion context | Scroll to top jumps instantly, no animations running | terminal | 2026-08-12 09:45 | Pass |
+| Debug | Widget overlapped the footer credit | footer last row | visual inspection | Root cause: fixed button sits over the credit line. Added right and bottom padding on that row | overlap probe passes at 1440 and 390 | 2026-08-12 09:52 | Fixed |
+
+## Item 4, real footer logo
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Debug | Establish current state | footer | grep | Footer had no logo at all, only a text heading | terminal | 2026-08-12 09:15 | Confirmed |
+| Build | Featured stacked lockup | footer | tsx | Real artwork, cream wordmark on the dark ground, 240px mobile and 320px desktop | `src/components/SiteFooter.tsx` | 2026-08-12 09:30 | Pass |
+| Verify | Rendered asset and size | footer | Playwright | Serves `lockup-stacked-dark-400.avif`, renders 320x246 | terminal | 2026-08-12 09:42 | Pass |
+| Build | Replace favicons and schema logo | layout, manifest | tsx | Real favicon set at 6 sizes plus SVG and ICO. Schema logo points at the real lockup | `src/app/layout.tsx` | 2026-08-12 09:33 | Pass |
+| Build | Update /brand page | brand route | tsx | Shows the real supplied artwork instead of the earlier traced SVGs | `src/app/brand/page.tsx` | 2026-08-12 09:35 | Pass |
+
+## Defects found and fixed this round
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Debug | Unverified booking claims | BookingLauncher | ledger check | "Free to reschedule" and "instant confirmation" are not in the venue record. Removed. Kept only `hasFreshaPayEnabled: false` and `allowChoosePreferableEmployee: true` | `src/components/BookingLauncher.tsx` | 2026-08-12 09:25 | Fixed |
+| Debug | Duplicate Book links | header, menu, footer | Playwright count | Adding Book to NAV_LINKS produced two links to one route per region. Filtered it out where a dedicated CTA already exists | 1 per region after fix | 2026-08-12 09:44 | Fixed |
+| Debug | Service count overstated | all count copy | data cross-check | Venue record reports 130 services but only 90 come back priced. Printing 130 beside a menu of 90 overstates it. Added `LISTED_SERVICE_COUNT` derived from the real menu | 90 everywhere, 0 stale "130" | 2026-08-12 09:57 | Fixed |
+
+## Item 1 and Google review, still blocked
+
+| Item | Reason | What unblocks it |
+| --- | --- | --- |
+| Additional photography | The round 2 zip contained logo assets only. No new photographs arrived, so image density is unchanged. No stock or generated filler was added | A filebin URL with the client's real photographs |
+| Google review link | No Place ID or review URL supplied. Guessing one would send guests to the wrong business | The Google Business Profile "write a review" link or Place ID |
+
+## Round 2 verification
+
+| Check | Result |
+| --- | --- |
+| Type check | Exit 0 |
+| Lint | No warnings or errors |
+| Production build | Compiled, 16 static routes |
+| axe-core, 10 routes including `/book` | 0 violations |
+| Unique title and single H1 per route | Pass on all 10 |
+| Horizontal scroll at 320 to 1440 | None |
+| Platform name in marketing copy | 0 occurrences |

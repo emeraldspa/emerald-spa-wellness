@@ -47,6 +47,7 @@ All static, all prerendered.
 | Route | Purpose | State |
 | --- | --- | --- |
 | `/` | Hero, intro, signature treatments, gallery carousel, reviews, visit | Done |
+| `/book` | On-domain booking page, platform never named | Done |
 | `/services` | All 90 services in 13 categories with prices | Done |
 | `/gallery` | Editorial mosaic of 10 authentic photographs | Done |
 | `/team` | 6 real professionals with Fresha ratings | Done |
@@ -88,3 +89,20 @@ throttle. Unthrottled measurement in the same environment gives LCP 212ms, equal
 to FCP, and a static no-JavaScript control page scores 0.8s on the same harness.
 The gap is the sandbox CPU, not the page. This must be re-measured against the
 deployed Vercel URL before it is treated as a real regression.
+
+
+## Round 2 decisions
+
+| Decision | Chosen | Alternative set aside | Reason |
+| --- | --- | --- | --- |
+| Booking embed | Own-domain `/book` page that opens the provider in a new tab | Iframe embed of the provider widget | The provider sends `frame-ancestors 'self' https://*.fresha.com https://*.adyen.com`. A cross-origin iframe from this domain is refused by the browser. Verified in a real browser, not assumed. Their help centre documents a booking link and button, not an embeddable widget. |
+| Platform naming | Never in marketing copy, retained in privacy and terms | Strip every mention | Naming the processor that receives booking data is a legal disclosure duty. Removing it from the privacy notice would make that notice inaccurate. |
+| Service count | `LISTED_SERVICE_COUNT`, derived from the priced menu | The venue record's own total of 130 | Only 90 services return a name, duration, and price. Printing 130 next to a menu of 90 claims more than the page shows. |
+| Booking benefits | Two verified facts only | Four benefit bullets | "Free to reschedule" and "instant confirmation" are not in the record. Only no-online-payment and choose-your-therapist are. |
+| Footer logo | Real stacked lockup at 240 to 320px | Small icon beside the wordmark | Client asked for it featured large, not shrunk to an afterthought. |
+
+## Still blocked
+
+- Additional photography. The round 2 bundle carried logo assets only. Image
+  density is unchanged and no filler was substituted.
+- Google review link. Needs the real Place ID or review URL.

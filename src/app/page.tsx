@@ -6,7 +6,7 @@ import { MenuHost } from '@/components/MenuHost';
 import { Picture } from '@/components/Picture';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import { SiteFooter } from '@/components/SiteFooter';
-import { GALLERY_SLUGS, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, GALLERY_SLUGS, LISTED_SERVICE_COUNT, site } from '@/lib/site';
 
 /** Four signature categories, chosen for breadth across the real menu. */
 const SIGNATURE = ['massages', 'facials-skincare', 'hydrotherapy', 'nails'];
@@ -68,7 +68,7 @@ export default function HomePage() {
               href="/services"
               className="group flex items-center gap-1.5 text-sm font-semibold uppercase tracking-widest text-emerald-600"
             >
-              All {site.serviceCount} services
+              All {LISTED_SERVICE_COUNT} services
               <ArrowUpRight
                 className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 aria-hidden="true"
@@ -128,7 +128,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Verified reviews. Real guest words, real dates, from Fresha. */}
+        {/* Verified guest reviews. Real words, real dates, from the booking record. */}
         <section className="bg-emerald-900 py-20 text-ground md:py-28">
           <div className="shell">
             <div className="flex flex-wrap items-end justify-between gap-6">
@@ -182,15 +182,13 @@ export default function HomePage() {
                 <ClipReveal>Blackett Street, Windhoek West.</ClipReveal>
               </h2>
               <FadeUp delay={0.1}>
-                <a
-                  href={site.bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href={BOOKING_PATH}
                   className="mt-8 inline-flex items-center gap-2 rounded-full bg-emerald-600 px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-700"
                 >
-                  Book Your Escape
+                  {BOOKING_CTA}
                   <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                </a>
+                </Link>
               </FadeUp>
             </div>
 

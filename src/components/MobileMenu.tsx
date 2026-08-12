@@ -4,7 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight, X } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
-import { NAV_LINKS, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, NAV_LINKS } from '@/lib/site';
 
 export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   const reduce = useReducedMotion();
@@ -57,8 +57,9 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
             </button>
           </div>
 
+          {/* Book is omitted here: the accent CTA at the bottom owns that route. */}
           <ul className="mt-16 flex flex-col gap-8">
-            {NAV_LINKS.map((item) => (
+            {NAV_LINKS.filter((item) => item.href !== BOOKING_PATH).map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
@@ -71,16 +72,14 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
             ))}
           </ul>
 
-          <a
-            href={site.bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href={BOOKING_PATH}
             onClick={onClose}
             className="mt-auto flex items-center gap-2 text-xl font-semibold text-emerald-600"
           >
-            Book Your Escape
+            {BOOKING_CTA}
             <ArrowUpRight className="h-5 w-5" aria-hidden="true" />
-          </a>
+          </Link>
         </motion.div>
       ) : null}
     </AnimatePresence>

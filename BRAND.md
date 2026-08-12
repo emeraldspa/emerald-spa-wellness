@@ -32,8 +32,25 @@ Interface: Inter. Eyebrows uppercase at 0.6875rem, 0.18em tracking.
 
 ## Logo
 
-Native SVG, no embedded raster, six lockups supplied. Never rasterise for the
-web, never redraw, never recolour the gemstone.
+The client's real artwork, supplied as a logo package and preserved unmodified
+at `assets/emerald-spa-logo-original.png`.
+
+- `public/brand/lockup-stacked-dark.png`, cream wordmark, for dark grounds.
+  This is the featured footer mark.
+- `public/brand/lockup-stacked-light.png` and the horizontal pair for light
+  grounds and header widths.
+- `public/brand/symbol-photoreal.png`, transparent, for featured placements.
+- `public/brand/symbol-full.svg` and `symbol-mark.svg` for vector use. The
+  simplified mark is for small sizes only.
+- `public/icons/`, favicon set at 16, 32, 48, 180, 192, 512, plus SVG and ICO.
+
+Never stretch the mark non-uniformly, never redraw it, never recolour the gem
+or the rings. Clear space of at least half the symbol height on every side.
+
+Typeface flag carried over from the supplied manifest: the wordmark's exact
+typeface could not be identified from the raster original, so the SVG wordmark
+specifies Playfair Display with a serif fallback. Needs client verification if
+the original vector is available.
 
 ## Motion
 

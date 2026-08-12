@@ -70,37 +70,46 @@ export default function BrandPage() {
             <div className="flex items-center justify-center bg-ground p-8 ring-1 ring-ink/10">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/emerald-spa-symbol-full-color.svg"
+                src="/brand/symbol-photoreal.png"
                 alt="Emerald Spa symbol: faceted emerald gemstone inside rose gold orbital rings"
-                width={200}
-                height={200}
-                className="h-40 w-40"
+                width={400}
+                height={293}
+                loading="lazy"
+                decoding="async"
+                className="h-40 w-auto"
               />
             </div>
             <div className="flex items-center justify-center bg-emerald-900 p-8">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/emerald-spa-stacked-color.svg"
-                alt="Emerald Spa stacked lockup with wordmark"
-                width={260}
-                height={200}
+                src="/brand/lockup-stacked-dark.png"
+                alt="Emerald Spa stacked lockup with cream wordmark, for dark backgrounds"
+                width={800}
+                height={614}
+                loading="lazy"
+                decoding="async"
                 className="h-40 w-auto"
               />
             </div>
             <div className="flex items-center justify-center bg-ground p-8 ring-1 ring-ink/10">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/emerald-spa-horizontal-monochrome.svg"
-                alt="Emerald Spa horizontal lockup, single colour"
-                width={280}
-                height={90}
+                src="/brand/lockup-horizontal-light.png"
+                alt="Emerald Spa horizontal lockup, for light backgrounds"
+                width={640}
+                height={154}
+                loading="lazy"
+                decoding="async"
                 className="w-full"
               />
             </div>
           </div>
           <p className="mt-6 max-w-2xl text-sm text-ink/65">
-            The mark is native SVG with no embedded raster, so it stays sharp at any size.
-            Never rasterise it for the web, never redraw it, and never recolour the gemstone.
+            These are the client&apos;s real artwork, supplied as a logo package: a
+            photoreal transparent PNG for featured placements and traced SVGs for small
+            sizes. Never stretch the mark non-uniformly, never redraw it, and never
+            recolour the gemstone. Keep clear space of at least half the symbol height
+            on every side.
           </p>
         </section>
 

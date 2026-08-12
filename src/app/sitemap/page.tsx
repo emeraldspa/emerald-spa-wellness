@@ -19,6 +19,7 @@ const GROUPS = [
       { href: '/gallery', label: 'Gallery' },
       { href: '/team', label: 'Our Team' },
       { href: '/visit', label: 'Visit and Contact' },
+      { href: '/book', label: 'Book Now' },
     ],
   },
   {

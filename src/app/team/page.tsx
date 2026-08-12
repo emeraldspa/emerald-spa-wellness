@@ -25,7 +25,7 @@ export default function TeamPage() {
           </h1>
           <p className="mt-8 max-w-2xl text-lg text-ink/70 text-pretty">
             Guests name our therapists in their reviews more than anything else. Ratings
-            below are each professional&apos;s own average on Fresha.
+            below are each professional&apos;s own verified average.
           </p>
         </section>
 

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { MobileMenu } from '@/components/MobileMenu';
-import { NAV_LINKS, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, NAV_LINKS } from '@/lib/site';
 
 /** Header for every route except the home hero, which renders its own nav. */
 export function SiteHeader() {
@@ -27,8 +27,13 @@ export function SiteHeader() {
             </span>
           </Link>
 
+          {/*
+            Book is excluded from the inline nav because the solid button to
+            the right already leads there. Two links to the same route in one
+            header reads as a mistake and splits the click target.
+          */}
           <ul className="hidden items-center gap-8 md:flex">
-            {NAV_LINKS.map((item) => {
+            {NAV_LINKS.filter((item) => item.href !== BOOKING_PATH).map((item) => {
               const active = pathname === item.href;
               return (
                 <li key={item.href}>
@@ -47,14 +52,12 @@ export function SiteHeader() {
           </ul>
 
           <div className="flex items-center gap-3">
-            <a
-              href={site.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={BOOKING_PATH}
               className="hidden rounded-full bg-emerald-600 px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-700 sm:block"
             >
-              Book Now
-            </a>
+              {BOOKING_CTA}
+            </Link>
             <button
               type="button"
               onClick={() => setOpen(true)}

@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import { ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { SITE_URL, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, LISTED_SERVICE_COUNT, SITE_URL, site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Services and Prices',
-  description: `All ${site.serviceCount} treatments at Emerald Spa & Wellness Centre, Windhoek West: massages, facials, hydrotherapy, nails, lashes and hair removal. Prices in Namibian dollars.`,
+  description: `All ${LISTED_SERVICE_COUNT} treatments at Emerald Spa & Wellness Centre, Windhoek West: massages, facials, hydrotherapy, nails, lashes and hair removal. Prices in Namibian dollars.`,
   alternates: { canonical: '/services' },
 };
 
@@ -53,19 +54,17 @@ export default function ServicesPage() {
             <ClipReveal>Every treatment, every price.</ClipReveal>
           </h1>
           <p className="mt-8 max-w-2xl text-lg text-ink/70 text-pretty">
-            {site.serviceCount} treatments across {site.categories.length} categories, from a
+            {LISTED_SERVICE_COUNT} treatments across {site.categories.length} categories, from a
             10 minute add-on to a full day of care. Prices are in Namibian dollars and
-            match the live Fresha booking system.
+            match our live booking system.
           </p>
-          <a
-            href={site.bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href={BOOKING_PATH}
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-emerald-600 px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-700"
           >
-            Book Your Escape
+            {BOOKING_CTA}
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-          </a>
+          </Link>
         </section>
 
         <div className="shell grid gap-12 py-16 md:grid-cols-12 md:py-20">
@@ -139,7 +138,7 @@ export default function ServicesPage() {
 
             <FadeUp>
               <p className="mt-10 border-t border-ink/15 pt-8 text-sm text-ink/65">
-                Prices shown are the current Fresha listings. Confirm final pricing when you book.
+                Prices shown are current listings. Confirm final pricing when you book.
               </p>
             </FadeUp>
           </div>

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
 import type { ReactNode } from 'react';
+import { FloatingActions } from '@/components/FloatingActions';
 import { SITE_URL, site } from '@/lib/site';
 import './globals.css';
 
@@ -69,8 +70,13 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.webmanifest',
   icons: {
-    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
-    apple: [{ url: '/emerald-logo-official.png' }],
+    icon: [
+      { url: '/icons/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icons/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icons/favicon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    shortcut: [{ url: '/favicon.ico' }],
+    apple: [{ url: '/icons/favicon-180.png', sizes: '180x180' }],
   },
 };
 
@@ -85,7 +91,7 @@ function StructuredData() {
     url: SITE_URL,
     telephone: site.phoneE164,
     image: `${SITE_URL}/media/reception-1600.jpg`,
-    logo: `${SITE_URL}/emerald-spa-stacked-color.svg`,
+    logo: `${SITE_URL}/brand/lockup-stacked-light.png`,
     priceRange: `NAD ${site.priceRange.min} - NAD ${site.priceRange.max}`,
     currenciesAccepted: 'NAD',
     address: {
@@ -140,6 +146,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Skip to content
         </a>
         {children}
+        <FloatingActions />
       </body>
     </html>
   );

@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { ArrowUpRight, Facebook, Instagram, MapPin, MessageCircle, Phone } from 'lucide-react';
+import Link from 'next/link';
 import { Picture } from '@/components/Picture';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { WHATSAPP_URL, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, WHATSAPP_URL, site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Visit and Contact',
@@ -93,15 +94,13 @@ export default function VisitPage() {
               </a>
             </div>
 
-            <a
-              href={site.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={BOOKING_PATH}
               className="mt-12 inline-flex items-center gap-2 rounded-full bg-emerald-600 px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-700"
             >
-              Book Your Escape
+              {BOOKING_CTA}
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </a>
+            </Link>
           </div>
 
           <div className="md:col-span-7">
