@@ -1,0 +1,1585 @@
+{
+  "name": "Emerald Spa & Wellness Centre",
+  "legalName": "Emerald Spa & Wellness Centre",
+  "description": "At Emerald Spa & Wellness Center, we've shaped a refined retreat where calm, balance, and quiet luxury set the tone. Every detail is designed to help you slow down, feel cared for, and reconnect, from serene indoor spaces to our peaceful garden escape. It's a place to exhale, restore, and leave feeling renewed in both body and mind.",
+  "reviewSummary": "The deep tissue massage at Emerald Spa & Wellness Centre draws clients in with its therapeutic effects, often leaving them feeling completely relaxed. The serene atmosphere is complemented by attentive staff, who ensure a calming experience from the moment clients enter, often offering complimentary drinks and delicious snacks. Many rave about the rejuvenating facials and flawless Hollywood waxes, highlighting the meticulous care and professionalism of the therapists.",
+  "phone": "+264 85 607 7143",
+  "phoneE164": "+264856077143",
+  "address": {
+    "street": "Blackett Street",
+    "suite": "No. 7",
+    "suburb": "Windhoek West",
+    "city": "Windhoek",
+    "region": "Khomas Region",
+    "country": "NA",
+    "full": "Blackett Street, No. 7, Windhoek West, Windhoek, Khomas Region",
+    "lat": -22.5540581,
+    "lng": 17.0755901,
+    "directionsUrl": "https://maps.google.com/?daddr=Blackett%20Street%2C%20No.%207%2C%20Windhoek%2C%20Khomas%20Region",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Blackett%20Street%2C%20No.%207%2C%20Windhoek%2C%20Khomas%20Region"
+  },
+  "rating": 4.8,
+  "reviewCount": 228,
+  "serviceCount": 130,
+  "currency": "NAD",
+  "priceRange": {
+    "min": 10,
+    "max": 4500
+  },
+  "bookingUrl": "https://www.fresha.com/a/emerald-spa-wellness-centre-windhoek-blackett-street-awio4ik8",
+  "social": {
+    "facebook": "https://www.facebook.com/p/Emerald-Spa-and-Wellness-Center-61571981360103/",
+    "instagram": "https://www.instagram.com/emerald_spa_and_wellness/"
+  },
+  "hours": [
+    {
+      "day": "Monday",
+      "value": "9:00 AM - 6:00 PM",
+      "closed": false
+    },
+    {
+      "day": "Tuesday",
+      "value": "9:00 AM - 6:00 PM",
+      "closed": false
+    },
+    {
+      "day": "Wednesday",
+      "value": "9:00 AM - 6:00 PM",
+      "closed": false
+    },
+    {
+      "day": "Thursday",
+      "value": "9:00 AM - 6:00 PM",
+      "closed": false
+    },
+    {
+      "day": "Friday",
+      "value": "9:00 AM - 6:00 PM",
+      "closed": false
+    },
+    {
+      "day": "Saturday",
+      "value": "9:00 AM - 6:00 PM",
+      "closed": false
+    },
+    {
+      "day": "Sunday",
+      "value": "10:00 AM - 4:00 PM",
+      "closed": false
+    }
+  ],
+  "openingHoursSpec": [
+    "Mo 09:00-18:00",
+    "Tu 09:00-18:00",
+    "We 09:00-18:00",
+    "Th 09:00-18:00",
+    "Fr 09:00-18:00",
+    "Sa 09:00-18:00",
+    "Su 10:00-16:00"
+  ],
+  "features": [
+    "Kid-friendly",
+    "Parking available",
+    "Near public transport",
+    "Showers",
+    "Lockers",
+    "Bath towels",
+    "Environmentally friendly",
+    "Woman-owned",
+    "Indigenous-owned"
+  ],
+  "categories": [
+    {
+      "id": "3938797",
+      "slug": "massages",
+      "name": "Massages",
+      "items": [
+        {
+          "name": "Aromatherapy",
+          "duration": "1 hr - 2 hr",
+          "price": "from NAD 750",
+          "priceValue": 750,
+          "description": "Experience pure tranquility with an aromatherapy massage that soothes both body and mind. This therapeutic treatment not only alleviates muscle tension but also enhances circulation and promotes deep relaxation. Let enchanting essential oils envelop your senses, creating an atmosphere of calm and rejuvenation. Indulge in this holistic experience, perfect for reducing stress and revitalizing your spirit at Emerald Spa & Wellness Centre.",
+          "variants": [
+            {
+              "name": "Aromatherapy",
+              "duration": "1 hr",
+              "price": "NAD 750"
+            },
+            {
+              "name": "Aromatherapy 90 Minutes",
+              "duration": "1 hr, 30 min",
+              "price": "NAD 850"
+            },
+            {
+              "name": "Aromatherapy 120 minutes",
+              "duration": "2 hr",
+              "price": "NAD 999"
+            }
+          ]
+        },
+        {
+          "name": "Back & Neck Massage",
+          "duration": "30 min",
+          "price": "NAD 250",
+          "priceValue": 250,
+          "description": "Targeting stress and stiffness, this focused massage eases muscle tension, improves circulation, and restores mobility—leaving you feeling relaxed and refreshed",
+          "variants": [
+            {
+              "name": "Back & Neck Massage",
+              "duration": "30 min",
+              "price": "NAD 250"
+            }
+          ]
+        },
+        {
+          "name": "Deep Tissue Massage",
+          "duration": "1 hr - 2 hr",
+          "price": "from NAD 550",
+          "priceValue": 550,
+          "description": "Relieve tension and stress with this powerful massage designed to target deep layers of muscle and connective tissue. Perfect for soothing aches, easing stiffness, and leaving you feeling revitalized and refreshed!",
+          "variants": [
+            {
+              "name": "Deep Tissue Massage",
+              "duration": "1 hr",
+              "price": "NAD 550"
+            },
+            {
+              "name": "Deep Tissue Massage",
+              "duration": "1 hr, 30 min",
+              "price": "NAD 750"
+            },
+            {
+              "name": "Deep Tissue Massage",
+              "duration": "2 hr",
+              "price": "NAD 950"
+            }
+          ]
+        },
+        {
+          "name": "Face Massage",
+          "duration": "30 min",
+          "price": "NAD 200",
+          "priceValue": 200,
+          "description": "This soothing treatment boosts circulation, reduces tension, and enhances skin radiance. Gentle techniques promote relaxation while leaving your face refreshed, toned, and glowing.",
+          "variants": [
+            {
+              "name": "Face Massage",
+              "duration": "30 min",
+              "price": "NAD 200"
+            }
+          ]
+        },
+        {
+          "name": "Head Massage",
+          "duration": "30 min",
+          "price": "NAD 200",
+          "priceValue": 200,
+          "description": "A head massage promotes relaxation, easing stress and enhancing your overall wellbeing through gentle, calming techniques that focus on the scalp and neck. Experience tranquility today.",
+          "variants": [
+            {
+              "name": "Head Massage",
+              "duration": "30 min",
+              "price": "NAD 200"
+            }
+          ]
+        },
+        {
+          "name": "Hot Stone Massage",
+          "duration": "1 hr - 2 hr",
+          "price": "from NAD 550",
+          "priceValue": 550,
+          "description": "Melt away stress with the soothing warmth of heated stones. This therapeutic massage relieves muscle tension, improves circulation, and promotes deep relaxation for a truly rejuvenating experience.",
+          "variants": [
+            {
+              "name": "Hot Stone Massage",
+              "duration": "1 hr",
+              "price": "NAD 550"
+            },
+            {
+              "name": "Deep Tissue Massage 90 minutes",
+              "duration": "1 hr, 30 min",
+              "price": "NAD 675"
+            },
+            {
+              "name": "Deep Tissue Massage 120 minutes",
+              "duration": "2 hr",
+              "price": "NAD 950"
+            }
+          ]
+        },
+        {
+          "name": "Imperial Thai Massage",
+          "duration": "1 hr - 2 hr",
+          "price": "from NAD 700",
+          "priceValue": 700,
+          "description": "This ancient healing practice combines acupressure, stretching, and rhythmic movements to release tension, improve flexibility, and restore energy flow. Perfect for deep relaxation and overall well-being",
+          "variants": [
+            {
+              "name": "Imperial Thai Massage",
+              "duration": "1 hr",
+              "price": "NAD 700"
+            },
+            {
+              "name": "90 minutes",
+              "duration": "1 hr, 30 min",
+              "price": "NAD 900"
+            },
+            {
+              "name": "120 minutes",
+              "duration": "2 hr",
+              "price": "NAD 1,100"
+            }
+          ]
+        },
+        {
+          "name": "Leg and foot massage",
+          "duration": "30 min",
+          "price": "NAD 300",
+          "priceValue": 300,
+          "description": null,
+          "variants": [
+            {
+              "name": "Leg and foot massage",
+              "duration": "30 min",
+              "price": "NAD 300"
+            }
+          ]
+        },
+        {
+          "name": "Pregnancy Massage",
+          "duration": "1 hr",
+          "price": "NAD 500",
+          "priceValue": 500,
+          "description": "Designed for expectant mothers, this gentle massage relieves tension, reduces swelling, and promotes relaxation. Safe and soothing, it enhances circulation and nurtures both mom and baby for a radiant, stress-free glow.",
+          "variants": [
+            {
+              "name": "Pregnancy Massage",
+              "duration": "1 hr",
+              "price": "NAD 500"
+            }
+          ]
+        },
+        {
+          "name": "Reflexology",
+          "duration": "30 min",
+          "price": "NAD 200",
+          "priceValue": 200,
+          "description": "This therapeutic treatment applies gentle pressure to specific points on the feet, hands, and ears to relieve tension, improve circulation, and promote overall wellness. Perfect for relaxation and natural healing.",
+          "variants": [
+            {
+              "name": "Reflexology",
+              "duration": "30 min",
+              "price": "NAD 200"
+            }
+          ]
+        },
+        {
+          "name": "Royal Rungu Massage",
+          "duration": "1 hr - 2 hr",
+          "price": "from NAD 500",
+          "priceValue": 500,
+          "description": "This powerful African massage uses a wooden baton to apply deep, rhythmic pressure, easing muscle tension, improving circulation, and promoting full-body relaxation. Perfect for stress relief and rejuvenation.",
+          "variants": [
+            {
+              "name": "Royal Rungu Massage",
+              "duration": "1 hr",
+              "price": "NAD 500"
+            },
+            {
+              "name": "90 minutes",
+              "duration": "1 hr",
+              "price": "NAD 700"
+            },
+            {
+              "name": "120 minutes",
+              "duration": "2 hr",
+              "price": "NAD 900"
+            }
+          ]
+        },
+        {
+          "name": "Scalp Massage",
+          "duration": "20 min - 30 min",
+          "price": "from NAD 100",
+          "priceValue": 100,
+          "description": null,
+          "variants": [
+            {
+              "name": "Scalp Massage",
+              "duration": "20 min",
+              "price": "NAD 100"
+            },
+            {
+              "name": "Scalp Massage",
+              "duration": "30 min",
+              "price": "NAD 150"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5305078",
+      "slug": "body-treatments",
+      "name": "Body Treatments",
+      "items": [
+        {
+          "name": "Body Exfoliating Scrub & shower",
+          "duration": "40 min",
+          "price": "NAD 450",
+          "priceValue": 450,
+          "description": null,
+          "variants": [
+            {
+              "name": "Body Exfoliating Scrub & shower",
+              "duration": "40 min",
+              "price": "NAD 450"
+            }
+          ]
+        },
+        {
+          "name": "Hydrating Body Scrub & Shower",
+          "duration": "1 hr",
+          "price": "NAD 450",
+          "priceValue": 450,
+          "description": "Quench your skin's thirst with our luxurious hydrating body treatment. This soothing experience nourishes dry, tired skin with rich, moisturizing ingredients, leaving you feeling silky-smooth, refreshed, and glowing from head to toe. Perfect for restoring hydration and radiance!",
+          "variants": [
+            {
+              "name": "Hydrating Body Scrub & Shower",
+              "duration": "1 hr",
+              "price": "NAD 450"
+            }
+          ]
+        },
+        {
+          "name": "Upper Body Scrub & Shower",
+          "duration": "30 min",
+          "price": "NAD 250",
+          "priceValue": 250,
+          "description": null,
+          "variants": [
+            {
+              "name": "Upper Body Scrub & Shower",
+              "duration": "30 min",
+              "price": "NAD 250"
+            }
+          ]
+        },
+        {
+          "name": "Vajacial",
+          "duration": "30 min",
+          "price": "NAD 300",
+          "priceValue": 300,
+          "description": null,
+          "variants": [
+            {
+              "name": "Vajacial",
+              "duration": "30 min",
+              "price": "NAD 300"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3938793",
+      "slug": "facials-skincare",
+      "name": "Facials & skincare",
+      "items": [
+        {
+          "name": "Acne Treatment",
+          "duration": "1 hr",
+          "price": "NAD 450",
+          "priceValue": 450,
+          "description": "Targeting blemishes and breakouts, this treatment cleanses, soothes, and heals the skin. With specialized techniques and products, it helps reduce acne and promotes a clearer, smoother complexion.",
+          "variants": [
+            {
+              "name": "Acne Treatment",
+              "duration": "1 hr",
+              "price": "NAD 450"
+            }
+          ]
+        },
+        {
+          "name": "Anti-aging Facial",
+          "duration": "1 hr",
+          "price": "NAD 400",
+          "priceValue": 400,
+          "description": "This targeted treatment reduces fine lines and wrinkles, firms the skin, and boosts collagen production. Using advanced techniques and nourishing products, it revitalizes your complexion for a youthful, radiant glow.",
+          "variants": [
+            {
+              "name": "Anti-aging Facial",
+              "duration": "1 hr",
+              "price": "NAD 400"
+            }
+          ]
+        },
+        {
+          "name": "Brightening Peel",
+          "duration": "1 hr",
+          "price": "NAD 550",
+          "priceValue": 550,
+          "description": "This exfoliating treatment gently removes dead skin cells, brightening the complexion and reducing dark spots. It reveals smoother, more radiant skin, leaving you with a healthy, glowing appearance.",
+          "variants": [
+            {
+              "name": "Brightening Peel",
+              "duration": "1 hr",
+              "price": "NAD 550"
+            }
+          ]
+        },
+        {
+          "name": "Deep Cleanse Facial",
+          "duration": "1 hr",
+          "price": "NAD 450",
+          "priceValue": 450,
+          "description": "This facial deeply cleanses and detoxifies the skin, removing impurities and excess oils. With exfoliation and soothing treatments, it leaves your skin feeling fresh, smooth, and rejuvenated",
+          "variants": [
+            {
+              "name": "Deep Cleanse Facial",
+              "duration": "1 hr",
+              "price": "NAD 450"
+            }
+          ]
+        },
+        {
+          "name": "Dermaplaning",
+          "duration": "1 hr",
+          "price": "NAD 400",
+          "priceValue": 400,
+          "description": "This exfoliating treatment removes dead skin cells and peach fuzz, leaving your skin ultra-smooth and glowing. It enhances the effectiveness of skincare products and provides a fresh, radiant complexion.",
+          "variants": [
+            {
+              "name": "Dermaplaning",
+              "duration": "1 hr",
+              "price": "NAD 400"
+            }
+          ]
+        },
+        {
+          "name": "Man Glow Facial",
+          "duration": "1 hr",
+          "price": "NAD 350",
+          "priceValue": 350,
+          "description": "This facial is tailored to men's skin, cleansing deeply, hydrating, and brightening for a refreshed, smooth complexion. It targets dryness, stress, and dullness, leaving your skin looking healthy, energized, and glowing.",
+          "variants": [
+            {
+              "name": "Man Glow Facial",
+              "duration": "1 hr",
+              "price": "NAD 350"
+            }
+          ]
+        },
+        {
+          "name": "Mini Facial",
+          "duration": "30 min",
+          "price": "NAD 200",
+          "priceValue": 200,
+          "description": "A perfect pick-me-up for your skin, this mini facial cleanses, exfoliates, and hydrates, leaving your complexion refreshed and radiant in just a short time. Ideal for a quick rejuvenation before an event or as part of your skincare routine.",
+          "variants": [
+            {
+              "name": "Mini Facial",
+              "duration": "30 min",
+              "price": "NAD 200"
+            }
+          ]
+        },
+        {
+          "name": "Signature Emerald Opulence",
+          "duration": "1 hr",
+          "price": "NAD 450",
+          "priceValue": 450,
+          "description": "Emerald Opulence is our signature facial pure relaxation with a deep cleanse. It includes your choice of a shoulder or moot massage.",
+          "variants": [
+            {
+              "name": "Signature Emerald Opulence",
+              "duration": "1 hr",
+              "price": "NAD 450"
+            }
+          ]
+        },
+        {
+          "name": "Skin Consultation",
+          "duration": "30 min",
+          "price": "NAD 100",
+          "priceValue": 100,
+          "description": "Our expert consultation assesses your skin type and concerns, providing tailored recommendations for the best treatments and products. Achieve healthier, radiant skin with professional advice and a customized skincare plan.",
+          "variants": [
+            {
+              "name": "Skin Consultation",
+              "duration": "30 min",
+              "price": "NAD 100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3944817",
+      "slug": "foot-care",
+      "name": "Foot Care",
+      "items": [
+        {
+          "name": "Foot scrub",
+          "duration": "40 min",
+          "price": "NAD 250",
+          "priceValue": 250,
+          "description": "Experience gentle care and soothing relaxation as rough skin is smoothed away, leaving your feet feeling clean and renewed. Enjoy comforting pampering that revitalizes tired feet and creates a refreshing sense of well-being in a calming environment.",
+          "variants": [
+            {
+              "name": "Foot scrub",
+              "duration": "40 min",
+              "price": "NAD 250"
+            }
+          ]
+        },
+        {
+          "name": "Foot Peel",
+          "duration": "1 hr",
+          "price": "NAD 300",
+          "priceValue": 300,
+          "description": "Reveal softer, revitalized feet with a gentle treatment designed to renew your skin. This service helps remove rough, dry areas and leaves your feet feeling refreshed. Enjoy a soothing experience that supports healthy, comfortable feet in every season.",
+          "variants": [
+            {
+              "name": "Foot Peel",
+              "duration": "1 hr",
+              "price": "NAD 300"
+            }
+          ]
+        },
+        {
+          "name": "Foot massage",
+          "duration": "30 min",
+          "price": "NAD 250",
+          "priceValue": 250,
+          "description": null,
+          "variants": [
+            {
+              "name": "Foot massage",
+              "duration": "30 min",
+              "price": "NAD 250"
+            }
+          ]
+        },
+        {
+          "name": "Foot Scrub with Cuticle Work",
+          "duration": "1 hr",
+          "price": "NAD 280",
+          "priceValue": 280,
+          "description": "Our foot scrub with cuticle work gently exfoliates while pampering your toes, leaving your feet feeling smooth, revitalized, and ready to take on the day. Treat yourself to this essential self-care ritual.",
+          "variants": [
+            {
+              "name": "Foot Scrub with Cuticle Work",
+              "duration": "1 hr",
+              "price": "NAD 280"
+            }
+          ]
+        },
+        {
+          "name": "Foot scrub with gel overlay",
+          "duration": "1 hr, 30 min",
+          "price": "NAD 350",
+          "priceValue": 350,
+          "description": null,
+          "variants": [
+            {
+              "name": "Foot scrub with gel overlay",
+              "duration": "1 hr, 30 min",
+              "price": "NAD 350"
+            }
+          ]
+        },
+        {
+          "name": "Reflexology on feet",
+          "duration": "30 min",
+          "price": "NAD 200",
+          "priceValue": 200,
+          "description": "Experience relaxation and comfort as skilled hands focus on your feet. This service gently targets specific points to help ease tension and promote overall well-being. Enjoy a soothing session designed to leave your feet feeling refreshed and revitalized.",
+          "variants": [
+            {
+              "name": "Reflexology on feet",
+              "duration": "30 min",
+              "price": "NAD 200"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6321711",
+      "slug": "eyebrow-care",
+      "name": "Eyebrow Care",
+      "items": [
+        {
+          "name": "Brow Lamination",
+          "duration": "1 hr",
+          "price": "NAD 250",
+          "priceValue": 250,
+          "description": null,
+          "variants": [
+            {
+              "name": "Brow Lamination",
+              "duration": "1 hr",
+              "price": "NAD 250"
+            }
+          ]
+        },
+        {
+          "name": "Brow Shaping & Tint",
+          "duration": "40 min",
+          "price": "NAD 180",
+          "priceValue": 180,
+          "description": null,
+          "variants": [
+            {
+              "name": "Brow Shaping & Tint",
+              "duration": "40 min",
+              "price": "NAD 180"
+            }
+          ]
+        },
+        {
+          "name": "Brow tint",
+          "duration": "30 min",
+          "price": "NAD 100",
+          "priceValue": 100,
+          "description": null,
+          "variants": [
+            {
+              "name": "Brow tint",
+              "duration": "30 min",
+              "price": "NAD 100"
+            }
+          ]
+        },
+        {
+          "name": "Eyebrow wax",
+          "duration": "25 min",
+          "price": "NAD 80",
+          "priceValue": 80,
+          "description": "Shape and define your brows with careful hair removal for a polished, tidy appearance. This service gently removes unwanted eyebrow hair, creating a clean and refreshed look tailored to your natural features. Enjoy a simple way to maintain beautiful, well-groomed brows.",
+          "variants": [
+            {
+              "name": "Eyebrow wax",
+              "duration": "25 min",
+              "price": "NAD 80"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3938795",
+      "slug": "hair-removal",
+      "name": "Hair removal",
+      "items": [
+        {
+          "name": "Arm Wax",
+          "duration": "1 hr",
+          "price": "NAD 300",
+          "priceValue": 300,
+          "description": null,
+          "variants": [
+            {
+              "name": "Arm Wax",
+              "duration": "1 hr",
+              "price": "NAD 300"
+            }
+          ]
+        },
+        {
+          "name": "Back wax",
+          "duration": "1 hr",
+          "price": "NAD 400",
+          "priceValue": 400,
+          "description": "Enjoy smooth, hair-free skin with a professional back wax. This service gently removes unwanted hair from the back, helping you feel fresh and confident. Ideal for anyone looking for a cleaner look and comfortable grooming solution.",
+          "variants": [
+            {
+              "name": "Back wax",
+              "duration": "1 hr",
+              "price": "NAD 400"
+            }
+          ]
+        },
+        {
+          "name": "Bikini Wax",
+          "duration": "30 min",
+          "price": "NAD 250",
+          "priceValue": 250,
+          "description": null,
+          "variants": [
+            {
+              "name": "Bikini Wax",
+              "duration": "30 min",
+              "price": "NAD 250"
+            }
+          ]
+        },
+        {
+          "name": "Brazilian wax",
+          "duration": "40 min",
+          "price": "NAD 300",
+          "priceValue": 300,
+          "description": ".This service removes unwanted hair from the front intimate area, leaving your skin feeling clean and refreshed.",
+          "variants": [
+            {
+              "name": "Brazilian wax",
+              "duration": "40 min",
+              "price": "NAD 300"
+            }
+          ]
+        },
+        {
+          "name": "Brazilian Wax for Men",
+          "duration": "1 hr",
+          "price": "NAD 350",
+          "priceValue": 350,
+          "description": null,
+          "variants": [
+            {
+              "name": "Brazilian Wax for Men",
+              "duration": "1 hr",
+              "price": "NAD 350"
+            }
+          ]
+        },
+        {
+          "name": "Chest wax",
+          "duration": "1 hr",
+          "price": "NAD 300",
+          "priceValue": 300,
+          "description": "Reveal smoother, hair-free skin with a professional chest waxing service. This treatment helps remove unwanted hair from the chest area, leaving you feeling clean and confident. Enjoy a fresh look and a comfortable experience in a welcoming, professional setting.",
+          "variants": [
+            {
+              "name": "Chest wax",
+              "duration": "1 hr",
+              "price": "NAD 300"
+            }
+          ]
+        },
+        {
+          "name": "Chin wax",
+          "duration": "15 min",
+          "price": "NAD 100",
+          "priceValue": 100,
+          "description": null,
+          "variants": [
+            {
+              "name": "Chin wax",
+              "duration": "15 min",
+              "price": "NAD 100"
+            }
+          ]
+        },
+        {
+          "name": "Complete Facial Hair Wax",
+          "duration": "1 hr",
+          "price": "NAD 250",
+          "priceValue": 250,
+          "description": null,
+          "variants": [
+            {
+              "name": "Complete Facial Hair Wax",
+              "duration": "1 hr",
+              "price": "NAD 250"
+            }
+          ]
+        },
+        {
+          "name": "Ear wax",
+          "duration": "15 min",
+          "price": "NAD 50",
+          "priceValue": 50,
+          "description": null,
+          "variants": [
+            {
+              "name": "Ear wax",
+              "duration": "15 min",
+              "price": "NAD 50"
+            }
+          ]
+        },
+        {
+          "name": "Full leg",
+          "duration": "1 hr",
+          "price": "NAD 350",
+          "priceValue": 350,
+          "description": null,
+          "variants": [
+            {
+              "name": "Full leg",
+              "duration": "1 hr",
+              "price": "NAD 350"
+            }
+          ]
+        },
+        {
+          "name": "Half leg",
+          "duration": "30 min",
+          "price": "NAD 200",
+          "priceValue": 200,
+          "description": null,
+          "variants": [
+            {
+              "name": "Half leg",
+              "duration": "30 min",
+              "price": "NAD 200"
+            }
+          ]
+        },
+        {
+          "name": "Hollywood",
+          "duration": "1 hr",
+          "price": "NAD 350",
+          "priceValue": 350,
+          "description": "Experience complete confidence with a thorough hair removal service designed for a smooth, sleek finish. This treatment removes all hairs from your intimate area (back and front), offering a fresh and clean feel.",
+          "variants": [
+            {
+              "name": "Hollywood",
+              "duration": "1 hr",
+              "price": "NAD 350"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5342233",
+      "slug": "hydrotherapy",
+      "name": "Hydrotherapy",
+      "items": [
+        {
+          "name": "Hydrotherapy Soak - 60 minutes",
+          "duration": "1 hr",
+          "price": "NAD 750",
+          "priceValue": 750,
+          "description": "A warm, mineral-infused hydro soak with controlled jet pressure to ease tension in the back, shoulders, and hips, restoring natural relaxation and body comfort. The experience is complemented with a snack platter and a chilled bubbly beverage to encourage slow savoring, grounding, and gentle unwinding.",
+          "variants": [
+            {
+              "name": "Hydrotherapy Soak - 60 minutes",
+              "duration": "1 hr",
+              "price": "NAD 750"
+            }
+          ]
+        },
+        {
+          "name": "Hydrotherapy Soak - 90 Minutes",
+          "duration": "1 hr, 30 min",
+          "price": "NAD 850",
+          "priceValue": 850,
+          "description": "A warm, mineral-infused hydro soak with controlled jet pressure to ease tension in the back, shoulders, and hips, restoring natural relaxation and body comfort. The experience is complemented with a snack platter and a chilled bubbly beverage to encourage slow savoring, grounding, and gentle unwinding.",
+          "variants": [
+            {
+              "name": "Hydrotherapy Soak - 90 Minutes",
+              "duration": "1 hr, 30 min",
+              "price": "NAD 850"
+            }
+          ]
+        },
+        {
+          "name": "Hydrotherapy Soak - 120 Minutes",
+          "duration": "2 hr",
+          "price": "NAD 999.99",
+          "priceValue": 999.99,
+          "description": "Spend more time for even less, enjoy the  warm, mineral-infused hydro soak with controlled jet pressure to ease tension in the back, shoulders, and hips, restoring natural relaxation and body comfort. The experience is complemented with a snack platter and a chilled bubbly beverage to encourage slow savoring, grounding, and gentle unwinding.",
+          "variants": [
+            {
+              "name": "Hydrotherapy Soak - 120 Minutes",
+              "duration": "2 hr",
+              "price": "NAD 999.99"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5011664",
+      "slug": "lashes",
+      "name": "Lashes",
+      "items": [
+        {
+          "name": "10D volume lashes",
+          "duration": "1 hr",
+          "price": "NAD 300",
+          "priceValue": 300,
+          "description": null,
+          "variants": [
+            {
+              "name": "10D volume lashes",
+              "duration": "1 hr",
+              "price": "NAD 300"
+            }
+          ]
+        },
+        {
+          "name": "Classic Natural",
+          "duration": "1 hr, 30 min",
+          "price": "NAD 300",
+          "priceValue": 300,
+          "description": null,
+          "variants": [
+            {
+              "name": "Classic Natural",
+              "duration": "1 hr, 30 min",
+              "price": "NAD 300"
+            }
+          ]
+        },
+        {
+          "name": "Hybrid set",
+          "duration": "1 hr",
+          "price": "NAD 300",
+          "priceValue": 300,
+          "description": null,
+          "variants": [
+            {
+              "name": "Hybrid set",
+              "duration": "1 hr",
+              "price": "NAD 300"
+            }
+          ]
+        },
+        {
+          "name": "Lash Lamination",
+          "duration": "1 hr",
+          "price": "NAD 250",
+          "priceValue": 250,
+          "description": null,
+          "variants": [
+            {
+              "name": "Lash Lamination",
+              "duration": "1 hr",
+              "price": "NAD 250"
+            }
+          ]
+        },
+        {
+          "name": "Lash Set Refill",
+          "duration": "1 hr",
+          "price": "NAD 100",
+          "priceValue": 100,
+          "description": null,
+          "variants": [
+            {
+              "name": "Lash Set Refill",
+              "duration": "1 hr",
+              "price": "NAD 100"
+            }
+          ]
+        },
+        {
+          "name": "Lash Set Removal",
+          "duration": "1 hr",
+          "price": "NAD 70",
+          "priceValue": 70,
+          "description": null,
+          "variants": [
+            {
+              "name": "Lash Set Removal",
+              "duration": "1 hr",
+              "price": "NAD 70"
+            }
+          ]
+        },
+        {
+          "name": "Lash Tinting",
+          "duration": "30 min",
+          "price": "NAD 100",
+          "priceValue": 100,
+          "description": null,
+          "variants": [
+            {
+              "name": "Lash Tinting",
+              "duration": "30 min",
+              "price": "NAD 100"
+            }
+          ]
+        },
+        {
+          "name": "W Lashes",
+          "duration": "1 hr",
+          "price": "NAD 250",
+          "priceValue": 250,
+          "description": null,
+          "variants": [
+            {
+              "name": "W Lashes",
+              "duration": "1 hr",
+              "price": "NAD 250"
+            }
+          ]
+        },
+        {
+          "name": "Volume Classic",
+          "duration": "1 hr, 30 min",
+          "price": "NAD 300",
+          "priceValue": 300,
+          "description": null,
+          "variants": [
+            {
+              "name": "Volume Classic",
+              "duration": "1 hr, 30 min",
+              "price": "NAD 300"
+            }
+          ]
+        },
+        {
+          "name": "YY / natural lashes",
+          "duration": "1 hr",
+          "price": "NAD 250",
+          "priceValue": 250,
+          "description": null,
+          "variants": [
+            {
+              "name": "YY / natural lashes",
+              "duration": "1 hr",
+              "price": "NAD 250"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5305206",
+      "slug": "kiddie-s-corner",
+      "name": "Kiddie's Corner",
+      "items": [
+        {
+          "name": "Back & Neck Massage",
+          "duration": "30 min",
+          "price": "NAD 200",
+          "priceValue": 200,
+          "description": null,
+          "variants": [
+            {
+              "name": "Back & Neck Massage",
+              "duration": "30 min",
+              "price": "NAD 200"
+            }
+          ]
+        },
+        {
+          "name": "Manicure",
+          "duration": "1 hr",
+          "price": "NAD 100",
+          "priceValue": 100,
+          "description": null,
+          "variants": [
+            {
+              "name": "Manicure",
+              "duration": "1 hr",
+              "price": "NAD 100"
+            }
+          ]
+        },
+        {
+          "name": "Mini Facial",
+          "duration": "30 min",
+          "price": "NAD 200",
+          "priceValue": 200,
+          "description": null,
+          "variants": [
+            {
+              "name": "Mini Facial",
+              "duration": "30 min",
+              "price": "NAD 200"
+            }
+          ]
+        },
+        {
+          "name": "Pedicure",
+          "duration": "1 hr",
+          "price": "NAD 80",
+          "priceValue": 80,
+          "description": null,
+          "variants": [
+            {
+              "name": "Pedicure",
+              "duration": "1 hr",
+              "price": "NAD 80"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3938796",
+      "slug": "nails",
+      "name": "Nails",
+      "items": [
+        {
+          "name": "Cuticle Work (Hands & Toes)",
+          "duration": "1 hr",
+          "price": "NAD 100",
+          "priceValue": 100,
+          "description": null,
+          "variants": [
+            {
+              "name": "Cuticle Work (Hands & Toes)",
+              "duration": "1 hr",
+              "price": "NAD 100"
+            }
+          ]
+        },
+        {
+          "name": "3D nail art",
+          "duration": "1 hr",
+          "price": "NAD 30",
+          "priceValue": 30,
+          "description": null,
+          "variants": [
+            {
+              "name": "3D nail art",
+              "duration": "1 hr",
+              "price": "NAD 30"
+            }
+          ]
+        },
+        {
+          "name": "Acrylic Removal",
+          "duration": "1 hr",
+          "price": "NAD 90",
+          "priceValue": 90,
+          "description": null,
+          "variants": [
+            {
+              "name": "Acrylic Removal",
+              "duration": "1 hr",
+              "price": "NAD 90"
+            }
+          ]
+        },
+        {
+          "name": "Clear Gel Overlay - Hands & Toes",
+          "duration": "1 hr, 15 min  •  2 services",
+          "price": "NAD 100",
+          "priceValue": 100,
+          "description": null,
+          "variants": []
+        },
+        {
+          "name": "Foot scrub & pedicure",
+          "duration": "1 hr, 40 min  •  2 services",
+          "price": "NAD 297",
+          "priceValue": 297,
+          "description": null,
+          "variants": []
+        },
+        {
+          "name": "Foot scrub & pedicure",
+          "duration": "1 hr, 30 min",
+          "price": "NAD 350",
+          "priceValue": 350,
+          "description": null,
+          "variants": [
+            {
+              "name": "Foot scrub & pedicure",
+              "duration": "1 hr, 30 min",
+              "price": "NAD 350"
+            }
+          ]
+        },
+        {
+          "name": "French art per finger",
+          "duration": "5 min",
+          "price": "NAD 20",
+          "priceValue": 20,
+          "description": null,
+          "variants": [
+            {
+              "name": "French art per finger",
+              "duration": "5 min",
+              "price": "NAD 20"
+            }
+          ]
+        },
+        {
+          "name": "French Manicure",
+          "duration": "1 hr, 30 min",
+          "price": "NAD 300",
+          "priceValue": 300,
+          "description": null,
+          "variants": [
+            {
+              "name": "French Manicure",
+              "duration": "1 hr, 30 min",
+              "price": "NAD 300"
+            }
+          ]
+        },
+        {
+          "name": "French Pedicure",
+          "duration": "1 hr",
+          "price": "NAD 150",
+          "priceValue": 150,
+          "description": null,
+          "variants": [
+            {
+              "name": "French Pedicure",
+              "duration": "1 hr",
+              "price": "NAD 150"
+            }
+          ]
+        },
+        {
+          "name": "French & 3D decor set",
+          "duration": "1 hr, 30 min",
+          "price": "NAD 350",
+          "priceValue": 350,
+          "description": null,
+          "variants": [
+            {
+              "name": "French & 3D decor set",
+              "duration": "1 hr, 30 min",
+              "price": "NAD 350"
+            }
+          ]
+        },
+        {
+          "name": "French Manicure & French Pedicure",
+          "duration": "2 hr, 30 min  •  2 services",
+          "price": "NAD 405",
+          "priceValue": 405,
+          "description": null,
+          "variants": []
+        },
+        {
+          "name": "French Manicure & Pedicure (with tips)",
+          "duration": "1 hr, 45 min",
+          "price": "NAD 420",
+          "priceValue": 420,
+          "description": null,
+          "variants": [
+            {
+              "name": "French Manicure & Pedicure (with tips)",
+              "duration": "1 hr, 45 min",
+              "price": "NAD 420"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5910690",
+      "slug": "refreshments",
+      "name": "Refreshments",
+      "items": [
+        {
+          "name": "Glass of wine",
+          "duration": "5 min",
+          "price": "NAD 30",
+          "priceValue": 30,
+          "description": null,
+          "variants": [
+            {
+              "name": "Glass of wine",
+              "duration": "5 min",
+              "price": "NAD 30"
+            }
+          ]
+        },
+        {
+          "name": "Glass of Whiskey",
+          "duration": "5 min",
+          "price": "NAD 40",
+          "priceValue": 40,
+          "description": null,
+          "variants": [
+            {
+              "name": "Glass of Whiskey",
+              "duration": "5 min",
+              "price": "NAD 40"
+            }
+          ]
+        },
+        {
+          "name": "Snack plater",
+          "duration": "1 hr",
+          "price": "NAD 350",
+          "priceValue": 350,
+          "description": null,
+          "variants": [
+            {
+              "name": "Snack plater",
+              "duration": "1 hr",
+              "price": "NAD 350"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6321727",
+      "slug": "add-on-services",
+      "name": "Add-on Services",
+      "items": [
+        {
+          "name": "Add on Massage",
+          "duration": "15 min - 30 min",
+          "price": "from NAD 50",
+          "priceValue": 50,
+          "description": null,
+          "variants": [
+            {
+              "name": "15 minutes",
+              "duration": "15 min",
+              "price": "NAD 50"
+            },
+            {
+              "name": "20 minutes",
+              "duration": "20 min",
+              "price": "NAD 100"
+            },
+            {
+              "name": "30 minutes",
+              "duration": "30 min",
+              "price": "NAD 150"
+            }
+          ]
+        },
+        {
+          "name": "Add on Dermaplaning",
+          "duration": "20 min",
+          "price": "NAD 200",
+          "priceValue": 200,
+          "description": "Add on treatment to enhance hydration and removal of facial hair.",
+          "variants": [
+            {
+              "name": "Add on Dermaplaning",
+              "duration": "20 min",
+              "price": "NAD 200"
+            }
+          ]
+        },
+        {
+          "name": "Body Scrub & Shower",
+          "duration": "45 min",
+          "price": "NAD 350",
+          "priceValue": 350,
+          "description": null,
+          "variants": [
+            {
+              "name": "Body Scrub & Shower",
+              "duration": "45 min",
+              "price": "NAD 350"
+            }
+          ]
+        },
+        {
+          "name": "Hot Stones",
+          "duration": "10 min",
+          "price": "NAD 100",
+          "priceValue": 100,
+          "description": null,
+          "variants": [
+            {
+              "name": "Hot Stones",
+              "duration": "10 min",
+              "price": "NAD 100"
+            }
+          ]
+        },
+        {
+          "name": "15 Minutes Foot Massage",
+          "duration": "15 min",
+          "price": "NAD 100",
+          "priceValue": 100,
+          "description": null,
+          "variants": [
+            {
+              "name": "15 Minutes Foot Massage",
+              "duration": "15 min",
+              "price": "NAD 100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5273547",
+      "slug": "promotions",
+      "name": "Promotions",
+      "items": [
+        {
+          "name": "Brow Lamination + Lash Lamination",
+          "duration": "1 hr, 30 min",
+          "price": "NAD 400",
+          "priceValue": 400,
+          "description": null,
+          "variants": [
+            {
+              "name": "Brow Lamination + Lash Lamination",
+              "duration": "1 hr, 30 min",
+              "price": "NAD 400"
+            }
+          ]
+        },
+        {
+          "name": "Back & Neck Massage + Mini Facial or Foot Scrub",
+          "duration": "1 hr",
+          "price": "NAD 400",
+          "priceValue": 400,
+          "description": null,
+          "variants": [
+            {
+              "name": "Back & Neck Massage + Mini Facial or Foot Scrub",
+              "duration": "1 hr",
+              "price": "NAD 400"
+            }
+          ]
+        },
+        {
+          "name": "YY Lash Set + Plain Gel Manicure",
+          "duration": "2 hr, 15 min",
+          "price": "NAD 420",
+          "priceValue": 420,
+          "description": null,
+          "variants": [
+            {
+              "name": "YY Lash Set + Plain Gel Manicure",
+              "duration": "2 hr, 15 min",
+              "price": "NAD 420"
+            }
+          ]
+        },
+        {
+          "name": "Sisterhood/brotherhood (6) Package",
+          "duration": "6 hr",
+          "price": "NAD 4,500",
+          "priceValue": 4500,
+          "description": "Share a relaxing experience with a group of family/friends   and enjoy quality time together. Get a peaceful escape where you can all get a Swedish Massage and a Mini Facial or Foot scrub. Topped off with three bottles of champagne and snack platter.",
+          "variants": [
+            {
+              "name": "Sisterhood/brotherhood (6) Package",
+              "duration": "6 hr",
+              "price": "NAD 4,500"
+            }
+          ]
+        },
+        {
+          "name": "(S) quad (4)  Bestie Package",
+          "duration": "4 hr",
+          "price": "NAD 3,000",
+          "priceValue": 3000,
+          "description": "Share a relaxing experience with a group and enjoy quality time together. Get a peaceful escape where you can all get a Swedish Massage and a Mini Facial or Foot scrub. Topped off with two bottles of champagne and snack platter.",
+          "variants": [
+            {
+              "name": "(S) quad (4)  Bestie Package",
+              "duration": "4 hr",
+              "price": "NAD 3,000"
+            }
+          ]
+        },
+        {
+          "name": "Massage Package for Two",
+          "duration": "2 hr",
+          "price": "NAD 1,700",
+          "priceValue": 1700,
+          "description": "Share a relaxing spa experience with someone special and enjoy quality time together. Get a peaceful escape where you can both get a Swedish Massage and a Mini Facial or Foot Scrub. Topped off with a champagne bottle and a snack platter.",
+          "variants": [
+            {
+              "name": "Massage Package for Two",
+              "duration": "2 hr",
+              "price": "NAD 1,700"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "id": "019fe6c7-b3d3-70d6-bb07-f225a14c4397",
+      "rating": 5,
+      "text": "I had a great time , I will definitely come back again..",
+      "author": "Kandjupe A",
+      "initials": "KA",
+      "date": "Sun, Aug 9, 2026 at 3:47 PM",
+      "iso": "2026-08-09T15:47:54.980Z"
+    },
+    {
+      "id": "019fd8c4-7407-7b3c-b5b7-bb94ea203b01",
+      "rating": 5,
+      "text": "She is the best 🥰🥰🥰🥰",
+      "author": "Alvy Tonarity N",
+      "initials": "AN",
+      "date": "Thu, Aug 6, 2026 at 10:29 PM",
+      "iso": "2026-08-06T22:29:40.927Z"
+    },
+    {
+      "id": "019fd2c0-89b1-7763-a148-ec64fbed5d1a",
+      "rating": 5,
+      "text": "Great",
+      "author": "Anonymous",
+      "initials": "A",
+      "date": "Wed, Aug 5, 2026 at 6:27 PM",
+      "iso": "2026-08-05T18:27:41.076Z"
+    },
+    {
+      "id": "019fc7cd-81e3-7421-a64a-dda4d47e9817",
+      "rating": 5,
+      "text": "Perfect",
+      "author": "Ruth H",
+      "initials": "RH",
+      "date": "Mon, Aug 3, 2026 at 3:26 PM",
+      "iso": "2026-08-03T15:26:01.095Z"
+    },
+    {
+      "id": "019fc2ee-822b-7862-86e4-9604191e2ae3",
+      "rating": 5,
+      "text": "Thank you so much! Laurencia was wonderful and gave an amazing massage. I felt very relaxed. Please pass on my thanks to her. 😊",
+      "author": "Anonymous",
+      "initials": "A",
+      "date": "Sun, Aug 2, 2026 at 4:43 PM",
+      "iso": "2026-08-02T16:43:58.377Z"
+    },
+    {
+      "id": "019fc2e7-0412-7b77-be7f-0e96636d79ff",
+      "rating": 5,
+      "text": "Thank you so much! Diana was absolutely wonderful. She gave an amazing massage and made me feel completely relaxed. I really appreciate her professionalism and kindness. Please pass on my thanks to her. 😊",
+      "author": "Anonymous",
+      "initials": "A",
+      "date": "Sun, Aug 2, 2026 at 4:35 PM",
+      "iso": "2026-08-02T16:35:46.808Z"
+    }
+  ],
+  "team": [
+    {
+      "name": "Laurensia",
+      "role": "Spa Therapist",
+      "rating": 4.8,
+      "slug": "laurensia"
+    },
+    {
+      "name": "Daivienn",
+      "role": null,
+      "rating": 4.9,
+      "slug": "daivienn"
+    },
+    {
+      "name": "Diana",
+      "role": "Therapist",
+      "rating": 4.9,
+      "slug": "diana"
+    },
+    {
+      "name": "Shanice Khadijah",
+      "role": null,
+      "rating": 4.9,
+      "slug": "shanice-khadijah"
+    },
+    {
+      "name": "Merie-Ann (Lulu)",
+      "role": "Spa Manager",
+      "rating": 4.9,
+      "slug": "merie-ann-lulu"
+    },
+    {
+      "name": "Emerald Spa",
+      "role": "Hydrotherapy",
+      "rating": 4.3,
+      "slug": "emerald-spa"
+    }
+  ]
+}

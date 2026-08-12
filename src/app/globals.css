@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* COLLINS easing ladder, verified from wearecollins.com */
+    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+    --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* Motion budget. Nothing on this site runs longer than --dur-slow. */
+    --dur-fast: 0.28s;
+    --dur-base: 0.55s;
+    --dur-slow: 0.9s;
+
+    /* Grid padding follows the COLLINS clamp pattern */
+    --grid-padding: clamp(1.25rem, 4vw, 4.5rem);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ground text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Visible, branded focus ring on every interactive element */
+  :where(a, button, summary, [tabindex]):focus-visible {
+    outline: 2px solid theme('colors.emerald.500');
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: theme('colors.emerald.500');
+    color: #fff;
+  }
+}
+
+@layer components {
+  .shell {
+    padding-inline: var(--grid-padding);
+    margin-inline: auto;
+    max-width: theme('maxWidth.shell');
+  }
+
+  /* Display type. Serif, tight, optically balanced at every size. */
+  .display {
+    @apply font-display font-normal;
+    line-height: 0.92;
+    letter-spacing: -0.022em;
+  }
+
+  .eyebrow {
+    @apply font-sans uppercase;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+  }
+
+  /* Clip-reveal wrapper used by the heading animations */
+  .reveal-clip {
+    overflow: hidden;
+    display: block;
+  }
+
+  .hairline {
+    @apply border-ink/12;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+/*
+  Hero entrance, in CSS rather than JavaScript.
+
+  The hero holds the largest contentful paint. Driving its entrance with a
+  JS animation library keeps the text at opacity 0 until hydration finishes,
+  which pushed mobile LCP to 4.4s. CSS animations start at first paint and
+  need no JavaScript, so the text is visible immediately and LCP tracks the
+  document, not the bundle.
+*/
+/*
+  Hero entrances move but never fade.
+
+  An opacity ramp with a backwards fill leaves the largest hero text
+  unpainted for the whole delay, which held mobile LCP above 4s on a
+  throttled CPU. Animating transform alone paints the text on the first
+  frame and keeps the staggered arrival, so the motion costs nothing.
+*/
+@keyframes hero-fade-down {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes hero-fade-up {
+  from {
+    transform: translateY(28px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.hero-down {
+  animation: hero-fade-down 0.5s var(--ease-reveal) both;
+}
+
+.hero-up {
+  animation: hero-fade-up 0.6s var(--ease-reveal) both;
+}
+
+.hero-rise {
+  display: block;
+  animation: hero-rise 0.7s var(--ease-reveal) backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-down,
+  .hero-up,
+  .hero-rise {
+    animation: none !important;
+  }
+}
+
+/*
+  Reduced motion. Required by tangison-motion-master.
+  Animation is decoration here, never the carrier of meaning, so it is
+  safe to remove entirely. Content remains fully visible because every
+  animated element resolves to its final state.
+*/
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
