@@ -82,21 +82,22 @@ export default function GalleryPage() {
             graphics rather than photographs of the rooms.
           </p>
           <ul className="mt-10 grid grid-cols-2 gap-6 lg:grid-cols-4">
-            {POSTER_SLUGS.map((slug, i) => {
-              const img = getImage(slug);
-              return (
-                <FadeUp key={slug} delay={(i % 4) * 0.06} as="li">
-                  <div className="overflow-hidden bg-emerald-900/5">
-                    <Picture
-                      slug={slug}
-                      sizes="(max-width: 640px) 50vw, 25vw"
-                      imgClassName="w-full object-cover"
-                    />
-                  </div>
-                  <p className="sr-only">{img.alt}</p>
-                </FadeUp>
-              );
-            })}
+            {POSTER_SLUGS.map((slug, i) => (
+              /*
+                No caption and no duplicate screen-reader paragraph here. The
+                alt text on the image is the single description, which keeps
+                it from being announced twice.
+              */
+              <FadeUp key={slug} delay={(i % 4) * 0.06} as="li">
+                <div className="overflow-hidden bg-emerald-900/5">
+                  <Picture
+                    slug={slug}
+                    sizes="(max-width: 640px) 50vw, 25vw"
+                    imgClassName="w-full object-cover"
+                  />
+                </div>
+              </FadeUp>
+            ))}
           </ul>
         </section>
       </main>
