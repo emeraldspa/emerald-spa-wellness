@@ -1,123 +1,59 @@
 import type { Metadata } from 'next';
-import { ArrowUpRight, Clock, MapPin, MessageCircle, Phone } from 'lucide-react';
+import Link from 'next/link';
+import { MessageCircle, Phone } from 'lucide-react';
 import { BookingFrame } from '@/components/BookingFrame';
-import { SiteFooter } from '@/components/SiteFooter';
+import { FooterMinimal } from '@/components/FooterMinimal';
 import { SiteHeader } from '@/components/SiteHeader';
-import { ClipReveal } from '@/components/motion';
-import { LISTED_SERVICE_COUNT, WHATSAPP_URL, site } from '@/lib/site';
+import { LISTED_SERVICE_COUNT, WHATSAPP_PATH, site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Book Now',
-  description: `Book a treatment at Emerald Spa & Wellness Centre, Blackett Street No. 7, Windhoek West. Open seven days. Call ${site.phone} or reserve online.`,
+  description: `Book a treatment at Emerald Spa & Wellness Centre, Blackett Street No. 7, Windhoek West. ${LISTED_SERVICE_COUNT} treatments, open seven days.`,
   alternates: { canonical: '/book' },
 };
 
 /**
- * Booking route.
+ * Booking route, deliberately minimal.
  *
- * The booking app is embedded directly in the page through a same-origin
- * proxy, so the visitor never leaves this domain and the provider is never
- * named. See `src/app/api/booking/[...path]/route.ts` for why the proxy is
- * required and PROOF.md for the end-to-end verification.
+ * The booking app is heavy on its own, so this page adds as little as
+ * possible around it: no gallery, no hours table, no marketing footer, no
+ * floating widgets. A short header, the frame, and two fallbacks underneath.
+ * Everything the visitor needs to complete the task, nothing competing for
+ * the same attention or the same bandwidth.
  */
 export default function BookPage() {
-  const openToday = site.hours.find((h) => h.day === 'Sunday');
-
   return (
     <>
       <SiteHeader />
       <main id="main">
-        <section className="shell border-b border-ink/10 py-16 md:py-24">
+        <section className="shell pt-10 md:pt-14">
           <p className="eyebrow text-emerald-600">Booking</p>
-          <h1 className="display mt-4 max-w-4xl text-4xl text-balance sm:text-5xl md:text-6xl">
-            <ClipReveal>Reserve your treatment.</ClipReveal>
-          </h1>
-          <p className="mt-8 max-w-2xl text-lg text-ink/70 text-pretty">
-            Choose from {LISTED_SERVICE_COUNT} treatments across {site.categories.length}{' '}
-            categories. Pick your therapist and your time, and pay at the spa.
-          </p>
+          <h1 className="display mt-3 text-3xl sm:text-4xl">Reserve your treatment.</h1>
         </section>
 
-        <section className="shell py-16 md:py-20">
+        <section className="shell pb-10 pt-6 md:pb-14">
           <BookingFrame />
-        </section>
 
-        <section className="shell grid gap-12 border-t border-ink/10 py-16 md:grid-cols-12 md:py-20">
-
-          <aside className="md:col-span-6">
-            <h2 className="eyebrow text-emerald-600">Prefer to talk first</h2>
-            <ul className="mt-4 space-y-4 text-ink/80">
-              <li>
-                <a
-                  href={`tel:${site.phoneE164}`}
-                  className="flex items-center gap-3 text-lg transition-colors hover:text-emerald-600"
-                >
-                  <Phone className="h-5 w-5 shrink-0" aria-hidden="true" />
-                  {site.phone}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-lg transition-colors hover:text-emerald-600"
-                >
-                  <MessageCircle className="h-5 w-5 shrink-0" aria-hidden="true" />
-                  Message on WhatsApp
-                </a>
-              </li>
-              <li>
-                <a
-                  href={site.address.directionsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-3 transition-colors hover:text-emerald-600"
-                >
-                  <MapPin className="mt-1 h-5 w-5 shrink-0" aria-hidden="true" />
-                  <span>
-                    {site.address.street}, {site.address.suite}
-                    <br />
-                    {site.address.suburb}, {site.address.city}
-                  </span>
-                </a>
-              </li>
-            </ul>
-
-          </aside>
-
-          <div className="md:col-span-6">
-            <h2 className="eyebrow flex items-center gap-2 text-emerald-600">
-              <Clock className="h-3.5 w-3.5" aria-hidden="true" />
-              Opening hours
-            </h2>
-            <ul className="mt-4 divide-y divide-ink/10 border-t border-ink/10">
-              {site.hours.map((h) => (
-                <li key={h.day} className="flex justify-between gap-4 py-2.5 text-sm text-ink/80">
-                  <span>{h.day}</span>
-                  <span className="tabular-nums">{h.value}</span>
-                </li>
-              ))}
-            </ul>
-            {openToday ? (
-              <p className="mt-4 text-sm text-ink/65">
-                Sunday hours are shorter, {openToday.value}.
-              </p>
-            ) : null}
-
+          <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-ink/70">
+            <span>Prefer to talk first</span>
             <a
-              href={site.address.directionsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-emerald-600 hover:underline"
+              href={`tel:${site.phoneE164}`}
+              className="flex items-center gap-2 font-medium text-ink transition-colors hover:text-emerald-600"
             >
-              Get directions
-              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              <Phone className="h-4 w-4" aria-hidden="true" />
+              {site.phone}
             </a>
+            <Link
+              href={WHATSAPP_PATH}
+              className="flex items-center gap-2 font-medium text-ink transition-colors hover:text-emerald-600"
+            >
+              <MessageCircle className="h-4 w-4" aria-hidden="true" />
+              Book on WhatsApp
+            </Link>
           </div>
         </section>
       </main>
-      <SiteFooter />
+      <FooterMinimal />
     </>
   );
 }

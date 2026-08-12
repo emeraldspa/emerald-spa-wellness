@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
-import { SiteFooter } from '@/components/SiteFooter';
+import { FooterFull } from '@/components/FooterFull';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import { BOOKING_CTA, BOOKING_PATH, LISTED_SERVICE_COUNT, SITE_URL, site } from '@/lib/site';
@@ -144,7 +144,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </main>
-      <SiteFooter />
+      <FooterFull />
     </>
   );
 }

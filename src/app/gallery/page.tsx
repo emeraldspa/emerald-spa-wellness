@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Picture } from '@/components/Picture';
-import { SiteFooter } from '@/components/SiteFooter';
+import { FooterFull } from '@/components/FooterFull';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import { GALLERY_SLUGS, POSTER_SLUGS, getImage, site } from '@/lib/site';
@@ -101,7 +101,7 @@ export default function GalleryPage() {
           </ul>
         </section>
       </main>
-      <SiteFooter />
+      <FooterFull />
     </>
   );
 }

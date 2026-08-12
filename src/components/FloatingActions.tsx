@@ -3,7 +3,8 @@
 import { ArrowUp, MessageCircle, Star, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { GOOGLE_REVIEW_URL, WHATSAPP_URL, site } from '@/lib/site';
+import Link from 'next/link';
+import { GOOGLE_REVIEW_URL, WHATSAPP_PATH, site } from '@/lib/site';
 
 /**
  * Floating actions: WhatsApp chat, Google review, scroll to top.
@@ -46,8 +47,9 @@ export function FloatingActions() {
     return () => document.removeEventListener('keydown', onKey);
   }, [open]);
 
-  // The booking frame owns the whole viewport on this route.
-  if (pathname === '/book') return null;
+  // These routes are a single task. A floating duplicate of that same task
+  // would compete with the page's own primary action.
+  if (pathname === '/book' || pathname === '/whatsapp') return null;
 
   const toTop = () => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -94,18 +96,16 @@ export function FloatingActions() {
           <Star className="h-4 w-4 text-gold-500" aria-hidden="true" />
           Review us
         </a>
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Chat with ${site.legalName} on WhatsApp`}
+        <Link
+          href={WHATSAPP_PATH}
+          aria-label={`Book ${site.legalName} on WhatsApp`}
           tabIndex={open ? 0 : -1}
           aria-hidden={!open}
-          className="flex items-center gap-2 rounded-full bg-[#25D366] py-3 pl-4 pr-5 text-xs font-semibold uppercase tracking-widest text-white shadow-lg transition-transform hover:scale-[1.03]"
+          className="flex items-center gap-2 rounded-full bg-[#25D366] py-3 pl-4 pr-5 text-xs font-semibold uppercase tracking-widest text-[#07211A] shadow-lg transition-transform hover:scale-[1.03]"
         >
           <WhatsAppGlyph className="h-4 w-4" />
           WhatsApp
-        </a>
+        </Link>
       </div>
 
       <button

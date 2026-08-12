@@ -5,7 +5,7 @@ import { Hero } from '@/components/Hero';
 import { MenuHost } from '@/components/MenuHost';
 import { Picture } from '@/components/Picture';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { SiteFooter } from '@/components/SiteFooter';
+import { FooterFull } from '@/components/FooterFull';
 import { BOOKING_CTA, BOOKING_PATH, GALLERY_SLUGS, GOOGLE_REVIEW_URL, LISTED_SERVICE_COUNT, site } from '@/lib/site';
 
 /** Four signature categories, chosen for breadth across the real menu. */
@@ -216,7 +216,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      <SiteFooter />
+      <FooterFull />
     </>
   );
 }

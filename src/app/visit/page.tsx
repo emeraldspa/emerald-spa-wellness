@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { ArrowUpRight, Facebook, Instagram, MapPin, MessageCircle, Phone, Star } from 'lucide-react';
 import Link from 'next/link';
-import { Picture } from '@/components/Picture';
-import { SiteFooter } from '@/components/SiteFooter';
+import { FooterMinimal } from '@/components/FooterMinimal';
+import { MapEmbed } from '@/components/MapEmbed';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, WHATSAPP_URL, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, WHATSAPP_PATH, site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Visit and Contact',
@@ -51,15 +51,13 @@ export default function VisitPage() {
                 <Phone className="h-5 w-5 shrink-0" aria-hidden="true" />
                 {site.phone}
               </a>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={WHATSAPP_PATH}
                 className="flex items-center gap-3 transition-colors hover:text-emerald-600"
               >
                 <MessageCircle className="h-5 w-5 shrink-0" aria-hidden="true" />
-                Message on WhatsApp
-              </a>
+                Book on WhatsApp
+              </Link>
             </address>
 
             <h2 className="eyebrow mt-12 text-emerald-600">Opening Hours</h2>
@@ -116,13 +114,7 @@ export default function VisitPage() {
 
           <div className="md:col-span-7">
             <FadeUp>
-              <div className="overflow-hidden">
-                <Picture
-                  slug="reception"
-                  sizes="(max-width: 768px) 100vw, 58vw"
-                  imgClassName="w-full object-cover"
-                />
-              </div>
+              <MapEmbed />
             </FadeUp>
             <FadeUp delay={0.1}>
               <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3">
@@ -136,7 +128,7 @@ export default function VisitPage() {
           </div>
         </section>
       </main>
-      <SiteFooter />
+      <FooterMinimal />
     </>
   );
 }

@@ -70,7 +70,9 @@ export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
   'https://emerald-spa-wellness.vercel.app';
 
-export const WHATSAPP_URL = `https://wa.me/${site.phoneE164.replace('+', '')}`;
+/** Bare digits, the form wa.me expects. */
+export const WHATSAPP_NUMBER = site.phoneE164.replace('+', '');
+export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 /**
  * Booking.
@@ -104,8 +106,27 @@ export const BOOKING_EMBED_PATH =
  * a Google sign-in for that listing, which is the expected behaviour.
  */
 export const GOOGLE_PLACE_ID = 'ChIJMz_giNgbCxwRWGhl8RUYV2I';
+
+/**
+ * Numeric customer id for the same listing, taken from the second half of the
+ * feature id `0x1c0b1bd880e03f33:0x62571815f1656858`. The short Maps link the
+ * client supplied redirects to a URL carrying that exact feature id, which is
+ * independent confirmation this is the right listing.
+ */
+export const GOOGLE_CID = '7086159021214099544';
+
 export const GOOGLE_REVIEW_URL = `https://search.google.com/local/writereview?placeid=${GOOGLE_PLACE_ID}`;
 export const GOOGLE_MAPS_URL = `https://www.google.com/maps/place/?q=place_id:${GOOGLE_PLACE_ID}`;
+export const GOOGLE_DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+  'Emerald Spa & Wellness Centre, 7 Blackett Street, Windhoek',
+)}&destination_place_id=${GOOGLE_PLACE_ID}`;
+
+/**
+ * The `cid` embed form was compared against `q=place_id`, a plain lat/lng, and
+ * a text query. Only this one renders the business as a named pin with its own
+ * info card and a directions control.
+ */
+export const GOOGLE_MAPS_EMBED_URL = `https://maps.google.com/maps?cid=${GOOGLE_CID}&output=embed`;
 
 
 /**
@@ -131,6 +152,15 @@ export const POSTER_SLUGS = [
   'portfolio-3',
   'portfolio-4',
 ] as const;
+
+export const LEGAL_LINKS = [
+  { href: '/privacy', label: 'Privacy' },
+  { href: '/terms', label: 'Terms' },
+  { href: '/sitemap', label: 'Sitemap' },
+] as const;
+
+/** Prefilled WhatsApp enquiry. Kept here so every entry point sends the same text. */
+export const WHATSAPP_PATH = '/whatsapp';
 
 export const NAV_LINKS = [
   { href: '/services', label: 'Services' },

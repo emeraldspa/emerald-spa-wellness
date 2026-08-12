@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SiteFooter } from '@/components/SiteFooter';
+import { FooterMinimal } from '@/components/FooterMinimal';
 import { SiteHeader } from '@/components/SiteHeader';
 import { NAV_LINKS } from '@/lib/site';
 
@@ -36,7 +36,7 @@ export default function NotFound() {
           ))}
         </ul>
       </main>
-      <SiteFooter />
+      <FooterMinimal />
     </>
   );
 }

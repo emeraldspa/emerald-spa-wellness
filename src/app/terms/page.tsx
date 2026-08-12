@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { SiteFooter } from '@/components/SiteFooter';
+import { FooterMinimal } from '@/components/FooterMinimal';
 import { SiteHeader } from '@/components/SiteHeader';
 import { site } from '@/lib/site';
 
@@ -85,7 +85,7 @@ export default function TermsPage() {
           </div>
         </section>
       </main>
-      <SiteFooter />
+      <FooterMinimal />
     </>
   );
 }

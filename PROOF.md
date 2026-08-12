@@ -298,3 +298,56 @@ The booking embed depends on the provider's current asset layout. If they
 change their front-end build, the proxy's URL rewriting may need updating. The
 failure state on `/book` covers that case: it shows phone and WhatsApp instead
 of a blank frame.
+
+
+---
+
+# ROUND 4
+
+## Google Maps on the visit page
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Discovery | Resolve the supplied short link | maps.app.goo.gl/7JHvGEXVhYaz2cQP9 | curl redirect trace | Redirects to a URL carrying ftid `0x1c0b1bd880e03f33:0x62571815f1656858`, the same id resolved independently in round 3 | headers | 2026-08-12 11:02 | Confirms place id |
+| Debug | Pick an embed form | 4 candidate URLs | Playwright, real browser | HEAD requests return 404 because Google rejects HEAD, so all four were framed for real. All rendered. Only the `cid` form shows a named pin with an info card | `qa/map-*.png` | 2026-08-12 11:05 | Chosen on evidence |
+| Build | Map component | `/visit` | tsx | Lazy iframe, directions and open-in-maps links beneath | `src/components/MapEmbed.tsx` | 2026-08-12 11:14 | Pass |
+| Verify | Renders the business | `/visit` | Playwright screenshot | Named pin, info card with "7 Blackett Street, Windhoek, Namibia", directions control | `qa/visit-map.png` | 2026-08-12 11:32 | Pass |
+
+## Booking page stripped back
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Build | Minimal booking route | `/book` | tsx | Removed the hours table, the amenity list, the marketing footer and the floating widgets. Short header, frame, two fallbacks | `src/app/book/page.tsx` | 2026-08-12 11:16 | Pass |
+| Verify | Page weight | `/book` | build output | Route payload 3.16 kB to 2.54 kB. Footer height 656px to 113px | build output | 2026-08-12 11:28 | Pass |
+
+The provider's own bundle is 37 script tags and 4 stylesheets. That is theirs
+and cannot be stripped from outside. What was removed is everything this site
+was adding around it.
+
+## WhatsApp flow
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Build | Enquiry builder | `/whatsapp` | tsx | Three choices assemble one message, then a single tap opens wa.me with it prefilled. Nothing is submitted or stored | `src/components/WhatsAppFlow.tsx` | 2026-08-12 11:18 | Pass |
+| Verify | Link is correct | `/whatsapp` | Playwright | Host `wa.me`, number `264856077143`, text parameter present, and the on-screen preview matches the link text exactly | terminal | 2026-08-12 11:40 | Pass |
+| Debug | Contrast on the green button | `/whatsapp` | axe-core | White on `#25D366` measures 1.98:1. Measured alternatives: ink on the same green is 8.53:1. Kept the brand colour, switched the text to ink | axe 0 violations | 2026-08-12 11:37 | Fixed |
+
+## Footer strategy
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Plan | Decide the rule | all routes | written plan | Full footer where the page is a destination, minimal where the page already carries the contact detail or is a single task | `docs/FOOTER_STRATEGY.md` | 2026-08-12 11:10 | Pass |
+| Build | Two footers | FooterFull, FooterMinimal | tsx | Full on 4 routes, minimal on 7 | components | 2026-08-12 11:12 | Pass |
+| Verify | Applied correctly | 11 routes | Playwright | Full 656px on home, services, gallery, team. Minimal 113px on the rest | terminal | 2026-08-12 11:30 | Pass |
+
+## Round 4 verification
+
+| Check | Result |
+| --- | --- |
+| Type check | Exit 0 |
+| Lint | No warnings or errors |
+| Production build | Compiled, 19 routes |
+| axe-core, 11 routes | 0 violations |
+| Console and page errors | 0 |
+| Map embed | Named pin with info card |
+| WhatsApp prefill | Preview matches the outgoing link |

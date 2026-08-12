@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Star } from 'lucide-react';
 import { Picture } from '@/components/Picture';
-import { SiteFooter } from '@/components/SiteFooter';
+import { FooterFull } from '@/components/FooterFull';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import { imageMap, site } from '@/lib/site';
@@ -72,7 +72,7 @@ export default function TeamPage() {
           </ul>
         </section>
       </main>
-      <SiteFooter />
+      <FooterFull />
     </>
   );
 }

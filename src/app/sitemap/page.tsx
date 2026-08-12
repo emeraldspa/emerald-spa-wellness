@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { SiteFooter } from '@/components/SiteFooter';
+import { FooterMinimal } from '@/components/FooterMinimal';
 import { SiteHeader } from '@/components/SiteHeader';
 import { site } from '@/lib/site';
 
@@ -20,6 +20,7 @@ const GROUPS = [
       { href: '/team', label: 'Our Team' },
       { href: '/visit', label: 'Visit and Contact' },
       { href: '/book', label: 'Book Now' },
+      { href: '/whatsapp', label: 'Book on WhatsApp' },
     ],
   },
   {
@@ -76,7 +77,7 @@ export default function SitemapPage() {
           </div>
         </section>
       </main>
-      <SiteFooter />
+      <FooterMinimal />
     </>
   );
 }

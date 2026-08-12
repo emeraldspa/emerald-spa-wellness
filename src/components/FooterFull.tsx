@@ -1,15 +1,16 @@
 import { ArrowUpRight, Facebook, Instagram, MapPin, MessageCircle, Phone, Star } from 'lucide-react';
 import Link from 'next/link';
-import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, NAV_LINKS, WHATSAPP_URL, site } from '@/lib/site';
+import {
+  BOOKING_CTA,
+  BOOKING_PATH,
+  GOOGLE_REVIEW_URL,
+  LEGAL_LINKS,
+  NAV_LINKS,
+  WHATSAPP_PATH,
+  site,
+} from '@/lib/site';
 
-const LEGAL = [
-  { href: '/privacy', label: 'Privacy' },
-  { href: '/terms', label: 'Terms' },
-  { href: '/brand', label: 'Brand' },
-  { href: '/sitemap', label: 'Sitemap' },
-];
-
-export function SiteFooter() {
+export function FooterFull() {
   return (
     <footer className="border-t border-ink/10 bg-emerald-900 text-ground">
       <div className="shell grid gap-12 py-16 md:grid-cols-4 md:py-20">
@@ -75,15 +76,10 @@ export function SiteFooter() {
               <Phone className="h-4 w-4 shrink-0" aria-hidden="true" />
               {site.phone}
             </a>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-gold-200"
-            >
+            <Link href={WHATSAPP_PATH} className="flex items-center gap-2 hover:text-gold-200">
               <MessageCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
-              WhatsApp
-            </a>
+              Book on WhatsApp
+            </Link>
           </address>
 
           <h2 className="eyebrow mt-8 text-emerald-300">Follow</h2>
@@ -111,15 +107,13 @@ export function SiteFooter() {
               </a>
             </li>
             <li>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Chat with ${site.legalName} on WhatsApp`}
+              <Link
+                href={WHATSAPP_PATH}
+                aria-label={`Book ${site.legalName} on WhatsApp`}
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-ground/25 transition-colors hover:border-gold-200 hover:text-gold-200"
               >
                 <MessageCircle className="h-4 w-4" aria-hidden="true" />
-              </a>
+              </Link>
             </li>
           </ul>
 
@@ -169,7 +163,7 @@ export function SiteFooter() {
             &copy; {new Date().getFullYear()} {site.legalName}. Windhoek, Namibia.
           </p>
           <ul className="flex flex-wrap gap-5">
-            {LEGAL.map((l) => (
+            {LEGAL_LINKS.map((l) => (
               <li key={l.href}>
                 <Link href={l.href} className="hover:text-gold-200">
                   {l.label}
