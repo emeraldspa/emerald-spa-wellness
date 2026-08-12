@@ -66,10 +66,16 @@ export function BookingFrame() {
         </div>
       ) : null}
 
+      {/*
+        The booking app lays out its own full-height document, so the frame is
+        sized to the viewport rather than a fixed pixel height. A short frame
+        forces a scrollbar inside a scrollbar, which is the usual reason
+        embedded booking feels broken.
+      */}
       <iframe
         src={BOOKING_EMBED_PATH}
         title={`Book a treatment at ${site.legalName}`}
-        className="h-[720px] w-full border-0 lg:h-[860px]"
+        className="h-[min(1100px,calc(100vh-6rem))] min-h-[640px] w-full border-0"
         loading="lazy"
         onLoad={() => setState('ready')}
         onError={() => setState('failed')}

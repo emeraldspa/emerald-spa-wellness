@@ -38,12 +38,13 @@ export default function BookPage() {
           </p>
         </section>
 
-        <section className="shell grid gap-12 py-16 md:grid-cols-12 md:py-20">
-          <div className="md:col-span-8">
-            <BookingFrame />
-          </div>
+        <section className="shell py-16 md:py-20">
+          <BookingFrame />
+        </section>
 
-          <aside className="md:col-span-4">
+        <section className="shell grid gap-12 border-t border-ink/10 py-16 md:grid-cols-12 md:py-20">
+
+          <aside className="md:col-span-6">
             <h2 className="eyebrow text-emerald-600">Prefer to talk first</h2>
             <ul className="mt-4 space-y-4 text-ink/80">
               <li>
@@ -83,7 +84,10 @@ export default function BookPage() {
               </li>
             </ul>
 
-            <h2 className="eyebrow mt-10 flex items-center gap-2 text-emerald-600">
+          </aside>
+
+          <div className="md:col-span-6">
+            <h2 className="eyebrow flex items-center gap-2 text-emerald-600">
               <Clock className="h-3.5 w-3.5" aria-hidden="true" />
               Opening hours
             </h2>
@@ -110,7 +114,7 @@ export default function BookPage() {
               Get directions
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </a>
-          </aside>
+          </div>
         </section>
       </main>
       <SiteFooter />
