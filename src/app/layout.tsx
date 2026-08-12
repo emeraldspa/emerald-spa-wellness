@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
 import type { ReactNode } from 'react';
 import { FloatingActions } from '@/components/FloatingActions';
-import { SITE_URL, site } from '@/lib/site';
+import { GOOGLE_MAPS_URL, SITE_URL, site } from '@/lib/site';
 import './globals.css';
 
 /**
@@ -114,8 +114,8 @@ function StructuredData() {
       bestRating: 5,
       worstRating: 1,
     },
-    sameAs: [site.social.instagram, site.social.facebook, site.bookingUrl],
-    hasMap: site.address.mapsUrl,
+    sameAs: [site.social.instagram, site.social.facebook, GOOGLE_MAPS_URL],
+    hasMap: GOOGLE_MAPS_URL,
     amenityFeature: site.features.map((f) => ({
       '@type': 'LocationFeatureSpecification',
       name: f,

@@ -6,7 +6,7 @@ import { MenuHost } from '@/components/MenuHost';
 import { Picture } from '@/components/Picture';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import { SiteFooter } from '@/components/SiteFooter';
-import { BOOKING_CTA, BOOKING_PATH, GALLERY_SLUGS, LISTED_SERVICE_COUNT, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, GALLERY_SLUGS, GOOGLE_REVIEW_URL, LISTED_SERVICE_COUNT, site } from '@/lib/site';
 
 /** Four signature categories, chosen for breadth across the real menu. */
 const SIGNATURE = ['massages', 'facials-skincare', 'hydrotherapy', 'nails'];
@@ -169,6 +169,15 @@ export default function HomePage() {
 
             <FadeUp delay={0.2}>
               <p className="mt-14 max-w-3xl text-ground/70 text-pretty">{site.reviewSummary}</p>
+              <a
+                href={GOOGLE_REVIEW_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex items-center gap-2 rounded-full border border-ground/30 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-ground transition-colors hover:border-gold-200 hover:text-gold-200"
+              >
+                <Star className="h-4 w-4 text-gold-300" aria-hidden="true" />
+                Leave a Google review
+              </a>
             </FadeUp>
           </div>
         </section>

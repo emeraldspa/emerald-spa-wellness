@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { ArrowUpRight, Facebook, Instagram, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { ArrowUpRight, Facebook, Instagram, MapPin, MessageCircle, Phone, Star } from 'lucide-react';
 import Link from 'next/link';
 import { Picture } from '@/components/Picture';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { BOOKING_CTA, BOOKING_PATH, WHATSAPP_URL, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, WHATSAPP_URL, site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Visit and Contact',
@@ -71,6 +71,17 @@ export default function VisitPage() {
                 </li>
               ))}
             </ul>
+
+            <h2 className="eyebrow mt-12 text-emerald-600">Been in already</h2>
+            <a
+              href={GOOGLE_REVIEW_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 text-ink/80 transition-colors hover:text-emerald-600"
+            >
+              <Star className="h-5 w-5 shrink-0 text-gold-500" aria-hidden="true" />
+              Leave a Google review
+            </a>
 
             <h2 className="eyebrow mt-12 text-emerald-600">Follow</h2>
             <div className="mt-4 flex gap-3">

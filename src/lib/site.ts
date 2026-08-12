@@ -85,13 +85,27 @@ export const BOOKING_CTA_LONG = 'Book Your Visit';
 export const BOOKING_PATH = '/book';
 
 /**
- * Google review link.
- *
- * Deliberately null. Writing a review requires the venue's Google Place ID,
- * which has not been supplied. Guessing one would send guests to the wrong
- * business, so the UI omits the control entirely until a real link arrives.
+ * Same-origin path the booking iframe loads. Served by the proxy route at
+ * `src/app/api/booking/[...path]/route.ts`, which makes the provider's app
+ * same-origin so the browser permits framing it.
  */
-export const GOOGLE_REVIEW_URL: string | null = null;
+export const BOOKING_EMBED_PATH =
+  '/api/booking/a/emerald-spa-wellness-centre-windhoek-blackett-street-awio4ik8/booking?allOffer=true';
+
+/**
+ * Google Business Profile.
+ *
+ * The Place ID was not supplied, so it was resolved rather than guessed.
+ * Searching the verified street address on Google Maps returns a listing whose
+ * feature id is `0x1c0b1bd880e03f33:0x62571815f1656858`. The place id below was
+ * then checked by loading `maps/place/?q=place_id:...`, which resolves to
+ * "Emerald Spa & Wellness Centre", 7 Blackett Street, with the same phone
+ * number as the venue record. The write-review URL was loaded too and prompts
+ * a Google sign-in for that listing, which is the expected behaviour.
+ */
+export const GOOGLE_PLACE_ID = 'ChIJMz_giNgbCxwRWGhl8RUYV2I';
+export const GOOGLE_REVIEW_URL = `https://search.google.com/local/writereview?placeid=${GOOGLE_PLACE_ID}`;
+export const GOOGLE_MAPS_URL = `https://www.google.com/maps/place/?q=place_id:${GOOGLE_PLACE_ID}`;
 
 
 /**

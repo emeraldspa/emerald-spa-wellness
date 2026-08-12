@@ -207,3 +207,94 @@ was approved and was not revisited.
 | Unique title and single H1 per route | Pass on all 10 |
 | Horizontal scroll at 320 to 1440 | None |
 | Platform name in marketing copy | 0 occurrences |
+
+
+---
+
+# ROUND 3
+
+## Correction to round 2
+
+Round 2 reported the booking iframe as impossible. That conclusion was wrong.
+It was correct that the provider refuses direct framing, but it stopped at the
+provider's CSP instead of testing a same-origin proxy. This round tested the
+proxy and the embed works.
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Debug | Re-test framing assumption | booking URL | curl header check | `frame-ancestors 'self' https://*.fresha.com https://*.adyen.com` on every surface. Direct framing genuinely refused | headers | 2026-08-12 09:58 | Confirmed |
+| Debug | Prototype a CSP-stripping proxy | local node server | Playwright | Frame rendered, but the app showed "an unexpected error has occurred". Its GraphQL calls were CORS-blocked | `qa/proxy-frame.png` | 2026-08-12 10:00 | Partial |
+| Debug | Prototype full same-origin proxy | local node server | Playwright | Booking app fully functional. Service list, cart, professional step all worked with 0 console errors | `qa/proxy-frame2.png` | 2026-08-12 10:01 | Proven |
+| Verify | Interactive flow in prototype | add service, continue | Playwright | Reached "Select professional" with the real therapist list | terminal | 2026-08-12 10:02 | Pass |
+
+## Item: embedded booking
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Build | Booking proxy route | `/api/booking/[...path]` | Next route handler | Strips framing guards, rewrites upstream URLs, forwards GET/POST/OPTIONS | `src/app/api/booking/[...path]/route.ts` | 2026-08-12 10:12 | Pass |
+| Build | Booking frame component | `/book` | tsx | Embedded iframe with loading and failure states, phone and WhatsApp fallback | `src/components/BookingFrame.tsx` | 2026-08-12 10:14 | Pass |
+| Debug | 404 storm inside frame | proxy rewrite | response capture | Root cause: assets use protocol-relative `//www.fresha.com` and root-relative `/assets/`, neither handled. Added both forms | 36 failures to 1 | 2026-08-12 10:20 | Fixed |
+| Debug | Double-prefixed asset paths | proxy rewrite | response capture | Root cause: host rewrite ran before the root-relative rule, so paths got the prefix twice. Reordered and added a collapse guard | 0 failed requests | 2026-08-12 10:24 | Fixed |
+| Debug | App never hydrated | frame | console capture | Root cause: rewriting JS bundles broke `new URL()`, which needs an absolute URL. Excluded JavaScript from rewriting | hydration restored | 2026-08-12 10:28 | Fixed |
+| Debug | `new URL()` still threw | HTML config payload | payload inspection | Root cause: a bare origin string was rewritten to a relative path. Bare origins now point at this site's absolute origin | 0 console errors | 2026-08-12 10:33 | Fixed |
+| Debug | Frame escaped the proxy | internal navigation | frame URL check | Root cause: the app navigates to `/a/...` root-relative. Adding `a` to the rewrite regex broke hydration, so it was reverted and handled with Next rewrites instead | flow works, 0 failures | 2026-08-12 10:44 | Fixed |
+| Verify | Full booking flow embedded | `/book` | Playwright | Service list renders, service adds to cart, Continue advances to professional selection with real therapists. 0 failed requests, 0 console errors | `qa/embed-final3.png` | 2026-08-12 10:46 | Pass |
+| Verify | Address bar never leaves | `/book` | Playwright | Host and path stay `/book` through every step | terminal | 2026-08-12 10:46 | Pass |
+
+## Item: logo in the header
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Build | Shared BrandLogo component | header, hero, mobile menu | tsx | Real horizontal lockup replaces the abstract dot mark | `src/components/BrandLogo.tsx` | 2026-08-12 10:36 | Pass |
+| Media | Light-tone derivatives | horizontal lockup | Pillow | AVIF and WebP at 320 and 640, PNG fallback at 60KB | `public/brand/` | 2026-08-12 10:35 | Pass |
+| Verify | Rendered in header | home and inner pages | Playwright | 199x48 desktop, 166x40 mobile, serving AVIF | terminal | 2026-08-12 10:52 | Pass |
+
+## Item: Google review link
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Discovery | Resolve the Place ID | Google Maps | Playwright | Searching the verified address returns ftid `0x1c0b1bd880e03f33:0x62571815f1656858` | terminal | 2026-08-12 10:07 | Pass |
+| Verify | Confirm it is the right business | `maps/place/?q=place_id:` | Playwright | Resolves to "Emerald Spa & Wellness Centre", 7 Blackett Street, phone +264 85 607 7143, matching the venue record | terminal | 2026-08-12 10:09 | Pass |
+| Verify | Confirm the review URL | writereview endpoint | Playwright | Prompts Google sign-in for that listing, which is expected | `qa/writereview.png` | 2026-08-12 10:09 | Pass |
+| Build | Wire the review link | footer, visit, home, floating cluster | tsx | Four entry points, all using the verified place id | terminal | 2026-08-12 10:40 | Pass |
+
+## Item: conditional widgets
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Build | Conditional floating cluster | FloatingActions | tsx | Suppressed entirely on `/book`, chat and review collapse behind one toggle, scroll-to-top appears past the first viewport | `src/components/FloatingActions.tsx` | 2026-08-12 10:39 | Pass |
+| Verify | Route conditionality | home vs `/book` | Playwright | Present on home, absent on `/book` | terminal | 2026-08-12 10:52 | Pass |
+| Verify | Toggle reveals actions | home | Playwright | Review link hidden before toggle, revealed after, correct href | `qa/widgets-open.png` | 2026-08-12 10:52 | Pass |
+| Verify | Reduced motion | home | Playwright reduced-motion | Scroll to top jumps instantly | terminal | 2026-08-12 10:54 | Pass |
+
+## Item: more images
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Discovery | Re-scrape the venue record | Fresha | Scrapling | Unchanged: 6 gallery, 4 portfolio. No growth since round 1 | terminal | 2026-08-12 10:05 | No new media |
+| Discovery | Scrape Google listing photos | Google Maps | Playwright | Only 3 URLs, one of which is a reviewer avatar. Not usable venue photography | terminal | 2026-08-12 10:06 | No new media |
+| Discovery | Scrape the business's own site | emeraldspacc.com | Scrapling | Domain resolves but serves an unconfigured Hostinger placeholder. Zero images | terminal | 2026-08-12 10:04 | No new media |
+| Discovery | Scrape Instagram | instagram.com/emerald_spa_and_wellness | Playwright | Requires authentication, returns an empty shell to logged-out clients | terminal | 2026-08-12 10:06 | Blocked |
+
+Every reachable public source was scraped. The image count stays at 16 real
+masters. No stock or generated filler was substituted.
+
+## Round 3 verification
+
+| Check | Result |
+| --- | --- |
+| Type check | Exit 0 |
+| Lint | No warnings or errors |
+| Production build | Compiled, 17 routes |
+| axe-core, 10 routes | 0 violations |
+| Embedded booking flow | Services to professionals, 0 failed requests, 0 console errors |
+| Address bar during booking | Never leaves `/book` |
+| Horizontal scroll 320 to 1440 | None |
+| Reduced motion | Honoured |
+
+## Note for the client
+
+The booking embed depends on the provider's current asset layout. If they
+change their front-end build, the proxy's URL rewriting may need updating. The
+failure state on `/book` covers that case: it shows phone and WhatsApp instead
+of a blank frame.

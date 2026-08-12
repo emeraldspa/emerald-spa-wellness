@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { ArrowUpRight, Clock, MapPin, MessageCircle, Phone } from 'lucide-react';
-import { BookingLauncher } from '@/components/BookingLauncher';
+import { BookingFrame } from '@/components/BookingFrame';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal } from '@/components/motion';
@@ -15,12 +15,10 @@ export const metadata: Metadata = {
 /**
  * Booking route.
  *
- * The visitor stays on emeraldspa's own domain for the whole of this page and
- * the platform is never named in the copy. Booking itself opens in a new tab
- * because the provider sends
- * `Content-Security-Policy: frame-ancestors 'self' https://*.fresha.com
- * https://*.adyen.com`, which makes embedding in an iframe from this origin
- * impossible. That was verified in a real browser, not assumed. See PROOF.md.
+ * The booking app is embedded directly in the page through a same-origin
+ * proxy, so the visitor never leaves this domain and the provider is never
+ * named. See `src/app/api/booking/[...path]/route.ts` for why the proxy is
+ * required and PROOF.md for the end-to-end verification.
  */
 export default function BookPage() {
   const openToday = site.hours.find((h) => h.day === 'Sunday');
@@ -41,11 +39,11 @@ export default function BookPage() {
         </section>
 
         <section className="shell grid gap-12 py-16 md:grid-cols-12 md:py-20">
-          <div className="md:col-span-7">
-            <BookingLauncher />
+          <div className="md:col-span-8">
+            <BookingFrame />
           </div>
 
-          <aside className="md:col-span-5">
+          <aside className="md:col-span-4">
             <h2 className="eyebrow text-emerald-600">Prefer to talk first</h2>
             <ul className="mt-4 space-y-4 text-ink/80">
               <li>

@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { MobileMenu } from '@/components/MobileMenu';
-import { BOOKING_CTA, BOOKING_PATH, NAV_LINKS } from '@/lib/site';
+import { BrandLogo } from '@/components/BrandLogo';
+import { BOOKING_CTA, BOOKING_PATH, NAV_LINKS, site } from '@/lib/site';
 
 /** Header for every route except the home hero, which renders its own nav. */
 export function SiteHeader() {
@@ -18,13 +19,8 @@ export function SiteHeader() {
           className="shell flex items-center justify-between py-5"
           aria-label="Primary"
         >
-          <Link href="/" className="flex items-center gap-3" aria-label="Emerald Spa and Wellness Centre, home">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-emerald-600">
-              <span className="block h-[10px] w-[10px] rounded-full bg-emerald-600" />
-            </span>
-            <span className="hidden text-sm font-semibold uppercase tracking-widest sm:block">
-              Emerald
-            </span>
+          <Link href="/" aria-label={`${site.legalName}, home`}>
+            <BrandLogo tone="dark" priority className="h-9 w-auto md:h-11" />
           </Link>
 
           {/*

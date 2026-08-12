@@ -1,6 +1,6 @@
-import { ArrowUpRight, Facebook, Instagram, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { ArrowUpRight, Facebook, Instagram, MapPin, MessageCircle, Phone, Star } from 'lucide-react';
 import Link from 'next/link';
-import { BOOKING_CTA, BOOKING_PATH, NAV_LINKS, WHATSAPP_URL, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, NAV_LINKS, WHATSAPP_URL, site } from '@/lib/site';
 
 const LEGAL = [
   { href: '/privacy', label: 'Privacy' },
@@ -122,6 +122,16 @@ export function SiteFooter() {
               </a>
             </li>
           </ul>
+
+          <a
+            href={GOOGLE_REVIEW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 text-sm text-ground/85 transition-colors hover:text-gold-200"
+          >
+            <Star className="h-4 w-4 shrink-0 text-gold-300" aria-hidden="true" />
+            Leave a Google review
+          </a>
         </div>
 
         <div>

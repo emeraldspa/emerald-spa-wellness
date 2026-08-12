@@ -4,7 +4,8 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight, X } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
-import { BOOKING_CTA, BOOKING_PATH, NAV_LINKS } from '@/lib/site';
+import { BrandLogo } from '@/components/BrandLogo';
+import { BOOKING_CTA, BOOKING_PATH, NAV_LINKS, site } from '@/lib/site';
 
 export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   const reduce = useReducedMotion();
@@ -42,10 +43,8 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
           transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="flex items-center justify-between">
-            <Link href="/" onClick={onClose} aria-label="Emerald Spa and Wellness Centre, home">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-emerald-600">
-                <span className="block h-[10px] w-[10px] rounded-full bg-emerald-600" />
-              </span>
+            <Link href="/" onClick={onClose} aria-label={`${site.legalName}, home`}>
+              <BrandLogo tone="dark" className="h-10 w-auto" />
             </Link>
             <button
               type="button"

@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
+import { BrandLogo } from '@/components/BrandLogo';
 import { HeroMenuButton } from '@/components/HeroMenuButton';
 import { HeroVideo } from '@/components/HeroVideo';
 import { BOOKING_CTA, BOOKING_PATH, LISTED_SERVICE_COUNT, site } from '@/lib/site';
@@ -56,10 +57,8 @@ export function Hero({ menuButtonId }: { menuButtonId: string }) {
           aria-label="Primary"
         >
           <div className="hero-down">
-            <Link href="/" aria-label="Emerald Spa and Wellness Centre, home">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-emerald-600">
-                <span className="block h-[10px] w-[10px] rounded-full bg-emerald-600" />
-              </span>
+            <Link href="/" aria-label={`${site.legalName}, home`}>
+              <BrandLogo tone="dark" priority className="h-10 w-auto md:h-12" />
             </Link>
           </div>
 
