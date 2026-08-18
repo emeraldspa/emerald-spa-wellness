@@ -1,6 +1,7 @@
 import { ArrowUpRight, Star } from 'lucide-react';
 import Link from 'next/link';
 import { Carousel } from '@/components/Carousel';
+import { getActivePromotions } from '@/lib/wordpress';
 import { Hero } from '@/components/Hero';
 import { MenuHost } from '@/components/MenuHost';
 import { Picture } from '@/components/Picture';
@@ -14,16 +15,31 @@ const SIGNATURE = ['massages', 'facials-skincare', 'hydrotherapy', 'nails'];
 /** Event name shared between the hero button island and the menu host. */
 const MENU_EVENT = 'emerald:open-menu';
 
-export default function HomePage() {
+export default async function HomePage() {
   const signatureCats = SIGNATURE.map(
     (slug) => site.categories.find((c) => c.slug === slug)!,
   ).filter(Boolean);
 
   /* The three offers with a written description, which are the ones that
      explain themselves without the visitor opening the full menu. */
-  const PROMOTIONS = (site.categories.find((c) => c.slug === 'promotions')?.items ?? [])
+  const localOffers = (site.categories.find((c) => c.slug === 'promotions')?.items ?? [])
     .filter((item) => item.description)
     .slice(0, 3);
+
+  /*
+    Offers the spa is running now, edited in WordPress. If WordPress has none,
+    is empty, or is unreachable, the verified package data still renders. The
+    page must never depend on the back office being up.
+  */
+  const wpPromotions = await getActivePromotions();
+  const PROMOTIONS = wpPromotions.length
+    ? wpPromotions.slice(0, 3).map((p) => ({
+        name: p.title,
+        description: p.excerpt,
+        duration: p.startsOn && p.endsOn ? `Until ${p.endsOn}` : 'Current offer',
+        price: '',
+      }))
+    : localOffers;
 
   const featured = site.reviews.filter((r) => r.text.length > 40).slice(0, 3);
 
@@ -232,7 +248,9 @@ export default function HomePage() {
                       <span className="text-xs font-semibold uppercase tracking-widest text-ink/65">
                         {offer.duration}
                       </span>
-                      <span className="display text-2xl text-emerald-700">{offer.price}</span>
+                      {offer.price ? (
+                        <span className="display text-2xl text-emerald-700">{offer.price}</span>
+                      ) : null}
                     </div>
                   </article>
                 </FadeUp>
