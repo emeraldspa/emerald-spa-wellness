@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FooterFull } from '@/components/FooterFull';
 import { Picture } from '@/components/Picture';
 import { SiteHeader } from '@/components/SiteHeader';
+import { CategoryNav } from '@/components/CategoryNav';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import {
   BOOKING_CTA,
@@ -93,33 +94,39 @@ export default function ServicesPage() {
         </section>
 
         <div className="shell grid gap-12 py-16 md:grid-cols-12 md:py-20">
-          <nav className="md:col-span-3" aria-label="Treatment categories">
-            <ul className="sticky top-8 space-y-2.5">
-              {site.categories.map((cat) => (
-                <li key={cat.slug}>
-                  <a
-                    href={`#${cat.slug}`}
-                    className="flex items-baseline justify-between gap-3 text-sm text-ink/70 transition-colors hover:text-emerald-600"
-                  >
-                    <span>{cat.name}</span>
-                    <span className="text-xs tabular-nums text-ink/65">{cat.items.length}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div className="md:col-span-3 md:h-full">
+            <CategoryNav
+              items={site.categories.map((c) => ({
+                slug: c.slug,
+                name: c.name,
+                count: c.items.length,
+              }))}
+            />
+          </div>
 
           <div className="md:col-span-9">
-            {site.categories.map((cat) => (
+            {site.categories.map((cat, ci) => (
               <section
                 key={cat.slug}
                 id={cat.slug}
-                className="mb-16 scroll-mt-8 border-t border-ink/15 pt-8 last:mb-0"
+                className="mb-16 scroll-mt-28 border-t border-ink/15 pt-8 last:mb-0"
               >
-                <div className="flex items-baseline justify-between gap-4">
+                {/*
+                  A numbered header gives the long menu a spine: the reader can
+                  tell how far through thirteen categories they are without
+                  scrolling back to the rail.
+                */}
+                <div className="flex items-baseline gap-4">
+                  <span className="display text-xl text-emerald-700/80 tabular-nums sm:text-2xl">
+                    {String(ci + 1).padStart(2, '0')}
+                  </span>
                   <h2 className="display text-2xl sm:text-3xl md:text-4xl">{cat.name}</h2>
-                  <span className="text-xs font-semibold uppercase tracking-widest text-ink/65">
-                    {cat.items.length}
+                  <span
+                    aria-hidden="true"
+                    className="mb-2 h-px flex-1 bg-gradient-to-r from-ink/20 to-transparent"
+                  />
+                  <span className="shrink-0 text-xs font-semibold uppercase tracking-widest text-ink/65">
+                    {cat.items.length} treatment{cat.items.length === 1 ? '' : 's'}
                   </span>
                 </div>
 

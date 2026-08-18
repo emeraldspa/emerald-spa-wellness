@@ -548,3 +548,64 @@ voucher number and expiry by hand, which is how the spa already works.
 | WordPress audit | 0 failing, 2 benign warnings |
 | Headless promotion on live home page | Present |
 | Fallback with WordPress unreachable | Verified offers render |
+
+
+---
+
+# ROUND 8
+
+## Recovery
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Debug | Workspace rolled back again | git and media | inspection | HEAD was back at round 4 and media down to 104 files | terminal | 2026-08-18 08:05 | Expected |
+| Fix | Restore from GitHub | repository | `git reset --hard` to the remote | Full history and all 354 media files back. Nothing local was unique, so nothing was lost. This is what pushing to GitHub bought | terminal | 2026-08-18 08:07 | Pass |
+
+## Sticky navigation
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Discovery | Study the references | orikigroup.com, ikeja.amanispas.co.za | Playwright, measured before and after scroll | Neither keeps a bar on screen. Oriki is `position: relative` and scrolls away, Amani likewise. The cues worth taking are the centered wordmark, wide letter tracking, and a thin active underline | `qa/ref-oriki.png` | 2026-08-18 08:15 | Bar is our own improvement |
+| Build | Condensed bar | all routes but `/book` | tsx | A separate strip rather than a header that changes position, so nothing jumps when it detaches. Appears past 60 percent of the first screen | `src/components/StickyNav.tsx` | 2026-08-18 08:30 | Pass |
+| Verify | Behaviour | `/` | Playwright | Off screen at top, `top: 0` when scrolled, retracts on return, absent on `/book` | terminal | 2026-08-18 08:45 | Pass |
+| Verify | Keyboard | `/` | tab order | While hidden the bar takes no tab stops. First stops are skip link, sound toggle, then the real header | terminal | 2026-08-18 09:40 | Pass |
+
+## Services navigation
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Build | Position aware rail | `/services` | IntersectionObserver | Thirteen categories, the current one marked as you read. Desktop rail and a mobile chip strip from one source | `src/components/CategoryNav.tsx` | 2026-08-18 08:35 | Pass |
+| Debug | Rail would not stick | `/services` | measured its box | It scrolled away at `top: -8385`. A sticky child can only travel inside its parent, and the grid column had collapsed to the rail's own height. Giving the column full height fixed it | terminal | 2026-08-18 09:05 | Fixed |
+| Verify | Sticks and tracks | `/services` | Playwright | Rail holds at 96px. Active category follows the scroll through Massages, Facials, Eyebrow Care, Lashes | terminal | 2026-08-18 09:10 | Pass |
+| Verify | Anchors clear the bar | `/services` | measured after a click | Target lands at 131px, below the 60px bar | terminal | 2026-08-18 08:55 | Pass |
+| Build | Category headers | `/services` | tsx | Numbered, with a rule and a treatment count, so the reader can place themselves in a long menu | `qa/r8-svc2.png` | 2026-08-18 08:50 | Pass |
+
+## Marble footer
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Build | Emerald marble | FooterFull | css | Generated marble with a scrim and a thin gold rule at the top edge | `qa/r8-footer2.png` | 2026-08-18 09:15 | Pass |
+| Debug | Veins too loud | FooterFull | screenshot | At 720px the veining read as lightning rather than stone. Reduced the tile to 420px and deepened the scrim | `qa/r8-footer.png` | 2026-08-18 09:20 | Fixed |
+| Debug | Label collided | FooterFull | screenshot | The group bookings note sat beside the address and wrapped badly. Moved beneath it | terminal | 2026-08-18 09:20 | Fixed |
+| Build | Pale marble | FooterMinimal | css | Same treatment at lower volume on the utility pages | source | 2026-08-18 09:15 | Pass |
+
+## Contrast
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Debug | Three failures, all self inflicted | `/services`, `/brand` | axe plus measurement | Category counts at ink/50 measured 3.21. The sticky bar at 92 percent let a dark panel show through and break its links. The category numeral at emerald700/45 measured 2.27 | terminal | 2026-08-18 09:30 | Root caused |
+| Fix | Measured replacements | same | computed each candidate | Counts to ink/65 at 5.05. Bar to 97 percent opaque. Numeral to emerald700/80 at 5.02, kept secondary by size rather than by fading it | terminal | 2026-08-18 09:35 | Fixed |
+| Verify | Rerun the same audit | 12 routes, scrolled so the bar is showing | axe-core | 0 violations | terminal | 2026-08-18 09:40 | Pass |
+
+## Round 8 verification
+
+| Check | Result |
+| --- | --- |
+| Type check | Exit 0 |
+| Lint | No warnings or errors |
+| Production build | Compiled |
+| axe-core, 12 routes, bar visible | 0 violations |
+| Console and page errors | 0 |
+| Sticky bar | Enters past the first screen, retracts, absent on `/book`, no tab stops while hidden |
+| Category rail | Sticks at 96px and tracks the reading position |
+| Reduced motion | Bar present and usable without the slide |

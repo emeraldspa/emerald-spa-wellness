@@ -10,7 +10,7 @@ import { LEGAL_LINKS, site } from '@/lib/site';
  */
 export function FooterMinimal() {
   return (
-    <footer className="border-t border-ink/10 bg-ground">
+    <footer className="surface-marble-pale border-t border-ink/10">
       <div className="shell flex flex-col gap-5 py-10 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}

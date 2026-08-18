@@ -22,8 +22,17 @@ import {
 
 export function FooterFull() {
   return (
-    <footer className="border-t border-ink/10 bg-emerald-900 text-ground">
-      <div className="shell grid gap-12 py-16 md:grid-cols-4 md:py-20">
+    <footer className="surface-marble-emerald relative border-t border-ink/10 text-ground">
+      {/*
+        The generated emerald marble carries the footer, with a scrim over
+        it so the stone reads as texture and the type keeps its contrast.
+      */}
+      <div aria-hidden="true" className="absolute inset-0 bg-emerald-900/94" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-400/50 to-transparent"
+      />
+      <div className="shell relative grid gap-12 py-16 md:grid-cols-4 md:py-20">
         <div className="md:col-span-2">
           {/*
             The real stacked lockup, sized as a featured element rather than a
@@ -100,8 +109,10 @@ export function FooterFull() {
               className="flex items-center gap-2 hover:text-gold-200"
             >
               <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
-              {EMAILS.bookings}
-              <span className="text-ground/60">group bookings</span>
+              <span>
+                {EMAILS.bookings}
+                <span className="block text-xs text-ground/60">Group bookings</span>
+              </span>
             </a>
             <a
               href={`mailto:${EMAILS.complaints}`}
@@ -183,7 +194,7 @@ export function FooterFull() {
         </div>
       </div>
 
-      <div className="border-t border-ground/15">
+      <div className="relative border-t border-ground/15">
         {/*
           Extra right padding on the last row keeps the credit clear of the
           floating WhatsApp button, which is 56px wide plus its offset.
