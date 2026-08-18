@@ -144,3 +144,27 @@ Prices, address, hours and the treatment menu stay in code on purpose. They
 already have a source of truth in the booking system and they feed the
 structured data Google reads. Two editable copies of a price is how prices go
 wrong.
+
+## Back office portal (admin.emeraldspacc.com)
+
+The subdomain front page is now a portal, not a bare stub. It shows the Emerald
+logo, a slow slideshow of six real photographs, a short quote, and a restricted
+system notice, with buttons to the public site and to staff sign in.
+
+Where it lives in WordPress:
+
+- Page "Emerald Portal", id 17, slug `portal`, set as the static front page.
+- Template `hostinger-ai-theme//front-page`, overridden to render the page
+  content with no theme header or footer.
+- Media library ids 8 to 16 and 19 hold the brand and photo assets.
+- The page source is also kept at `docs/admin-portal-page.html` in this repo so
+  it can be restored if the WordPress copy is lost.
+
+To change the quote or the notice, edit page 17 in the block editor. The markup
+is a single HTML block, so edit it under the block's Edit as HTML view.
+
+One manual step remains. Hostinger's edge cached the old front page for seven
+days before this change. New requests are no longer cached, but copies already
+held at the edge expire on their own. To clear them immediately: hPanel,
+Websites, Dashboard, Clear cache; then, if the CDN is active, Performance, CDN,
+Flush cache. Hosting username is `u202309731`.

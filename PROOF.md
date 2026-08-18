@@ -734,3 +734,48 @@ stone. All five surfaces are now in use.
 | Console and page errors | 0 |
 | Horizontal scroll, 5 viewports | None |
 | Touch targets under 44px, phone and tablet | 0 |
+
+
+# ROUND 11 — admin.emeraldspacc.com back office portal
+
+The WordPress subdomain was showing a bare theme stub. It now carries a real
+portal page built from the client's own brand assets and photographs.
+
+| Phase | Action | Target | Command or method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Assets | Upload brand lockups and photographs to the media library | admin.emeraldspacc.com | `POST /wp-json/wp/v2/media` with App Password Basic auth | 9 uploaded, then the dark-ground lockup added as id 19 | ids 8-16, 19 | 2026-08-18 | Done |
+| Build | Create the portal page | Page id 17, slug `portal` | `POST /wp-json/wp/v2/pages` | Created 201 | https://admin.emeraldspacc.com/portal/ 301s to / | 2026-08-18 | Done |
+| Build | Point the site at it | Reading settings | `POST /wp-json/wp/v2/settings` `show_on_front=page`, `page_on_front=17` | 200 | Front page renders the portal | 2026-08-18 | Done |
+| Build | Remove theme header and footer | `hostinger-ai-theme//front-page` | `POST /wp-json/wp/v2/templates` with a post-content-only template | 201 | `site-header` and `site-footer` absent from rendered HTML | 2026-08-18 | Done |
+| Fix | Wrong logo variant, dark wordmark on a dark ground | `lockup-stacked-light.png` | Measured wordmark luminance per variant in Pillow | light = 17, dark = 248, so `-dark` is the one drawn for dark grounds | Swapped to `lockup-stacked-dark.png` | 2026-08-18 | Fixed |
+| Fix | Card ran past the fold at 1440x900 | Portal CSS | Trimmed logo size and vertical rhythm | Whole card visible without scrolling | `qa/portal/desktop.png` | 2026-08-18 | Fixed |
+| Fix | Credit link below the 44px touch floor | `.emx-foot a` | Added `display:inline-block` and `padding-block` | 125x34, sized for prose | Re-audit | 2026-08-18 | Fixed |
+| Fix | Host cache served a day-old front page | LiteSpeed and hcdn edge | Appended a `send_headers` no-store rule to the theme via `research/wp_nocache.py` | Origin now sends `no-store, no-cache, must-revalidate`; repeat fetches stay DYNAMIC instead of being cached | Header capture | 2026-08-18 | Fixed at origin |
+| Verify | Slideshow advances and honours reduced motion | Live URL | Playwright, sampling the active slide over 12s | `no-preference` 0 -> 1 -> 2; `reduce` holds at 0 | Console output | 2026-08-18 | Pass |
+| Verify | All six photographs load | Live URL | `request.get` on each computed background image | 6 x 200 | Console output | 2026-08-18 | Pass |
+| Verify | Accessibility and layout | phone 390, tablet 834, desktop 1440 | axe-core wcag2a/2aa/21a/21aa, overflow and touch-target sweep | axe 0, page errors 0, horizontal scroll none | `qa/portal/{phone,tablet,desktop}.png` | 2026-08-18 | Pass |
+| Verify | Text contrast on the veiled photograph | Portal type | sRGB luminance maths against the lightest veil state | Lowest is the footer at 4.75:1, all pass AA | Computed table | 2026-08-18 | Pass |
+| Verify | Every link resolves | Portal links | Playwright request per href | Public site 200, wp-admin 200, studio credit 200 | Console output | 2026-08-18 | Pass |
+
+## Root cause worth recording
+
+Two of my own checks were wrong before the page was.
+
+`?s=` was used as a cache-busting parameter. `s` is WordPress's reserved search
+query var, so those runs loaded a search results page and reported zero slides
+on a page that was fine. Cache-busting keys on WordPress must avoid `s`, `p`,
+`page_id`, `cat` and `author`.
+
+The stale front page was a caching layer, not a publishing failure. Origin was
+always correct; the `hcdn` edge held entries with `max-age=604800` from before
+the portal existed. The theme now sends `no-store` so nothing new is cached,
+and a request with any unseen query string returns the portal immediately.
+
+## Left for the client
+
+Existing edge entries for the bare `https://admin.emeraldspacc.com/` URL expire
+on their own TTL. To clear them now: hPanel, Websites, Dashboard, then Clear
+cache, and if the CDN is active, Performance, CDN, Flush cache. The API token
+supplied has no hosting scope, so `DELETE /api/hosting/v1/accounts/{username}/
+websites/{domain}/cache/clear` returns Not found. The hosting username is
+`u202309731`.
