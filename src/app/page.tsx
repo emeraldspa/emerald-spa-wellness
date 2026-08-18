@@ -1,6 +1,7 @@
 import { ArrowUpRight, Star } from 'lucide-react';
 import Link from 'next/link';
 import { Carousel } from '@/components/Carousel';
+import { StatusWidgets } from '@/components/StatusWidgets';
 import { getActivePromotions } from '@/lib/wordpress';
 import { Hero } from '@/components/Hero';
 import { MenuHost } from '@/components/MenuHost';
@@ -32,14 +33,21 @@ export default async function HomePage() {
     page must never depend on the back office being up.
   */
   const wpPromotions = await getActivePromotions();
-  const PROMOTIONS = wpPromotions.length
-    ? wpPromotions.slice(0, 3).map((p) => ({
-        name: p.title,
-        description: p.excerpt,
-        duration: p.startsOn && p.endsOn ? `Until ${p.endsOn}` : 'Current offer',
-        price: '',
-      }))
-    : localOffers;
+  const fromWordPress = wpPromotions.slice(0, 3).map((p) => ({
+    name: p.title,
+    description: p.excerpt,
+    duration: p.startsOn && p.endsOn ? `Until ${p.endsOn}` : 'Current offer',
+    price: '',
+  }));
+
+  /*
+    Live offers lead, verified packages fill the rest of the row. One
+    promotion in WordPress should add to the section, not empty it.
+  */
+  const PROMOTIONS = [
+    ...fromWordPress,
+    ...localOffers.filter((o) => !fromWordPress.some((w) => w.name === o.name)),
+  ].slice(0, 3);
 
   const featured = site.reviews.filter((r) => r.text.length > 40).slice(0, 3);
 
@@ -49,6 +57,11 @@ export default async function HomePage() {
       <MenuHost eventName={MENU_EVENT} />
 
       <main id="main">
+        {/* Four live facts, no more. The questions a visitor has before calling. */}
+        <section className="shell -mt-px border-b border-ink/10 py-6">
+          <StatusWidgets />
+        </section>
+
         {/* Introduction. The spa's own words, verbatim from the venue record. */}
         <section className="shell border-b border-ink/10 py-20 md:py-28">
           <div className="grid gap-10 md:grid-cols-12">
@@ -151,8 +164,10 @@ export default async function HomePage() {
         </section>
 
         {/* Verified guest reviews. Real words, real dates, from the booking record. */}
-        <section className="surface-marble-emerald relative py-20 text-ground md:py-28">
-          <div aria-hidden="true" className="absolute inset-0 bg-emerald-900/72" />
+        <section className="surface-stone-black relative py-20 text-ground md:py-28">
+          <div aria-hidden="true" className="absolute inset-0 bg-[#0A1310]/88" />
+          <div aria-hidden="true" className="rule-gold absolute inset-x-0 top-0 h-px" />
+          <div aria-hidden="true" className="rule-gold absolute inset-x-0 bottom-0 h-px" />
           <div className="shell relative">
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
@@ -211,7 +226,7 @@ export default async function HomePage() {
           chrome, no platform name, and it stays styled like the rest of the
           site.
         */}
-        <section className="surface-marble-pale border-b border-ink/10 py-20 md:py-28">
+        <section className="surface-clay border-b border-ink/10 py-20 md:py-28">
           <div className="shell">
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
@@ -235,7 +250,8 @@ export default async function HomePage() {
             <ul className="mt-12 grid gap-6 md:grid-cols-3">
               {PROMOTIONS.map((offer, i) => (
                 <FadeUp key={offer.name} delay={(i % 3) * 0.08} as="li">
-                  <article className="flex h-full flex-col justify-between border-t-2 border-emerald-600 bg-ground p-7">
+                  <article className="relative flex h-full flex-col justify-between bg-ground p-7 shadow-sm">
+                    <div aria-hidden="true" className="rule-gold absolute inset-x-0 top-0 h-0.5" />
                     <div>
                       <h3 className="text-lg font-semibold text-ink text-pretty">{offer.name}</h3>
                       {offer.description ? (

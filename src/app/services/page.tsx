@@ -74,7 +74,9 @@ export default function ServicesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <main id="main">
-        <section className="shell border-b border-ink/10 py-16 md:py-24">
+        <section className="surface-clay relative border-b border-ink/10 py-16 md:py-24">
+          <div aria-hidden="true" className="rule-gold absolute inset-x-0 bottom-0 h-px" />
+          <div className="shell relative">
           <p className="eyebrow text-emerald-600">Treatment Menu</p>
           <h1 className="display mt-4 max-w-4xl text-4xl text-balance sm:text-5xl md:text-6xl">
             <ClipReveal>Every treatment, every price.</ClipReveal>
@@ -86,11 +88,12 @@ export default function ServicesPage() {
           </p>
           <Link
             href={BOOKING_PATH}
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-emerald-600 px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-700"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-emerald-700 px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-800"
           >
             {BOOKING_CTA}
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </Link>
+          </div>
         </section>
 
         <div className="shell grid gap-12 py-16 md:grid-cols-12 md:py-20">

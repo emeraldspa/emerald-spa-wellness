@@ -67,9 +67,13 @@ export function StickyNav() {
       // announced twice.
       aria-hidden={!shown}
     >
-      <div className="border-b border-ink/10 bg-ground/[0.97] backdrop-blur-md">
+      <div className="surface-stone-bar relative border-b border-gold-500/25 shadow-lg shadow-ink/20">
+        {/* Scrim keeps the stone readable as texture under the type. */}
+        <div aria-hidden="true" className="absolute inset-0 bg-[#0A1310]/72" />
+        {/* Brand gold hairline along the bottom edge. */}
+        <div aria-hidden="true" className="rule-gold absolute inset-x-0 bottom-0 h-px" />
         <nav
-          className="shell flex items-center justify-between gap-6 py-3"
+          className="shell relative flex items-center justify-between gap-6 py-3"
           aria-label={shown ? 'Condensed' : undefined}
         >
           <Link
@@ -81,16 +85,16 @@ export function StickyNav() {
             {/* The symbol alone, because the strip is short and the wordmark
                 would eat the space the sections need. */}
             <picture>
-              <source srcSet="/brand/symbol-mark.svg" type="image/svg+xml" />
+              <source srcSet="/brand/symbol-photoreal.png" type="image/png" />
               <img
-                src="/brand/symbol-mark.svg"
+                src="/brand/symbol-photoreal.png"
                 alt=""
-                width={28}
-                height={28}
-                className="h-7 w-7"
+                width={38}
+                height={38}
+                className="h-9 w-9 drop-shadow-[0_0_10px_rgba(117,224,186,0.45)]"
               />
             </picture>
-            <span className="hidden text-sm font-semibold uppercase tracking-[0.2em] text-ink lg:block">
+            <span className="hidden text-sm font-semibold uppercase tracking-[0.22em] text-ground lg:block">
               Emerald
             </span>
           </Link>
@@ -104,8 +108,8 @@ export function StickyNav() {
                     href={item.href}
                     tabIndex={shown ? undefined : -1}
                     aria-current={active ? 'page' : undefined}
-                    className={`relative py-1 text-xs font-semibold uppercase tracking-[0.18em] transition-colors hover:text-emerald-700 ${
-                      active ? 'text-emerald-700' : 'text-ink/80'
+                    className={`relative py-1 text-xs font-semibold uppercase tracking-[0.18em] transition-colors hover:text-gold-200 ${
+                      active ? 'text-gold-300' : 'text-ground/85'
                     }`}
                   >
                     {item.label}
@@ -113,7 +117,7 @@ export function StickyNav() {
                         editorial masthead marks position. */}
                     <span
                       aria-hidden="true"
-                      className={`absolute -bottom-0.5 left-0 h-px w-full origin-left bg-emerald-700 transition-transform duration-300 ${
+                      className={`absolute -bottom-0.5 left-0 h-px w-full origin-left bg-gold-300 transition-transform duration-300 ${
                         active ? 'scale-x-100' : 'scale-x-0'
                       }`}
                     />
@@ -127,7 +131,7 @@ export function StickyNav() {
             <Link
               href={VOUCHER_PATH}
               tabIndex={shown ? undefined : -1}
-              className="hidden items-center gap-1.5 rounded-full border border-ink/20 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-ink transition-colors hover:border-emerald-600 hover:text-emerald-700 lg:flex"
+              className="hidden items-center gap-1.5 rounded-full border border-gold-300/45 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-200 transition-colors hover:border-gold-300 hover:bg-gold-300/10 lg:flex"
             >
               <Gift className="h-3.5 w-3.5" aria-hidden="true" />
               Vouchers
@@ -136,14 +140,14 @@ export function StickyNav() {
               href={WHATSAPP_PATH}
               tabIndex={shown ? undefined : -1}
               aria-label="Message us on WhatsApp"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/20 text-ink transition-colors hover:border-emerald-600 hover:text-emerald-700 sm:hidden"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-ground/30 text-ground transition-colors hover:border-gold-300 hover:text-gold-200 sm:hidden"
             >
               <MessageCircle className="h-4 w-4" aria-hidden="true" />
             </Link>
             <Link
               href={BOOKING_PATH}
               tabIndex={shown ? undefined : -1}
-              className="flex items-center gap-1.5 rounded-full bg-emerald-700 px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:bg-emerald-800"
+              className="flex items-center gap-1.5 rounded-full bg-gold-300 px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0A1310] transition-colors hover:bg-gold-200"
             >
               {BOOKING_CTA}
               <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />

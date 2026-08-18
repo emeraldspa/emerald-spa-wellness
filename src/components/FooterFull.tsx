@@ -22,15 +22,15 @@ import {
 
 export function FooterFull() {
   return (
-    <footer className="surface-marble-emerald relative border-t border-ink/10 text-ground">
+    <footer className="surface-stone-black relative border-t border-ink/10 text-ground">
       {/*
         The generated emerald marble carries the footer, with a scrim over
         it so the stone reads as texture and the type keeps its contrast.
       */}
-      <div aria-hidden="true" className="absolute inset-0 bg-emerald-900/94" />
+      <div aria-hidden="true" className="absolute inset-0 bg-[#0A1310]/80" />
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-400/50 to-transparent"
+        className="rule-gold absolute inset-x-0 top-0 h-px"
       />
       <div className="shell relative grid gap-12 py-16 md:grid-cols-4 md:py-20">
         <div className="md:col-span-2">
@@ -76,7 +76,7 @@ export function FooterFull() {
         </div>
 
         <div>
-          <h2 className="eyebrow text-emerald-300">Visit</h2>
+          <h2 className="eyebrow text-gold-300">Visit</h2>
           <address className="mt-4 space-y-3 text-sm not-italic text-ground/85">
             <a
               href={site.address.directionsUrl}
@@ -123,7 +123,7 @@ export function FooterFull() {
             </a>
           </address>
 
-          <h2 className="eyebrow mt-8 text-emerald-300">Follow</h2>
+          <h2 className="eyebrow mt-8 text-gold-300">Follow</h2>
           <ul className="mt-4 flex gap-3">
             <li>
               <a
@@ -170,7 +170,7 @@ export function FooterFull() {
         </div>
 
         <div>
-          <h2 className="eyebrow text-emerald-300">Hours</h2>
+          <h2 className="eyebrow text-gold-300">Hours</h2>
           <ul className="mt-4 space-y-1.5 text-sm text-ground/85">
             {site.hours.map((h) => (
               <li key={h.day} className="flex justify-between gap-4">
@@ -180,7 +180,7 @@ export function FooterFull() {
             ))}
           </ul>
 
-          <h2 className="eyebrow mt-8 text-emerald-300">Explore</h2>
+          <h2 className="eyebrow mt-8 text-gold-300">Explore</h2>
           {/* Book omitted: the primary button in the first column leads there. */}
           <ul className="mt-4 space-y-1.5 text-sm">
             {NAV_LINKS.filter((l) => l.href !== BOOKING_PATH).map((l) => (

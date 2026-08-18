@@ -609,3 +609,66 @@ voucher number and expiry by hand, which is how the spa already works.
 | Sticky bar | Enters past the first screen, retracts, absent on `/book`, no tab stops while hidden |
 | Category rail | Sticks at 96px and tracks the reading position |
 | Reduced motion | Bar present and usable without the slide |
+
+
+---
+
+# ROUND 9
+
+## Palette
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Build | Black emerald stone | texture | `research/marble_dark.py` | Black slab with emerald crystal light pooling in the hollows and thin gold veining, generated in the brand palette. Seamless, 8 to 11 KB | `qa/stone-black.jpg` | 2026-08-18 10:10 | Pass |
+| Build | Warm neutrals | `tailwind.config.ts` | token scale | A clay scale sampled from the venue's own terracotta chairs and amber cushions, so the site is not only emerald and off-white | config | 2026-08-18 10:20 | Pass |
+| Verify | Every new pairing measured | clay, gold, stone | contrast maths | clay-600 on ground 5.86, white on clay-500 4.56, gold-300 on the stone 11.44, ink on the gold button 11.44 | terminal | 2026-08-18 10:22 | All above 4.5 |
+
+## Sticky bar
+
+| Phase | Action | Target | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| Build | Stone background | StickyNav | Black stone with a scrim, a gold hairline along the bottom edge, gold active underline and a gold booking button | `qa/r9-bar.png` | 2026-08-18 10:30 | Pass |
+| Build | Logo stands out | StickyNav | The photoreal gem at 38px with an emerald glow, which reads as a lit object on dark rather than a mark printed on paper | same | 2026-08-18 10:30 | Pass |
+
+## Sections
+
+| Phase | Action | Target | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| Build | Dark anchor | reviews band | Moved from green marble to the black stone with gold rules top and bottom, so the page has one genuine dark section instead of two greens | `qa/r9-stone.png` | 2026-08-18 10:35 | Pass |
+| Debug | Veining too loud behind copy | reviews band | Scrim deepened to 88 percent and the tile enlarged to 760px, so the stone reads as suggestion rather than competition | terminal | 2026-08-18 10:45 | Fixed |
+| Debug | Clay ground looked blotchy | offers band | The gold marble was drawn for a small tile and stretched badly across a section. Replaced with a soft warm wash, letting the page grain carry the surface | `qa/r9-clay.png` | 2026-08-18 11:05 | Fixed |
+| Build | Footer | FooterFull | Black stone with gold rules and gold section labels, matching the bar so the page is framed top and bottom | `qa/r9-footer.png` | 2026-08-18 10:50 | Pass |
+
+## Widgets
+
+| Phase | Action | Target | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| Build | Live status row | `/` | Four items only: open or closed computed in the visitor's own clock, rating, directions, phone | `src/components/StatusWidgets.tsx` | 2026-08-18 10:40 | Pass |
+| Debug | Parser did not match the data | StatusWidgets | The venue record stores one string per day, not separate open and close fields. Corrected against the real shape | terminal | 2026-08-18 10:42 | Fixed |
+| Verify | Renders real values | `/` | Today, Rated 4.8 from 228, Find us Windhoek West, Call the verified number | terminal | 2026-08-18 10:44 | Pass |
+
+## Offers
+
+| Phase | Action | Target | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| Debug | One WordPress promotion emptied the row | `/` | The live offer replaced all three verified packages instead of joining them. Now the live offers lead and the packages fill the rest | terminal | 2026-08-18 11:05 | Fixed |
+| Verify | Three cards | `/` | Massage Package for Two from WordPress, then the two verified group packages | `qa/r9-clay2.png` | 2026-08-18 11:10 | Pass |
+
+## Repository
+
+| Phase | Action | Target | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| Build | Make public | GitHub | `private: false`. Hobby plan on Vercel needs a public repository for Git deploys | terminal | 2026-08-18 09:55 | Pass |
+| Fix | Restore the workspace again | git and media | Rolled back to round 4 with media at 104 files. Recovered from GitHub in one command | terminal | 2026-08-18 10:00 | Pass |
+
+## Round 9 verification
+
+| Check | Result |
+| --- | --- |
+| Type check | Exit 0 |
+| Lint | No warnings or errors |
+| Production build | Compiled |
+| axe-core, 12 routes, bar visible | 0 violations |
+| Console and page errors | 0 |
+| Mobile 390px | No horizontal scroll, bar behaves |
+| Live status widget | Computes from the published hours |

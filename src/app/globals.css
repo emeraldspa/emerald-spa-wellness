@@ -240,3 +240,55 @@ body > * {
 @media (prefers-reduced-motion: reduce) {
   .voucher-pop { animation: none; }
 }
+
+/*
+  Black emerald stone. A dark slab carrying emerald crystal light and thin gold
+  veining, generated in the brand palette. Used where a section needs weight
+  rather than another pale panel.
+*/
+.surface-stone-black {
+  background-color: #0A1310;
+  background-image: image-set(
+    url('/media/stone-black.avif') type('image/avif'),
+    url('/media/stone-black.webp') type('image/webp')
+  );
+  background-size: 760px;
+  background-repeat: repeat;
+}
+
+/* Same stone at a tighter tile for small surfaces like the sticky bar. */
+.surface-stone-bar {
+  background-color: #0A1310;
+  background-image: image-set(
+    url('/media/stone-black.avif') type('image/avif'),
+    url('/media/stone-black.webp') type('image/webp')
+  );
+  background-size: 300px;
+  background-repeat: repeat;
+}
+
+/* Warm clay ground, sampled from the terracotta chairs in the waiting room. */
+.surface-clay {
+  background-color: theme('colors.clay.50');
+  /*
+    A soft warm wash rather than a scaled up marble tile. The stone texture was
+    drawn for a small tile and reads as blotches when stretched across a full
+    section, so the warmth comes from colour and the page grain carries the
+    surface instead.
+  */
+  background-image:
+    radial-gradient(120% 80% at 12% 0%, rgba(201, 127, 79, 0.10), transparent 62%),
+    radial-gradient(100% 70% at 92% 100%, rgba(122, 59, 32, 0.07), transparent 58%);
+}
+
+/* A hairline of brand gold, for edges that need definition without a border. */
+.rule-gold {
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    theme('colors.gold.300') 18%,
+    theme('colors.gold.500') 50%,
+    theme('colors.gold.300') 82%,
+    transparent
+  );
+}

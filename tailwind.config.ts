@@ -36,6 +36,23 @@ const config: Config = {
         },
 
         // Rose gold orbital rings, sampled from goldMetal / goldSoft gradients
+        /*
+          Warm neutrals sampled from the venue's own photographs: the terracotta
+          armchairs in the waiting room, the amber cushions, the clay pots in
+          the garden. They exist so the site is not only emerald and off-white,
+          and they are used as accents and grounds rather than as new brand
+          colours.
+        */
+        clay: {
+          50: '#FAF3EC',
+          100: '#F3E4D6',
+          200: '#E7C8AE',
+          300: '#D9A57F',
+          400: '#C97F4F',
+          500: '#B35F33',
+          600: '#8F4826',
+          700: '#6B351C',
+        },
         gold: {
           100: '#FFF0A4',
           200: '#FFE18A',
