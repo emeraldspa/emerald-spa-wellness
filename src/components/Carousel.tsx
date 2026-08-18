@@ -60,18 +60,19 @@ export function Carousel({ slugs, label }: { slugs: readonly string[]; label: st
       >
         {slugs.map((slug, i) => {
           const img = getImage(slug);
-          const portrait = img.height > img.width;
           return (
             <li
               key={slug}
-              className={`shrink-0 snap-start ${
-                portrait
-                  ? 'w-[68vw] sm:w-[38vw] lg:w-[24vw]'
-                  : 'w-[86vw] sm:w-[56vw] lg:w-[38vw]'
-              }`}
+              className="w-[78vw] shrink-0 snap-start sm:w-[46vw] lg:w-[30vw]"
             >
               <figure className="group">
-                <div className="overflow-hidden bg-emerald-900/5">
+                {/*
+                  Every slide is the same width and the same fixed height, so
+                  the strip reads as one band instead of a ragged skyline.
+                  Portrait and landscape sources both fill the frame through
+                  object-cover rather than changing the card size.
+                */}
+                <div className="h-[300px] overflow-hidden bg-emerald-900/5 sm:h-[360px] lg:h-[420px]">
                   {/*
                     The visible figcaption already carries this description,
                     so repeating it in alt would make screen readers announce
@@ -81,7 +82,7 @@ export function Carousel({ slugs, label }: { slugs: readonly string[]; label: st
                   <Picture
                     slug={slug}
                     alt=""
-                    sizes="(max-width: 640px) 86vw, (max-width: 1024px) 56vw, 38vw"
+                    sizes="(max-width: 640px) 78vw, (max-width: 1024px) 46vw, 30vw"
                     imgClassName="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.04]"
                     priority={i === 0}
                   />

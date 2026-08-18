@@ -21,6 +21,7 @@ const GROUPS = [
       { href: '/visit', label: 'Visit and Contact' },
       { href: '/book', label: 'Book Now' },
       { href: '/whatsapp', label: 'Book on WhatsApp' },
+      { href: '/vouchers', label: 'Gift Vouchers' },
     ],
   },
   {

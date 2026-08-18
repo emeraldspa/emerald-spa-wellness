@@ -1,8 +1,18 @@
-import { ArrowUpRight, Facebook, Instagram, MapPin, MessageCircle, Phone, Star } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Facebook,
+  Instagram,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+  Star,
+} from 'lucide-react';
 import Link from 'next/link';
 import {
   BOOKING_CTA,
   BOOKING_PATH,
+  EMAILS,
   GOOGLE_REVIEW_URL,
   LEGAL_LINKS,
   NAV_LINKS,
@@ -80,6 +90,26 @@ export function FooterFull() {
               <MessageCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
               Book on WhatsApp
             </Link>
+            {/* Three mailboxes so enquiries reach the right person directly. */}
+            <a href={`mailto:${EMAILS.info}`} className="flex items-center gap-2 hover:text-gold-200">
+              <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
+              {EMAILS.info}
+            </a>
+            <a
+              href={`mailto:${EMAILS.bookings}`}
+              className="flex items-center gap-2 hover:text-gold-200"
+            >
+              <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
+              {EMAILS.bookings}
+              <span className="text-ground/60">group bookings</span>
+            </a>
+            <a
+              href={`mailto:${EMAILS.complaints}`}
+              className="flex items-center gap-2 hover:text-gold-200"
+            >
+              <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
+              {EMAILS.complaints}
+            </a>
           </address>
 
           <h2 className="eyebrow mt-8 text-emerald-300">Follow</h2>

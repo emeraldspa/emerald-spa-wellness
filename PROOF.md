@@ -351,3 +351,140 @@ was adding around it.
 | Console and page errors | 0 |
 | Map embed | Named pin with info card |
 | WhatsApp prefill | Preview matches the outgoing link |
+
+
+---
+
+# ROUND 5
+
+## Client photography
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Discovery | Pull the bin | filebin.net/1vl5i90bp43nd7b9 | curl | 28 photographs and one 28.3s video. One file kept returning the interstitial until the `verified` cookie was sent explicitly | `downloads/round5/raw` | 2026-08-13 02:00 | All 29 retrieved |
+| Verify | Identify every frame | 28 photographs | contact sheets, read before naming | Each slug and alt line was written after looking at the image. Nothing was named from its filename | `downloads/round5/sheet/*.jpg` | 2026-08-13 02:05 | Pass |
+| Build | Optimise | 28 photographs | `research/optimize_r5.py` | AVIF, WebP and a JPEG fallback at four widths. EXIF rotation honoured so iPhone portraits are not sideways | `web/public/media` | 2026-08-13 02:20 | Pass |
+| Verify | Manifest | `src/data/images.json` | count | 16 entries to 44 | manifest | 2026-08-13 02:20 | Pass |
+
+## Hero video
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Discovery | Inspect the source | supplied .MOV | ffprobe | 1080x1920 portrait, 28.3s, HEVC, with a real audio track measured at RMS 5000 | terminal | 2026-08-13 02:10 | Portrait is the constraint |
+| Build | Two encodes | hero-desktop, hero-mobile | ffmpeg | A 1600x900 centre crop for landscape and the native portrait cut for phones. The browser picks one, so nobody downloads both | `public/media/hero-*.mp4` | 2026-08-13 02:35 | Pass |
+| Debug | First cut was wrong | desktop hero | screenshot | The centre crop magnified a branded soft drink can into the hero. Wrong for a spa and a third-party trademark | `qa/r5-hero-desktop.png` | 2026-08-13 02:40 | Recut |
+| Debug | Second cut still wrong | desktop hero | screenshot | Close-ups become extreme close-ups once a portrait frame is cropped to landscape. Rebuilt from wide establishing shots only | `qa/r5-hero-grid.jpg` | 2026-08-13 02:52 | Fixed |
+| Verify | Correct file per viewport | `/` | Playwright | 1440 wide serves hero-desktop.mp4 at 1600x900. 390 wide serves hero-mobile.mp4 at 720x1280. One media request each | terminal | 2026-08-13 02:55 | Pass |
+| Verify | Weight | both encodes | ls | Desktop 2.4 MB, mobile 2.0 MB, attached after load and never on reduced motion or Data Saver | terminal | 2026-08-13 02:55 | Pass |
+
+## Sound
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Build | Room tone | `/` | separate audio element | The video stays muted because no browser will autoplay audio. The room tone is armed by the first real interaction and fades in to 35 percent | `HeroVideo.tsx` | 2026-08-13 02:35 | Pass |
+| Build | Visitor control | `/` | toggle | A labelled Sound on and Sound off control, `aria-pressed`, never hidden | `HeroVideo.tsx` | 2026-08-13 02:35 | Pass |
+| Debug | Control collided | `/` | overlap assertion | Bottom right is the floating contact button and bottom left is the tagline. Measured both, moved the control under the logo, re-measured | terminal | 2026-08-13 02:50 | 0 overlaps |
+
+## Fresha announcements
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Discovery | Is there an announcements surface | Fresha venue page | Playwright keyword scan | No announcements page exists. The platform exposes Deals and Promotions, which this site already holds as structured data | terminal | 2026-08-13 02:15 | No embed needed |
+| Build | Render offers natively | `/` | tsx | The three described packages render from the venue record. Same data, no third-party chrome, no platform name | `src/app/page.tsx` | 2026-08-13 02:25 | Pass |
+
+## Placement
+
+| Phase | Action | Target | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| Build | Gallery regrouped | `/gallery` | 40 photographs in six themed sections with jump links, spans varied by orientation | `qa/r5-gallery.png` | 2026-08-13 02:30 | Pass |
+| Build | Category photographs | `/services` | Eight categories now carry a photograph that actually documents that treatment | services page | 2026-08-13 02:28 | Pass |
+| Build | Arrival strip | `/visit` | Entrance, lounge, garden chair and welcome drink under the map | visit page | 2026-08-13 02:32 | Pass |
+| Build | Home carousel | `/` | Twelve mixed photographs instead of the original six interiors | home page | 2026-08-13 02:26 | Pass |
+
+## Round 5 verification
+
+| Check | Result |
+| --- | --- |
+| Type check | Exit 0 |
+| Lint | No warnings or errors |
+| Production build | Compiled, 19 routes |
+| axe-core, 11 routes | 0 violations |
+| Console and page errors | 0 |
+| Gallery images loaded | 40 of 40, 0 broken |
+| Reduced motion | No video attached, poster only, no sound control |
+
+
+---
+
+# ROUND 6
+
+## Asset recovery
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Debug | Gallery images blank | `/gallery` | Playwright image decode | Only 10 of 38 images loaded. Investigation showed `public/media` had lost every file added in round five, and the round five commit was absent from this repo's history | terminal | 2026-08-18 09:20 | Root caused |
+| Fix | Recover from production | 250 assets | scripted fetch from the live site | All 250 declared assets pulled back, 0 failures. Verified by decoding each file rather than trusting the byte count | terminal | 2026-08-18 09:26 | 340 decoded, 0 bad |
+| Verify | Rerun the failing check | `/gallery` | the same Playwright decode | 38 of 38 load, 0 broken | terminal | 2026-08-18 09:32 | Pass |
+
+Cause: `public/media` matches a build output directory name that the workspace
+snapshot excludes. Nothing was re-downloaded from the client and nothing was
+re-encoded.
+
+## Marble textures
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Discovery | Source marble | image search | visual inspection | Every result was watermarked Dreamstime stock, which cannot be licensed or shipped | terminal | 2026-08-18 08:40 | Rejected |
+| Build | Generate instead | three variants | `research/marble.py` | Emerald, pale and gold slabs in the brand palette | `public/media/marble-*` | 2026-08-18 08:50 | Pass |
+| Debug | First attempt read as camouflage | all three | tiled screenshot | Uniform allover veining. Real marble is calm stone with sparse directional veins, so the field was rebuilt as a soft base plus a thin ridge mask | `qa/marble.jpg` | 2026-08-18 08:55 | Rebuilt |
+| Debug | Tiles did not wrap | all three | edge delta measurement | Edge deltas about 60. The sine vein frequency was fractional, so the lattice could not wrap. Forcing a whole number took deltas to about 2 | terminal | 2026-08-18 08:52 | Fixed |
+| Verify | Weight | all three | ls | 1 to 3 KB each | terminal | 2026-08-18 08:58 | Pass |
+
+## Surface and colour
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Build | Warmer ground | `tailwind.config.ts` | token change | `#F7F5F1` to `#F2EFE8`. The old value read as near white and flat | config | 2026-08-18 09:00 | Pass |
+| Verify | Contrast held | ink on ground | measured | 14.73 to 1, comfortably above AA | terminal | 2026-08-18 09:00 | Pass |
+| Build | Paper grain | all pages | inline SVG noise | Fixed, very low contrast, no extra request | `globals.css` | 2026-08-18 09:02 | Pass |
+
+## Vouchers
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Build | Voucher page | `/vouchers` | tsx | Marble hero, value and occasion chooser, optional names, live message preview | `qa/r6-vouchers.png` | 2026-08-18 09:40 | Pass |
+| Build | Popup | site wide | tsx | 22 second delay, once per visitor, dismissed for 30 days, never on booking, WhatsApp or voucher pages | `qa/r6-popup.png` | 2026-08-18 09:45 | Pass |
+| Verify | Popup behaviour | `/` | Playwright | Absent before the delay, present after, closes on Escape, absent after dismissal and reload | terminal | 2026-08-18 09:50 | Pass |
+| Verify | Order message | `/vouchers` | Playwright | WhatsApp and email both carry the same composed text, and the on screen preview matches the link exactly | terminal | 2026-08-18 09:50 | Pass |
+
+Nothing is charged and nothing is stored. Staff confirm payment, then issue the
+voucher number and expiry by hand, which is how the spa already works.
+
+## Layout
+
+| Phase | Action | Target | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| Build | Equal slides | Carousel | All twelve slides measured at exactly 420px | terminal | 2026-08-18 09:15 | Pass |
+| Build | Gallery rhythm | `/gallery` | Replaced the metronomic span rule with an irregular rhythm that never repeats a pair, while still refusing to squeeze a landscape photograph into a narrow column | `qa/r6-gal-a.jpg` | 2026-08-18 09:35 | Pass |
+| Build | Booking routes per category | `/services` | Every category ends with a direct booking action and a WhatsApp conversation | services page | 2026-08-18 09:10 | Pass |
+| Build | Published mailboxes | FooterFull | info, bookings and complaints at emeraldspacc.com | footer | 2026-08-18 09:12 | Pass |
+
+## Headless WordPress
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Discovery | Inspect the install | admin.emeraldspacc.com | REST API | WordPress 7.0.4 on Hostinger, Twenty Twenty Five, REST open, 1 post, 0 pages, 0 media | terminal | 2026-08-18 08:30 | Live but empty |
+| Plan | Document the approach | docs | written | What WordPress should own, what it must not, promotions as popups plus pages, and why the REST API is correct rather than scraping | `docs/HEADLESS_WORDPRESS.md` | 2026-08-18 10:05 | Prepared, not connected |
+
+## Round 6 verification
+
+| Check | Result |
+| --- | --- |
+| Type check | Exit 0 |
+| Lint | No warnings or errors |
+| Production build | Compiled, 20 routes |
+| axe-core, 12 routes, live | 0 violations |
+| Console and page errors, live | 0 |
+| Gallery images, live | 38 of 38 |
+| Hero video, live | hero-desktop.mp4 at 1600 wide, playing |
+| Voucher order link, live | Correct on WhatsApp and email |

@@ -1,490 +1,1626 @@
 {
-  "treatment-room": {
-    "alt": "Cozy massage room at Emerald Spa & Wellness Centre in Windhoek, Khomas Region",
-    "width": 1600,
-    "height": 900,
-    "src": "/media/treatment-room-1600.jpg",
-    "webp": [
-      {
-        "w": 480,
-        "p": "/media/treatment-room-480.webp"
-      },
-      {
-        "w": 768,
-        "p": "/media/treatment-room-768.webp"
-      },
-      {
-        "w": 1200,
-        "p": "/media/treatment-room-1200.webp"
-      },
-      {
-        "w": 1600,
-        "p": "/media/treatment-room-1600.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 480,
-        "p": "/media/treatment-room-480.avif"
-      },
-      {
-        "w": 768,
-        "p": "/media/treatment-room-768.avif"
-      },
-      {
-        "w": 1200,
-        "p": "/media/treatment-room-1200.avif"
-      },
-      {
-        "w": 1600,
-        "p": "/media/treatment-room-1600.avif"
-      }
-    ]
-  },
-  "spa-retreat": {
-    "alt": "Relaxing treatment room at Emerald Spa & Wellness Centre, Windhoek, featuring massage beds",
-    "width": 1600,
-    "height": 900,
-    "src": "/media/spa-retreat-1600.jpg",
-    "webp": [
-      {
-        "w": 480,
-        "p": "/media/spa-retreat-480.webp"
-      },
-      {
-        "w": 768,
-        "p": "/media/spa-retreat-768.webp"
-      },
-      {
-        "w": 1200,
-        "p": "/media/spa-retreat-1200.webp"
-      },
-      {
-        "w": 1600,
-        "p": "/media/spa-retreat-1600.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 480,
-        "p": "/media/spa-retreat-480.avif"
-      },
-      {
-        "w": 768,
-        "p": "/media/spa-retreat-768.avif"
-      },
-      {
-        "w": 1200,
-        "p": "/media/spa-retreat-1200.avif"
-      },
-      {
-        "w": 1600,
-        "p": "/media/spa-retreat-1600.avif"
-      }
-    ]
-  },
-  "green-escape": {
-    "alt": "Green garden escape at Emerald Spa & Wellness Centre, Windhoek West",
-    "width": 1443,
-    "height": 812,
-    "src": "/media/green-escape-1443.jpg",
-    "webp": [
-      {
-        "w": 480,
-        "p": "/media/green-escape-480.webp"
-      },
-      {
-        "w": 768,
-        "p": "/media/green-escape-768.webp"
-      },
-      {
-        "w": 1200,
-        "p": "/media/green-escape-1200.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 480,
-        "p": "/media/green-escape-480.avif"
-      },
-      {
-        "w": 768,
-        "p": "/media/green-escape-768.avif"
-      },
-      {
-        "w": 1200,
-        "p": "/media/green-escape-1200.avif"
-      }
-    ]
-  },
-  "reception": {
-    "alt": "Elegant reception at Emerald Spa & Wellness Centre, Windhoek",
-    "width": 1600,
-    "height": 900,
-    "src": "/media/reception-1600.jpg",
-    "webp": [
-      {
-        "w": 480,
-        "p": "/media/reception-480.webp"
-      },
-      {
-        "w": 768,
-        "p": "/media/reception-768.webp"
-      },
-      {
-        "w": 1200,
-        "p": "/media/reception-1200.webp"
-      },
-      {
-        "w": 1600,
-        "p": "/media/reception-1600.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 480,
-        "p": "/media/reception-480.avif"
-      },
-      {
-        "w": 768,
-        "p": "/media/reception-768.avif"
-      },
-      {
-        "w": 1200,
-        "p": "/media/reception-1200.avif"
-      },
-      {
-        "w": 1600,
-        "p": "/media/reception-1600.avif"
-      }
-    ]
-  },
-  "serenity-garden": {
-    "alt": "Serenity garden at Emerald Spa & Wellness Centre, Windhoek West",
-    "width": 1600,
-    "height": 900,
-    "src": "/media/serenity-garden-1600.jpg",
-    "webp": [
-      {
-        "w": 480,
-        "p": "/media/serenity-garden-480.webp"
-      },
-      {
-        "w": 768,
-        "p": "/media/serenity-garden-768.webp"
-      },
-      {
-        "w": 1200,
-        "p": "/media/serenity-garden-1200.webp"
-      },
-      {
-        "w": 1600,
-        "p": "/media/serenity-garden-1600.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 480,
-        "p": "/media/serenity-garden-480.avif"
-      },
-      {
-        "w": 768,
-        "p": "/media/serenity-garden-768.avif"
-      },
-      {
-        "w": 1200,
-        "p": "/media/serenity-garden-1200.avif"
-      },
-      {
-        "w": 1600,
-        "p": "/media/serenity-garden-1600.avif"
-      }
-    ]
-  },
-  "candlescape": {
-    "alt": "Candlelit treatment setting at Emerald Spa & Wellness Centre, Windhoek",
-    "width": 1320,
-    "height": 742,
-    "src": "/media/candlescape-1320.jpg",
-    "webp": [
-      {
-        "w": 480,
-        "p": "/media/candlescape-480.webp"
-      },
-      {
-        "w": 768,
-        "p": "/media/candlescape-768.webp"
-      },
-      {
-        "w": 1200,
-        "p": "/media/candlescape-1200.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 480,
-        "p": "/media/candlescape-480.avif"
-      },
-      {
-        "w": 768,
-        "p": "/media/candlescape-768.avif"
-      },
-      {
-        "w": 1200,
-        "p": "/media/candlescape-1200.avif"
-      }
-    ]
-  },
-  "portfolio-1": {
-    "alt": "Emerald Spa promotional graphic reading Facials For Days, with booking details",
-    "width": 864,
-    "height": 1080,
-    "src": "/media/portfolio-1-864.jpg",
-    "webp": [
-      {
-        "w": 480,
-        "p": "/media/portfolio-1-480.webp"
-      },
-      {
-        "w": 768,
-        "p": "/media/portfolio-1-768.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 480,
-        "p": "/media/portfolio-1-480.avif"
-      },
-      {
-        "w": 768,
-        "p": "/media/portfolio-1-768.avif"
-      }
-    ]
-  },
-  "portfolio-2": {
-    "alt": "Emerald Spa promotional graphic reading You Need To Find Time For Yourself",
-    "width": 864,
-    "height": 1080,
-    "src": "/media/portfolio-2-864.jpg",
-    "webp": [
-      {
-        "w": 480,
-        "p": "/media/portfolio-2-480.webp"
-      },
-      {
-        "w": 768,
-        "p": "/media/portfolio-2-768.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 480,
-        "p": "/media/portfolio-2-480.avif"
-      },
-      {
-        "w": 768,
-        "p": "/media/portfolio-2-768.avif"
-      }
-    ]
-  },
-  "portfolio-3": {
-    "alt": "Emerald Spa promotional graphic reading Allow Yourself To Relax, Beauty and Spa",
-    "width": 864,
-    "height": 1080,
-    "src": "/media/portfolio-3-864.jpg",
-    "webp": [
-      {
-        "w": 480,
-        "p": "/media/portfolio-3-480.webp"
-      },
-      {
-        "w": 768,
-        "p": "/media/portfolio-3-768.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 480,
-        "p": "/media/portfolio-3-480.avif"
-      },
-      {
-        "w": 768,
-        "p": "/media/portfolio-3-768.avif"
-      }
-    ]
-  },
-  "portfolio-4": {
-    "alt": "Emerald Spa opening hours graphic for Monday to Saturday at Blackett Street No. 7",
-    "width": 607,
-    "height": 1080,
-    "src": "/media/portfolio-4-607.jpg",
-    "webp": [
-      {
-        "w": 480,
-        "p": "/media/portfolio-4-480.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 480,
-        "p": "/media/portfolio-4-480.avif"
-      }
-    ]
-  },
-  "team-laurensia": {
-    "alt": "Laurensia, Spa Therapist at Emerald Spa & Wellness Centre",
-    "width": 340,
-    "height": 340,
-    "src": "/media/team-laurensia-320.jpg",
-    "webp": [
-      {
-        "w": 160,
-        "p": "/media/team-laurensia-160.webp"
-      },
-      {
-        "w": 320,
-        "p": "/media/team-laurensia-320.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 160,
-        "p": "/media/team-laurensia-160.avif"
-      },
-      {
-        "w": 320,
-        "p": "/media/team-laurensia-320.avif"
-      }
-    ]
-  },
-  "team-daivienn": {
-    "alt": "Daivienn, Spa Professional at Emerald Spa & Wellness Centre",
-    "width": 340,
-    "height": 340,
-    "src": "/media/team-daivienn-320.jpg",
-    "webp": [
-      {
-        "w": 160,
-        "p": "/media/team-daivienn-160.webp"
-      },
-      {
-        "w": 320,
-        "p": "/media/team-daivienn-320.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 160,
-        "p": "/media/team-daivienn-160.avif"
-      },
-      {
-        "w": 320,
-        "p": "/media/team-daivienn-320.avif"
-      }
-    ]
-  },
-  "team-diana": {
-    "alt": "Diana, Therapist at Emerald Spa & Wellness Centre",
-    "width": 340,
-    "height": 340,
-    "src": "/media/team-diana-320.jpg",
-    "webp": [
-      {
-        "w": 160,
-        "p": "/media/team-diana-160.webp"
-      },
-      {
-        "w": 320,
-        "p": "/media/team-diana-320.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 160,
-        "p": "/media/team-diana-160.avif"
-      },
-      {
-        "w": 320,
-        "p": "/media/team-diana-320.avif"
-      }
-    ]
-  },
-  "team-shanice-khadijah": {
-    "alt": "Shanice Khadijah, Spa Professional at Emerald Spa & Wellness Centre",
-    "width": 340,
-    "height": 340,
-    "src": "/media/team-shanice-khadijah-320.jpg",
-    "webp": [
-      {
-        "w": 160,
-        "p": "/media/team-shanice-khadijah-160.webp"
-      },
-      {
-        "w": 320,
-        "p": "/media/team-shanice-khadijah-320.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 160,
-        "p": "/media/team-shanice-khadijah-160.avif"
-      },
-      {
-        "w": 320,
-        "p": "/media/team-shanice-khadijah-320.avif"
-      }
-    ]
-  },
-  "team-merie-ann-lulu": {
-    "alt": "Merie-Ann (Lulu), Spa Manager at Emerald Spa & Wellness Centre",
-    "width": 340,
-    "height": 340,
-    "src": "/media/team-merie-ann-lulu-320.jpg",
-    "webp": [
-      {
-        "w": 160,
-        "p": "/media/team-merie-ann-lulu-160.webp"
-      },
-      {
-        "w": 320,
-        "p": "/media/team-merie-ann-lulu-320.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 160,
-        "p": "/media/team-merie-ann-lulu-160.avif"
-      },
-      {
-        "w": 320,
-        "p": "/media/team-merie-ann-lulu-320.avif"
-      }
-    ]
-  },
-  "team-emerald-spa": {
-    "alt": "Emerald Spa, Hydrotherapy at Emerald Spa & Wellness Centre",
-    "width": 340,
-    "height": 340,
-    "src": "/media/team-emerald-spa-320.jpg",
-    "webp": [
-      {
-        "w": 160,
-        "p": "/media/team-emerald-spa-160.webp"
-      },
-      {
-        "w": 320,
-        "p": "/media/team-emerald-spa-320.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 160,
-        "p": "/media/team-emerald-spa-160.avif"
-      },
-      {
-        "w": 320,
-        "p": "/media/team-emerald-spa-320.avif"
-      }
-    ]
-  }
+ "treatment-room": {
+  "alt": "Cozy massage room at Emerald Spa & Wellness Centre in Windhoek, Khomas Region",
+  "width": 1600,
+  "height": 900,
+  "src": "/media/treatment-room-1600.jpg",
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/treatment-room-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/treatment-room-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/treatment-room-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/treatment-room-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/treatment-room-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/treatment-room-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/treatment-room-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/treatment-room-1600.avif"
+   }
+  ]
+ },
+ "spa-retreat": {
+  "alt": "Relaxing treatment room at Emerald Spa & Wellness Centre, Windhoek, featuring massage beds",
+  "width": 1600,
+  "height": 900,
+  "src": "/media/spa-retreat-1600.jpg",
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/spa-retreat-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/spa-retreat-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/spa-retreat-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/spa-retreat-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/spa-retreat-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/spa-retreat-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/spa-retreat-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/spa-retreat-1600.avif"
+   }
+  ]
+ },
+ "green-escape": {
+  "alt": "Green garden escape at Emerald Spa & Wellness Centre, Windhoek West",
+  "width": 1443,
+  "height": 812,
+  "src": "/media/green-escape-1443.jpg",
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/green-escape-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/green-escape-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/green-escape-1200.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/green-escape-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/green-escape-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/green-escape-1200.avif"
+   }
+  ]
+ },
+ "reception": {
+  "alt": "Elegant reception at Emerald Spa & Wellness Centre, Windhoek",
+  "width": 1600,
+  "height": 900,
+  "src": "/media/reception-1600.jpg",
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/reception-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/reception-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/reception-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/reception-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/reception-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/reception-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/reception-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/reception-1600.avif"
+   }
+  ]
+ },
+ "serenity-garden": {
+  "alt": "Serenity garden at Emerald Spa & Wellness Centre, Windhoek West",
+  "width": 1600,
+  "height": 900,
+  "src": "/media/serenity-garden-1600.jpg",
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/serenity-garden-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/serenity-garden-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/serenity-garden-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/serenity-garden-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/serenity-garden-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/serenity-garden-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/serenity-garden-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/serenity-garden-1600.avif"
+   }
+  ]
+ },
+ "candlescape": {
+  "alt": "Candlelit treatment setting at Emerald Spa & Wellness Centre, Windhoek",
+  "width": 1320,
+  "height": 742,
+  "src": "/media/candlescape-1320.jpg",
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/candlescape-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/candlescape-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/candlescape-1200.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/candlescape-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/candlescape-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/candlescape-1200.avif"
+   }
+  ]
+ },
+ "portfolio-1": {
+  "alt": "Emerald Spa promotional graphic reading Facials For Days, with booking details",
+  "width": 864,
+  "height": 1080,
+  "src": "/media/portfolio-1-864.jpg",
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/portfolio-1-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/portfolio-1-768.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/portfolio-1-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/portfolio-1-768.avif"
+   }
+  ]
+ },
+ "portfolio-2": {
+  "alt": "Emerald Spa promotional graphic reading You Need To Find Time For Yourself",
+  "width": 864,
+  "height": 1080,
+  "src": "/media/portfolio-2-864.jpg",
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/portfolio-2-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/portfolio-2-768.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/portfolio-2-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/portfolio-2-768.avif"
+   }
+  ]
+ },
+ "portfolio-3": {
+  "alt": "Emerald Spa promotional graphic reading Allow Yourself To Relax, Beauty and Spa",
+  "width": 864,
+  "height": 1080,
+  "src": "/media/portfolio-3-864.jpg",
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/portfolio-3-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/portfolio-3-768.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/portfolio-3-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/portfolio-3-768.avif"
+   }
+  ]
+ },
+ "portfolio-4": {
+  "alt": "Emerald Spa opening hours graphic for Monday to Saturday at Blackett Street No. 7",
+  "width": 607,
+  "height": 1080,
+  "src": "/media/portfolio-4-607.jpg",
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/portfolio-4-480.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/portfolio-4-480.avif"
+   }
+  ]
+ },
+ "team-laurensia": {
+  "alt": "Laurensia, Spa Therapist at Emerald Spa & Wellness Centre",
+  "width": 340,
+  "height": 340,
+  "src": "/media/team-laurensia-320.jpg",
+  "webp": [
+   {
+    "w": 160,
+    "p": "/media/team-laurensia-160.webp"
+   },
+   {
+    "w": 320,
+    "p": "/media/team-laurensia-320.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 160,
+    "p": "/media/team-laurensia-160.avif"
+   },
+   {
+    "w": 320,
+    "p": "/media/team-laurensia-320.avif"
+   }
+  ]
+ },
+ "team-daivienn": {
+  "alt": "Daivienn, Spa Professional at Emerald Spa & Wellness Centre",
+  "width": 340,
+  "height": 340,
+  "src": "/media/team-daivienn-320.jpg",
+  "webp": [
+   {
+    "w": 160,
+    "p": "/media/team-daivienn-160.webp"
+   },
+   {
+    "w": 320,
+    "p": "/media/team-daivienn-320.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 160,
+    "p": "/media/team-daivienn-160.avif"
+   },
+   {
+    "w": 320,
+    "p": "/media/team-daivienn-320.avif"
+   }
+  ]
+ },
+ "team-diana": {
+  "alt": "Diana, Therapist at Emerald Spa & Wellness Centre",
+  "width": 340,
+  "height": 340,
+  "src": "/media/team-diana-320.jpg",
+  "webp": [
+   {
+    "w": 160,
+    "p": "/media/team-diana-160.webp"
+   },
+   {
+    "w": 320,
+    "p": "/media/team-diana-320.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 160,
+    "p": "/media/team-diana-160.avif"
+   },
+   {
+    "w": 320,
+    "p": "/media/team-diana-320.avif"
+   }
+  ]
+ },
+ "team-shanice-khadijah": {
+  "alt": "Shanice Khadijah, Spa Professional at Emerald Spa & Wellness Centre",
+  "width": 340,
+  "height": 340,
+  "src": "/media/team-shanice-khadijah-320.jpg",
+  "webp": [
+   {
+    "w": 160,
+    "p": "/media/team-shanice-khadijah-160.webp"
+   },
+   {
+    "w": 320,
+    "p": "/media/team-shanice-khadijah-320.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 160,
+    "p": "/media/team-shanice-khadijah-160.avif"
+   },
+   {
+    "w": 320,
+    "p": "/media/team-shanice-khadijah-320.avif"
+   }
+  ]
+ },
+ "team-merie-ann-lulu": {
+  "alt": "Merie-Ann (Lulu), Spa Manager at Emerald Spa & Wellness Centre",
+  "width": 340,
+  "height": 340,
+  "src": "/media/team-merie-ann-lulu-320.jpg",
+  "webp": [
+   {
+    "w": 160,
+    "p": "/media/team-merie-ann-lulu-160.webp"
+   },
+   {
+    "w": 320,
+    "p": "/media/team-merie-ann-lulu-320.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 160,
+    "p": "/media/team-merie-ann-lulu-160.avif"
+   },
+   {
+    "w": 320,
+    "p": "/media/team-merie-ann-lulu-320.avif"
+   }
+  ]
+ },
+ "team-emerald-spa": {
+  "alt": "Emerald Spa, Hydrotherapy at Emerald Spa & Wellness Centre",
+  "width": 340,
+  "height": 340,
+  "src": "/media/team-emerald-spa-320.jpg",
+  "webp": [
+   {
+    "w": 160,
+    "p": "/media/team-emerald-spa-160.webp"
+   },
+   {
+    "w": 320,
+    "p": "/media/team-emerald-spa-320.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 160,
+    "p": "/media/team-emerald-spa-160.avif"
+   },
+   {
+    "w": 320,
+    "p": "/media/team-emerald-spa-320.avif"
+   }
+  ]
+ },
+ "garden-lounge-guests": {
+  "alt": "Two guests in green robes relaxing together on the garden sofa at Emerald Spa & Wellness Centre",
+  "width": 1600,
+  "height": 900,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/garden-lounge-guests-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/garden-lounge-guests-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/garden-lounge-guests-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/garden-lounge-guests-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/garden-lounge-guests-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/garden-lounge-guests-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/garden-lounge-guests-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/garden-lounge-guests-1600.avif"
+   }
+  ],
+  "src": "/media/garden-lounge-guests-1600.jpg"
+ },
+ "robe-garden-seat": {
+  "alt": "Guest in an emerald satin robe seated in the outdoor garden lounge",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/robe-garden-seat-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/robe-garden-seat-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/robe-garden-seat-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/robe-garden-seat-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/robe-garden-seat-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/robe-garden-seat-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/robe-garden-seat-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/robe-garden-seat-1600.avif"
+   }
+  ],
+  "src": "/media/robe-garden-seat-1600.jpg"
+ },
+ "hydrotherapy-suite": {
+  "alt": "Hydrotherapy suite with a filled soaking tub and hanging plants",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/hydrotherapy-suite-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/hydrotherapy-suite-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/hydrotherapy-suite-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/hydrotherapy-suite-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/hydrotherapy-suite-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/hydrotherapy-suite-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/hydrotherapy-suite-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/hydrotherapy-suite-1600.avif"
+   }
+  ],
+  "src": "/media/hydrotherapy-suite-1600.jpg"
+ },
+ "hydrotherapy-tub-set": {
+  "alt": "Hydrotherapy tub prepared with a serving tray and trailing greenery",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/hydrotherapy-tub-set-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/hydrotherapy-tub-set-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/hydrotherapy-tub-set-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/hydrotherapy-tub-set-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/hydrotherapy-tub-set-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/hydrotherapy-tub-set-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/hydrotherapy-tub-set-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/hydrotherapy-tub-set-1600.avif"
+   }
+  ],
+  "src": "/media/hydrotherapy-tub-set-1600.jpg"
+ },
+ "hydrotherapy-soak": {
+  "alt": "Guest enjoying a drink while soaking in the hydrotherapy tub",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/hydrotherapy-soak-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/hydrotherapy-soak-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/hydrotherapy-soak-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/hydrotherapy-soak-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/hydrotherapy-soak-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/hydrotherapy-soak-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/hydrotherapy-soak-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/hydrotherapy-soak-1600.avif"
+   }
+  ],
+  "src": "/media/hydrotherapy-soak-1600.jpg"
+ },
+ "hydrotherapy-guest": {
+  "alt": "Guest relaxing in the warm hydrotherapy tub",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/hydrotherapy-guest-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/hydrotherapy-guest-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/hydrotherapy-guest-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/hydrotherapy-guest-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/hydrotherapy-guest-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/hydrotherapy-guest-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/hydrotherapy-guest-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/hydrotherapy-guest-1600.avif"
+   }
+  ],
+  "src": "/media/hydrotherapy-guest-1600.jpg"
+ },
+ "towel-shelf": {
+  "alt": "Rolled towels and candles arranged on the treatment room shelving",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/towel-shelf-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/towel-shelf-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/towel-shelf-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/towel-shelf-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/towel-shelf-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/towel-shelf-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/towel-shelf-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/towel-shelf-1600.avif"
+   }
+  ],
+  "src": "/media/towel-shelf-1600.jpg"
+ },
+ "retail-display": {
+  "alt": "Skincare and body care products on the display shelving at reception",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/retail-display-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/retail-display-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/retail-display-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/retail-display-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/retail-display-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/retail-display-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/retail-display-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/retail-display-1600.avif"
+   }
+  ],
+  "src": "/media/retail-display-1600.jpg"
+ },
+ "nail-art": {
+  "alt": "Finished nail set in soft pink with glitter detail, photographed against a foliage wall",
+  "width": 1320,
+  "height": 2331,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/nail-art-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/nail-art-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/nail-art-1200.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/nail-art-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/nail-art-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/nail-art-1200.avif"
+   }
+  ],
+  "src": "/media/nail-art-1320.jpg"
+ },
+ "facial-treatment": {
+  "alt": "Guest resting during a facial treatment with a headband and warm towel",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/facial-treatment-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/facial-treatment-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/facial-treatment-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/facial-treatment-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/facial-treatment-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/facial-treatment-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/facial-treatment-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/facial-treatment-1600.avif"
+   }
+  ],
+  "src": "/media/facial-treatment-1600.jpg"
+ },
+ "brow-result": {
+  "alt": "Guest smiling after a brow shaping treatment",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/brow-result-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/brow-result-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/brow-result-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/brow-result-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/brow-result-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/brow-result-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/brow-result-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/brow-result-1600.avif"
+   }
+  ],
+  "src": "/media/brow-result-1600.jpg"
+ },
+ "brow-detail": {
+  "alt": "Close view of shaped and tinted brows after treatment",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/brow-detail-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/brow-detail-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/brow-detail-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/brow-detail-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/brow-detail-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/brow-detail-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/brow-detail-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/brow-detail-1600.avif"
+   }
+  ],
+  "src": "/media/brow-detail-1600.jpg"
+ },
+ "treatment-mirror": {
+  "alt": "Guest checking the result in a hand mirror at the end of a treatment",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/treatment-mirror-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/treatment-mirror-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/treatment-mirror-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/treatment-mirror-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/treatment-mirror-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/treatment-mirror-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/treatment-mirror-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/treatment-mirror-1600.avif"
+   }
+  ],
+  "src": "/media/treatment-mirror-1600.jpg"
+ },
+ "reception-lounge": {
+  "alt": "Reception lounge with a deep green velvet sofa beneath the wall artwork",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/reception-lounge-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/reception-lounge-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/reception-lounge-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/reception-lounge-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/reception-lounge-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/reception-lounge-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/reception-lounge-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/reception-lounge-1600.avif"
+   }
+  ],
+  "src": "/media/reception-lounge-1600.jpg"
+ },
+ "welcome-drink": {
+  "alt": "Chilled welcome drink served to a guest in a robe",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/welcome-drink-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/welcome-drink-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/welcome-drink-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/welcome-drink-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/welcome-drink-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/welcome-drink-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/welcome-drink-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/welcome-drink-1600.avif"
+   }
+  ],
+  "src": "/media/welcome-drink-1600.jpg"
+ },
+ "treatment-bed-guest": {
+  "alt": "Guest smiling on the treatment bed during a brow appointment",
+  "width": 1600,
+  "height": 900,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/treatment-bed-guest-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/treatment-bed-guest-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/treatment-bed-guest-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/treatment-bed-guest-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/treatment-bed-guest-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/treatment-bed-guest-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/treatment-bed-guest-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/treatment-bed-guest-1600.avif"
+   }
+  ],
+  "src": "/media/treatment-bed-guest-1600.jpg"
+ },
+ "lash-extensions": {
+  "alt": "Close view of a completed eyelash extension set",
+  "width": 1600,
+  "height": 900,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/lash-extensions-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/lash-extensions-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/lash-extensions-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/lash-extensions-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/lash-extensions-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/lash-extensions-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/lash-extensions-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/lash-extensions-1600.avif"
+   }
+  ],
+  "src": "/media/lash-extensions-1600.jpg"
+ },
+ "lash-detail": {
+  "alt": "Detail of individual eyelash extensions after application",
+  "width": 1600,
+  "height": 900,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/lash-detail-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/lash-detail-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/lash-detail-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/lash-detail-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/lash-detail-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/lash-detail-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/lash-detail-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/lash-detail-1600.avif"
+   }
+  ],
+  "src": "/media/lash-detail-1600.jpg"
+ },
+ "garden-planting": {
+  "alt": "Aloe and succulent planting in the spa garden",
+  "width": 1320,
+  "height": 2337,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/garden-planting-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/garden-planting-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/garden-planting-1200.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/garden-planting-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/garden-planting-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/garden-planting-1200.avif"
+   }
+  ],
+  "src": "/media/garden-planting-1320.jpg"
+ },
+ "garden-pond": {
+  "alt": "Landscaped pond and seating area in the spa garden",
+  "width": 1320,
+  "height": 2320,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/garden-pond-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/garden-pond-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/garden-pond-1200.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/garden-pond-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/garden-pond-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/garden-pond-1200.avif"
+   }
+  ],
+  "src": "/media/garden-pond-1320.jpg"
+ },
+ "garden-walk": {
+  "alt": "Green walkway lined with a living hedge wall in the spa garden",
+  "width": 1320,
+  "height": 2313,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/garden-walk-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/garden-walk-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/garden-walk-1200.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/garden-walk-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/garden-walk-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/garden-walk-1200.avif"
+   }
+  ],
+  "src": "/media/garden-walk-1320.jpg"
+ },
+ "garden-signage": {
+  "alt": "Emerald Spa & Wellness Centre garden with the entrance signage",
+  "width": 1320,
+  "height": 2316,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/garden-signage-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/garden-signage-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/garden-signage-1200.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/garden-signage-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/garden-signage-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/garden-signage-1200.avif"
+   }
+  ],
+  "src": "/media/garden-signage-1320.jpg"
+ },
+ "hanging-chair": {
+  "alt": "Guest reading in the hanging egg chair under the garden tree",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/hanging-chair-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/hanging-chair-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/hanging-chair-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/hanging-chair-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/hanging-chair-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/hanging-chair-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/hanging-chair-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/hanging-chair-1600.avif"
+   }
+  ],
+  "src": "/media/hanging-chair-1600.jpg"
+ },
+ "robe-garden-stand": {
+  "alt": "Guest in an emerald robe holding a warm drink in the garden",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/robe-garden-stand-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/robe-garden-stand-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/robe-garden-stand-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/robe-garden-stand-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/robe-garden-stand-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/robe-garden-stand-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/robe-garden-stand-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/robe-garden-stand-1600.avif"
+   }
+  ],
+  "src": "/media/robe-garden-stand-1600.jpg"
+ },
+ "garden-reading": {
+  "alt": "Guest reading with a cold drink on the garden lounger",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/garden-reading-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/garden-reading-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/garden-reading-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/garden-reading-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/garden-reading-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/garden-reading-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/garden-reading-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/garden-reading-1600.avif"
+   }
+  ],
+  "src": "/media/garden-reading-1600.jpg"
+ },
+ "wine-pair": {
+  "alt": "Glasses of red and white wine served on the marble counter",
+  "width": 1600,
+  "height": 900,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/wine-pair-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/wine-pair-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/wine-pair-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/wine-pair-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/wine-pair-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/wine-pair-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/wine-pair-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/wine-pair-1600.avif"
+   }
+  ],
+  "src": "/media/wine-pair-1600.jpg"
+ },
+ "wine-service": {
+  "alt": "Wine service at Emerald Spa & Wellness Centre",
+  "width": 1600,
+  "height": 2844,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/wine-service-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/wine-service-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/wine-service-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/wine-service-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/wine-service-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/wine-service-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/wine-service-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/wine-service-1600.avif"
+   }
+  ],
+  "src": "/media/wine-service-1600.jpg"
+ },
+ "refreshments": {
+  "alt": "Cold refreshments available to guests during a visit",
+  "width": 1600,
+  "height": 2842,
+  "webp": [
+   {
+    "w": 480,
+    "p": "/media/refreshments-480.webp"
+   },
+   {
+    "w": 768,
+    "p": "/media/refreshments-768.webp"
+   },
+   {
+    "w": 1200,
+    "p": "/media/refreshments-1200.webp"
+   },
+   {
+    "w": 1600,
+    "p": "/media/refreshments-1600.webp"
+   }
+  ],
+  "avif": [
+   {
+    "w": 480,
+    "p": "/media/refreshments-480.avif"
+   },
+   {
+    "w": 768,
+    "p": "/media/refreshments-768.avif"
+   },
+   {
+    "w": 1200,
+    "p": "/media/refreshments-1200.avif"
+   },
+   {
+    "w": 1600,
+    "p": "/media/refreshments-1600.avif"
+   }
+  ],
+  "src": "/media/refreshments-1600.jpg"
+ }
 }

@@ -166,3 +166,77 @@
     scroll-behavior: auto !important;
   }
 }
+
+/*
+  Paper grain.
+
+  A flat off-white still reads as a screen colour rather than a surface. This
+  lays a very low contrast fibre noise over the whole page, which the eye
+  reads as texture without ever competing with the type. The SVG is inline as
+  a data URI so it costs no request, and it is fixed so the grain does not
+  swim while the page scrolls.
+*/
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+}
+
+/* Content sits above the grain. */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/*
+  Marble surfaces. The texture is generated in the brand palette and tiles
+  seamlessly, so it can be repeated at any section size. Kept faint: it is a
+  ground, not a pattern feature.
+*/
+.surface-marble-pale {
+  background-color: theme('colors.groundDeep');
+  background-image: image-set(
+    url('/media/marble-pale.avif') type('image/avif'),
+    url('/media/marble-pale.webp') type('image/webp')
+  );
+  background-size: 620px;
+  background-repeat: repeat;
+}
+
+.surface-marble-emerald {
+  background-color: theme('colors.emerald.900');
+  background-image: image-set(
+    url('/media/marble-emerald.avif') type('image/avif'),
+    url('/media/marble-emerald.webp') type('image/webp')
+  );
+  background-size: 720px;
+  background-repeat: repeat;
+}
+
+.surface-marble-gold {
+  background-color: theme('colors.groundDeep');
+  background-image: image-set(
+    url('/media/marble-gold.avif') type('image/avif'),
+    url('/media/marble-gold.webp') type('image/webp')
+  );
+  background-size: 680px;
+  background-repeat: repeat;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { opacity: 0.35; }
+}
+
+/* Voucher card entrance. Transform and opacity only, so it stays cheap. */
+@keyframes voucher-pop-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.voucher-pop { animation: voucher-pop-in 0.45s cubic-bezier(0.19, 1, 0.22, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .voucher-pop { animation: none; }
+}

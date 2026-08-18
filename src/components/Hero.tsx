@@ -34,21 +34,20 @@ export function Hero({ menuButtonId }: { menuButtonId: string }) {
   return (
     <section className="relative flex min-h-[100svh] flex-col overflow-hidden">
       {/*
-        The supplied footage is chrome with pink and violet iridescence.
-        Neutralising to sepia first, then rotating the hue, swings the whole
-        frame into the emerald and teal range so the video reinforces the
-        brand instead of competing with it.
+        Real walkthrough footage of the venue: reception, the garden, the
+        treatment room. It needs no hue surgery, only a gentle lift, so the
+        rooms read as themselves rather than as a graded abstraction.
       */}
       <HeroVideo
-        poster="/media/reception-1600.jpg"
-        filter="sepia(1) hue-rotate(105deg) saturate(3.2) brightness(1.04) contrast(1.06)"
+        poster="/media/hero-poster-1600.jpg"
+        filter="saturate(1.08) contrast(1.03)"
       />
 
-      {/* Ground veil lifts the frame so black body text clears AA contrast. */}
-      <div aria-hidden="true" className="absolute inset-0 bg-ground/62" />
+      {/* Veil lifts the frame so ink body text clears AA contrast over footage. */}
+      <div aria-hidden="true" className="absolute inset-0 bg-ground/55" />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-b from-ground/70 via-ground/35 to-ground/80"
+        className="absolute inset-0 bg-gradient-to-b from-ground/72 via-ground/30 to-ground/82"
       />
 
       <div className="relative z-10 flex min-h-[100svh] flex-col">

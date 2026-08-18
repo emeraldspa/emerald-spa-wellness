@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
 import type { ReactNode } from 'react';
 import { FloatingActions } from '@/components/FloatingActions';
+import { VoucherPopup } from '@/components/VoucherPopup';
 import { GOOGLE_MAPS_URL, SITE_URL, site } from '@/lib/site';
 import './globals.css';
 
@@ -147,6 +148,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </a>
         {children}
         <FloatingActions />
+        <VoucherPopup />
       </body>
     </html>
   );

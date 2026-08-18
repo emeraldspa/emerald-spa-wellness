@@ -143,6 +143,78 @@ export const GALLERY_SLUGS = [
 ] as const;
 
 /**
+ * The client's own photographs, grouped by what they actually show. Every
+ * slug here was named after looking at the frame, not after its filename.
+ * Grouping keeps the gallery readable at 40 images instead of one long wall.
+ */
+export const GALLERY_SECTIONS = [
+  {
+    id: 'rooms',
+    eyebrow: 'The rooms',
+    title: 'Where the work happens.',
+    lead: 'Reception, the treatment rooms, and the quiet corners in between.',
+    slugs: [
+      'reception-lounge',
+      'treatment-room',
+      'reception',
+      'towel-shelf',
+      'retail-display',
+      'spa-retreat',
+    ],
+  },
+  {
+    id: 'hydrotherapy',
+    eyebrow: 'Hydrotherapy',
+    title: 'Warm water, taken slowly.',
+    lead: 'The hydrotherapy suite, prepared and in use.',
+    slugs: ['hydrotherapy-suite', 'hydrotherapy-tub-set', 'hydrotherapy-soak', 'hydrotherapy-guest'],
+  },
+  {
+    id: 'treatments',
+    eyebrow: 'Treatments',
+    title: 'Results on real guests.',
+    lead: 'Lashes, brows, facials and nails, photographed at the end of the appointment.',
+    slugs: [
+      'lash-extensions',
+      'lash-detail',
+      'brow-result',
+      'brow-detail',
+      'facial-treatment',
+      'treatment-bed-guest',
+      'treatment-mirror',
+      'nail-art',
+    ],
+  },
+  {
+    id: 'garden',
+    eyebrow: 'The garden',
+    title: 'Outside, and still inside.',
+    lead: 'The garden, the pond and the shaded seating guests use between treatments.',
+    slugs: [
+      'garden-lounge-guests',
+      'hanging-chair',
+      'garden-pond',
+      'garden-walk',
+      'garden-planting',
+      'garden-signage',
+      'robe-garden-seat',
+      'robe-garden-stand',
+      'garden-reading',
+      'serenity-garden',
+      'green-escape',
+      'candlescape',
+    ],
+  },
+  {
+    id: 'refreshments',
+    eyebrow: 'Refreshments',
+    title: 'Something cold, on arrival.',
+    lead: 'Welcome drinks and refreshments served during a visit.',
+    slugs: ['welcome-drink', 'wine-pair', 'wine-service', 'refreshments'],
+  },
+] as const;
+
+/**
  * The spa's own promotional graphics from its Fresha portfolio. Kept separate
  * from the room photographs because they are designed artwork, not interiors.
  */
@@ -151,6 +223,53 @@ export const POSTER_SLUGS = [
   'portfolio-2',
   'portfolio-3',
   'portfolio-4',
+] as const;
+
+/**
+ * A wider, mixed set for the home page carousel. Drawn from the client's own
+ * photographs so the strip shows rooms, treatments, garden and refreshments
+ * rather than repeating the six interiors the site launched with.
+ */
+export const HOME_CAROUSEL_SLUGS = [
+  'reception-lounge',
+  'hydrotherapy-tub-set',
+  'lash-extensions',
+  'hanging-chair',
+  'nail-art',
+  'treatment-room',
+  'garden-pond',
+  'welcome-drink',
+  'facial-treatment',
+  'garden-lounge-guests',
+  'towel-shelf',
+  'green-escape',
+] as const;
+
+/**
+ * Published mailboxes. Confirmed live by the client on 17 August.
+ * General enquiries, group and corporate bookings, and complaints are kept
+ * separate so messages reach the right person without triage.
+ */
+export const EMAILS = {
+  info: 'info@emeraldspacc.com',
+  bookings: 'bookings@emeraldspacc.com',
+  complaints: 'complaints@emeraldspacc.com',
+} as const;
+
+export const VOUCHER_PATH = '/vouchers';
+
+/**
+ * Voucher denominations. These are entry points for the enquiry, not a
+ * checkout: nothing is charged here. Staff confirm the amount, then issue the
+ * voucher number and expiry by hand, which is how the spa already works.
+ */
+export const VOUCHER_AMOUNTS = [300, 500, 800, 1200, 1700] as const;
+
+export const VOUCHER_OCCASIONS = [
+  'Birthday',
+  'Anniversary',
+  'Thank you',
+  'Just because',
 ] as const;
 
 export const LEGAL_LINKS = [
@@ -163,6 +282,7 @@ export const LEGAL_LINKS = [
 export const WHATSAPP_PATH = '/whatsapp';
 
 export const NAV_LINKS = [
+  { href: '/vouchers', label: 'Vouchers' },
   { href: '/services', label: 'Services' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/team', label: 'Team' },

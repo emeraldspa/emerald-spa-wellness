@@ -3,15 +3,19 @@ import { ArrowUpRight, Facebook, Instagram, MapPin, MessageCircle, Phone, Star }
 import Link from 'next/link';
 import { FooterMinimal } from '@/components/FooterMinimal';
 import { MapEmbed } from '@/components/MapEmbed';
+import { Picture } from '@/components/Picture';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, WHATSAPP_PATH, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, WHATSAPP_PATH, getImage, site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Visit and Contact',
   description: `Emerald Spa & Wellness Centre is at ${site.address.street} ${site.address.suite}, ${site.address.suburb}, Windhoek. Open seven days. Call ${site.phone} or book online.`,
   alternates: { canonical: '/visit' },
 };
+
+/** Arrival sequence: the entrance, the lounge, the garden, a welcome drink. */
+const ARRIVAL_SLUGS = ['garden-signage', 'reception-lounge', 'hanging-chair', 'welcome-drink'];
 
 export default function VisitPage() {
   return (
@@ -126,6 +130,31 @@ export default function VisitPage() {
               </ul>
             </FadeUp>
           </div>
+        </section>
+
+        {/* What arrival actually looks like, so the address has a face. */}
+        <section className="border-t border-ink/10 py-16 md:py-20">
+          <div className="shell">
+            <p className="eyebrow text-emerald-600">On arrival</p>
+            <h2 className="display mt-4 text-3xl sm:text-4xl">What to expect when you get here.</h2>
+          </div>
+          <ul className="shell mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {ARRIVAL_SLUGS.map((slug, i) => (
+              <FadeUp key={slug} delay={(i % 4) * 0.07} as="li">
+                <figure>
+                  <div className="overflow-hidden bg-emerald-900/5">
+                    <Picture
+                      slug={slug}
+                      alt=""
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                      imgClassName="h-48 w-full object-cover md:h-60"
+                    />
+                  </div>
+                  <figcaption className="mt-2.5 text-xs text-ink/65">{getImage(slug).alt}</figcaption>
+                </figure>
+              </FadeUp>
+            ))}
+          </ul>
         </section>
       </main>
       <FooterMinimal />

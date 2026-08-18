@@ -1,10 +1,19 @@
 import type { Metadata } from 'next';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, MessageCircle } from 'lucide-react';
 import Link from 'next/link';
 import { FooterFull } from '@/components/FooterFull';
+import { Picture } from '@/components/Picture';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { BOOKING_CTA, BOOKING_PATH, LISTED_SERVICE_COUNT, SITE_URL, site } from '@/lib/site';
+import {
+  BOOKING_CTA,
+  BOOKING_PATH,
+  LISTED_SERVICE_COUNT,
+  SITE_URL,
+  WHATSAPP_PATH,
+  getImage,
+  site,
+} from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Services and Prices',
@@ -19,6 +28,22 @@ export const metadata: Metadata = {
  * and search engines index visible text far more reliably than collapsed
  * panels. A sticky category rail replaces the disclosure pattern.
  */
+/**
+ * A photograph for the categories the client actually documented. Each pairing
+ * was checked against the frame, so nothing illustrates a treatment it does
+ * not show. Categories without a matching photograph simply render without one.
+ */
+const CATEGORY_IMAGE: Record<string, string> = {
+  massages: 'treatment-room',
+  'facials-skincare': 'facial-treatment',
+  hydrotherapy: 'hydrotherapy-tub-set',
+  nails: 'nail-art',
+  lashes: 'lash-extensions',
+  'eyebrow-care': 'brow-detail',
+  refreshments: 'wine-pair',
+  promotions: 'garden-lounge-guests',
+};
+
 export default function ServicesPage() {
   const schema = {
     '@context': 'https://schema.org',
@@ -98,6 +123,17 @@ export default function ServicesPage() {
                   </span>
                 </div>
 
+                {CATEGORY_IMAGE[cat.slug] ? (
+                  <div className="mt-6 overflow-hidden bg-emerald-900/5">
+                    <Picture
+                      slug={CATEGORY_IMAGE[cat.slug]}
+                      alt={getImage(CATEGORY_IMAGE[cat.slug]).alt}
+                      sizes="(max-width: 768px) 100vw, 70vw"
+                      imgClassName="h-56 w-full object-cover md:h-72"
+                    />
+                  </div>
+                ) : null}
+
                 <ul className="mt-8 divide-y divide-ink/10">
                   {cat.items.map((s) => (
                     <li key={`${cat.slug}-${s.name}`} className="py-5">
@@ -133,6 +169,29 @@ export default function ServicesPage() {
                     </li>
                   ))}
                 </ul>
+
+                {/*
+                  Two routes, offered at the end of every category rather than
+                  once at the top of the page. One books instantly on our own
+                  page, the other opens a real conversation for anyone who
+                  would rather ask first.
+                */}
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Link
+                    href={BOOKING_PATH}
+                    className="inline-flex items-center gap-2 rounded-full bg-emerald-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-800"
+                  >
+                    Book {cat.name.toLowerCase()}
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                  <Link
+                    href={WHATSAPP_PATH}
+                    className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-ink transition-colors hover:border-emerald-600 hover:text-emerald-700"
+                  >
+                    <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                    Ask on WhatsApp
+                  </Link>
+                </div>
               </section>
             ))}
 

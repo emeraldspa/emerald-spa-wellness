@@ -16,7 +16,11 @@ const config: Config = {
     extend: {
       colors: {
         // Ground and ink (COLLINS structure, Emerald values)
-        ground: '#F7F5F1',
+        // Ground is deliberately off-white and slightly warm. Pure white and
+        // near-white both read as flat on screen, so the base carries a little
+        // stone colour and the paper grain overlay does the rest.
+        ground: '#F2EFE8',
+        groundDeep: '#EBE7DE',
         ink: '#07211A',
 
         // Emerald gemstone, sampled from the logo facets

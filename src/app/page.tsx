@@ -6,7 +6,7 @@ import { MenuHost } from '@/components/MenuHost';
 import { Picture } from '@/components/Picture';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import { FooterFull } from '@/components/FooterFull';
-import { BOOKING_CTA, BOOKING_PATH, GALLERY_SLUGS, GOOGLE_REVIEW_URL, LISTED_SERVICE_COUNT, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, HOME_CAROUSEL_SLUGS, LISTED_SERVICE_COUNT, site } from '@/lib/site';
 
 /** Four signature categories, chosen for breadth across the real menu. */
 const SIGNATURE = ['massages', 'facials-skincare', 'hydrotherapy', 'nails'];
@@ -18,6 +18,12 @@ export default function HomePage() {
   const signatureCats = SIGNATURE.map(
     (slug) => site.categories.find((c) => c.slug === slug)!,
   ).filter(Boolean);
+
+  /* The three offers with a written description, which are the ones that
+     explain themselves without the visitor opening the full menu. */
+  const PROMOTIONS = (site.categories.find((c) => c.slug === 'promotions')?.items ?? [])
+    .filter((item) => item.description)
+    .slice(0, 3);
 
   const featured = site.reviews.filter((r) => r.text.length > 40).slice(0, 3);
 
@@ -124,13 +130,14 @@ export default function HomePage() {
             </div>
           </div>
           <div className="mt-12 pl-[var(--grid-padding)]">
-            <Carousel slugs={GALLERY_SLUGS} label="Photographs of Emerald Spa and Wellness Centre" />
+            <Carousel slugs={HOME_CAROUSEL_SLUGS} label="Photographs of Emerald Spa and Wellness Centre" />
           </div>
         </section>
 
         {/* Verified guest reviews. Real words, real dates, from the booking record. */}
-        <section className="bg-emerald-900 py-20 text-ground md:py-28">
-          <div className="shell">
+        <section className="surface-marble-emerald relative py-20 text-ground md:py-28">
+          <div aria-hidden="true" className="absolute inset-0 bg-emerald-900/72" />
+          <div className="shell relative">
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
                 <p className="eyebrow text-emerald-300">Guest Reviews</p>
@@ -179,6 +186,58 @@ export default function HomePage() {
                 Leave a Google review
               </a>
             </FadeUp>
+          </div>
+        </section>
+
+        {/*
+          Current offers, rendered from the venue's own record rather than
+          framed in from the booking platform. Same data, no third-party
+          chrome, no platform name, and it stays styled like the rest of the
+          site.
+        */}
+        <section className="surface-marble-pale border-b border-ink/10 py-20 md:py-28">
+          <div className="shell">
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <p className="eyebrow text-emerald-600">Current offers</p>
+                <h2 className="display mt-4 text-3xl text-balance sm:text-4xl md:text-5xl">
+                  <ClipReveal>Packages worth planning around.</ClipReveal>
+                </h2>
+              </div>
+              <Link
+                href="/services#promotions"
+                className="group flex items-center gap-1.5 text-sm font-semibold uppercase tracking-widest text-emerald-600"
+              >
+                All offers
+                <ArrowUpRight
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  aria-hidden="true"
+                />
+              </Link>
+            </div>
+
+            <ul className="mt-12 grid gap-6 md:grid-cols-3">
+              {PROMOTIONS.map((offer, i) => (
+                <FadeUp key={offer.name} delay={(i % 3) * 0.08} as="li">
+                  <article className="flex h-full flex-col justify-between border-t-2 border-emerald-600 bg-ground p-7">
+                    <div>
+                      <h3 className="text-lg font-semibold text-ink text-pretty">{offer.name}</h3>
+                      {offer.description ? (
+                        <p className="mt-3 text-sm leading-relaxed text-ink/70 text-pretty">
+                          {offer.description}
+                        </p>
+                      ) : null}
+                    </div>
+                    <div className="mt-8 flex items-baseline justify-between gap-4 border-t border-ink/10 pt-5">
+                      <span className="text-xs font-semibold uppercase tracking-widest text-ink/65">
+                        {offer.duration}
+                      </span>
+                      <span className="display text-2xl text-emerald-700">{offer.price}</span>
+                    </div>
+                  </article>
+                </FadeUp>
+              ))}
+            </ul>
           </div>
         </section>
 
