@@ -488,3 +488,63 @@ voucher number and expiry by hand, which is how the spa already works.
 | Gallery images, live | 38 of 38 |
 | Hero video, live | hero-desktop.mp4 at 1600 wide, playing |
 | Voucher order link, live | Correct on WhatsApp and email |
+
+
+---
+
+# ROUND 7
+
+## Accounts and deployment
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Discovery | Validate every credential | 4 tokens | API call each | GitHub both resolve to `emeraldspa`. The new Vercel token is rejected as invalid, the existing one works. Hostinger is valid with full scope | terminal | 2026-08-18 06:20 | 3 of 4 usable |
+| Build | Create the repository | emeraldspa/emerald-spa-wellness | GitHub API | Private repo, full history, all 354 media files | GitHub | 2026-08-18 06:30 | Pass |
+| Verify | Secrets not committed | tracked files | grep for token patterns | No credentials in the repository. The deploy script lives outside it | terminal | 2026-08-18 06:28 | Pass |
+| Debug | Vercel would not link | project link | API | Vercel is connected to the `tangison` GitHub account while the repo sits under `emeraldspa`, so it cannot see it. Confirmed by reading a working project, which links to `tangison/crescendo` | terminal | 2026-08-18 06:40 | Root caused |
+| Fix | Grant access | repo | GitHub API | Admin invitation sent to `tangison`. Accepting it lets Vercel link the repo | terminal | 2026-08-18 06:42 | Needs the client to accept |
+| Build | Domains | emeraldspacc.com, www | Vercel API | Both added and verified against the project | terminal | 2026-08-18 06:35 | Pass |
+| Discovery | Why DNS cannot be automated | Hostinger DNS API | API plus RDAP | Zone read and write both return 403 `[DNS:4002]`. RDAP shows the registrar is PublicDomainRegistry, so Hostinger only answers DNS and their API refuses the domain | terminal | 2026-08-18 06:25 | Documented for manual entry |
+
+## WordPress
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Discovery | Audit the install | admin.emeraldspacc.com | Scrapling `Fetcher` with Chrome TLS impersonation | 15 checks. Found the back office indexable, the username disclosed, users listed anonymously, and the version printed | `research/wp_scrapling.py` | 2026-08-18 05:15 | 1 failing, 4 warnings |
+| Debug | Audit was reading a cache | all checks | response headers | Hostinger caches for seven days. The audit reported a fix that had already landed as still broken, because it read a copy with `age: 49038`. Every request now busts cache | terminal | 2026-08-18 05:18 | Fixed |
+| Debug | A passing check reported as failing | noindex check | isolated the selector | Scrapling returns `TextHandler`, not `str`, so a substring test was always false. Coercing revealed both the real pass and a genuine version disclosure warning that had been masked | terminal | 2026-08-18 05:19 | Fixed |
+| Build | Machine credential | WordPress | Scrapling `FetcherSession` | Logged in, read the REST nonce, created an application password. WordPress refuses the login password over REST by design | terminal | 2026-08-18 05:20 | Pass |
+| Fix | Back office indexable | Settings, Reading | admin options form | The REST settings endpoint does not expose `blog_public` on this install, so it went through the form that owns it. `noindex, nofollow` now served | terminal | 2026-08-18 05:22 | Verified live |
+| Build | Content model | promotion type | CPT UI form via session | Registered and exposed over REST. Custom Post Type UI and Advanced Custom Fields installed through the plugins endpoint | terminal | 2026-08-18 05:30 | Pass |
+| Verify | End to end | `/wp-json/wp/v2/promotion` | anonymous fetch | One real promotion, published, readable without authentication | terminal | 2026-08-18 05:32 | Pass |
+
+## Hardening
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Debug | Writes rejected | functions.php | isolated each statement | The host firewall accepts single directives but rejects a POST carrying a whole function body. Applied piece by piece instead, verifying each | terminal | 2026-08-18 06:50 | 8 of 9 applied |
+| Fix | Close the findings | WordPress | theme functions | Author enumeration redirected, REST users removed for anonymous callers, xmlrpc disabled, generator tag removed | terminal | 2026-08-18 06:52 | Pass |
+| Verify | Rerun the same audit | 15 checks | Scrapling | Warnings 5 to 2. Both remaining are benign: xmlrpc.php answers 405 because the file exists while the protocol is off, and the domain warning clears when DNS is pointed | terminal | 2026-08-18 06:55 | 0 failing |
+| Verify | Nothing else broke | content endpoints | anonymous and authenticated calls | promotion, posts and pages still public. Users now 404 anonymously. Authenticated writes still work | terminal | 2026-08-18 06:56 | Pass |
+
+## Headless wiring
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Build | Content layer | `src/lib/wordpress.ts` | tsx | Server side fetch, 15 minute revalidation, empty list on any failure | source | 2026-08-18 06:05 | Pass |
+| Build | Home page offers | `/` | tsx | Renders WordPress promotions when present, verified package data otherwise | source | 2026-08-18 07:05 | Pass |
+| Verify | Fallback holds | `/` | built against a dead WordPress host | Build succeeded and the verified offers rendered. Tested rather than assumed | terminal | 2026-08-18 07:10 | Pass |
+| Verify | Live | `/` | Playwright | The WordPress promotion appears on the production home page | terminal | 2026-08-18 07:25 | Pass |
+
+## Round 7 verification
+
+| Check | Result |
+| --- | --- |
+| Type check | Exit 0 |
+| Lint | No warnings or errors |
+| Production build | Compiled, 20 routes |
+| axe-core, 12 routes, live | 0 violations |
+| Console and page errors, live | 0 |
+| WordPress audit | 0 failing, 2 benign warnings |
+| Headless promotion on live home page | Present |
+| Fallback with WordPress unreachable | Verified offers render |
