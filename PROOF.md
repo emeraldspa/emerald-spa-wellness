@@ -672,3 +672,65 @@ voucher number and expiry by hand, which is how the spa already works.
 | Console and page errors | 0 |
 | Mobile 390px | No horizontal scroll, bar behaves |
 | Live status widget | Computes from the published hours |
+
+
+---
+
+# ROUND 10
+
+## Responsive, measured rather than assumed
+
+| Phase | Action | Target | Method | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Debug | Audit four viewports | 360, 390, 768, 1024 | Playwright measurement | `/services` overflowed to 1704px inside 1440, and 29 to 42 controls per page were under 40px. The client was right | terminal | 2026-08-18 12:05 | Root caused |
+| Debug | Find the overflow | `/services` | measured every box | The mobile chip rail used a negative margin to break the shell, which widened the document. Then the grid column measured 1716px inside 390 because a horizontally scrolling child reports its full scroll width as min-content | terminal | 2026-08-18 12:20 | Two separate causes |
+| Fix | Let the grid shrink | `/services` | `grid-cols-[minmax(0,1fr)]` plus `min-w-0` | Column now 350px inside 390. Content ends at 370 | terminal | 2026-08-18 12:40 | Fixed |
+| Fix | Touch targets | site wide | measured floor at 44px | Phone and tablet went from 40 and 68 undersized to 0 across 12 routes | terminal | 2026-08-18 13:10 | 0 remaining |
+| Verify | All viewports | 12 routes | Playwright | 0 horizontal scroll, 0 undersized on touch, axe 0 | terminal | 2026-08-18 13:15 | Pass |
+
+## Floating navigation
+
+| Phase | Action | Target | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| Debug | It was pinned, not floating | StickyNav | Edge to edge with a bottom border is a pinned header. The brief asked for floating | screenshot | 2026-08-18 12:10 | Root caused |
+| Fix | Make it float | StickyNav | Inset from every edge, fully rounded, elevated shadow, gold hairline. Fades and lifts rather than sliding flush | `qa/r10-svc3.png` | 2026-08-18 12:15 | Pass |
+
+## Category rail
+
+| Phase | Action | Target | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| Debug | Mobile rail scrolled away | `/services` | Sticky can only travel inside its parent, and the parent was only as tall as the rail. Two attempts at nesting failed the same way | terminal | 2026-08-18 12:55 | Root caused |
+| Fix | Fixed and conditional | CategoryRail | Pins under the floating bar once the treatment list starts, hides at the top and at the footer | `qa/r10-rail3.png` | 2026-08-18 13:00 | Pass |
+| Verify | Tracks position | `/services` | Pins at 68px and follows Massages, Body Treatments, Hair removal as the reader scrolls | terminal | 2026-08-18 13:02 | Pass |
+
+## Accordion
+
+| Phase | Action | Target | Result | Evidence | Timestamp | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| Build | FAQ | `/visit` | Eight questions behind a single level accordion, native buttons with `aria-expanded` and a labelled region | `src/components/Faq.tsx` | 2026-08-18 12:30 | Pass |
+| Verify | Nothing critical hidden | `/visit` | Prices, address, hours and phone stay visible on the page and in the footer. Only consult-level detail sits behind the interaction | source | 2026-08-18 12:32 | Pass |
+
+## Marble surfaces restored
+
+| Surface | Where it is used |
+| --- | --- |
+| `surface-marble-pale` | Gallery alternating sections, services header, minimal footer, vouchers |
+| `surface-marble-emerald` | Vouchers hero, voucher popup panel |
+| `surface-marble-gold` | Visit arrival strip |
+| `surface-stone-black` | Floating bar, reviews band, full footer |
+| `surface-clay` | Home offers band |
+
+The green and gold marbles were never deleted, only displaced by the round 9
+stone. All five surfaces are now in use.
+
+## Round 10 verification
+
+| Check | Result |
+| --- | --- |
+| Type check | Exit 0 |
+| Lint | No warnings or errors |
+| Production build | Compiled |
+| axe-core, 12 routes at phone, tablet and desktop | 0 violations |
+| Console and page errors | 0 |
+| Horizontal scroll, 5 viewports | None |
+| Touch targets under 44px, phone and tablet | 0 |

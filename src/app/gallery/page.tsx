@@ -76,7 +76,7 @@ export default function GalleryPage() {
                 <li key={section.id}>
                   <a
                     href={`#${section.id}`}
-                    className="inline-flex rounded-full border border-ink/15 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-ink/75 transition-colors hover:border-emerald-600 hover:text-emerald-700"
+                    className="inline-flex min-h-[44px] items-center rounded-full border border-ink/15 px-4 text-xs font-semibold uppercase tracking-widest text-ink/75 transition-colors hover:border-emerald-600 hover:text-emerald-700"
                   >
                     {section.eyebrow}
                   </a>

@@ -23,8 +23,13 @@
     -webkit-text-size-adjust: 100%;
   }
 
+  html {
+    overflow-x: clip;
+  }
+
   body {
     @apply bg-ground text-ink font-sans antialiased;
+    overflow-x: clip;
     text-rendering: optimizeLegibility;
   }
 
@@ -291,4 +296,52 @@ body > * {
     theme('colors.gold.300') 82%,
     transparent
   );
+}
+
+/*
+  Touch target floor.
+
+  On a touch device every link and button needs a comfortable hit area, and a
+  15px tall footer link is not one. This gives inline links in the footer and
+  other dense link lists a real vertical target on touch pointers only, so
+  desktop typography is unchanged and nothing reflows on a mouse-driven layout.
+*/
+@media (pointer: coarse), (max-width: 1024px) {
+  footer a,
+  .tap-safe a,
+  .tap-safe button,
+  nav[aria-label='Primary'] a {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /*
+    Inline text links inside main content. Anything that is a real navigation
+    or contact action gets a comfortable target on touch, while running prose
+    links are left alone so paragraphs do not gain odd line spacing.
+  */
+  address a,
+  .contact-list a,
+  main a:not(:where(p a, li p a, figcaption a)) {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /*
+    Links inside running prose keep their natural line box, because forcing
+    them to 44px would break paragraph rhythm. They get a wider padded hit
+    area instead, which touch devices honour without moving the text.
+  */
+  main p a {
+    padding-block: 0.65rem;
+  }
+
+  /* Short link labels still need a usable width. */
+  main li a,
+  footer li a {
+    min-width: 44px;
+  }
 }

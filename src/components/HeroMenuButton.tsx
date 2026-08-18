@@ -9,7 +9,7 @@ export function HeroMenuButton({ targetId }: { targetId: string }) {
     <button
       type="button"
       onClick={() => window.dispatchEvent(new CustomEvent(targetId))}
-      className="hero-down flex h-9 w-9 flex-col items-center justify-center gap-1 rounded-full bg-ink"
+      className="hero-down flex h-11 w-11 flex-col items-center justify-center gap-1 rounded-full bg-ink"
       style={{ animationDelay: '0.5s' }}
       aria-label="Open menu"
     >

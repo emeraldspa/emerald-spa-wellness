@@ -60,27 +60,29 @@ export function StickyNav() {
 
   return (
     <div
-      className={`fixed inset-x-0 top-0 z-50 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] ${
-        shown ? 'translate-y-0' : '-translate-y-full'
+      className={`fixed inset-x-3 top-3 z-50 transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] sm:inset-x-5 sm:top-4 lg:inset-x-8 ${
+        shown
+          ? 'pointer-events-auto translate-y-0 opacity-100'
+          : 'pointer-events-none -translate-y-6 opacity-0'
       }`}
       // Hidden from assistive tech while off screen so the same links are not
       // announced twice.
       aria-hidden={!shown}
     >
-      <div className="surface-stone-bar relative border-b border-gold-500/25 shadow-lg shadow-ink/20">
+      <div className="surface-stone-bar relative overflow-hidden rounded-full border border-gold-500/30 shadow-[0_10px_40px_-12px_rgba(7,33,26,0.55)]">
         {/* Scrim keeps the stone readable as texture under the type. */}
         <div aria-hidden="true" className="absolute inset-0 bg-[#0A1310]/72" />
         {/* Brand gold hairline along the bottom edge. */}
-        <div aria-hidden="true" className="rule-gold absolute inset-x-0 bottom-0 h-px" />
+        <div aria-hidden="true" className="rule-gold absolute inset-x-8 bottom-0 h-px opacity-70" />
         <nav
-          className="shell relative flex items-center justify-between gap-6 py-3"
+          className="relative flex items-center justify-between gap-4 px-4 py-2.5 sm:px-6 sm:gap-6"
           aria-label={shown ? 'Condensed' : undefined}
         >
           <Link
             href="/"
             tabIndex={shown ? undefined : -1}
             aria-label={`${site.legalName}, home`}
-            className="flex shrink-0 items-center gap-2.5"
+            className="flex min-h-[44px] min-w-[44px] shrink-0 items-center gap-2.5"
           >
             {/* The symbol alone, because the strip is short and the wordmark
                 would eat the space the sections need. */}
@@ -108,7 +110,7 @@ export function StickyNav() {
                     href={item.href}
                     tabIndex={shown ? undefined : -1}
                     aria-current={active ? 'page' : undefined}
-                    className={`relative py-1 text-xs font-semibold uppercase tracking-[0.18em] transition-colors hover:text-gold-200 ${
+                    className={`relative flex min-h-[44px] items-center px-1 text-xs font-semibold uppercase tracking-[0.18em] transition-colors hover:text-gold-200 ${
                       active ? 'text-gold-300' : 'text-ground/85'
                     }`}
                   >
@@ -117,7 +119,7 @@ export function StickyNav() {
                         editorial masthead marks position. */}
                     <span
                       aria-hidden="true"
-                      className={`absolute -bottom-0.5 left-0 h-px w-full origin-left bg-gold-300 transition-transform duration-300 ${
+                      className={`absolute bottom-2.5 left-1 h-px w-[calc(100%-0.5rem)] origin-left bg-gold-300 transition-transform duration-300 ${
                         active ? 'scale-x-100' : 'scale-x-0'
                       }`}
                     />
@@ -131,7 +133,7 @@ export function StickyNav() {
             <Link
               href={VOUCHER_PATH}
               tabIndex={shown ? undefined : -1}
-              className="hidden items-center gap-1.5 rounded-full border border-gold-300/45 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-200 transition-colors hover:border-gold-300 hover:bg-gold-300/10 lg:flex"
+              className="hidden min-h-[44px] items-center gap-1.5 rounded-full border border-gold-300/45 px-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-200 transition-colors hover:border-gold-300 hover:bg-gold-300/10 lg:flex"
             >
               <Gift className="h-3.5 w-3.5" aria-hidden="true" />
               Vouchers
@@ -140,14 +142,14 @@ export function StickyNav() {
               href={WHATSAPP_PATH}
               tabIndex={shown ? undefined : -1}
               aria-label="Message us on WhatsApp"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-ground/30 text-ground transition-colors hover:border-gold-300 hover:text-gold-200 sm:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-ground/30 text-ground transition-colors hover:border-gold-300 hover:text-gold-200 sm:hidden"
             >
               <MessageCircle className="h-4 w-4" aria-hidden="true" />
             </Link>
             <Link
               href={BOOKING_PATH}
               tabIndex={shown ? undefined : -1}
-              className="flex items-center gap-1.5 rounded-full bg-gold-300 px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0A1310] transition-colors hover:bg-gold-200"
+              className="flex min-h-[44px] items-center gap-1.5 rounded-full bg-gold-300 px-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0A1310] transition-colors hover:bg-gold-200 sm:px-5"
             >
               {BOOKING_CTA}
               <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />

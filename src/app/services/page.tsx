@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { FooterFull } from '@/components/FooterFull';
 import { Picture } from '@/components/Picture';
 import { SiteHeader } from '@/components/SiteHeader';
-import { CategoryNav } from '@/components/CategoryNav';
+import { CategoryNav, CategoryRail } from '@/components/CategoryNav';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import {
   BOOKING_CTA,
@@ -74,7 +74,7 @@ export default function ServicesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <main id="main">
-        <section className="surface-clay relative border-b border-ink/10 py-16 md:py-24">
+        <section className="surface-marble-pale relative border-b border-ink/10 py-16 md:py-24">
           <div aria-hidden="true" className="rule-gold absolute inset-x-0 bottom-0 h-px" />
           <div className="shell relative">
           <p className="eyebrow text-emerald-600">Treatment Menu</p>
@@ -96,8 +96,17 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <div className="shell grid gap-12 py-16 md:grid-cols-12 md:py-20">
-          <div className="md:col-span-3 md:h-full">
+        {/* Fixed on mobile, so it stays reachable through a long menu. */}
+        <CategoryRail
+            items={site.categories.map((c) => ({
+              slug: c.slug,
+              name: c.name,
+              count: c.items.length,
+          }))}
+        />
+
+        <div className="shell grid grid-cols-[minmax(0,1fr)] gap-12 py-16 md:grid-cols-12 md:py-20">
+          <div className="hidden min-w-0 md:col-span-3 md:block md:h-full">
             <CategoryNav
               items={site.categories.map((c) => ({
                 slug: c.slug,
@@ -107,7 +116,7 @@ export default function ServicesPage() {
             />
           </div>
 
-          <div className="md:col-span-9">
+          <div className="min-w-0 md:col-span-9">
             {site.categories.map((cat, ci) => (
               <section
                 key={cat.slug}

@@ -57,7 +57,7 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={() => setOpen(true)}
-              className="flex h-9 w-9 flex-col items-center justify-center gap-1 rounded-full bg-ink md:hidden"
+              className="flex h-11 w-11 flex-col items-center justify-center gap-1 rounded-full bg-ink md:hidden"
               aria-label="Open menu"
             >
               <span className="h-0.5 w-4 bg-white" />

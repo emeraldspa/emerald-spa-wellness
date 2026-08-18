@@ -68,7 +68,7 @@ export function VoucherForm({ compact = false }: { compact?: boolean }) {
                 type="button"
                 onClick={() => setAmount(a)}
                 aria-pressed={amount === a}
-                className={`rounded-full border px-4 py-2 text-sm transition-colors ${
+                className={`min-h-[44px] rounded-full border px-4 text-sm transition-colors ${
                   amount === a
                     ? 'border-emerald-700 bg-emerald-700 text-white'
                     : 'border-ink/20 text-ink/80 hover:border-emerald-600'
@@ -81,7 +81,7 @@ export function VoucherForm({ compact = false }: { compact?: boolean }) {
               type="button"
               onClick={() => setAmount('other')}
               aria-pressed={amount === 'other'}
-              className={`rounded-full border px-4 py-2 text-sm transition-colors ${
+              className={`min-h-[44px] rounded-full border px-4 text-sm transition-colors ${
                 amount === 'other'
                   ? 'border-emerald-700 bg-emerald-700 text-white'
                   : 'border-ink/20 text-ink/80 hover:border-emerald-600'
@@ -119,7 +119,7 @@ export function VoucherForm({ compact = false }: { compact?: boolean }) {
                 type="button"
                 onClick={() => setOccasion(o)}
                 aria-pressed={occasion === o}
-                className={`rounded-full border px-4 py-2 text-sm transition-colors ${
+                className={`min-h-[44px] rounded-full border px-4 text-sm transition-colors ${
                   occasion === o
                     ? 'border-emerald-700 bg-emerald-700 text-white'
                     : 'border-ink/20 text-ink/80 hover:border-emerald-600'

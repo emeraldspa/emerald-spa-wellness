@@ -159,7 +159,7 @@ export function HeroVideo({ poster, filter }: { poster: string; filter: string }
             type="button"
             onClick={toggleSound}
             aria-pressed={soundOn}
-            className="absolute left-5 top-[4.5rem] z-20 flex items-center gap-2 rounded-full border border-ink/15 bg-ground/85 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-widest text-ink shadow-sm backdrop-blur transition-colors hover:bg-ground sm:left-8 md:left-12 md:top-24"
+            className="absolute left-5 top-[4.5rem] z-20 flex min-h-[44px] items-center gap-2 rounded-full border border-ink/15 bg-ground/85 px-4 text-[11px] font-semibold uppercase tracking-widest text-ink shadow-sm backdrop-blur transition-colors hover:bg-ground sm:left-8 md:left-12 md:top-24"
           >
             {soundOn ? (
               <Volume2 className="h-4 w-4" aria-hidden="true" />

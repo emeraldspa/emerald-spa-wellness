@@ -123,7 +123,7 @@ export function Hero({ menuButtonId }: { menuButtonId: string }) {
 
             <Link
               href={BOOKING_PATH}
-              className="hero-up flex items-center gap-1 whitespace-nowrap font-semibold text-emerald-600 transition-opacity hover:opacity-70"
+              className="hero-up flex min-h-[44px] items-center gap-1 whitespace-nowrap font-semibold text-emerald-600 transition-opacity hover:opacity-70"
               style={{ animationDelay: '0.72s', fontWeight: 600 }}
             >
               <span className="text-base sm:text-xl md:text-2xl">{BOOKING_CTA}</span>

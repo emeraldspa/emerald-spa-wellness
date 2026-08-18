@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FooterMinimal } from '@/components/FooterMinimal';
 import { MapEmbed } from '@/components/MapEmbed';
 import { Picture } from '@/components/Picture';
+import { Faq } from '@/components/Faq';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, WHATSAPP_PATH, getImage, site } from '@/lib/site';
@@ -16,6 +17,46 @@ export const metadata: Metadata = {
 
 /** Arrival sequence: the entrance, the lounge, the garden, a welcome drink. */
 const ARRIVAL_SLUGS = ['garden-signage', 'reception-lounge', 'hanging-chair', 'welcome-drink'];
+
+/**
+ * Answers drawn from the venue record: the amenity list, the published hours,
+ * and the booking settings confirmed against the live listing. Nothing here is
+ * invented, and no price or policy is stated that the spa has not published.
+ */
+const FAQ_ITEMS = [
+  {
+    q: 'Do I need to book, or can I walk in?',
+    a: `Booking is the safer option, especially at weekends. You can reserve online in a few taps, or send a WhatsApp message on ${site.phone} and a person will answer during opening hours.`,
+  },
+  {
+    q: 'Is there parking?',
+    a: 'Yes. There is parking at the spa, and the venue is near public transport if you would rather not drive.',
+  },
+  {
+    q: 'What is provided when I arrive?',
+    a: 'Showers, lockers and bath towels are all available on site, so you can come straight from work or the gym.',
+  },
+  {
+    q: 'Can I choose my therapist?',
+    a: 'Yes. You can request a specific therapist when you book, subject to their availability that day.',
+  },
+  {
+    q: 'How do I pay?',
+    a: 'Payment is taken at the spa rather than online, so nothing is charged when you reserve your appointment.',
+  },
+  {
+    q: 'Are children welcome?',
+    a: 'Yes. The spa is kid-friendly and there is a dedicated Kiddie\u2019s Corner menu of treatments for younger guests.',
+  },
+  {
+    q: 'Are you open on Sunday?',
+    a: 'Yes, from 10:00 AM to 4:00 PM. Monday to Saturday the spa is open 9:00 AM to 6:00 PM.',
+  },
+  {
+    q: 'Can I buy a gift voucher?',
+    a: 'Yes. Choose a value on the vouchers page and send the order over WhatsApp or email. Staff confirm payment, then send you the voucher number and its expiry date.',
+  },
+] as const;
 
 export default function VisitPage() {
   return (
@@ -133,7 +174,7 @@ export default function VisitPage() {
         </section>
 
         {/* What arrival actually looks like, so the address has a face. */}
-        <section className="border-t border-ink/10 py-16 md:py-20">
+        <section className="surface-marble-gold border-t border-ink/10 py-16 md:py-20">
           <div className="shell">
             <p className="eyebrow text-emerald-600">On arrival</p>
             <h2 className="display mt-4 text-3xl sm:text-4xl">What to expect when you get here.</h2>
@@ -155,6 +196,28 @@ export default function VisitPage() {
               </FadeUp>
             ))}
           </ul>
+        </section>
+
+        {/*
+          Secondary detail, behind an accordion because it is consulted rather
+          than read. Every answer comes from the venue record: the amenity list,
+          the published hours, the verified booking settings. Prices, address,
+          hours and phone stay visible elsewhere on this page, so nothing a
+          visitor must not miss is hidden behind an interaction.
+        */}
+        <section className="surface-marble-pale border-t border-ink/10 py-16 md:py-20">
+          <div className="shell grid gap-10 md:grid-cols-12">
+            <div className="md:col-span-4">
+              <p className="eyebrow text-emerald-700">Good to know</p>
+              <h2 className="display mt-4 text-3xl sm:text-4xl">Before you visit.</h2>
+              <p className="mt-4 max-w-sm text-ink/70 text-pretty">
+                Anything not answered here, message us and a person replies.
+              </p>
+            </div>
+            <div className="md:col-span-8">
+              <Faq items={FAQ_ITEMS} />
+            </div>
+          </div>
         </section>
       </main>
       <FooterMinimal />

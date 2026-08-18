@@ -19,7 +19,7 @@ type Item = { slug: string; name: string; count: number };
  * Anchors are real hrefs, so this works with JavaScript disabled and the
  * observer only adds the highlight.
  */
-export function CategoryNav({ items }: { items: Item[] }) {
+function useActiveCategory(items: Item[]) {
   const [active, setActive] = useState<string>(items[0]?.slug ?? '');
 
   useEffect(() => {
@@ -53,6 +53,13 @@ export function CategoryNav({ items }: { items: Item[] }) {
     chip?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
   }, [active]);
 
+  return active;
+}
+
+/** Desktop rail. Lives inside the grid column beside the treatment list. */
+export function CategoryNav({ items }: { items: Item[] }) {
+  const active = useActiveCategory(items);
+
   return (
     <>
       {/* Desktop rail */}
@@ -67,7 +74,7 @@ export function CategoryNav({ items }: { items: Item[] }) {
                   <a
                     href={`#${cat.slug}`}
                     aria-current={on ? 'true' : undefined}
-                    className={`group flex items-baseline justify-between gap-3 border-l-2 py-1.5 pl-3 text-sm transition-all duration-300 ${
+                    className={`group flex min-h-[40px] items-center justify-between gap-3 border-l-2 py-2 pl-3 text-sm transition-all duration-300 ${
                       on
                         ? 'border-emerald-700 pl-4 font-medium text-emerald-800'
                         : 'border-ink/10 text-ink/70 hover:border-ink/30 hover:text-ink'
@@ -88,13 +95,57 @@ export function CategoryNav({ items }: { items: Item[] }) {
           </ul>
         </div>
       </nav>
+    </>
+  );
+}
 
-      {/* Mobile rail, pinned under the sticky bar */}
-      <div className="sticky top-0 z-30 -mx-[var(--grid-padding)] border-b border-ink/10 bg-ground/95 backdrop-blur-md md:hidden">
+/**
+ * Mobile category rail.
+ *
+ * Exported separately because it has to be a sibling of the whole grid rather
+ * than a child of the narrow first column. A sticky element can only travel
+ * inside its parent, and that column is only as tall as the rail itself, so
+ * nested it would scroll straight out of view.
+ */
+export function CategoryRail({ items }: { items: Item[] }) {
+  const active = useActiveCategory(items);
+  const [pinned, setPinned] = useState(false);
+
+  useEffect(() => {
+    // Show the rail once the reader is actually inside the treatment list,
+    // and hide it again at the top where the page header already orients them.
+    const first = document.getElementById(items[0]?.slug ?? '');
+    const onScroll = () => {
+      const startedList = first
+        ? first.getBoundingClientRect().top < 200
+        : window.scrollY > 600;
+      const atBottom =
+        window.innerHeight + window.scrollY > document.body.scrollHeight - 400;
+      setPinned(startedList && !atBottom);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [items]);
+
+  return (
+    <>
+      {/*
+        Mobile rail.
+
+        It must span the full viewport while its parent is inside the padded
+        shell. A negative margin achieved that but also widened the document,
+        because the negative side pushed content past the right edge. Using
+        viewport width with a centering translate keeps the rail edge to edge
+        without ever contributing to page width.
+      */}
+      <div className={`fixed inset-x-0 top-[68px] z-40 border-y border-ink/10 bg-ground/96 backdrop-blur-md transition-transform duration-300 md:hidden ${
+          pinned ? 'translate-y-0' : '-translate-y-[150%]'
+        }`}>
         <ul
           tabIndex={0}
           aria-label="Treatment categories"
-          className="flex gap-2 overflow-x-auto px-[var(--grid-padding)] py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex gap-2 overflow-x-auto px-5 py-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {items.map((cat) => {
             const on = active === cat.slug;
@@ -103,7 +154,7 @@ export function CategoryNav({ items }: { items: Item[] }) {
                 <a
                   href={`#${cat.slug}`}
                   aria-current={on ? 'true' : undefined}
-                  className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border px-3.5 py-1.5 text-xs transition-colors ${
+                  className={`inline-flex min-h-[44px] items-center gap-1.5 whitespace-nowrap rounded-full border px-4 text-xs transition-colors ${
                     on
                       ? 'border-emerald-700 bg-emerald-700 text-white'
                       : 'border-ink/20 text-ink/75'

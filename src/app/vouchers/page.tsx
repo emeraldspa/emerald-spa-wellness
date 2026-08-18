@@ -77,7 +77,7 @@ export default function VouchersPage() {
 
         <section className="shell py-16 md:py-20">
           <h2 className="display text-2xl sm:text-3xl">Prefer to speak to someone?</h2>
-          <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+          <div className="contact-list mt-6 flex flex-wrap gap-x-8 gap-y-3">
             <a
               href={`tel:${site.phone.replace(/\s/g, '')}`}
               className="flex items-center gap-2 text-ink/80 transition-colors hover:text-emerald-700"
