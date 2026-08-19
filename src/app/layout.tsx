@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
 import type { ReactNode } from 'react';
+import { ConstructionBanner } from '@/components/ConstructionBanner';
 import { FloatingActions } from '@/components/FloatingActions';
 import { StickyNav } from '@/components/StickyNav';
 import { VoucherPopup } from '@/components/VoucherPopup';
@@ -153,6 +154,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         >
           Skip to content
         </a>
+        <ConstructionBanner />
         {children}
         <StickyNav />
         <FloatingActions />

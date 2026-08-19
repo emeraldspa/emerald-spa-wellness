@@ -14,7 +14,7 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="border-b border-ink/10 bg-ground/90 backdrop-blur-sm">
+      <header className="sticky top-0 z-40 border-b border-ink/10 bg-ground/95 backdrop-blur-sm">
         <nav
           className="shell flex items-center justify-between py-5"
           aria-label="Primary"

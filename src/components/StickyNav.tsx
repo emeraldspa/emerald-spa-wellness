@@ -52,7 +52,9 @@ export function StickyNav() {
 
   // The booking page is a single task. A bar offering other routes competes
   // with the only thing that page exists to do.
-  if (pathname === BOOKING_PATH) return null;
+  // Inner pages now carry their own sticky header, so this floating strip is
+  // only needed on the home page, where the hero scrolls away.
+  if (pathname === BOOKING_PATH || !['/'].includes(pathname)) return null;
 
   const links = NAV_LINKS.filter(
     (item) => item.href !== BOOKING_PATH && item.href !== VOUCHER_PATH,

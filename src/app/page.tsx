@@ -2,6 +2,7 @@ import { ArrowUpRight, Star } from 'lucide-react';
 import Link from 'next/link';
 import { Carousel } from '@/components/Carousel';
 import { StatusWidgets } from '@/components/StatusWidgets';
+import { TodayHours } from '@/components/TodayHours';
 import { getActivePromotions } from '@/lib/wordpress';
 import { Hero } from '@/components/Hero';
 import { MenuHost } from '@/components/MenuHost';
@@ -112,6 +113,8 @@ export default async function HomePage() {
               />
             </Link>
           </div>
+
+          <TodayHours />
 
           <div className="mt-14 grid gap-x-10 gap-y-14 md:grid-cols-2">
             {signatureCats.map((cat, i) => (
