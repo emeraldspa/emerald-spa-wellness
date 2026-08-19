@@ -168,3 +168,18 @@ days before this change. New requests are no longer cached, but copies already
 held at the edge expire on their own. To clear them immediately: hPanel,
 Websites, Dashboard, Clear cache; then, if the CDN is active, Performance, CDN,
 Flush cache. Hosting username is `u202309731`.
+
+### Verifying the portal yourself
+
+`scripts/verify-portal.py` checks the live subdomain with Scrapling
+(https://github.com/D4Vinci/Scrapling). Install and run:
+
+    pip install "scrapling[fetchers]"
+    scrapling install
+    python3 scripts/verify-portal.py
+
+It fetches the bare URL and a cache-busted URL with a real Chrome TLS
+fingerprint, renders the page in Chromium to confirm the slideshow mounts, and
+requests every photograph. Expect ORIGIN to pass on every line. BARE URL will
+keep failing until the Hostinger edge cache is flushed, which is the one step
+that needs hPanel access.
