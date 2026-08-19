@@ -115,7 +115,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
 
             <div className="relative flex items-center justify-between px-5 py-4 sm:px-8">
               <Link href="/" onClick={onClose} aria-label={`${site.legalName}, home`}>
-                <BrandLogo tone="dark" className="h-10 w-auto" />
+                <BrandLogo tone="light" className="h-10 w-auto" />
               </Link>
               <button
                 type="button"

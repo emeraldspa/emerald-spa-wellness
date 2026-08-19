@@ -45,7 +45,7 @@ export function ConstructionBanner() {
             href="https://studio.tangison.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline decoration-gold-300/50 underline-offset-2 transition-colors hover:text-gold-200"
+            className="inline-flex min-h-[44px] items-center px-2 -my-2 underline decoration-gold-300/50 underline-offset-2 transition-colors hover:text-gold-200"
           >
             Built by Tangison Studio
           </Link>
@@ -55,9 +55,9 @@ export function ConstructionBanner() {
         type="button"
         onClick={dismiss}
         aria-label="Dismiss notice"
-        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1.5 text-ground/70 transition-colors hover:bg-ground/10 hover:text-ground"
+        className="absolute right-1 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-ground/70 transition-colors hover:bg-ground/10 hover:text-ground"
       >
-        <X className="h-3.5 w-3.5" aria-hidden="true" />
+        <X className="h-4 w-4" aria-hidden="true" />
       </button>
     </div>
   );

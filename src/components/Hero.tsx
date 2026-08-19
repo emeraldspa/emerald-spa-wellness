@@ -61,7 +61,7 @@ export function Hero({ menuButtonId }: { menuButtonId: string }) {
         >
           <div className="hero-down">
             <Link href="/" aria-label={`${site.legalName}, home`}>
-              <BrandLogo tone="dark" priority className="h-10 w-auto md:h-12" />
+              <BrandLogo tone="light" priority className="h-10 w-auto md:h-12" />
             </Link>
           </div>
 

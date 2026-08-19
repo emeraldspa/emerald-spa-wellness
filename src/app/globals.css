@@ -44,6 +44,31 @@
     background: theme('colors.emerald.500');
     color: #fff;
   }
+
+  /* Branded caret and scrollbar: the surfaces the browser draws for you
+     still belong to the design system. */
+  input, textarea, select {
+    caret-color: theme('colors.emerald.600');
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: theme('colors.groundDeep');
+  }
+  ::-webkit-scrollbar-thumb {
+    background: theme('colors.emerald.800');
+    border-radius: 999px;
+    border: 2px solid theme('colors.groundDeep');
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.emerald.700');
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.emerald.800') theme('colors.groundDeep');
+  }
 }
 
 @layer components {

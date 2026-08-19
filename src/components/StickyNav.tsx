@@ -71,9 +71,7 @@ export function StickyNav() {
       // announced twice.
       aria-hidden={!shown}
     >
-      <div className="surface-stone-bar relative overflow-hidden rounded-full border border-gold-500/30 shadow-[0_10px_40px_-12px_rgba(7,33,26,0.55)]">
-        {/* Scrim keeps the stone readable as texture under the type. */}
-        <div aria-hidden="true" className="absolute inset-0 bg-[#0A1310]/72" />
+      <div className="relative overflow-hidden rounded-full border border-ground/15 bg-[#07211A]/35 shadow-[0_10px_40px_-12px_rgba(7,33,26,0.6)] backdrop-blur-2xl backdrop-saturate-150">
         {/* Brand gold hairline along the bottom edge. */}
         <div aria-hidden="true" className="rule-gold absolute inset-x-8 bottom-0 h-px opacity-70" />
         <nav
