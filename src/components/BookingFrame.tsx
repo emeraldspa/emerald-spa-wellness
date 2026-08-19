@@ -1,6 +1,6 @@
 'use client';
 
-import { AlertCircle, Loader2 } from 'lucide-react';
+import { AlertCircle, Loader2, RotateCw } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { BOOKING_EMBED_PATH, BOOKING_FALLBACK_URL, site } from '@/lib/site';
 
@@ -11,23 +11,32 @@ import { BOOKING_EMBED_PATH, BOOKING_FALLBACK_URL, site } from '@/lib/site';
  * the address bar stays on this domain for the entire flow and the provider
  * is never named to the visitor.
  *
- * Two states matter beyond the happy path: a loading state while the app
- * boots, and a failure state if the upstream is unreachable. The failure
- * state offers phone and WhatsApp rather than a dead frame.
+ * Three states matter: a loading state while the app boots, a ready state
+ * once the app has actually painted content, and a failure state if the
+ * upstream is unreachable or the app never mounts. The failure state offers
+ * the phone, a direct booking link and WhatsApp rather than a dead frame.
  */
 export function BookingFrame() {
   const [state, setState] = useState<'loading' | 'ready' | 'failed'>('loading');
+  const [attempt, setAttempt] = useState(0);
   const timeout = useRef<number | undefined>(undefined);
 
   const frameRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
-    // If the frame has not signalled load within 25s, treat it as failed.
+    // If the frame has not signalled load within 15s, treat it as failed.
+    // Short enough that a stalled widget hands the guest to the fallbacks
+    // quickly instead of leaving a blank box on screen.
     timeout.current = window.setTimeout(() => {
       setState((s) => (s === 'loading' ? 'failed' : s));
-    }, 25000);
+    }, 15000);
     return () => window.clearTimeout(timeout.current);
-  }, []);
+  }, [state, attempt]);
+
+  const retry = () => {
+    setState('loading');
+    setAttempt((a) => a + 1);
+  };
 
   /*
     A load event is not proof the booking app rendered.
@@ -40,18 +49,18 @@ export function BookingFrame() {
     through the proxy, so reading its body is permitted.
   */
   function verifyRendered() {
-    const check = (attempt: number) => {
+    const check = (n: number) => {
       const doc = frameRef.current?.contentDocument;
       const painted = (doc?.body?.innerText?.trim().length ?? 0) > 40;
       if (painted) {
         setState('ready');
         return;
       }
-      if (attempt >= 12) {
+      if (n >= 12) {
         setState('failed');
         return;
       }
-      window.setTimeout(() => check(attempt + 1), 1000);
+      window.setTimeout(() => check(n + 1), 1000);
     };
     check(0);
   }
@@ -103,6 +112,14 @@ export function BookingFrame() {
             >
               WhatsApp
             </a>
+            <button
+              type="button"
+              onClick={retry}
+              className="inline-flex items-center gap-2 rounded-full border border-emerald-600 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-emerald-700 transition-colors hover:bg-emerald-50"
+            >
+              <RotateCw className="h-3.5 w-3.5" aria-hidden="true" />
+              Try again
+            </button>
           </div>
         </div>
       ) : null}
@@ -114,17 +131,18 @@ export function BookingFrame() {
         embedded booking feels broken.
       */}
       {state === 'failed' ? null : (
-      <iframe
-        ref={frameRef}
-        src={BOOKING_EMBED_PATH}
-        title={`Book a treatment at ${site.legalName}`}
-        className="h-[min(1100px,calc(100vh-6rem))] min-h-[640px] w-full border-0"
-        loading="lazy"
-        onLoad={verifyRendered}
-        onError={() => setState('failed')}
-        allow="payment"
-        referrerPolicy="no-referrer"
-      />
+        <iframe
+          key={attempt}
+          ref={frameRef}
+          src={BOOKING_EMBED_PATH}
+          title={`Book a treatment at ${site.legalName}`}
+          className="h-[min(1100px,calc(100vh-6rem))] min-h-[640px] w-full border-0"
+          loading="lazy"
+          onLoad={verifyRendered}
+          onError={() => setState('failed')}
+          allow="payment"
+          referrerPolicy="no-referrer"
+        />
       )}
     </div>
   );

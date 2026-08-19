@@ -241,7 +241,7 @@ export default async function HomePage() {
                 </h2>
               </div>
               <Link
-                href="/services#promotions"
+                href="/promotions"
                 className="group flex items-center gap-1.5 text-sm font-semibold uppercase tracking-widest text-emerald-600"
               >
                 All offers
