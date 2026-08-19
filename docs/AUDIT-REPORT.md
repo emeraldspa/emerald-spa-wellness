@@ -42,6 +42,7 @@ changed and then re-verified against the live sites, not just the codebase.
 | high | No Content-Security-Policy on any of the 12 public routes | ASVS V14.4.3 | Added a CSP allowlisting self plus the Maps embed | `content-security-policy` header present on live |
 | high | Canonical, og:url, robots.txt and sitemap.xml all advertised the vercel.app preview host | Lighthouse SEO, ogp.me | Set SITE_URL and the Vercel env var to emeraldspacc.com | canonical, robots and sitemap now emit emeraldspacc.com |
 | high | Back office sent no X-Frame-Options and no nosniff | ASVS V14.4.7, V14.4.4 | send_headers and rest_pre_serve_request hooks in the theme | headers present on /, /portal/, /wp-json/ |
+| high | Every subpage lost its og:image. Next.js replaces the openGraph object rather than merging it, so pages declaring only a url dropped the inherited image | ogp.me | Added an ogFor() helper used by all 11 subpages | og:image present and 200 on /services and siblings |
 | medium | Back office leaked `X-Powered-By: PHP/8.3.30` | ASVS V14.3.3 | header_remove on init, login_init and admin_init | gone from / and /wp-login.php |
 | medium | Back office published a public wp-sitemap.xml while set to noindex | Crawl hygiene | wp_sitemaps_enabled filtered to false | wp-sitemap.xml now 404 |
 | medium | 21 touch targets under 44px on mobile (WhatsApp chips at 42px, contact links at 41px) | Apple HIG 44pt / Google 48dp | min-h-[44px] on chips, padded hit area on prose links | 0 undersized targets across 12 mobile routes |
@@ -135,7 +136,7 @@ Standard: OWASP ASVS 4.0.3 V14.4
 
 | Severity | Finding | Evidence | Fix |
 | --- | --- | --- | --- |
-| medium | CSP script-src allows unsafe-inline on / | `/: script-src 'self' 'unsafe-inline'` | Next.js App Router emits inline hydration scripts, so removing this requires per-request nonces via middleware |
+| medium | CSP script-src allows unsafe-inline on / | `/: script-src 'self' 'unsafe-inline' 'unsafe-eval'` | Next.js App Router emits inline hydration scripts, so removing this requires per-request nonces via middleware |
 | medium | No nosniff on back office /wp-login.php | `wp /wp-login.php: absent` | Send nosniff. |
 | low | No X-Frame-Options on back office /wp-admin/ (redirect, no document rendered) | `wp /wp-admin/: HTTP 302, header absent` | No action: the redirect target sends SAMEORIGIN. |
 | low | Back office leaks 'PHP/8.3.30' on a redirect | `wp /wp-admin/: HTTP 302 PHP/8.3.30` | Set expose_php=Off in php.ini (hPanel); WordPress hooks cannot reach a pre-boot redirect. |

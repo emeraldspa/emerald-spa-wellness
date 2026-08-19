@@ -7,13 +7,13 @@ import { Picture } from '@/components/Picture';
 import { Faq } from '@/components/Faq';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, WHATSAPP_PATH, getImage, site , SITE_URL} from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, WHATSAPP_PATH, getImage, site , SITE_URL, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Visit and Contact',
   description: `Emerald Spa & Wellness Centre is at ${site.address.street}, ${site.address.suburb}, Windhoek. Open seven days. Call ${site.phone} or book online.`,
   alternates: { canonical: '/visit' },
-  openGraph: { url: `${SITE_URL}/visit` },
+  openGraph: ogFor('/visit'),
 };
 
 /** Arrival sequence: the entrance, the lounge, the garden, a welcome drink. */

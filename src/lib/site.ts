@@ -327,3 +327,30 @@ export const LISTED_SERVICE_COUNT = site.categories.reduce(
   (total, category) => total + category.items.length,
   0,
 );
+
+
+/**
+ * Open Graph block for a subpage.
+ *
+ * Next.js replaces `openGraph` wholesale instead of merging it with the root
+ * layout, so a page that declares only a url loses the share image, the type
+ * and the site name. Building it here keeps every page complete and means the
+ * image is defined in exactly one place.
+ */
+export function ogFor(path: string) {
+  return {
+    type: 'website' as const,
+    siteName: 'Emerald Spa & Wellness Centre',
+    locale: 'en_NA',
+    url: `${SITE_URL}${path}`,
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        type: 'image/jpeg',
+        alt: 'Emerald Spa & Wellness Centre, Windhoek',
+      },
+    ],
+  };
+}

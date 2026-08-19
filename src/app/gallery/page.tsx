@@ -3,14 +3,14 @@ import { Picture } from '@/components/Picture';
 import { FooterFull } from '@/components/FooterFull';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { GALLERY_SECTIONS, POSTER_SLUGS, getImage, imageMap, site , SITE_URL} from '@/lib/site';
+import { GALLERY_SECTIONS, POSTER_SLUGS, getImage, imageMap, site , SITE_URL, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Gallery',
   description:
     'Photographs of Emerald Spa & Wellness Centre in Windhoek West: treatment rooms, the reception, the hydrotherapy suite, the garden and finished treatments.',
   alternates: { canonical: '/gallery' },
-  openGraph: { url: `${SITE_URL}/gallery` },
+  openGraph: ogFor('/gallery'),
 };
 
 /**

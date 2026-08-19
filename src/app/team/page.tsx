@@ -4,14 +4,14 @@ import { Picture } from '@/components/Picture';
 import { FooterFull } from '@/components/FooterFull';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { imageMap, site , SITE_URL} from '@/lib/site';
+import { imageMap, site , SITE_URL, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Our Team',
   description:
     'Meet the therapists and spa professionals at Emerald Spa & Wellness Centre in Windhoek West, Namibia.',
   alternates: { canonical: '/team' },
-  openGraph: { url: `${SITE_URL}/team` },
+  openGraph: ogFor('/team'),
 };
 
 export default function TeamPage() {

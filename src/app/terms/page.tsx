@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import { FooterMinimal } from '@/components/FooterMinimal';
 import { SiteHeader } from '@/components/SiteHeader';
-import { site , SITE_URL} from '@/lib/site';
+import { site , SITE_URL, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Terms of Use',
   description:
     'Terms covering the use of the Emerald Spa & Wellness Centre website, including pricing and booking.',
   alternates: { canonical: '/terms' },
-  openGraph: { url: `${SITE_URL}/terms` },
+  openGraph: ogFor('/terms'),
 };
 
 export default function TermsPage() {

@@ -4,13 +4,13 @@ import { FooterMinimal } from '@/components/FooterMinimal';
 import { SiteHeader } from '@/components/SiteHeader';
 import { WhatsAppFlow } from '@/components/WhatsAppFlow';
 import { ClipReveal } from '@/components/motion';
-import { site , SITE_URL} from '@/lib/site';
+import { site , SITE_URL, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Book on WhatsApp',
   description: `Message Emerald Spa & Wellness Centre on WhatsApp. Pick what you need and open a chat with your message ready to send. Windhoek West, ${site.phone}.`,
   alternates: { canonical: '/whatsapp' },
-  openGraph: { url: `${SITE_URL}/whatsapp` },
+  openGraph: ogFor('/whatsapp'),
 };
 
 export default function WhatsAppPage() {

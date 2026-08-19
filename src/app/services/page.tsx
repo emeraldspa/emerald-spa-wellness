@@ -13,14 +13,13 @@ import {
   SITE_URL,
   WHATSAPP_PATH,
   getImage,
-  site,
-} from '@/lib/site';
+  site, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Services and Prices',
   description: `All ${LISTED_SERVICE_COUNT} treatments at Emerald Spa & Wellness Centre, Windhoek West: massages, facials, hydrotherapy, nails, lashes and hair removal. Prices in Namibian dollars.`,
   alternates: { canonical: '/services' },
-  openGraph: { url: `${SITE_URL}/services` },
+  openGraph: ogFor('/services'),
 };
 
 /**

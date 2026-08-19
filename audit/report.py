@@ -95,6 +95,10 @@ FIXED = [
      "Lighthouse legible font sizes", "Raised to 12px", "no sub-11px text remains"),
     ("low", "Home title was 61 characters", "Google SERP truncation",
      "Shortened to 56", "measured on live"),
+    ("high", "Every subpage lost its og:image. Next.js replaces the openGraph object "
+     "rather than merging it, so pages declaring only a url dropped the inherited image",
+     "ogp.me", "Added an ogFor() helper used by all 11 subpages",
+     "og:image present and 200 on /services and siblings"),
     ("critical", "The /book embed returned 200 for every asset but rendered a blank white frame, "
      "and the page reported it as ready",
      "A booking journey must complete", "Frame content is now inspected after load; a blank "

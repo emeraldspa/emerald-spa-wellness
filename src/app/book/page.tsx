@@ -4,13 +4,13 @@ import { MessageCircle, Phone } from 'lucide-react';
 import { BookingFrame } from '@/components/BookingFrame';
 import { FooterMinimal } from '@/components/FooterMinimal';
 import { SiteHeader } from '@/components/SiteHeader';
-import { LISTED_SERVICE_COUNT, WHATSAPP_PATH, site , SITE_URL} from '@/lib/site';
+import { LISTED_SERVICE_COUNT, WHATSAPP_PATH, site , SITE_URL, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Book Now',
   description: `Book a treatment at Emerald Spa & Wellness Centre, Blackett Street No. 7, Windhoek West. ${LISTED_SERVICE_COUNT} treatments, open seven days.`,
   alternates: { canonical: '/book' },
-  openGraph: { url: `${SITE_URL}/book` },
+  openGraph: ogFor('/book'),
 };
 
 /**

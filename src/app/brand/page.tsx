@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import { FooterMinimal } from '@/components/FooterMinimal';
 import { SiteHeader } from '@/components/SiteHeader';
-import { site , SITE_URL} from '@/lib/site';
+import { site , SITE_URL, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Brand',
   description:
     'The Emerald Spa & Wellness Centre design system: logo, colour, typography, motion, and image rules.',
   alternates: { canonical: '/brand' },
-  openGraph: { url: `${SITE_URL}/brand` },
+  openGraph: ogFor('/brand'),
 };
 
 const EMERALD = [
