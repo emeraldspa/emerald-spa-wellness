@@ -67,7 +67,7 @@ export default function PrivacyPage() {
               <p className="mt-3 leading-relaxed">
                 You can ask us what information we hold about you, ask us to correct it, or ask
                 us to delete it. Call{' '}
-                <a href={`tel:${site.phoneE164}`} className="text-emerald-700 underline">
+                <a href={`tel:${site.phoneE164}`} className="tap-inline text-emerald-700 underline">
                   {site.phone}
                 </a>{' '}
                 or message us on{' '}
@@ -75,7 +75,7 @@ export default function PrivacyPage() {
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-emerald-700 underline"
+                  className="tap-inline text-emerald-700 underline"
                 >
                   WhatsApp
                 </a>

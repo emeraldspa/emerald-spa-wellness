@@ -65,10 +65,18 @@ export function getImage(slug: string): ImageAsset {
   return img;
 }
 
-/** Canonical origin. Overridden at build time on Vercel. */
+/**
+ * Canonical origin.
+ *
+ * This is the address the business owns, so it is what canonical tags, the
+ * sitemap, robots.txt and Open Graph URLs must advertise. Search engines are
+ * told about one home for this content, not the deployment host it happens to
+ * run on today. `NEXT_PUBLIC_SITE_URL` still wins when set, which keeps preview
+ * deployments self-consistent.
+ */
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
-  'https://emerald-spa-wellness.vercel.app';
+  'https://emeraldspacc.com';
 
 /** Bare digits, the form wa.me expects. */
 export const WHATSAPP_NUMBER = site.phoneE164.replace('+', '');
@@ -93,6 +101,18 @@ export const BOOKING_PATH = '/book';
  */
 export const BOOKING_EMBED_PATH =
   '/api/booking/a/emerald-spa-wellness-centre-windhoek-blackett-street-awio4ik8/booking?allOffer=true';
+
+/**
+ * Direct booking URL, used only when the embed fails to render.
+ *
+ * The embed keeps the visitor on this domain and never names the provider,
+ * which is the preferred path. But a booking page that cannot take a booking
+ * is worse than one that hands the visitor off, so this is offered inside the
+ * failure state alongside phone and WhatsApp. It opens in a new tab, so the
+ * visitor keeps their place on the Emerald site.
+ */
+export const BOOKING_FALLBACK_URL =
+  'https://www.fresha.com/a/emerald-spa-wellness-centre-windhoek-blackett-street-awio4ik8';
 
 /**
  * Google Business Profile.

@@ -147,7 +147,7 @@ function Choice({
       type="button"
       onClick={onClick}
       aria-pressed={selected}
-      className={`rounded-full border px-4 py-2.5 text-sm transition-colors ${
+      className={`min-h-[44px] rounded-full border px-4 py-2.5 text-sm transition-colors ${
         selected
           ? 'border-emerald-600 bg-emerald-600 text-white'
           : 'border-ink/20 text-ink/80 hover:border-emerald-600 hover:text-emerald-600'

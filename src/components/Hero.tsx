@@ -100,7 +100,7 @@ export function Hero({ menuButtonId }: { menuButtonId: string }) {
                   ) : null}
                   {stat.value}
                 </p>
-                <p className="whitespace-pre-line text-[10px] font-semibold uppercase leading-tight tracking-widest text-ink sm:text-xs md:text-sm">
+                <p className="whitespace-pre-line text-[12px] font-semibold uppercase leading-tight tracking-widest text-ink sm:text-xs md:text-sm">
                   {stat.label}
                 </p>
               </div>
@@ -111,7 +111,7 @@ export function Hero({ menuButtonId }: { menuButtonId: string }) {
         <div className="flex flex-col gap-6 px-5 pb-8 sm:px-8 md:gap-12 md:px-12 md:pb-12">
           <div className="flex items-center justify-between gap-4">
             <p
-              className="hero-up max-w-[130px] text-[10px] font-semibold uppercase tracking-widest text-ink sm:max-w-[160px] sm:text-xs md:max-w-xs md:text-sm"
+              className="hero-up max-w-[130px] text-[12px] font-semibold uppercase tracking-widest text-ink sm:max-w-[160px] sm:text-xs md:max-w-xs md:text-sm"
               style={{ animationDelay: '0.6s' }}
             >
               Quiet Luxury

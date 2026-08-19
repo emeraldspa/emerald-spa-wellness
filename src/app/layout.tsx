@@ -34,7 +34,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Emerald Spa & Wellness Centre | Spa in Windhoek West, Namibia',
+    default: 'Emerald Spa & Wellness Centre | Spa in Windhoek, Namibia',
     template: '%s | Emerald Spa & Wellness Centre',
   },
   description:

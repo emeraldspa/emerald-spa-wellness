@@ -78,7 +78,7 @@ export function StatusWidgets() {
           ) : null}
         </span>
         <span className="min-w-0">
-          <span className="block text-[10px] font-semibold uppercase tracking-widest text-ink/65">
+          <span className="block text-[12px] font-semibold uppercase tracking-widest text-ink/65">
             Today
           </span>
           <span className="block truncate text-sm font-medium text-ink">
@@ -96,7 +96,7 @@ export function StatusWidgets() {
         >
           <Star className="h-4 w-4 shrink-0 text-gold-500" aria-hidden="true" />
           <span className="min-w-0">
-            <span className="block text-[10px] font-semibold uppercase tracking-widest text-ink/65">
+            <span className="block text-[12px] font-semibold uppercase tracking-widest text-ink/65">
               Rated
             </span>
             <span className="block truncate text-sm font-medium text-ink">
@@ -115,7 +115,7 @@ export function StatusWidgets() {
         >
           <MapPin className="h-4 w-4 shrink-0 text-emerald-600" aria-hidden="true" />
           <span className="min-w-0">
-            <span className="block text-[10px] font-semibold uppercase tracking-widest text-ink/65">
+            <span className="block text-[12px] font-semibold uppercase tracking-widest text-ink/65">
               Find us
             </span>
             <span className="block truncate text-sm font-medium text-ink">
@@ -132,7 +132,7 @@ export function StatusWidgets() {
         >
           <Phone className="h-4 w-4 shrink-0 text-emerald-600" aria-hidden="true" />
           <span className="min-w-0">
-            <span className="block text-[10px] font-semibold uppercase tracking-widest text-ink/65">
+            <span className="block text-[12px] font-semibold uppercase tracking-widest text-ink/65">
               Call
             </span>
             <span className="block truncate text-sm font-medium text-ink">{site.phone}</span>

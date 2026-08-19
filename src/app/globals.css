@@ -322,6 +322,17 @@ body > * {
     or contact action gets a comfortable target on touch, while running prose
     links are left alone so paragraphs do not gain odd line spacing.
   */
+
+  /*
+    Contact actions that sit inside running prose. A min-height would stretch
+    the line box and break the paragraph rhythm, so these get vertical padding
+    instead, which grows the hit area while the text stays on its own line.
+  */
+  .tap-inline {
+    /* Measured: 0.7rem produced a 42px box. This clears the 44px floor. */
+    padding-block: 0.8rem;
+  }
+
   address a,
   .contact-list a,
   main a:not(:where(p a, li p a, figcaption a)) {

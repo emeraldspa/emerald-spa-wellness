@@ -2,7 +2,7 @@
 
 import { AlertCircle, Loader2 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import { BOOKING_EMBED_PATH, site } from '@/lib/site';
+import { BOOKING_EMBED_PATH, BOOKING_FALLBACK_URL, site } from '@/lib/site';
 
 /**
  * Embedded booking.
@@ -19,6 +19,8 @@ export function BookingFrame() {
   const [state, setState] = useState<'loading' | 'ready' | 'failed'>('loading');
   const timeout = useRef<number | undefined>(undefined);
 
+  const frameRef = useRef<HTMLIFrameElement>(null);
+
   useEffect(() => {
     // If the frame has not signalled load within 25s, treat it as failed.
     timeout.current = window.setTimeout(() => {
@@ -27,8 +29,39 @@ export function BookingFrame() {
     return () => window.clearTimeout(timeout.current);
   }, []);
 
+  /*
+    A load event is not proof the booking app rendered.
+
+    The provider's bundle can return every file with a 200 and still never
+    mount, which leaves a frame that has fired `load` around an empty
+    document. Treating that as success shows the visitor a blank white box
+    with no way forward, so the frame is inspected after it loads: it is only
+    "ready" once it has actually painted content. The frame is same-origin
+    through the proxy, so reading its body is permitted.
+  */
+  function verifyRendered() {
+    const check = (attempt: number) => {
+      const doc = frameRef.current?.contentDocument;
+      const painted = (doc?.body?.innerText?.trim().length ?? 0) > 40;
+      if (painted) {
+        setState('ready');
+        return;
+      }
+      if (attempt >= 12) {
+        setState('failed');
+        return;
+      }
+      window.setTimeout(() => check(attempt + 1), 1000);
+    };
+    check(0);
+  }
+
   return (
-    <div className="relative min-h-[720px] overflow-hidden border border-ink/15 bg-white">
+    <div
+      className={`relative overflow-hidden border border-ink/15 ${
+        state === 'failed' ? 'min-h-0 bg-ground' : 'min-h-[720px] bg-white'
+      }`}
+    >
       {state === 'loading' ? (
         <div
           className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-ground"
@@ -41,7 +74,7 @@ export function BookingFrame() {
       ) : null}
 
       {state === 'failed' ? (
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 bg-ground px-6 text-center">
+        <div className="flex flex-col items-center justify-center gap-4 bg-ground px-6 py-16 text-center">
           <AlertCircle className="h-7 w-7 text-emerald-700" aria-hidden="true" />
           <p className="max-w-sm text-ink/80">
             Online booking is not responding right now. Call or message us and we will book you
@@ -53,6 +86,14 @@ export function BookingFrame() {
               className="rounded-full bg-emerald-600 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-700"
             >
               Call {site.phone}
+            </a>
+            <a
+              href={BOOKING_FALLBACK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-ink/20 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-ink transition-colors hover:border-emerald-600 hover:text-emerald-600"
+            >
+              Book online
             </a>
             <a
               href={`https://wa.me/${site.phoneE164.replace('+', '')}`}
@@ -72,16 +113,19 @@ export function BookingFrame() {
         forces a scrollbar inside a scrollbar, which is the usual reason
         embedded booking feels broken.
       */}
+      {state === 'failed' ? null : (
       <iframe
+        ref={frameRef}
         src={BOOKING_EMBED_PATH}
         title={`Book a treatment at ${site.legalName}`}
         className="h-[min(1100px,calc(100vh-6rem))] min-h-[640px] w-full border-0"
         loading="lazy"
-        onLoad={() => setState('ready')}
+        onLoad={verifyRendered}
         onError={() => setState('failed')}
         allow="payment"
         referrerPolicy="no-referrer"
       />
+      )}
     </div>
   );
 }
