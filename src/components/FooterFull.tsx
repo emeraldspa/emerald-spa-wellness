@@ -86,7 +86,7 @@ export function FooterFull() {
             >
               <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
               <span>
-                {site.address.street}, {site.address.suite}
+                {site.address.street}
                 <br />
                 {site.address.suburb}, {site.address.city}
               </span>

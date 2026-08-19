@@ -13,16 +13,20 @@ export function FooterMinimal() {
     <footer className="surface-marble-pale border-t border-ink/10">
       <div className="shell flex flex-col gap-5 py-10 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/brand/symbol-photoreal.png"
-            alt=""
-            width={400}
-            height={293}
-            loading="lazy"
-            decoding="async"
-            className="h-8 w-auto"
-          />
+          <picture>
+            <source srcSet="/brand/symbol-photoreal-200.avif" type="image/avif" />
+            <source srcSet="/brand/symbol-photoreal-200.webp" type="image/webp" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/brand/symbol-photoreal.png"
+              alt=""
+              width={200}
+              height={146}
+              loading="lazy"
+              decoding="async"
+              className="h-8 w-auto"
+            />
+          </picture>
           <p className="text-xs text-ink/65">
             &copy; {new Date().getFullYear()} {site.legalName}
           </p>

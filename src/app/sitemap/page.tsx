@@ -2,12 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FooterMinimal } from '@/components/FooterMinimal';
 import { SiteHeader } from '@/components/SiteHeader';
-import { site } from '@/lib/site';
+import { site , SITE_URL} from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Sitemap',
   description: 'Every page on the Emerald Spa & Wellness Centre website.',
   alternates: { canonical: '/sitemap' },
+  openGraph: { url: `${SITE_URL}/sitemap` },
 };
 
 const GROUPS = [

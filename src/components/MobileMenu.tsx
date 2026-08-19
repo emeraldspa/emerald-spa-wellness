@@ -32,6 +32,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
       {open ? (
         <motion.div
           ref={panelRef}
+          id="site-menu"
           tabIndex={-1}
           role="dialog"
           aria-modal="true"

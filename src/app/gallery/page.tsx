@@ -3,13 +3,14 @@ import { Picture } from '@/components/Picture';
 import { FooterFull } from '@/components/FooterFull';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { GALLERY_SECTIONS, POSTER_SLUGS, getImage, imageMap, site } from '@/lib/site';
+import { GALLERY_SECTIONS, POSTER_SLUGS, getImage, imageMap, site , SITE_URL} from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Gallery',
   description:
     'Photographs of Emerald Spa & Wellness Centre in Windhoek West: treatment rooms, the reception, the hydrotherapy suite, the garden and finished treatments.',
   alternates: { canonical: '/gallery' },
+  openGraph: { url: `${SITE_URL}/gallery` },
 };
 
 /**
@@ -66,7 +67,7 @@ export default function GalleryPage() {
           </h1>
           <p className="mt-8 max-w-2xl text-lg text-ink/70 text-pretty">
             {total} photographs of the actual rooms, treatments and garden, taken at{' '}
-            {site.address.street} {site.address.suite}, {site.address.suburb}. Nothing here is a
+            {site.address.street}, {site.address.suburb}. Nothing here is a
             stock image.
           </p>
 

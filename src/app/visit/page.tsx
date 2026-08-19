@@ -7,12 +7,13 @@ import { Picture } from '@/components/Picture';
 import { Faq } from '@/components/Faq';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, WHATSAPP_PATH, getImage, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, WHATSAPP_PATH, getImage, site , SITE_URL} from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Visit and Contact',
-  description: `Emerald Spa & Wellness Centre is at ${site.address.street} ${site.address.suite}, ${site.address.suburb}, Windhoek. Open seven days. Call ${site.phone} or book online.`,
+  description: `Emerald Spa & Wellness Centre is at ${site.address.street}, ${site.address.suburb}, Windhoek. Open seven days. Call ${site.phone} or book online.`,
   alternates: { canonical: '/visit' },
+  openGraph: { url: `${SITE_URL}/visit` },
 };
 
 /** Arrival sequence: the entrance, the lounge, the garden, a welcome drink. */
@@ -82,7 +83,7 @@ export default function VisitPage() {
               >
                 <MapPin className="mt-1.5 h-5 w-5 shrink-0" aria-hidden="true" />
                 <span>
-                  {site.address.street}, {site.address.suite}
+                  {site.address.street}
                   <br />
                   {site.address.suburb}
                   <br />

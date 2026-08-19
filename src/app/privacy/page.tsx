@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import { FooterMinimal } from '@/components/FooterMinimal';
 import { SiteHeader } from '@/components/SiteHeader';
-import { WHATSAPP_URL, site } from '@/lib/site';
+import { WHATSAPP_URL, site , SITE_URL} from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Privacy Notice',
   description:
     'How Emerald Spa & Wellness Centre handles personal information collected through this website.',
   alternates: { canonical: '/privacy' },
+  openGraph: { url: `${SITE_URL}/privacy` },
   robots: { index: true, follow: true },
 };
 
@@ -87,7 +88,7 @@ export default function PrivacyPage() {
               <address className="mt-3 not-italic leading-relaxed">
                 {site.legalName}
                 <br />
-                {site.address.street}, {site.address.suite}
+                {site.address.street}
                 <br />
                 {site.address.suburb}, {site.address.city}
                 <br />

@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import { FooterMinimal } from '@/components/FooterMinimal';
 import { SiteHeader } from '@/components/SiteHeader';
-import { site } from '@/lib/site';
+import { site , SITE_URL} from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Terms of Use',
   description:
     'Terms covering the use of the Emerald Spa & Wellness Centre website, including pricing and booking.',
   alternates: { canonical: '/terms' },
+  openGraph: { url: `${SITE_URL}/terms` },
 };
 
 export default function TermsPage() {
@@ -26,7 +27,7 @@ export default function TermsPage() {
               <h2 className="display text-2xl text-ink">About this website</h2>
               <p className="mt-3 leading-relaxed">
                 This site describes the treatments offered by {site.legalName} at{' '}
-                {site.address.street} {site.address.suite}, {site.address.suburb}, Windhoek.
+                {site.address.street}, {site.address.suburb}, Windhoek.
                 It is provided for information and for booking.
               </p>
             </div>

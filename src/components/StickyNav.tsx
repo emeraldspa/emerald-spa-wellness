@@ -87,7 +87,8 @@ export function StickyNav() {
             {/* The symbol alone, because the strip is short and the wordmark
                 would eat the space the sections need. */}
             <picture>
-              <source srcSet="/brand/symbol-photoreal.png" type="image/png" />
+              <source srcSet="/brand/symbol-photoreal-200.avif" type="image/avif" />
+              <source srcSet="/brand/symbol-photoreal-200.webp" type="image/webp" />
               <img
                 src="/brand/symbol-photoreal.png"
                 alt=""

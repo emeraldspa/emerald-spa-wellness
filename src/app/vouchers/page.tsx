@@ -4,13 +4,14 @@ import { FooterMinimal } from '@/components/FooterMinimal';
 import { SiteHeader } from '@/components/SiteHeader';
 import { VoucherForm } from '@/components/VoucherForm';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { EMAILS, site } from '@/lib/site';
+import { EMAILS, site , SITE_URL} from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Gift Vouchers',
   description:
     'Buy a gift voucher for Emerald Spa & Wellness Centre in Windhoek. Choose a value, tell us the occasion, and we send the voucher number and expiry date back to you.',
   alternates: { canonical: '/vouchers' },
+  openGraph: { url: `${SITE_URL}/vouchers` },
 };
 
 export default function VouchersPage() {

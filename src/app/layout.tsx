@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     template: '%s | Emerald Spa & Wellness Centre',
   },
   description:
-    'Massages, facials, hydrotherapy and nails at Emerald Spa & Wellness Centre, Blackett Street, Windhoek West. Rated 4.8 from 228 verified guest reviews. Book online.',
+    'Massages, facials, hydrotherapy and nails at Emerald Spa & Wellness Centre in Windhoek West. Rated 4.8 from 228 verified reviews.',
   keywords: [
     'spa Windhoek',
     'massage Windhoek',
@@ -57,13 +57,13 @@ export const metadata: Metadata = {
     title: 'Emerald Spa & Wellness Centre | Spa in Windhoek West',
     description:
       'A refined retreat in Windhoek West. Massages, facials, hydrotherapy and nails, rated 4.8 from 228 verified reviews.',
-    images: [{ url: '/og.svg', width: 1200, height: 630, alt: `${site.legalName}, Windhoek` }],
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, type: 'image/jpeg', alt: `${site.legalName}, Windhoek` }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Emerald Spa & Wellness Centre | Windhoek',
     description: 'A refined retreat in Windhoek West. Rated 4.8 from 228 verified reviews.',
-    images: ['/og.svg'],
+    images: ['/og-image.jpg'],
   },
   robots: {
     index: true,
@@ -98,7 +98,7 @@ function StructuredData() {
     currenciesAccepted: 'NAD',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: `${site.address.street}, ${site.address.suite}`,
+      streetAddress: site.address.street,
       addressLocality: site.address.city,
       addressRegion: site.address.region,
       addressCountry: 'NA',
@@ -141,6 +141,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <StructuredData />
       </head>
       <body>
+        <noscript>
+          <p style={{ fontFamily: 'Georgia, serif', padding: '1rem', textAlign: 'center' }}>
+            {site.legalName} — {site.address.street}, Windhoek West. Call{' '}
+            <a href={`tel:${site.phoneE164}`}>{site.phone}</a> or book online once JavaScript loads.
+          </p>
+        </noscript>
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-emerald-600 focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-white"

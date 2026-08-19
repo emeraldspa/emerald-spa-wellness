@@ -58,7 +58,9 @@ export function SiteHeader() {
               type="button"
               onClick={() => setOpen(true)}
               className="flex h-11 w-11 flex-col items-center justify-center gap-1 rounded-full bg-ink md:hidden"
-              aria-label="Open menu"
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-expanded={open}
+              aria-controls="site-menu"
             >
               <span className="h-0.5 w-4 bg-white" />
               <span className="h-0.5 w-4 bg-white" />

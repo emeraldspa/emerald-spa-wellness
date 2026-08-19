@@ -53,7 +53,9 @@ export default async function HomePage() {
 
   return (
     <>
-      <Hero menuButtonId={MENU_EVENT} />
+      <header>
+        <Hero menuButtonId={MENU_EVENT} />
+      </header>
       <MenuHost eventName={MENU_EVENT} />
 
       <main id="main">

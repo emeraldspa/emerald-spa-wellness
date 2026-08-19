@@ -18,7 +18,7 @@ export function MapEmbed() {
       <div className="overflow-hidden border border-ink/15 bg-emerald-900/5">
         <iframe
           src={GOOGLE_MAPS_EMBED_URL}
-          title={`Map showing ${site.legalName}, ${site.address.street} ${site.address.suite}, ${site.address.suburb}`}
+          title={`Map showing ${site.legalName}, ${site.address.street}, ${site.address.suburb}`}
           className="h-[380px] w-full border-0 md:h-[460px]"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
