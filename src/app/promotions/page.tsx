@@ -6,7 +6,7 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { PageHero } from '@/components/PageHero';
 import { FadeUp } from '@/components/motion';
 import { getActivePromotions } from '@/lib/wordpress';
-import { BOOKING_CTA, BOOKING_PATH, SITE_URL, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, SITE_URL, formatNad, site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Current Offers',
@@ -36,8 +36,10 @@ export default async function PromotionsPage() {
   const fromWordPress: Offer[] = wp.map((p) => ({
     name: p.title,
     description: p.excerpt,
-    duration: p.startsOn && p.endsOn ? `Until ${p.endsOn}` : 'Current offer',
-    price: '',
+    duration:
+      p.duration ||
+      (p.startsOn && p.endsOn ? `Until ${p.endsOn}` : 'Current offer'),
+    price: p.priceNad ? formatNad(p.priceNad) : '',
   }));
 
   const offers: Offer[] = [

@@ -35,6 +35,10 @@ export type WpPromotion = WpPost & {
   startsOn: string | null;
   endsOn: string | null;
   showAsPopup: boolean;
+  /** Venue duration text, e.g. "2 hours". */
+  duration: string | null;
+  /** Venue price in NAD, e.g. 1700. */
+  priceNad: number | null;
 };
 
 type RawPost = {
@@ -129,8 +133,10 @@ export async function getActivePromotions(): Promise<WpPromotion[]> {
       return {
         ...toPost(r),
         startsOn: asString(acf.starts_on),
-        endsOn: asString(acf.ends_on),
+        endsOn: asString(acf.valid_until) ?? asString(acf.ends_on),
         showAsPopup: acf.show_as_popup === true || acf.show_as_popup === 1,
+        duration: asString(acf.duration),
+        priceNad: typeof acf.price_nad === 'number' ? acf.price_nad : null,
       };
     })
     .filter((p) => {

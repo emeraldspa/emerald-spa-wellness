@@ -9,7 +9,7 @@ import { MenuHost } from '@/components/MenuHost';
 import { Picture } from '@/components/Picture';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import { FooterFull } from '@/components/FooterFull';
-import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, HOME_CAROUSEL_SLUGS, LISTED_SERVICE_COUNT, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, HOME_CAROUSEL_SLUGS, LISTED_SERVICE_COUNT, formatNad, site } from '@/lib/site';
 
 /** Four signature categories, chosen for breadth across the real menu. */
 const SIGNATURE = ['massages', 'facials-skincare', 'hydrotherapy', 'nails'];
@@ -37,8 +37,10 @@ export default async function HomePage() {
   const fromWordPress = wpPromotions.slice(0, 3).map((p) => ({
     name: p.title,
     description: p.excerpt,
-    duration: p.startsOn && p.endsOn ? `Until ${p.endsOn}` : 'Current offer',
-    price: '',
+    duration:
+      p.duration ||
+      (p.startsOn && p.endsOn ? `Until ${p.endsOn}` : 'Current offer'),
+    price: p.priceNad ? formatNad(p.priceNad) : '',
   }));
 
   /*
