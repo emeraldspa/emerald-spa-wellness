@@ -3,6 +3,7 @@ import { Star } from 'lucide-react';
 import { Picture } from '@/components/Picture';
 import { FooterFull } from '@/components/FooterFull';
 import { SiteHeader } from '@/components/SiteHeader';
+import { PageHero } from '@/components/PageHero';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import { imageMap, site , SITE_URL, ogFor } from '@/lib/site';
 
@@ -19,18 +20,14 @@ export default function TeamPage() {
     <>
       <SiteHeader />
       <main id="main">
-        <section className="shell border-b border-ink/10 py-16 md:py-24">
-          <p className="eyebrow text-emerald-600">The Team</p>
-          <h1 className="display mt-4 max-w-4xl text-4xl text-balance sm:text-5xl md:text-6xl">
-            <ClipReveal>The hands behind the calm.</ClipReveal>
-          </h1>
-          <p className="mt-8 max-w-2xl text-lg text-ink/70 text-pretty">
-            Guests name our therapists in their reviews more than anything else. Ratings
-            below are each professional&apos;s own verified average.
-          </p>
-        </section>
+        <PageHero
+          slug="garden-lounge-guests"
+          eyebrow="The Team"
+          title="The hands behind the calm."
+          lede="Guests name our therapists in their reviews more than anything else. Ratings below are each professional's own verified average."
+        />
 
-        <section className="shell py-16 md:py-20">
+        <section className="surface-marble-pale border-t border-ink/10 py-16 md:py-20">
           <ul className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {site.team.map((m, i) => {
               const slug = `team-${m.slug}`;

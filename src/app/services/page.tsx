@@ -5,6 +5,7 @@ import { FooterFull } from '@/components/FooterFull';
 import { Picture } from '@/components/Picture';
 import { SiteHeader } from '@/components/SiteHeader';
 import { CategoryNav, CategoryRail } from '@/components/CategoryNav';
+import { PageHero } from '@/components/PageHero';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import {
   BOOKING_CTA,
@@ -74,27 +75,21 @@ export default function ServicesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <main id="main">
-        <section className="surface-marble-pale relative border-b border-ink/10 py-16 md:py-24">
-          <div aria-hidden="true" className="rule-gold absolute inset-x-0 bottom-0 h-px" />
-          <div className="shell relative">
-          <p className="eyebrow text-emerald-600">Treatment Menu</p>
-          <h1 className="display mt-4 max-w-4xl text-4xl text-balance sm:text-5xl md:text-6xl">
-            <ClipReveal>Every treatment, every price.</ClipReveal>
-          </h1>
-          <p className="mt-8 max-w-2xl text-lg text-ink/70 text-pretty">
-            {LISTED_SERVICE_COUNT} treatments across {site.categories.length} categories, from a
-            10 minute add-on to a full day of care. Prices are in Namibian dollars and
-            match our live booking system.
-          </p>
+        <PageHero
+          slug="treatment-room"
+          eyebrow="Treatment Menu"
+          title="Every treatment, every price."
+          lede={`${LISTED_SERVICE_COUNT} treatments across ${site.categories.length} categories, from a 10 minute add-on to a full day of care. Prices are in Namibian dollars and match our live booking system.`}
+        />
+        <div className="relative z-10 mx-auto -mt-8 max-w-3xl px-5 sm:px-8 md:px-12">
           <Link
             href={BOOKING_PATH}
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-emerald-700 px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-800"
+            className="inline-flex items-center gap-2 rounded-full bg-gold-300 px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-[#0A1310] shadow-[0_12px_30px_-10px_rgba(7,33,26,0.5)] transition-colors hover:bg-gold-200"
           >
             {BOOKING_CTA}
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </Link>
-          </div>
-        </section>
+        </div>
 
         {/* Fixed on mobile, so it stays reachable through a long menu. */}
         <CategoryRail
@@ -128,6 +123,7 @@ export default function ServicesPage() {
                   tell how far through thirteen categories they are without
                   scrolling back to the rail.
                 */}
+                <FadeUp as="div">
                 <div className="flex items-baseline gap-4">
                   <span className="display text-xl text-emerald-700/80 tabular-nums sm:text-2xl">
                     {String(ci + 1).padStart(2, '0')}
@@ -141,6 +137,7 @@ export default function ServicesPage() {
                     {cat.items.length} treatment{cat.items.length === 1 ? '' : 's'}
                   </span>
                 </div>
+                </FadeUp>
 
                 {CATEGORY_IMAGE[cat.slug] ? (
                   <div className="mt-6 overflow-hidden bg-emerald-900/5">

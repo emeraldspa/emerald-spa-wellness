@@ -4,6 +4,7 @@ import { MessageCircle, Phone } from 'lucide-react';
 import { BookingFrame } from '@/components/BookingFrame';
 import { FooterMinimal } from '@/components/FooterMinimal';
 import { SiteHeader } from '@/components/SiteHeader';
+import { PageHero } from '@/components/PageHero';
 import { LISTED_SERVICE_COUNT, WHATSAPP_PATH, site , SITE_URL, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -27,10 +28,12 @@ export default function BookPage() {
     <>
       <SiteHeader />
       <main id="main">
-        <section className="shell pt-10 md:pt-14">
-          <p className="eyebrow text-emerald-600">Booking</p>
-          <h1 className="display mt-3 text-3xl sm:text-4xl">Reserve your treatment.</h1>
-        </section>
+        <PageHero
+          slug="spa-retreat"
+          eyebrow="Booking"
+          title="Reserve your treatment."
+          align="center"
+        />
 
         <section className="shell pb-10 pt-6 md:pb-14">
           <BookingFrame />

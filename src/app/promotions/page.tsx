@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { FooterFull } from '@/components/FooterFull';
 import { SiteHeader } from '@/components/SiteHeader';
+import { PageHero } from '@/components/PageHero';
 import { FadeUp } from '@/components/motion';
 import { getActivePromotions } from '@/lib/wordpress';
 import { BOOKING_CTA, BOOKING_PATH, SITE_URL, site } from '@/lib/site';
@@ -55,19 +56,14 @@ export default async function PromotionsPage() {
     <>
       <SiteHeader />
       <main id="main">
-        <section className="shell border-b border-ink/10 pb-16 pt-14 md:pb-24 md:pt-20">
-          <p className="eyebrow text-emerald-600">Current offers</p>
-          <h1 className="display mt-4 max-w-3xl text-4xl text-balance sm:text-5xl md:text-6xl">
-            Packages worth planning around.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink/75">
-            Shareable escapes for two, quiet afternoons with friends, and the
-            treatments the spa is best known for. Every offer is confirmed with
-            the team before you book.
-          </p>
-        </section>
+        <PageHero
+          slug="wine-pair"
+          eyebrow="Current offers"
+          title="Packages worth planning around."
+          lede="Shareable escapes for two, quiet afternoons with friends, and the treatments the spa is best known for. Every offer is confirmed with the team before you book."
+        />
 
-        <section className="shell py-16 md:py-20">
+        <section className="surface-marble-emerald border-t border-ink/10 py-16 md:py-20">
           {offers.length === 0 ? (
             <p className="text-ink/70">
               No packages are running right now. The full menu is always

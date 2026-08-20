@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FooterMinimal } from '@/components/FooterMinimal';
 import { SiteHeader } from '@/components/SiteHeader';
+import { PageHero } from '@/components/PageHero';
 import { site , SITE_URL, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -41,10 +42,11 @@ export default function SitemapPage() {
     <>
       <SiteHeader />
       <main id="main">
-        <section className="shell border-b border-ink/10 py-16 md:py-24">
-          <p className="eyebrow text-emerald-600">Sitemap</p>
-          <h1 className="display mt-4 text-4xl sm:text-5xl md:text-6xl">Every page.</h1>
-        </section>
+                <PageHero
+          slug="serenity-garden"
+          eyebrow="Site"
+          title="Every page."
+        />
 
         <section className="shell grid gap-12 py-16 md:grid-cols-3 md:py-20">
           {GROUPS.map((g) => (

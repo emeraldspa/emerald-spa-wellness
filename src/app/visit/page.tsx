@@ -6,6 +6,7 @@ import { MapEmbed } from '@/components/MapEmbed';
 import { Picture } from '@/components/Picture';
 import { Faq } from '@/components/Faq';
 import { SiteHeader } from '@/components/SiteHeader';
+import { PageHero } from '@/components/PageHero';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, WHATSAPP_PATH, getImage, site , SITE_URL, ogFor } from '@/lib/site';
 
@@ -64,12 +65,12 @@ export default function VisitPage() {
     <>
       <SiteHeader />
       <main id="main">
-        <section className="shell border-b border-ink/10 py-16 md:py-24">
-          <p className="eyebrow text-emerald-600">Visit</p>
-          <h1 className="display mt-4 max-w-4xl text-4xl text-balance sm:text-5xl md:text-6xl">
-            <ClipReveal>Find us in Windhoek West.</ClipReveal>
-          </h1>
-        </section>
+                <PageHero
+          slug="garden-signage"
+          eyebrow="Visit"
+          title="Find us in Windhoek West."
+          lede="7 Blackett Street, Windhoek West, Khomas Region, Namibia. Open seven days."
+        />
 
         <section className="shell grid gap-12 py-16 md:grid-cols-12 md:py-20">
           <div className="md:col-span-5">

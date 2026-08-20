@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { FooterMinimal } from '@/components/FooterMinimal';
 import { SiteHeader } from '@/components/SiteHeader';
+import { PageHero } from '@/components/PageHero';
 import { site , SITE_URL, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -52,18 +53,12 @@ export default function BrandPage() {
     <>
       <SiteHeader />
       <main id="main">
-        <section className="shell border-b border-ink/10 py-16 md:py-24">
-          <p className="eyebrow text-emerald-600">Design System</p>
-          <h1 className="display mt-4 max-w-4xl text-4xl text-balance sm:text-5xl md:text-6xl">
-            The Emerald brand.
-          </h1>
-          <p className="mt-8 max-w-2xl text-lg text-ink/70 text-pretty">
-            Every colour on this page is sampled directly from the supplied logo artwork. The
-            layout framework follows the structural approach used by COLLINS: a serif display
-            voice, a neutral grotesk for interface text, an off-white ground, and a single
-            saturated signal colour.
-          </p>
-        </section>
+        <PageHero
+          slug="green-escape"
+          eyebrow="Design System"
+          title="The Emerald brand."
+          lede="Every colour on this page is sampled directly from the supplied logo artwork. The layout framework follows the structural approach used by COLLINS: a serif display voice, a neutral grotesk for interface text, an off-white ground, and a single saturated signal colour."
+        />
 
         <section className="shell border-b border-ink/10 py-16">
           <h2 className="display text-3xl">The mark</h2>

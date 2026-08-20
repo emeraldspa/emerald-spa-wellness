@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { FooterMinimal } from '@/components/FooterMinimal';
 import { SiteHeader } from '@/components/SiteHeader';
+import { PageHero } from '@/components/PageHero';
 import { WHATSAPP_URL, site , SITE_URL, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -17,10 +18,11 @@ export default function PrivacyPage() {
     <>
       <SiteHeader />
       <main id="main">
-        <section className="shell border-b border-ink/10 py-16 md:py-24">
-          <p className="eyebrow text-emerald-600">Legal</p>
-          <h1 className="display mt-4 text-4xl sm:text-5xl md:text-6xl">Privacy Notice</h1>
-        </section>
+                <PageHero
+          slug="candlescape"
+          eyebrow="Legal"
+          title="Privacy Notice"
+        />
 
         <section className="shell max-w-3xl py-16 md:py-20">
           <div className="space-y-10 text-ink/80">

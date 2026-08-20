@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Picture } from '@/components/Picture';
 import { FooterFull } from '@/components/FooterFull';
 import { SiteHeader } from '@/components/SiteHeader';
+import { PageHero } from '@/components/PageHero';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import { GALLERY_SECTIONS, POSTER_SLUGS, getImage, imageMap, site , SITE_URL, ogFor } from '@/lib/site';
 
@@ -60,18 +61,15 @@ export default function GalleryPage() {
     <>
       <SiteHeader />
       <main id="main">
-        <section className="shell border-b border-ink/10 py-16 md:py-24">
-          <p className="eyebrow text-emerald-600">Gallery</p>
-          <h1 className="display mt-4 max-w-4xl text-4xl text-balance sm:text-5xl md:text-6xl">
-            <ClipReveal>Inside the retreat.</ClipReveal>
-          </h1>
-          <p className="mt-8 max-w-2xl text-lg text-ink/70 text-pretty">
-            {total} photographs of the actual rooms, treatments and garden, taken at{' '}
-            {site.address.street}, {site.address.suburb}. Nothing here is a
-            stock image.
-          </p>
+        <PageHero
+          slug="reception-lounge"
+          eyebrow="Gallery"
+          title="Inside the retreat."
+          lede={`${total} photographs of the actual rooms, treatments and garden, taken at ${site.address.street}, ${site.address.suburb}. Nothing here is a stock image.`}
+        />
+        <div className="relative z-10 mx-auto -mt-8 max-w-3xl px-5 sm:px-8 md:px-12">
 
-          <nav aria-label="Gallery sections" className="mt-10">
+          <nav aria-label="Gallery sections" className="mt-8 rounded-full border border-ink/10 bg-ground/90 p-2 shadow-sm backdrop-blur">
             <ul className="flex flex-wrap gap-2">
               {GALLERY_SECTIONS.map((section) => (
                 <li key={section.id}>
@@ -85,7 +83,7 @@ export default function GalleryPage() {
               ))}
             </ul>
           </nav>
-        </section>
+        </div>
 
         {GALLERY_SECTIONS.map((section, si) => (
           <section
