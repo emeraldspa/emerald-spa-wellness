@@ -1,0 +1,185 @@
+<!-- wp:html -->
+<div class="emx-portal">
+  <div class="emx-stage" aria-hidden="true">
+    <div class="emx-slide is-on" style="background-image:url('https://admin.emeraldspacc.com/wp-content/uploads/2026/08/reception-lounge-1600-scaled.jpg')"></div>
+    <div class="emx-slide" style="background-image:url('https://admin.emeraldspacc.com/wp-content/uploads/2026/08/hydrotherapy-tub-set-1600-scaled.jpg')"></div>
+    <div class="emx-slide" style="background-image:url('https://admin.emeraldspacc.com/wp-content/uploads/2026/08/garden-pond-1320.jpg')"></div>
+    <div class="emx-slide" style="background-image:url('https://admin.emeraldspacc.com/wp-content/uploads/2026/08/treatment-room-1600.jpg')"></div>
+    <div class="emx-slide" style="background-image:url('https://admin.emeraldspacc.com/wp-content/uploads/2026/08/hanging-chair-1600-scaled.jpg')"></div>
+    <div class="emx-slide" style="background-image:url('https://admin.emeraldspacc.com/wp-content/uploads/2026/08/lash-extensions-1600.jpg')"></div>
+    <div class="emx-veil"></div>
+  </div>
+
+  <main class="emx-shell" id="emx-main">
+    <div class="emx-card">
+      <img
+        class="emx-logo"
+        src="https://admin.emeraldspacc.com/wp-content/uploads/2026/08/lockup-stacked-dark.png"
+        alt="Emerald Spa and Wellness Centre"
+        width="320" height="246" fetchpriority="high" decoding="async" />
+
+      <p class="emx-eyebrow">Content back office</p>
+
+      <h1 class="emx-title">A private door,<br />not the front one.</h1>
+
+      <p class="emx-lede">
+        This address is where the Emerald team writes and publishes. Everything
+        guests are meant to see lives on the public website.
+      </p>
+
+      <div class="emx-actions">
+        <a class="emx-btn emx-btn-gold" href="https://emeraldspacc.com">Visit the website</a>
+        <a class="emx-btn emx-btn-ghost" href="https://admin.emeraldspacc.com/wp-admin/">Staff sign in</a>
+      </div>
+
+      <figure class="emx-quote">
+        <blockquote>Exhale, restore, and leave renewed.</blockquote>
+        <figcaption>Emerald Spa &amp; Wellness Centre, Windhoek</figcaption>
+      </figure>
+
+      <div class="emx-notice" role="note">
+        <span class="emx-notice-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 4.5-3.2 8.3-8 9-4.8-.7-8-4.5-8-9V7l8-4z"/><path d="M12 9v4"/><path d="M12 16h.01"/></svg>
+        </span>
+        <p>
+          <strong>Restricted system.</strong> Access is limited to authorised
+          Emerald Spa &amp; Wellness Centre personnel. All activity is logged.
+          Unauthorised access or attempted access is prohibited and may be
+          reported to the relevant authorities under Namibian law.
+        </p>
+      </div>
+
+      <p class="emx-foot">
+        &copy; 2026 Emerald Spa &amp; Wellness Centre &middot; Blackett Street No. 7, Windhoek West
+        <span class="emx-sep" aria-hidden="true">&middot;</span>
+        <a href="https://studio.tangison.com" rel="noopener">Made by Tangison Studio</a>
+      </p>
+    </div>
+  </main>
+</div>
+
+<style>
+/*
+  Emerald back office portal.
+
+  Written as one self contained block so the host theme cannot fight it. The
+  restraint is deliberate: this is a door, not a shop window. One logo held
+  large, one line of type, one quote, one notice, and photographs moving slowly
+  behind glass. Nothing blinks, nothing sells.
+*/
+.emx-portal{
+  position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;
+  padding:clamp(1rem,3vw,2rem);overflow:hidden;background:#07211A;
+  font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.emx-stage{position:absolute;inset:0;z-index:0}
+.emx-slide{
+  position:absolute;inset:0;background-size:cover;background-position:center;
+  opacity:0;transform:scale(1.06);
+  transition:opacity 2.4s ease-in-out,transform 9s linear;
+}
+.emx-slide.is-on{opacity:1;transform:scale(1)}
+/* Two washes: one to sink the photograph, one to warm the emerald into it. */
+.emx-veil{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(120% 90% at 50% 0%,rgba(7,33,26,.55),rgba(7,33,26,.88) 60%,rgba(6,25,20,.96)),
+    linear-gradient(180deg,rgba(10,19,16,.55),rgba(7,33,26,.92));
+}
+.emx-shell{position:relative;z-index:1;width:100%;max-width:44rem}
+.emx-card{
+  position:relative;text-align:center;padding:clamp(1.75rem,3.5vw,2.75rem);
+  background:rgba(8,26,21,.55);
+  border:1px solid rgba(242,195,94,.22);
+  border-radius:2px;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 30px 80px -30px rgba(0,0,0,.75);
+}
+/* A single gold hairline along the top edge, the only ornament on the card. */
+.emx-card::before{
+  content:"";position:absolute;inset-inline:12%;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,#F2C35E,transparent);
+}
+.emx-logo{
+  width:clamp(168px,22vw,232px);height:auto;margin:0 auto;display:block;
+  filter:drop-shadow(0 0 26px rgba(117,224,186,.28));
+}
+.emx-eyebrow{
+  margin:1.35rem 0 0;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;
+  color:#F2C35E;font-weight:600;
+}
+.emx-title{
+  margin:.85rem 0 0;color:#F4F1EA;font-weight:400;line-height:1.06;
+  font-size:clamp(1.9rem,5.5vw,3rem);letter-spacing:-.02em;
+  font-family:Georgia,"Times New Roman",serif;
+}
+.emx-lede{
+  margin:.9rem auto 0;max-width:34rem;color:rgba(244,241,234,.80);
+  font-size:clamp(.95rem,2.4vw,1.05rem);line-height:1.65;
+}
+.emx-actions{
+  margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;
+}
+.emx-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;padding:0 1.6rem;border-radius:999px;
+  font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  text-decoration:none;transition:transform .25s ease,background-color .25s ease,border-color .25s ease;
+}
+.emx-btn-gold{background:#F2C35E;color:#0A1310;border:1px solid #F2C35E}
+.emx-btn-gold:hover{background:#FFE18A;border-color:#FFE18A;transform:translateY(-1px)}
+.emx-btn-ghost{background:transparent;color:#F4F1EA;border:1px solid rgba(244,241,234,.34)}
+.emx-btn-ghost:hover{border-color:#F2C35E;color:#F2C35E;transform:translateY(-1px)}
+.emx-quote{
+  margin:1.9rem auto 0;padding-top:1.6rem;max-width:32rem;
+  border-top:1px solid rgba(244,241,234,.14);
+}
+.emx-quote blockquote{
+  margin:0;color:#F4F1EA;font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(1.15rem,3.2vw,1.5rem);line-height:1.4;font-style:italic;
+}
+.emx-quote figcaption{
+  margin-top:.85rem;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(244,241,234,.62);
+}
+.emx-notice{
+  margin-top:1.7rem;display:flex;gap:.8rem;text-align:left;
+  padding:1rem 1.1rem;border-radius:2px;
+  background:rgba(122,59,32,.20);border:1px solid rgba(242,195,94,.30);
+}
+.emx-notice-mark{color:#F2C35E;flex:0 0 auto;line-height:0;padding-top:.15rem}
+.emx-notice p{margin:0;font-size:.8rem;line-height:1.6;color:rgba(244,241,234,.84)}
+.emx-notice strong{color:#F2C35E;font-weight:700}
+.emx-foot{
+  margin:1.5rem 0 0;font-size:.7rem;line-height:1.7;color:rgba(244,241,234,.55);
+}
+.emx-foot a{display:inline-block;padding-block:.45rem;color:rgba(244,241,234,.72);text-decoration:none;border-bottom:1px solid rgba(242,195,94,.4)}
+.emx-foot a:hover{color:#F2C35E}
+.emx-sep{margin:0 .4rem}
+@media (max-width:480px){
+  .emx-actions .emx-btn{width:100%}
+}
+/* Motion is decoration here. Without it the first photograph simply stays. */
+@media (prefers-reduced-motion:reduce){
+  .emx-slide{transition:none}
+  .emx-slide:not(.is-on){display:none}
+  .emx-btn{transition:none}
+}
+</style>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reduce.matches) return;
+  var slides = document.querySelectorAll('.emx-portal .emx-slide');
+  if (slides.length < 2) return;
+  var i = 0;
+  setInterval(function () {
+    slides[i].classList.remove('is-on');
+    i = (i + 1) % slides.length;
+    slides[i].classList.add('is-on');
+  }, 6000);
+})();
+</script>
+<!-- /wp:html -->

@@ -1,0 +1,76 @@
+# PROOF
+
+Evidence ledger. Phase | Action | Target | Command or method | Result | Evidence path or URL | Timestamp | Status
+
+## Round 3 (revamp, 2026-08-27)
+
+| Phase | Action | Target | Command or method | Result | Evidence path or URL | Timestamp | Status |
+|---|---|---|---|---|---|---|---|
+| Data | Tagline added | business.json | python json | Pass | src/data/business.json `tagline` | 2026-08-27 | Done |
+| Data | Proudly Namibian replaces ownership features | business.json | python json | Pass | `features` | 2026-08-27 | Done |
+| Data | Promotions renamed: Besties 2/4/6 and massage packages for One/Two/Three, no duration | business.json | python json | Pass | `categories[promotions]` | 2026-08-27 | Done |
+| Data | Suburb confirmed Windhoek West (no change), street unchanged | business.json | read | Pass | address block | 2026-08-27 | Done |
+| Font | Fraunces to Radley | layout.tsx | edit | Pass (typecheck) | src/app/layout.tsx | 2026-08-27 | Done |
+| CSS | Marble upscaled to 2048 and fitted (cover), stone upscaled | globals.css + public/media/*-xl.webp | ImageMagick + edit | Pass | globals.css `.surface-marble-*`, `.surface-stone-black` | 2026-08-27 | Done |
+| Nav | SiteHeader removed from 13 inner pages; StickyNav is the only nav (all routes) | 13 page files + StickyNav.tsx | edit | Pass (typecheck) | src/components/StickyNav.tsx | 2026-08-27 | Done |
+| Nav | Journal + Venues added to NAV_LINKS | site.ts | edit | Pass | src/lib/site.ts | 2026-08-27 | Done |
+| Booking | /book restructured: full-bleed frame section, no padding/margins | book/page.tsx | write | Pass (typecheck) | src/app/book/page.tsx | 2026-08-27 | Done |
+| Booking | BookingFrame: 25s timeout, same-origin fallback (URL stays on domain), full-screen popup toggle | BookingFrame.tsx | write | Pass (typecheck) | src/components/BookingFrame.tsx | 2026-08-27 | Done |
+| Reviews | Home reviews to spiral layout, curated (one-word reviews filtered) | page.tsx | edit | Pass (typecheck) | src/app/page.tsx | 2026-08-27 | Done |
+| Products | Products strip on home: descriptions only, no prices, no separate page | page.tsx + data/products.ts | write | Pass (typecheck) | src/data/products.ts | 2026-08-27 | Done |
+| Imagery | Imagery band (tagline over full-bleed photo) on home | page.tsx | edit | Pass | src/app/page.tsx | 2026-08-27 | Done |
+| Assets | 51 new images copied + registered in images.json, jpg fallbacks + webp variants generated | public/media + images.json | Pillow script | Pass (95 slugs) | src/data/images.json | 2026-08-27 | Done |
+| Assets | 4 videos transcoded 4K to 1080p mp4+webm, posters webp | public/media/video | ffmpeg | Pass | public/media/video | 2026-08-27 | Done |
+| Gallery | True masonry, natural aspect, no cropping; hydrotherapy section re-pointed to new photos | gallery/page.tsx + site.ts | write | Pass (typecheck) | src/app/gallery/page.tsx | 2026-08-27 | Done |
+| Page | Venues page: 2 stories with video reels, no-crop masonry, Book-the-venue CTA | venues/page.tsx | write | Pass (typecheck) | src/app/venues/page.tsx | 2026-08-27 | Done |
+| Page | Journal + article pages, headless WP, empty state, featured-image fallback | journal/* | write | Pass (typecheck) | src/app/journal/ | 2026-08-27 | Done |
+| Widget | WhatsApp flow upgraded to 3-step process with progress rail and spring motion | WhatsAppFlow.tsx | write | Pass (typecheck) | src/components/WhatsAppFlow.tsx | 2026-08-27 | Done |
+| Widget | VenueEnquiry widget (occasion/guests/when to WhatsApp) | VenueEnquiry.tsx | write | Pass (typecheck) | src/components/VenueEnquiry.tsx | 2026-08-27 | Done |
+| Team | Founder feature (Evelyne Mulilo) with photo | team/page.tsx | edit | Pass (typecheck) | src/app/team/page.tsx | 2026-08-27 | Done |
+| CSP | img-src allows WordPress origin for featured images | next.config.mjs | edit | Pass | next.config.mjs | 2026-08-27 | Done |
+| Sitemap | /venues + /journal added | sitemap.ts | edit | Pass | src/app/sitemap.ts | 2026-08-27 | Done |
+
+## Round 3 runtime gates (production server, 2026-08-27)
+
+| Gate | Target | Result | Evidence |
+|---|---|---|---|
+| Route smoke | / /book /venues /journal /gallery /team /promotions /whatsapp /visit /services /vouchers /sitemap.xml /robots.txt | All 200 | curl on `next start` |
+| Booking proxy | /api/booking/[...path] same-origin Fresha | HTTP 200 | curl through the deployed proxy |
+| Home content | tagline, products strip (BioMedical Emporium), review spiral | Present | HTML grep |
+| Venues | 2 stories, video reels, VenueEnquiry, no-crop masonry | Present | HTML grep |
+| Journal | Headless WP live: 2 posts render (demo-post-what-to-wear…, demo-post-why-the-garden…) | Renders; article page 200 | WP REST `_embed` + route smoke |
+| Promotions | Besties 2/4/6 (1,700/3,000/4,500), massage One/Two/Three (1,000/1,700/2,400) + live WP offers | All render | HTML grep |
+| Journal WP direct | `admin.emeraldspacc.com/wp-json/wp/v2/posts` | 2 demo posts, featured media ok | curl |
+| Promotions WP direct | `wp/v2/promotion` | 5 offers incl. renamed Besties (2→1,700 / 4→3,000 / 6→4,500) | curl |
+| Typecheck | `npx tsc --noEmit` | 0 errors | CLI |
+| Lint | `npm run lint` | 0 warnings/errors | CLI |
+| Build | `npm run build` | 21/21 routes, all static (ƒ only API proxy + [slug]) | CLI |
+
+## Screenshot decode (third attempt, 2026-08-27) — SUCCESS
+
+Tooling: tesseract 5.5.0 + OpenCV adaptive threshold (GaussianBlur, 2x upscale, psm 6/11). All 7 phone captures are a client chat thread of directives; every item cross-checked against the code:
+
+| Directive seen in screenshots | Implementation |
+|---|---|
+| "Remove data and pick like best 10 review to spiral" | Home spiral (curated, substantive reviews longest-first) |
+| Sisterhood/Brotherhood Package for six, NAD 4,500; Brow Lamination + Lash NAD 400 | Promotions data + /promotions render |
+| Massage packages: One N$1,000 / Two N$1,700 / Three N$2,400 (choose Swedish/Aromatherapy/Hot Stone + snack platter + hydrotherapy) | business.json + /promotions render |
+| "Change hydrotherapy photos" | Bin-2 assets + gallery hydrotherapy section re-pointed |
+| "iframe fresha to also be as big as possible and load in the frame" | /book full-bleed section, same-origin proxy (verified HTTP 200), full-screen popup |
+| "Pick facial product from BioMedical Emporium" + best-seller prices (R542 DermHydrix, R382 NanoZyme, R263 Skin Biotic, R1,940 Wellness Pack, R607 Facial Cleanser) | 6 products desc-only, no prices shown (client: we do not resell) |
+| "featured image must work headlessly" | Journal + posts use WP featured media with fallback + branded placeholder |
+| "keep the header icon and header word mark Emerald Spa" | Wordmark + icon kept |
+| "Woman-owned and indigenous-owned to Proudly Namibian" | Features list swapped |
+| "Radley Font" + tagline "Relax the body, renew the mind, rejuvenate the soul" | Radley in layout, tagline site-wide |
+| Amenities: Kid-friendly, Showers, Lockers, Bath towels | Already in features + visit FAQ |
+| Address 7 Blackett Street, Windhoek West, Windhoek, Khomas Region | Code matches (client's later message confirms West over the screenshots' intermediate "Change to Windhoek North" edit) |
+| Phone (OCR reads 026488 6077143) | Code has +264 85 607 7143 — OCR ambiguous (85 vs 88); flag for client confirmation |
+
+## Outstanding (logged, not silently dropped)
+
+| Phase | Action | Target | Why paused | Status |
+|---|---|---|---|---|
+| Reviews | Top up spiral to 10 | reviews data | Venue record holds 228; only 6 verified in business.json. Fresha blocks anonymous scrape. Next data pass with a working session tops it up. | Paused |
+| Phone | Confirm +264 85 vs +264 88 607 7143 | site.ts | OCR ambiguous between 5/8; code set from earlier data. Client to confirm. | Paused |
+| Booking | Confirm in-frame rendering on live deploy | /book | Needs Vercel deploy + browser check; proxy verified by design but runtime must be re-checked on prod. | Paused |
+| Visual | Confirm story/video mapping and new stone image | venues, stone | No vision in this environment; flag for client confirmation. | Paused |
