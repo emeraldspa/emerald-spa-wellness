@@ -98,23 +98,10 @@ export const BOOKING_CTA_LONG = 'Book Your Visit';
 export const BOOKING_PATH = '/book';
 
 /**
- * Same-origin path the booking iframe loads. Served by the proxy route at
- * `src/app/api/booking/[...path]/route.ts`, which makes the provider's app
- * same-origin so the browser permits framing it.
+ * Direct booking URL on the provider's site. Booking is a link wrapper: the
+ * guest opens this in a new tab and lands in a booking experience that works.
  */
-export const BOOKING_EMBED_PATH =
-  '/api/booking/a/emerald-spa-wellness-centre-windhoek-blackett-street-awio4ik8/booking?allOffer=true';
-
-/**
- * Direct booking URL, used only when the embed fails to render.
- *
- * The embed keeps the visitor on this domain and never names the provider,
- * which is the preferred path. But a booking page that cannot take a booking
- * is worse than one that hands the visitor off, so this is offered inside the
- * failure state alongside phone and WhatsApp. It opens in a new tab, so the
- * visitor keeps their place on the Emerald site.
- */
-export const BOOKING_FALLBACK_URL =
+export const BOOKING_URL =
   'https://www.fresha.com/a/emerald-spa-wellness-centre-windhoek-blackett-street-awio4ik8';
 
 /**
