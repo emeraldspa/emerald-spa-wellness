@@ -81,6 +81,21 @@ Tooling: tesseract 5.5.0 + OpenCV adaptive threshold (GaussianBlur, 2x upscale, 
 | Auto-deploy on push | .github/workflows/deploy.yml + GH secrets (VERCEL_TOKEN/ORG/PROJECT) | Run 33147252992 success | actions/runs/33147252992 |
 | Live verification | emeraldspacc.com | / /book /book-bulk /team /venues /brand /journal all 200 + markers present | curl |
 
+## Round 3.3 (2026-08-28) — universal header + navigation overhaul
+
+| Action | Target | Result | Evidence |
+|---|---|---|---|
+| One universal header: liquid-glass floating pill, always visible on every route | StickyNav.tsx rewrite | Live | emeraldspacc.com |
+| Search system: full-screen glass overlay, local index (pages/treatments/packages/products/journal), arrow-key nav, ⌘K | SearchOverlay.tsx | Live | button + overlay in bundle |
+| Off-canvas drawer: full-screen glass, staggered masked reveals, grouped menu (Explore/Book), contact + hours + socials | StickyNav drawer | Live | aria-controls=site-drawer |
+| Desktop dropdowns: Services (category grid), Venues (stories + book CTA), Journal (latest WP posts) | DropdownPanel | Live | hover/click, Esc |
+| Two CTAs on desktop: Book in bulk (ghost) + Book now (gold); leaner mobile bar (logo + search + hamburger) | StickyNav | Live | HTML grep |
+| Wordmark rebuilt: gem SVG on ivory tile + "Emerald Spa" typeset in Radley with tracked sub-line, used in header and both footers | Wordmark.tsx + FooterFull/Minimal | Live | symbol-mark.svg ×2 per page |
+| Hero's own nav + menu system removed; ConstructionBanner removed; StickyNav is the only nav | Hero.tsx, page.tsx, layout.tsx; deleted SiteHeader/MobileMenu/MenuHost/HeroMenuButton/ConstructionBanner/BrandLogo | Live | aria-label=Primary ×1, no "construction" |
+| Venue images: story grids uncropped (natural aspect), dropdown anchors story-gender-reveal/story-party/book-venue | venues/page.tsx | Live | no aspect-square on page |
+| Media restored INTO GIT (52 slug sets: venue/hydro/atmos/portrait/CEO/stone) — previously never committed, so live was 404ing them | public/media + git | Live 200s | curl all slugs |
+| Build + deploy | tsc 0, lint 0, build 22 routes; GH Actions auto-deploy success | Live | actions run 33155336104 |
+
 ## Outstanding (logged, not silently dropped)
 
 | Phase | Action | Target | Why paused | Status |
