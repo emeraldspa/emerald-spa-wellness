@@ -66,6 +66,21 @@ Tooling: tesseract 5.5.0 + OpenCV adaptive threshold (GaussianBlur, 2x upscale, 
 | Address 7 Blackett Street, Windhoek West, Windhoek, Khomas Region | Code matches (client's later message confirms West over the screenshots' intermediate "Change to Windhoek North" edit) |
 | Phone (OCR reads 026488 6077143) | Code has +264 85 607 7143 — OCR ambiguous (85 vs 88); flag for client confirmation |
 
+## Round 3.2 (2026-08-27) — final fixes + launch
+
+| Action | Target | Result | Evidence |
+|---|---|---|---|
+| Founders corrected: OJ = Founder, Evelyne Mulilo = Co-founder & CEO (photo ceo-evelyne-mulilo) | business.json + team page | Live | emeraldspacc.com/team |
+| Fresha = link wrapper (no forced iframe) | /book + BookingFrame.tsx + api/booking proxy + rewrites deleted | Live, zero iframes | emeraldspacc.com/book |
+| /book-bulk page (group flow via WhatsAppFlow initialIntent=group + VenueEnquiry + venue photos + Fresha link) | new page + NAV_LINKS + sitemap | Live | emeraldspacc.com/book-bulk |
+| Emerald stone updated: IMG-20260827-WA0021 registered as emerald-stone, featured on Brand Imagery | images.json + brand page | Live | emeraldspacc.com/brand |
+| Brand copy: Display Radley (was stale Fraunces), imagery copy corrected | brand page | Live | emeraldspacc.com/brand |
+| 51 media derivative sets regenerated (masters had been dropped by snapshot; restored from assets/processed/webp) | public/media | All 96 slugs resolve, dims match manifest | curl media/venue-party-4.webp 200 |
+| GitHub push | emeraldspa/emerald-spa-wellness main | e42c59d..44dd4d3 | github.com/emeraldspa/emerald-spa-wellness |
+| Vercel production deploy | spa-emerald/emerald-spa-wellness | Aliased emeraldspacc.com, Ready | vercel CLI |
+| Auto-deploy on push | .github/workflows/deploy.yml + GH secrets (VERCEL_TOKEN/ORG/PROJECT) | Run 33147252992 success | actions/runs/33147252992 |
+| Live verification | emeraldspacc.com | / /book /book-bulk /team /venues /brand /journal all 200 + markers present | curl |
+
 ## Outstanding (logged, not silently dropped)
 
 | Phase | Action | Target | Why paused | Status |
