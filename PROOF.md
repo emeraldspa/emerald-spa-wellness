@@ -96,6 +96,20 @@ Tooling: tesseract 5.5.0 + OpenCV adaptive threshold (GaussianBlur, 2x upscale, 
 | Media restored INTO GIT (52 slug sets: venue/hydro/atmos/portrait/CEO/stone) — previously never committed, so live was 404ing them | public/media + git | Live 200s | curl all slugs |
 | Build + deploy | tsc 0, lint 0, build 22 routes; GH Actions auto-deploy success | Live | actions run 33155336104 |
 
+## Round 4 (2026-08-28) — audit + Hallmark-directed fixes
+
+| Action | Target | Result | Evidence |
+|---|---|---|---|
+| Ran `npx skills use .../hallmark --skill hallmark` per client instruction; applied audit verb + 58-gate slop test | repo | Skill output read, gates applied | /tmp/skills-use-*/hallmark |
+| Full-site audit written: brutal critique, score 138/200 → 166/200 after fixes | AUDIT.md | Live | repo AUDIT.md |
+| Poppins replaces Inter (Radley + Poppins pairing) | layout.tsx + brand page + docs | Live | Poppins in live CSS |
+| Wordmark: EMERALD (Radley) over SPA & WELLNESS (tracked caps), gem SVG unboxed (no tile) with soft glow, in header + both footers | Wordmark.tsx | Live | symbol-mark.svg ×2, uppercase sub-line |
+| Header glass lightened #0E4634/60 (was near-black #07211A/72) + top sheen; dropdown/drawer/search surfaces lifted; links brightened | StickyNav + SearchOverlay | Live | 0E4634 in HTML |
+| Emerald stone used as section background (services closing band + book-bulk CTA) with light overlay | services + book-bulk pages | Live | emerald-stone.webp backgrounds |
+| All 96 images now render: gallery Atmosphere (atmos-1..18) + Moments (portrait-1..8 + spa-photo-1..3) sections; WhatsApp hero → spa-whatsapp-1; venue flyer on venues page | site.ts gallery + whatsapp + venues | Live | sections render |
+| photoshoot.md written: ~35-shot service photo plan + hero video instructions (new desktop clip, keep current on mobile) | repo | Deliverable | photoshoot.md |
+| Build + deploy | tsc 0, lint 0, build 22 routes; GH Actions auto-deploy success | Live | actions run 33159154924 |
+
 ## Outstanding (logged, not silently dropped)
 
 | Phase | Action | Target | Why paused | Status |
