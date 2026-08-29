@@ -1,0 +1,503 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* COLLINS easing ladder, verified from wearecollins.com */
+    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+    --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* Motion budget. Nothing on this site runs longer than --dur-slow. */
+    --dur-fast: 0.28s;
+    --dur-base: 0.55s;
+    --dur-slow: 0.9s;
+
+    /* Grid padding follows the COLLINS clamp pattern */
+    --grid-padding: clamp(1.25rem, 4vw, 4.5rem);
+
+    /*
+      Brand palette as RGB triplets, consumed by Tailwind's var() colours.
+      Light theme values below; the prefers-color-scheme block overrides the
+      core pair for dark theme. Chrome (the glass nav, drawer, dark bands)
+      is already dark and unchanged.
+    */
+    --c-ground: 242 239 232;
+    --c-ground-deep: 235 231 222;
+    --c-ink: 7 33 26;
+
+    --c-emerald-50: 234 246 241;
+    --c-emerald-100: 199 233 218;
+    --c-emerald-300: 117 224 186;
+    --c-emerald-500: 8 116 82;
+    --c-emerald-600: 10 90 69;
+    --c-emerald-700: 7 80 61;
+    --c-emerald-800: 6 63 49;
+    --c-emerald-900: 6 61 47;
+
+    --c-gold-100: 255 240 164;
+    --c-gold-200: 255 225 138;
+    --c-gold-300: 242 195 94;
+    --c-gold-400: 241 195 93;
+    --c-gold-500: 199 123 54;
+    --c-gold-600: 167 93 49;
+    --c-gold-700: 123 61 32;
+    --c-gold-800: 122 59 32;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --c-ground: 11 22 19;
+      --c-ground-deep: 15 28 24;
+      --c-ink: 233 242 237;
+
+      --c-emerald-50: 16 35 30;
+      --c-emerald-100: 24 52 44;
+      --c-emerald-300: 117 224 186;
+      --c-emerald-500: 16 158 113;
+      --c-emerald-600: 21 150 110;
+      --c-emerald-700: 26 150 112;
+      --c-emerald-800: 10 46 38;
+      --c-emerald-900: 8 40 33;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html {
+    overflow-x: clip;
+  }
+
+  body {
+    @apply bg-ground text-ink font-sans antialiased;
+    overflow-x: clip;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Visible, branded focus ring on every interactive element */
+  :where(a, button, summary, [tabindex]):focus-visible {
+    outline: 2px solid rgb(var(--c-emerald-500) / 1);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: rgb(var(--c-emerald-500) / 1);
+    color: #fff;
+  }
+
+  /* Branded caret and scrollbar: the surfaces the browser draws for you
+     still belong to the design system. */
+  input, textarea, select {
+    caret-color: rgb(var(--c-emerald-600) / 1);
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--c-ground-deep) / 1);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--c-emerald-800) / 1);
+    border-radius: 999px;
+    border: 2px solid rgb(var(--c-ground-deep) / 1);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--c-emerald-700) / 1);
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--c-emerald-800) / 1) rgb(var(--c-ground-deep) / 1);
+  }
+}
+
+@layer components {
+  .shell {
+    padding-inline: var(--grid-padding);
+    margin-inline: auto;
+    max-width: theme('maxWidth.shell');
+  }
+
+  /* Display type. Serif, tight, optically balanced at every size. */
+  .display {
+    @apply font-display font-normal;
+    line-height: 0.92;
+    letter-spacing: -0.022em;
+  }
+
+  .eyebrow {
+    @apply font-sans uppercase;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+  }
+
+  /* Clip-reveal wrapper used by the heading animations */
+  .reveal-clip {
+    overflow: hidden;
+    display: block;
+  }
+
+  .hairline {
+    border-color: rgb(7 33 26 / 0.12);
+  }
+
+  /* Article prose for journal posts. */
+  .prose-serif {
+    font-family: var(--font-display), Georgia, 'Times New Roman', serif;
+  }
+  .prose-serif h1, .prose-serif h2, .prose-serif h3 {
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin-top: 2.2em;
+    margin-bottom: 0.6em;
+  }
+  .prose-serif h1 { font-size: 2rem; }
+  .prose-serif h2 { font-size: 1.6rem; }
+  .prose-serif h3 { font-size: 1.25rem; }
+  .prose-serif p { margin-bottom: 1.2em; }
+  .prose-serif ul, .prose-serif ol { margin: 0 0 1.2em 1.4em; }
+  .prose-serif ul { list-style: disc; }
+  .prose-serif ol { list-style: decimal; }
+  .prose-serif li { margin-bottom: 0.4em; }
+  .prose-serif img { border-radius: 1rem; margin: 1.5em 0; }
+  .prose-serif blockquote {
+    border-left: 2px solid rgb(var(--c-gold-300) / 1);
+    padding-left: 1.25rem;
+    margin: 1.5em 0;
+    font-style: italic;
+    color: rgb(7 33 26 / 0.75);
+  }
+  .prose-serif a {
+    color: rgb(var(--c-emerald-600) / 1);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-serif a:hover { color: rgb(var(--c-emerald-700) / 1); }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+/*
+  Hero entrance, in CSS rather than JavaScript.
+
+  The hero holds the largest contentful paint. Driving its entrance with a
+  JS animation library keeps the text at opacity 0 until hydration finishes,
+  which pushed mobile LCP to 4.4s. CSS animations start at first paint and
+  need no JavaScript, so the text is visible immediately and LCP tracks the
+  document, not the bundle.
+*/
+/*
+  Hero entrances move but never fade.
+
+  An opacity ramp with a backwards fill leaves the largest hero text
+  unpainted for the whole delay, which held mobile LCP above 4s on a
+  throttled CPU. Animating transform alone paints the text on the first
+  frame and keeps the staggered arrival, so the motion costs nothing.
+*/
+@keyframes hero-fade-down {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes hero-fade-up {
+  from {
+    transform: translateY(28px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.hero-down {
+  animation: hero-fade-down 0.5s var(--ease-reveal) both;
+}
+
+.hero-up {
+  animation: hero-fade-up 0.6s var(--ease-reveal) both;
+}
+
+.hero-rise {
+  display: block;
+  animation: hero-rise 0.7s var(--ease-reveal) backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-down,
+  .hero-up,
+  .hero-rise {
+    animation: none !important;
+  }
+}
+
+/*
+  Reduced motion. Required by tangison-motion-master.
+  Animation is decoration here, never the carrier of meaning, so it is
+  safe to remove entirely. Content remains fully visible because every
+  animated element resolves to its final state.
+*/
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*
+  Paper grain.
+
+  A flat off-white still reads as a screen colour rather than a surface. This
+  lays a very low contrast fibre noise over the whole page, which the eye
+  reads as texture without ever competing with the type. The SVG is inline as
+  a data URI so it costs no request, and it is fixed so the grain does not
+  swim while the page scrolls.
+*/
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+}
+
+/* Content sits above the grain. */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/*
+  Marble surfaces. The texture is generated in the brand palette and upscaled
+  to 2048px so it can be FIT to the section with cover sizing rather than
+  tiled at phone scale. Kept faint: it is a ground, not a pattern feature.
+*/
+.surface-marble-pale {
+  background-color: rgb(var(--c-ground-deep) / 1);
+  background-image: url('/media/marble-pale-xl.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.surface-marble-emerald {
+  background-color: rgb(var(--c-emerald-900) / 1);
+  background-image:
+    linear-gradient(to bottom, rgb(6 63 49 / 0.55), rgb(6 61 47 / 0.85)),
+    url('/media/marble-emerald-xl.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.surface-marble-gold {
+  background-color: rgb(var(--c-ground-deep) / 1);
+  background-image: url('/media/marble-gold-xl.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* A calm panel wash: marble ground, one soft emerald radial, paper grain.
+   The marble texture runs under every panel so the site reads as stone, not
+   flat colour. */
+.surface-panel {
+  background-color: rgb(var(--c-ground) / 1);
+  background-image:
+    linear-gradient(to bottom, rgb(242 239 232 / 0.86), rgb(235 231 222 / 0.9)),
+    url('/media/marble-pale-xl.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { opacity: 0.35; }
+}
+
+/* Voucher card entrance. Transform and opacity only, so it stays cheap. */
+@keyframes voucher-pop-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.voucher-pop { animation: voucher-pop-in 0.45s cubic-bezier(0.19, 1, 0.22, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .voucher-pop { animation: none; }
+}
+
+/*
+  Black emerald stone. A dark slab carrying emerald crystal light and thin gold
+  veining, generated in the brand palette and upscaled to 2048px. Fit to the
+  section with cover sizing rather than tiled.
+*/
+.surface-stone-black {
+  background-color: rgb(var(--c-ground-deep) / 1);
+  background-image: image-set(
+    url('/media/stone-black.avif') type('image/avif'),
+    url('/media/stone-black.webp') type('image/webp')
+  );
+  background-size: 300px;
+  background-repeat: repeat;
+}
+
+/* Same stone at a tighter tile for small surfaces like the sticky bar. */
+.surface-stone-bar {
+  background-color: #0A1310;
+  background-image: image-set(
+    url('/media/stone-black.avif') type('image/avif'),
+    url('/media/stone-black.webp') type('image/webp')
+  );
+  background-size: 300px;
+  background-repeat: repeat;
+}
+
+/* Warm band, re-pointed to the marble-gold surface in Round 5: the site uses
+   marble as its background in most places, and this band reads as golden
+   marble. The class name is legacy; the clay colour no longer exists. */
+.surface-marble-gold {
+  background-color: rgb(var(--c-ground-deep) / 1);
+  background-image: url('/media/marble-gold-xl.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* A hairline of brand gold, for edges that need definition without a border. */
+.rule-gold {
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    rgb(var(--c-gold-300) / 1) 18%,
+    rgb(var(--c-gold-500) / 1) 50%,
+    rgb(var(--c-gold-300) / 1) 82%,
+    transparent
+  );
+}
+
+/*
+  Touch target floor.
+
+  On a touch device every link and button needs a comfortable hit area, and a
+  15px tall footer link is not one. This gives inline links in the footer and
+  other dense link lists a real vertical target on touch pointers only, so
+  desktop typography is unchanged and nothing reflows on a mouse-driven layout.
+*/
+@media (pointer: coarse), (max-width: 1024px) {
+  footer a,
+  .tap-safe a,
+  .tap-safe button,
+  nav[aria-label='Primary'] a {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /*
+    Inline text links inside main content. Anything that is a real navigation
+    or contact action gets a comfortable target on touch, while running prose
+    links are left alone so paragraphs do not gain odd line spacing.
+  */
+
+  /*
+    Contact actions that sit inside running prose. A min-height would stretch
+    the line box and break the paragraph rhythm, so these get vertical padding
+    instead, which grows the hit area while the text stays on its own line.
+  */
+  .tap-inline {
+    /* Measured: 0.7rem produced a 42px box. This clears the 44px floor. */
+    padding-block: 0.8rem;
+  }
+
+  address a,
+  .contact-list a,
+  main a:not(:where(p a, li p a, figcaption a)) {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /*
+    Links inside running prose keep their natural line box, because forcing
+    them to 44px would break paragraph rhythm. They get a wider padded hit
+    area instead, which touch devices honour without moving the text.
+  */
+  main p a {
+    padding-block: 0.65rem;
+  }
+
+  /* Short link labels still need a usable width. */
+  main li a,
+  footer li a {
+    min-width: 44px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Dark theme surface overrides.
+   The palette variables flip body/shell text automatically; these flip the
+   marble bands so every light surface becomes a dark emerald marble.
+---------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  .surface-marble-pale,
+  .surface-panel {
+    background-color: #0F1C18;
+    background-image:
+      linear-gradient(to bottom, rgb(8 40 33 / 0.72), rgb(6 31 26 / 0.88)),
+      url('/media/marble-emerald-xl.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .surface-marble-gold,
+  .surface-marble-gold {
+    background-color: #14231E;
+    background-image:
+      linear-gradient(to bottom, rgb(8 40 33 / 0.66), rgb(7 26 22 / 0.84)),
+      url('/media/marble-emerald-xl.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* Cards and wells pick up the deep ground with a hairline of light. */
+  .bg-ground\/90,
+  .bg-ground\/85 {
+    background-color: rgb(15 28 24 / 0.92);
+  }
+}
