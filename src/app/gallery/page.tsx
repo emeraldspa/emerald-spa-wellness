@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Picture } from '@/components/Picture';
 import { FooterFull } from '@/components/FooterFull';
+import { GalleryGrid, type GallerySectionData } from '@/components/GalleryGrid';
 import { PageHero } from '@/components/PageHero';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import { GALLERY_SECTIONS, POSTER_SLUGS, getImage, site, SITE_URL, ogFor } from '@/lib/site';
@@ -8,20 +9,27 @@ import { GALLERY_SECTIONS, POSTER_SLUGS, getImage, site, SITE_URL, ogFor } from 
 export const metadata: Metadata = {
   title: 'Gallery',
   description:
-    'Photographs of Emerald Spa & Wellness Centre in Windhoek North: treatment rooms, the reception, the hydrotherapy suite, the garden and finished treatments.',
+    'Photographs of Emerald Spa & Wellness Centre in Windhoek North: treatment rooms, the reception, the hydrotherapy suite, the garden and finished treatments. View any photo full size.',
   alternates: { canonical: '/gallery' },
   openGraph: ogFor('/gallery'),
 };
 
 /**
- * Uniform grid (Round 5): no masonry, every tile shares one row height.
- *
- * Every frame keeps its own proportions and its own column, so a portrait
- * photograph stays a portrait and a landscape stays a landscape. No fixed
- * heights, no object-cover cropping, no frame cut off at any viewport.
+ * Gallery, reshaped (Round 8): every section opens with a feature photograph
+ * beside its own text, the rest of the photographs run in a numbered grid,
+ * and any photograph opens full size in the lightbox. Frames still keep their
+ * natural proportions, so nothing is cropped to fit a tile.
  */
 export default function GalleryPage() {
   const total = GALLERY_SECTIONS.reduce((n, s) => n + s.slugs.length, 0);
+
+  const sections: GallerySectionData[] = GALLERY_SECTIONS.map((s) => ({
+    id: s.id,
+    eyebrow: s.eyebrow,
+    title: s.title,
+    lead: s.lead,
+    slugs: [...s.slugs],
+  }));
 
   return (
     <>
@@ -30,7 +38,7 @@ export default function GalleryPage() {
           slug="reception-lounge"
           eyebrow="Gallery"
           title="Inside the retreat."
-          lede={`${total} photographs of the actual rooms, treatments and garden, taken at ${site.address.street}, ${site.address.suburb}. Nothing here is a stock image.`}
+          lede={`${total} photographs of the actual rooms, treatments and garden, taken at ${site.address.street}, ${site.address.suburb}. Tap any photograph to see it full size.`}
         />
         <div className="relative z-10 mx-auto -mt-8 max-w-3xl px-5 sm:px-8 md:px-12">
           <nav
@@ -38,13 +46,14 @@ export default function GalleryPage() {
             className="mt-8 rounded-full border border-ink/10 bg-ground/90 p-2 shadow-sm backdrop-blur"
           >
             <ul className="flex flex-wrap gap-2">
-              {GALLERY_SECTIONS.map((section) => (
+              {sections.map((section) => (
                 <li key={section.id}>
                   <a
                     href={`#${section.id}`}
-                    className="inline-flex min-h-[44px] items-center rounded-full border border-ink/15 px-4 text-xs font-semibold uppercase tracking-widest text-ink/75 transition-colors hover:border-emerald-600 hover:text-emerald-700"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-ink/15 px-4 text-xs font-semibold uppercase tracking-widest text-ink/75 transition-colors hover:border-emerald-600 hover:text-emerald-700"
                   >
                     {section.eyebrow}
+                    <span className="tabular-nums text-ink/40">{section.slugs.length}</span>
                   </a>
                 </li>
               ))}
@@ -52,54 +61,13 @@ export default function GalleryPage() {
           </nav>
         </div>
 
-        {GALLERY_SECTIONS.map((section, si) => (
-          <section
-            key={section.id}
-            id={section.id}
-            className={`scroll-mt-24 py-16 md:py-24 ${si % 2 === 1 ? 'surface-panel' : ''} ${
-              si > 0 ? 'border-t border-ink/10' : ''
-            }`}
-          >
-            <div className="shell">
-              <p className="eyebrow text-emerald-600">{section.eyebrow}</p>
-              <h2 className="display mt-4 text-3xl sm:text-4xl">
-                <ClipReveal>{section.title}</ClipReveal>
-              </h2>
-              <p className="mt-4 max-w-2xl text-ink/70 text-pretty">{section.lead}</p>
-            </div>
-
-            <ul className="shell mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 items-start">
-              {section.slugs.map((slug, i) => {
-                const img = getImage(slug);
-                return (
-                  <FadeUp
-                    key={slug}
-                    delay={(i % 3) * 0.06}
-                    as="li"
-                  >
-                    <figure className="group">
-                      <div className="overflow-hidden rounded-2xl border border-ink/10 bg-emerald-900/5">
-                        {/* Caption below carries the description, so alt is empty. */}
-                        <Picture
-                          slug={slug}
-                          alt=""
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          priority={si === 0 && i < 2}
-                          imgClassName="w-full h-auto transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.02]"
-                        />
-                      </div>
-                      <figcaption className="mt-3 text-sm text-ink/65">{img.alt}</figcaption>
-                    </figure>
-                  </FadeUp>
-                );
-              })}
-            </ul>
-          </section>
-        ))}
+        <GalleryGrid sections={sections} />
 
         <section className="shell border-t border-ink/10 py-16 md:py-20">
           <p className="eyebrow text-emerald-600">Announcements</p>
-          <h2 className="display mt-4 text-3xl sm:text-4xl">Announcements and offers.</h2>
+          <h2 className="display mt-4 text-3xl sm:text-4xl">
+            <ClipReveal>Announcements and offers.</ClipReveal>
+          </h2>
           <p className="mt-4 max-w-2xl text-ink/70 text-pretty">
             Current promotions and notices published by the spa.
           </p>
@@ -119,6 +87,18 @@ export default function GalleryPage() {
             ))}
           </ul>
         </section>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ImageGallery',
+              name: `${site.legalName} gallery`,
+              url: `${SITE_URL}/gallery`,
+            }),
+          }}
+        />
       </main>
       <FooterFull />
     </>

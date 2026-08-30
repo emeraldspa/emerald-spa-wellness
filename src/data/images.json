@@ -409,32 +409,6 @@
       }
     ]
   },
-  "team-shanice-khadijah": {
-    "alt": "Shanice Khadijah, Spa Professional at Emerald Spa & Wellness Centre",
-    "width": 320,
-    "height": 320,
-    "src": "/media/team-shanice-khadijah-320.jpg",
-    "webp": [
-      {
-        "w": 160,
-        "p": "/media/team-shanice-khadijah-160.webp"
-      },
-      {
-        "w": 320,
-        "p": "/media/team-shanice-khadijah-320.webp"
-      }
-    ],
-    "avif": [
-      {
-        "w": 160,
-        "p": "/media/team-shanice-khadijah-160.avif"
-      },
-      {
-        "w": 320,
-        "p": "/media/team-shanice-khadijah-320.avif"
-      }
-    ]
-  },
   "team-merie-ann-lulu": {
     "alt": "Merie-Ann (Lulu), Spa Manager at Emerald Spa & Wellness Centre",
     "width": 320,

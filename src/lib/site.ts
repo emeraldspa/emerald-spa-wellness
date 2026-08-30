@@ -36,11 +36,13 @@ export type Review = {
 export type TeamMember = {
   name: string;
   role: string | null;
-  rating: number | null;
+  rating?: number | null;
   slug: string;
   /** Optional image-map slug override; falls back to `team-{slug}`. */
   photo?: string | null;
-  founder?: boolean;
+  founder?: boolean | null;
+  /** Professional attributes, shown under the portrait. */
+  bio?: string | null;
 };
 
 export type ImageAsset = {
@@ -117,6 +119,32 @@ export const BOOKING_EMBED_PATH = '/api/booking/a/emerald-spa-wellness-centre-wi
 
 /** The provider's page, opened in a new tab, if the frame fails. */
 export const BOOKING_FALLBACK_URL = BOOKING_URL;
+
+/**
+ * Book and pay.
+ *
+ * The client's own flow (30 Aug): the guest chooses, pays straight away, sends
+ * the proof of payment, and the spa returns a voucher. Payments are confirmed
+ * by hand, so the flow runs through WhatsApp where the guest already talks to
+ * the spa, and a short reference code ties the payment to the right booking
+ * without either side guessing.
+ */
+export const PAY_PATH = '/pay';
+
+/**
+ * Bank account shown on the Pay step. The spa has not published account
+ * details yet; while this is null the Pay step sends the guest straight to
+ * WhatsApp with their reference, and staff reply with the account details in
+ * the same chat. Set this object to render an account card instead.
+ */
+export const PAYMENT_ACCOUNT: {
+  bank: string;
+  accountName: string;
+  accountNumber: string;
+} | null = null;
+
+/** Reference prefix for pay-and-voucher requests. */
+export const PAY_REFERENCE_PREFIX = 'EMR';
 
 /**
  * Google Business Profile.

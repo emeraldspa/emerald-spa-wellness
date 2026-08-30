@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CalendarCheck, MessageCircle, Phone } from 'lucide-react';
+import { ArrowUpRight, CalendarCheck, MessageCircle, Phone, Wallet } from 'lucide-react';
 import { FooterMinimal } from '@/components/FooterMinimal';
 import { BookingFrame } from '@/components/BookingFrame';
-import { WHATSAPP_PATH, site, ogFor } from '@/lib/site';
+import { PAY_PATH, WHATSAPP_PATH, site, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Book Now',
@@ -56,6 +56,33 @@ export default function BookPage() {
                 WhatsApp
               </Link>
             </div>
+          </div>
+        </section>
+
+        {/*
+          Book and pay in one go: packages and vouchers do not need the
+          calendar, and many guests would rather settle immediately. This
+          strip routes them without pulling anyone out of the calendar flow.
+        */}
+        <section className="border-b border-ink/10 bg-emerald-900 text-ground">
+          <div className="shell flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-start gap-3">
+              <Wallet className="mt-0.5 h-5 w-5 shrink-0 text-gold-300" aria-hidden="true" />
+              <p className="text-sm leading-relaxed text-ground/85">
+                <span className="font-semibold text-ground">
+                  Know what you want? Book and pay straight away.
+                </span>{' '}
+                Pay from your banking app, send the proof of payment and your
+                voucher comes back the same day.
+              </p>
+            </div>
+            <Link
+              href={PAY_PATH}
+              className="inline-flex min-h-[48px] shrink-0 items-center justify-center gap-2 rounded-full bg-gold-300 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-[#0A1310] transition-colors hover:bg-gold-200 sm:ml-6"
+            >
+              Book &amp; pay
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
           </div>
         </section>
 

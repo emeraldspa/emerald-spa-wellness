@@ -1596,41 +1596,54 @@
   "team": [
     {
       "name": "Evelyne Mulilo",
-      "role": "Founder & CEO",
-      "rating": null,
+      "role": "Co-Founder & Managing Director",
       "slug": "evelyne-mulilo",
       "photo": "ceo-evelyne-mulilo",
-      "founder": true
+      "founder": true,
+      "bio": "Proudly Namibian and built in Windhoek, Evelyne founded the spa on a simple conviction: the city deserves a retreat where rest is taken seriously. As Managing Director she runs the centre day to day, the guest experience, the team and the standard every treatment is held to."
     },
     {
-      "name": "Laurensia",
-      "role": "Spa Therapist",
-      "rating": 4.8,
-      "slug": "laurensia"
-    },
-    {
-      "name": "Daivienn",
-      "role": null,
-      "rating": 4.9,
-      "slug": "daivienn"
-    },
-    {
-      "name": "Diana",
-      "role": "Therapist",
-      "rating": 4.9,
-      "slug": "diana"
-    },
-    {
-      "name": "Shanice Khadijah",
-      "role": null,
-      "rating": 4.9,
-      "slug": "shanice-khadijah"
+      "name": "Olakunle Jolaiya",
+      "role": "Co-Founder & CEO",
+      "slug": "olakunle-jolaiya",
+      "photo": null,
+      "founder": true,
+      "bio": "Olakunle co-founded Emerald with Evelyne and leads the business as CEO: the strategy, the partnerships and the plans that keep the spa growing. His eye is on the long game, so the team can keep theirs on the guest in front of them."
     },
     {
       "name": "Merie-Ann (Lulu)",
       "role": "Spa Manager",
-      "rating": 4.9,
-      "slug": "merie-ann-lulu"
+      "slug": "merie-ann-lulu",
+      "photo": null,
+      "founder": null,
+      "bio": "Lulu runs the floor. Schedules, rosters, stock and the dozen small logistics that decide whether a visit feels effortless all pass through her hands before they ever reach a guest.",
+      "rating": 4.9
+    },
+    {
+      "name": "Laurensia Post",
+      "role": "Assistant Spa Manager",
+      "slug": "laurensia",
+      "photo": null,
+      "founder": null,
+      "bio": "Laurensia trained as a therapist and guests still single out her massages in their reviews. As Assistant Spa Manager she supports Lulu with the daily schedule while keeping her own hands in treatment work."
+    },
+    {
+      "name": "Daivienn",
+      "role": "Spa Therapist",
+      "slug": "daivienn",
+      "photo": null,
+      "founder": null,
+      "bio": "Daivienn works across the treatment menu, from body scrubs to hydrotherapy preparation, with the quiet, unhurried manner the spa is known for.",
+      "rating": 4.9
+    },
+    {
+      "name": "Diana",
+      "role": "Spa Therapist",
+      "slug": "diana",
+      "photo": null,
+      "founder": null,
+      "bio": "Guests describe Diana as kind, calm and gentle, and her massages are among the most praised in our reviews. She treats every appointment as the reason someone came in, not an item on a list.",
+      "rating": 4.9
     }
   ],
   "tagline": "Relax the body, renew the mind, rejuvenate the soul"

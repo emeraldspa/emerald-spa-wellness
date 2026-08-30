@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import { Phone } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowUpRight, Phone } from 'lucide-react';
 import { FooterMinimal } from '@/components/FooterMinimal';
 import { VoucherForm } from '@/components/VoucherForm';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { EMAILS, site , SITE_URL, ogFor } from '@/lib/site';
+import { EMAILS, PAY_PATH, site , SITE_URL, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Gift Vouchers',
@@ -36,6 +37,23 @@ export default function VouchersPage() {
           <FadeUp>
             <VoucherForm />
           </FadeUp>
+
+          {/* The faster sibling of the enquiry: pay now, send proof, get the
+              voucher. Some guests want the whole thing done in one sitting. */}
+          <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-emerald-200 bg-emerald-50/70 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm leading-relaxed text-ink/75">
+              <span className="font-semibold text-ink">In a hurry?</span> Choose the
+              amount, pay straight away and send the proof of payment: your voucher comes
+              back the same day, with its number and expiry date.
+            </p>
+            <Link
+              href={PAY_PATH}
+              className="inline-flex min-h-[48px] shrink-0 items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-700 sm:ml-6"
+            >
+              Pay &amp; get the voucher
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
         </section>
 
         <section className="surface-marble-pale border-t border-ink/10 py-16 md:py-20">
