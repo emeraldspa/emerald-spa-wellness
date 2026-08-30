@@ -5,7 +5,7 @@ import { FooterFull } from '@/components/FooterFull';
 import { PageHero } from '@/components/PageHero';
 import { FadeUp } from '@/components/motion';
 import { getActivePromotions } from '@/lib/wordpress';
-import { BOOKING_CTA, BOOKING_PATH, SITE_URL, formatNad, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, PAY_PATH, SITE_URL, formatNad, site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Current Offers',
@@ -100,13 +100,22 @@ export default async function PromotionsPage() {
           )}
 
           <div className="mt-14 text-center">
-            <Link
-              href={BOOKING_PATH}
-              className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-emerald-600 px-8 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-700"
-            >
-              {BOOKING_CTA}
-              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
+            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link
+                href={BOOKING_PATH}
+                className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-emerald-600 px-8 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-700"
+              >
+                {BOOKING_CTA}
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+              <Link
+                href={PAY_PATH}
+                className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-emerald-700/40 px-8 py-3 text-xs font-semibold uppercase tracking-widest text-emerald-800 transition-colors hover:border-emerald-700 hover:bg-emerald-50"
+              >
+                Book &amp; pay now
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
             <p className="mt-4 text-sm text-ink/60">
               Prefer to talk first? Call {site.phone}.
             </p>
