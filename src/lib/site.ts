@@ -98,11 +98,25 @@ export const BOOKING_CTA_LONG = 'Book Your Visit';
 export const BOOKING_PATH = '/book';
 
 /**
- * Direct booking URL on the provider's site. Booking is a link wrapper: the
- * guest opens this in a new tab and lands in a booking experience that works.
+ * Direct booking URL on the provider's site. Used as the fallback link when
+ * the embedded frame cannot load, and never as the primary path: the client
+ * requires booking to happen inside the page, not through a redirect.
  */
 export const BOOKING_URL =
   'https://www.fresha.com/a/emerald-spa-wellness-centre-windhoek-blackett-street-awio4ik8';
+
+/**
+ * Same-origin path that serves the booking app through the proxy route at
+ * src/app/api/booking/[...path]/route.ts. The provider sends
+ * `Content-Security-Policy: frame-ancestors 'self' https://*.fresha.com`, so a
+ * direct frame of their origin is refused by the browser. Proxying makes the
+ * document same-origin, which the frame-ancestors we set allows, and the
+ * guest stays on this domain for the whole flow.
+ */
+export const BOOKING_EMBED_PATH = '/api/booking/a/emerald-spa-wellness-centre-windhoek-blackett-street-awio4ik8';
+
+/** The provider's page, opened in a new tab, if the frame fails. */
+export const BOOKING_FALLBACK_URL = BOOKING_URL;
 
 /**
  * Google Business Profile.

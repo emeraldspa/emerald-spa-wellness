@@ -1,3 +1,5 @@
+import { HOUSE_POSTS } from '@/data/journal';
+
 /**
  * WordPress content layer.
  *
@@ -6,10 +8,14 @@
  * rather than throw. A page that depends on this must render fine when
  * WordPress is empty, slow, or down: that is the whole contract.
  *
- * Fetching happens on the server during rendering, so the WordPress address
- * never appears in a visitor's network tab, and its speed never becomes the
- * visitor's problem. Responses are revalidated on a timer, which means an edit
- * appears without a redeploy while the site still serves instantly.
+ * The journal is never allowed to sit empty while that is true: the house
+ * stories in src/data/journal.ts render whenever WordPress has nothing real
+ * to show, and real posts slot in ahead of them the moment they are
+ * published. Fetching happens on the server during rendering, so the
+ * WordPress address never appears in a visitor's network tab, and its speed
+ * never becomes the visitor's problem. Responses are revalidated on a timer,
+ * which means an edit appears without a redeploy while the site still serves
+ * instantly.
  *
  * Why the REST API and not a scraper: we own this install, and WordPress
  * publishes typed JSON. Parsing the theme's markup instead would mean
@@ -107,12 +113,17 @@ export async function getPosts(limit = 6): Promise<WpPost[]> {
   const raw = await wpFetch<RawPost>(
     `posts?per_page=${limit * 2}&_embed=wp:featuredmedia&status=publish&orderby=date&order=desc`,
   );
-  return raw.filter((r) => !isDemo(r)).slice(0, limit).map(toPost);
+  const wpPosts = raw.filter((r) => !isDemo(r)).slice(0, limit).map(toPost);
+  // House stories fill the page only when WordPress has nothing real yet.
+  const combined = [...wpPosts, ...HOUSE_POSTS];
+  return combined.slice(0, limit);
 }
 
 export async function getPost(slug: string): Promise<WpPost | null> {
   const raw = await wpFetch<RawPost>(`posts?slug=${encodeURIComponent(slug)}&_embed=wp:featuredmedia`);
-  return raw.length ? toPost(raw[0]) : null;
+  if (raw.length && !isDemo(raw[0])) return toPost(raw[0]);
+  // House stories are served under the same route as WordPress posts.
+  return HOUSE_POSTS.find((p) => p.slug === slug) ?? null;
 }
 
 function asString(v: unknown): string | null {
@@ -158,8 +169,9 @@ export async function getPopupPromotion(): Promise<WpPromotion | null> {
   return active.find((p) => p.showAsPopup) ?? null;
 }
 
-/** True when WordPress has real content to show. Used to hide empty sections. */
+/** True when there is anything to show: real WordPress posts or house stories. */
 export async function hasJournal(): Promise<boolean> {
+  if (HOUSE_POSTS.length > 0) return true;
   const posts = await getPosts(1);
   return posts.length > 0;
 }

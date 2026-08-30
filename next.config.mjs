@@ -37,18 +37,21 @@ const nextConfig = {
       'upgrade-insecure-requests',
     ].join('; ');
 
+    /*
+      Content Security Policy and the other security headers live in
+      src/middleware.ts, not here. The booking proxy at /api/booking/* must be
+      served without the strict page policy (its app boots from the provider's
+      CDN), and this config file cannot exclude a prefix from `/:path*`
+      without duplicating the CSP header on proxy responses, which browsers
+      enforce as an intersection. Middleware can branch on the path.
+    */
+
     return [
       {
-        source: '/:path*',
+        source: '/api/booking/:path*',
         headers: [
-          { key: 'Content-Security-Policy', value: csp },
-          { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
-          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
-          { key: 'Cross-Origin-Resource-Policy', value: 'same-site' },
-          { key: 'X-XSS-Protection', value: '1; mode=block' },
+          // The proxy mirrors the provider's pages; they must not be indexed.
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
         ],
       },
       {

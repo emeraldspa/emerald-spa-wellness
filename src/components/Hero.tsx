@@ -76,8 +76,11 @@ export function Hero() {
         </div>
 
         {/* The words, on a whisper of glass: a little blur exactly behind the
-            type so the film still shows through everywhere else. */}
-        <div className="mx-5 mb-8 flex flex-col gap-6 rounded-3xl bg-[#07211A]/15 p-4 backdrop-blur-[3px] sm:mx-8 sm:p-5 md:mx-12 md:mb-12 md:gap-10 md:p-6">
+            type so the film still shows through everywhere else. The bottom
+            margin clears the floating contact cluster on small screens:
+            mb-28 lifts the headline above the fixed toggle button that would
+            otherwise sit on the last word of the heading. */}
+        <div className="mx-5 mb-28 flex flex-col gap-6 rounded-3xl bg-[#07211A]/15 p-4 backdrop-blur-[3px] sm:mx-8 sm:p-5 md:mx-12 md:mb-20 md:gap-10 md:p-6">
           <div className="flex items-center justify-between gap-4">
             <p
               className="hero-up max-w-[130px] text-[12px] font-semibold uppercase tracking-widest text-ground/85 sm:max-w-[160px] sm:text-xs md:max-w-xs md:text-sm"

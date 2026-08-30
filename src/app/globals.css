@@ -398,12 +398,19 @@ body > * {
   15px tall footer link is not one. This gives inline links in the footer and
   other dense link lists a real vertical target on touch pointers only, so
   desktop typography is unchanged and nothing reflows on a mouse-driven layout.
+
+  The :not([class*="hidden"]) guards are load-bearing: this rule's selectors
+  carry higher specificity than a single utility class, so without the guard
+  display:inline-flex overrides Tailwind's .hidden, .lg\:hidden and friends.
+  That is exactly how the desktop-only header CTAs ended up visible on phones:
+  nav[aria-label='Primary'] a beat .hidden below 1024px. Any element a
+  responsive display utility hides must stay hidden.
 */
 @media (pointer: coarse), (max-width: 1024px) {
-  footer a,
-  .tap-safe a,
-  .tap-safe button,
-  nav[aria-label='Primary'] a {
+  footer a:not([class*='hidden']),
+  .tap-safe a:not([class*='hidden']),
+  .tap-safe button:not([class*='hidden']),
+  nav[aria-label='Primary'] a:not([class*='hidden']) {
     min-height: 44px;
     min-width: 44px;
     display: inline-flex;

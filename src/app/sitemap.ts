@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/site';
+import { HOUSE_POSTS } from '@/data/journal';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -22,10 +23,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/terms', priority: 0.2, freq: 'yearly' },
   ];
 
-  return routes.map((r) => ({
-    url: `${SITE_URL}${r.path}`,
-    lastModified: now,
-    changeFrequency: r.freq,
-    priority: r.priority,
+  // House journal stories have stable slugs, so they belong in the sitemap.
+  const posts = HOUSE_POSTS.map((p) => ({
+    url: `${SITE_URL}/journal/${p.slug}`,
+    lastModified: new Date(p.date),
+    changeFrequency: 'monthly' as const,
+    priority: 0.5,
   }));
+
+  return [
+    ...routes.map((r) => ({
+      url: `${SITE_URL}${r.path}`,
+      lastModified: now,
+      changeFrequency: r.freq,
+      priority: r.priority,
+    })),
+    ...posts,
+  ];
 }
