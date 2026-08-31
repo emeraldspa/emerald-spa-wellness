@@ -47,7 +47,9 @@ export default function WhatsAppPage() {
           </div>
 
         <section className="surface-marble-gold border-t border-ink/10 py-16 md:py-20">
-          <WhatsAppFlow categories={categories} />
+          <div className="shell">
+            <WhatsAppFlow categories={categories} />
+          </div>
         </section>
       </main>
       <FooterMinimal />

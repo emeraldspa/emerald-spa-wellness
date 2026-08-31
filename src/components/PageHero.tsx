@@ -44,8 +44,10 @@ export function PageHero({
           align === 'center' ? 'items-center text-center' : ''
         }`}
       >
+        {/* FadeUp defaults to a div, which is invalid inside a <p> and raised
+            hydration warnings in production. It renders a span here. */}
         <p className="eyebrow text-emerald-300">
-          <FadeUp>{eyebrow}</FadeUp>
+          <FadeUp as="span">{eyebrow}</FadeUp>
         </p>
         <h1 className="display mt-4 max-w-3xl text-4xl text-balance text-ground sm:text-5xl md:text-6xl">
           <ClipReveal>{title}</ClipReveal>
@@ -56,7 +58,7 @@ export function PageHero({
               align === 'center' ? 'mx-auto' : ''
             }`}
           >
-            <FadeUp delay={0.12}>{lede}</FadeUp>
+            <FadeUp as="span" delay={0.12}>{lede}</FadeUp>
           </p>
         ) : null}
       </div>

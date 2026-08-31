@@ -62,7 +62,7 @@ export function FadeUp({
   children: ReactNode;
   delay?: number;
   className?: string;
-  as?: 'div' | 'li' | 'section' | 'article';
+  as?: 'div' | 'li' | 'section' | 'article' | 'span';
 }) {
   const reduce = useReducedMotion();
   const Tag = motion[as];

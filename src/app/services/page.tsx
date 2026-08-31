@@ -150,8 +150,8 @@ export default function ServicesPage() {
                 ) : null}
 
                 <ul className="mt-8 divide-y divide-ink/10">
-                  {cat.items.map((s) => (
-                    <li key={`${cat.slug}-${s.name}`} className="py-5">
+                  {cat.items.map((s, si) => (
+                    <li key={`${cat.slug}-${si}-${s.name}`} className="py-5">
                       <div className="flex items-baseline justify-between gap-6">
                         <h3 className="text-base font-medium text-ink">{s.name}</h3>
                         <p className="shrink-0 text-sm font-semibold tabular-nums text-emerald-700">

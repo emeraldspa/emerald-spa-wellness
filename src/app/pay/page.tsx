@@ -41,8 +41,11 @@ export default function PayPage() {
       category: c.name,
       items: c.items
         .filter((s) => s.priceValue !== null)
-        .map((s) => ({
-          id: `t-${c.slug}-${s.name}`,
+        .map((s, i) => ({
+          // Two treatments can share a name (nails has two "Foot scrub &
+          // pedicure" services at different prices), so the index keeps the
+          // option ids unique and React's key warning honest.
+          id: `t-${c.slug}-${i}-${s.name}`,
           label: s.name,
           amount: s.priceValue as number,
           note: s.duration ?? undefined,

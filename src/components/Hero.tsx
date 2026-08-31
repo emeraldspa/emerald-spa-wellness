@@ -1,6 +1,7 @@
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { HeroVideo } from '@/components/HeroVideo';
+import { SoundToggle } from '@/components/SoundToggle';
 import { BOOKING_CTA, BOOKING_PATH, LISTED_SERVICE_COUNT, site } from '@/lib/site';
 
 /**
@@ -47,9 +48,12 @@ export function Hero() {
 
       <div className="relative z-10 flex min-h-[100svh] flex-col">
 
-        {/* Stats: a soft glass chip just behind the numbers, nothing else. */}
-        <div className="flex flex-1 items-center justify-end px-5 py-8 sm:px-8 md:px-12 md:py-0">
-          <div className="flex gap-5 rounded-2xl bg-[#07211A]/15 px-4 py-3 backdrop-blur-[3px] sm:gap-8 sm:px-5 md:gap-10">
+        {/* Stats: a soft glass chip just behind the numbers, with the room-tone
+            toggle in flow beneath it. The toggle used to float under the nav,
+            where it collided with these numbers on short viewports. */}
+        <div className="flex flex-1 flex-col justify-center gap-4 px-5 py-8 sm:px-8 md:px-12 md:py-0">
+          <div className="flex justify-end">
+            <div className="flex gap-5 rounded-2xl bg-[#07211A]/15 px-4 py-3 backdrop-blur-[3px] sm:gap-8 sm:px-5 md:gap-10">
             {STATS.map((stat, i) => (
               <div
                 key={stat.label}
@@ -72,7 +76,9 @@ export function Hero() {
                 </p>
               </div>
             ))}
+            </div>
           </div>
+          <SoundToggle />
         </div>
 
         {/* The words, on a whisper of glass: a little blur exactly behind the

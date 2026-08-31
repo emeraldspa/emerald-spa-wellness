@@ -12,7 +12,7 @@ import {
   MessageCircle,
   ReceiptText,
 } from 'lucide-react';
-import { useId, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useState } from 'react';
 import {
   EMAILS,
   PAY_REFERENCE_PREFIX,
@@ -67,8 +67,14 @@ export function PayFlow({
   const reduce = useReducedMotion();
   const [step, setStep] = useState<Step>(0);
   const [selected, setSelected] = useState<PayOption | null>(null);
+  // The reference is random, so it can only be minted on the client: minting
+  // it during render made the server HTML and the hydrated tree disagree
+  // (a live hydration warning, client-visible as a flash of a different code).
+  const [reference, setReference] = useState('');
+  useEffect(() => {
+    setReference((current) => current || makeReference());
+  }, []);
   const [customAmount, setCustomAmount] = useState('');
-  const [reference] = useState(makeReference);
   const [copied, setCopied] = useState(false);
   const treatmentId = useId();
 
@@ -309,7 +315,7 @@ export function PayFlow({
                       Your reference
                     </span>
                     <code className="rounded-lg bg-ground px-3 py-1.5 text-sm font-semibold tracking-[0.18em] text-emerald-800">
-                      {reference}
+                      {reference || 'EMR-····'}
                     </code>
                     <button
                       type="button"
@@ -430,7 +436,7 @@ export function PayFlow({
                   Attach the confirmation from your banking app, a screenshot or the PDF,
                   in the same chat the account details came from. Your reference{' '}
                   <code className="rounded bg-emerald-50 px-1.5 py-0.5 text-xs font-semibold tracking-[0.15em] text-emerald-800">
-                    {reference}
+                    {reference || 'EMR-····'}
                   </code>{' '}
                   is already in the message.
                 </p>

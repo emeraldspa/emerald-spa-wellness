@@ -39,16 +39,17 @@ export function FooterFull() {
       <div aria-hidden="true" className="rule-gold absolute inset-x-0 top-0 h-px opacity-60" />
 
       <div className="shell relative py-12 md:py-16">
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-          {/* Brand + tagline */}
-          <div className="max-w-sm">
-            <Wordmark tone="dark" size="lg" />
-            <p className="mt-6 text-sm leading-relaxed text-ground/75">
-              Quiet luxury in the heart of Windhoek North. Relax the body, renew the mind,
-              rejuvenate the soul.
-            </p>
-          </div>
+        {/* Statement lockup: the brand, four times life size, with the
+            tagline beside it. The gem leads the lockup (client directive). */}
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
+          <Wordmark tone="dark" size="xl" />
+          <p className="max-w-xs pb-2 text-sm leading-relaxed text-ground/75 sm:max-w-sm">
+            Quiet luxury in the heart of Windhoek North. Relax the body, renew the mind,
+            rejuvenate the soul.
+          </p>
+        </div>
 
+        <div className="mt-10 flex flex-col gap-10 border-t border-white/10 pt-10 md:flex-row md:items-start md:justify-between">
           {/* Contact, one line each */}
           <div className="space-y-2.5 text-sm text-ground/85">
             <a

@@ -56,6 +56,18 @@ const config: Config = {
       maxWidth: {
         shell: '90rem',
       },
+      // Full integer opacity scale (Tailwind v4 behaviour). The v3 default
+      // scale only has multiples of 5, so any /6, /8, /12, /62, /92, /96
+      // modifier silently generated NO CSS. That single gap shipped to
+      // production and removed the background from the footer, the mobile
+      // menu panel, the search overlay and the category strip (light text
+      // on the white page behind them). Registering every step 0-100 makes
+      // every alpha modifier valid now and forever.
+      opacity: (() => {
+        const steps: Record<string, string> = {};
+        for (let i = 0; i <= 100; i++) steps[i] = `${i / 100}`;
+        return steps;
+      })(),
       transitionTimingFunction: {
         // COLLINS easing ladder, verified from their stylesheet
         'out-expo': 'cubic-bezier(.19,1,.22,1)',

@@ -24,12 +24,36 @@ function Avatar({
   const slug = member.photo ?? `team-${member.slug}`;
   const hasPhoto = Boolean(imageMap[slug]);
   if (!hasPhoto) {
+    // No portrait yet: a branded emerald tile with the display initial and
+    // the gem mark, so a missing photo still reads as a designed card
+    // (client directive: OJ's image is unavailable, present him with copy).
+    const initials = member.name
+      .split(' ')
+      .map((w) => w[0])
+      .slice(0, 2)
+      .join('');
     return (
       <div
-        className="flex h-full w-full items-center justify-center bg-emerald-800 text-5xl text-ground"
+        className="relative flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-b from-emerald-800 to-emerald-900 text-ground"
         aria-hidden="true"
       >
-        {member.name.charAt(0)}
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: "url('/media/marble-emerald-xl.webp')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/brand/symbol-mark.svg"
+          alt=""
+          width={40}
+          height={29}
+          className="relative h-10 w-auto opacity-80 drop-shadow-[0_0_12px_rgba(141,208,179,0.45)]"
+        />
+        <span className="display relative text-5xl leading-none text-ground/95">{initials}</span>
       </div>
     );
   }

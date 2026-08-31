@@ -227,13 +227,12 @@ export default async function HomePage() {
                     >
                       “
                     </span>
-                    <RevealText
-                      text={r.text}
-                      lines={4}
-                      className="text-lg leading-relaxed text-ground/90"
-                      labelOpen="Read full review"
-                      labelClose="Show less"
-                    />
+                    {/* Full review text, never clamped: the client flagged the
+                        cut-off cards, and every curated review is short
+                        enough to read in place. */}
+                    <p className="text-pretty text-lg leading-relaxed text-ground/90">
+                      {r.text}
+                    </p>
                     <figcaption className="mt-6 flex items-center gap-3 text-sm text-ground/60">
                       <span className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500/20 text-xs font-semibold text-emerald-200">
                         {r.initials}

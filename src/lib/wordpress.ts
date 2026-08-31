@@ -115,7 +115,11 @@ export async function getPosts(limit = 6): Promise<WpPost[]> {
   );
   const wpPosts = raw.filter((r) => !isDemo(r)).slice(0, limit).map(toPost);
   // House stories fill the page only when WordPress has nothing real yet.
-  const combined = [...wpPosts, ...HOUSE_POSTS];
+  // Editors sometimes publish a story that also exists as a house story, so
+  // the WordPress version (the one they can edit) wins the slug and the
+  // house copy steps aside rather than doubling the card.
+  const wpSlugs = new Set(wpPosts.map((p) => p.slug));
+  const combined = [...wpPosts, ...HOUSE_POSTS.filter((h) => !wpSlugs.has(h.slug))];
   return combined.slice(0, limit);
 }
 

@@ -332,106 +332,138 @@
     ]
   },
   "team-laurensia": {
-    "alt": "Laurensia, Spa Therapist at Emerald Spa & Wellness Centre",
-    "width": 320,
-    "height": 320,
-    "src": "/media/team-laurensia-320.jpg",
+    "alt": "Laurensia Post, Assistant Spa Manager at Emerald Spa & Wellness Centre",
+    "width": 640,
+    "height": 640,
+    "src": "/media/team-laurensia-640.jpg",
     "webp": [
       {
-        "w": 160,
-        "p": "/media/team-laurensia-160.webp"
+        "w": 640,
+        "p": "/media/team-laurensia-640.webp"
       },
       {
         "w": 320,
         "p": "/media/team-laurensia-320.webp"
+      },
+      {
+        "w": 160,
+        "p": "/media/team-laurensia-160.webp"
       }
     ],
     "avif": [
       {
-        "w": 160,
-        "p": "/media/team-laurensia-160.avif"
+        "w": 640,
+        "p": "/media/team-laurensia-640.avif"
       },
       {
         "w": 320,
         "p": "/media/team-laurensia-320.avif"
+      },
+      {
+        "w": 160,
+        "p": "/media/team-laurensia-160.avif"
       }
     ]
   },
   "team-daivienn": {
-    "alt": "Daivienn, Spa Professional at Emerald Spa & Wellness Centre",
-    "width": 320,
-    "height": 320,
-    "src": "/media/team-daivienn-320.jpg",
+    "alt": "Daivienn, Spa Therapist at Emerald Spa & Wellness Centre",
+    "width": 640,
+    "height": 640,
+    "src": "/media/team-daivienn-640.jpg",
     "webp": [
       {
-        "w": 160,
-        "p": "/media/team-daivienn-160.webp"
+        "w": 640,
+        "p": "/media/team-daivienn-640.webp"
       },
       {
         "w": 320,
         "p": "/media/team-daivienn-320.webp"
+      },
+      {
+        "w": 160,
+        "p": "/media/team-daivienn-160.webp"
       }
     ],
     "avif": [
       {
-        "w": 160,
-        "p": "/media/team-daivienn-160.avif"
+        "w": 640,
+        "p": "/media/team-daivienn-640.avif"
       },
       {
         "w": 320,
         "p": "/media/team-daivienn-320.avif"
+      },
+      {
+        "w": 160,
+        "p": "/media/team-daivienn-160.avif"
       }
     ]
   },
   "team-diana": {
-    "alt": "Diana, Therapist at Emerald Spa & Wellness Centre",
-    "width": 320,
-    "height": 320,
-    "src": "/media/team-diana-320.jpg",
+    "alt": "Diana, Spa Therapist at Emerald Spa & Wellness Centre",
+    "width": 640,
+    "height": 640,
+    "src": "/media/team-diana-640.jpg",
     "webp": [
       {
-        "w": 160,
-        "p": "/media/team-diana-160.webp"
+        "w": 640,
+        "p": "/media/team-diana-640.webp"
       },
       {
         "w": 320,
         "p": "/media/team-diana-320.webp"
+      },
+      {
+        "w": 160,
+        "p": "/media/team-diana-160.webp"
       }
     ],
     "avif": [
       {
-        "w": 160,
-        "p": "/media/team-diana-160.avif"
+        "w": 640,
+        "p": "/media/team-diana-640.avif"
       },
       {
         "w": 320,
         "p": "/media/team-diana-320.avif"
+      },
+      {
+        "w": 160,
+        "p": "/media/team-diana-160.avif"
       }
     ]
   },
   "team-merie-ann-lulu": {
     "alt": "Merie-Ann (Lulu), Spa Manager at Emerald Spa & Wellness Centre",
-    "width": 320,
-    "height": 320,
-    "src": "/media/team-merie-ann-lulu-320.jpg",
+    "width": 640,
+    "height": 640,
+    "src": "/media/team-merie-ann-lulu-640.jpg",
     "webp": [
       {
-        "w": 160,
-        "p": "/media/team-merie-ann-lulu-160.webp"
+        "w": 640,
+        "p": "/media/team-merie-ann-lulu-640.webp"
       },
       {
         "w": 320,
         "p": "/media/team-merie-ann-lulu-320.webp"
+      },
+      {
+        "w": 160,
+        "p": "/media/team-merie-ann-lulu-160.webp"
       }
     ],
     "avif": [
       {
-        "w": 160,
-        "p": "/media/team-merie-ann-lulu-160.avif"
+        "w": 640,
+        "p": "/media/team-merie-ann-lulu-640.avif"
       },
       {
         "w": 320,
         "p": "/media/team-merie-ann-lulu-320.avif"
+      },
+      {
+        "w": 160,
+        "p": "/media/team-merie-ann-lulu-160.avif"
       }
     ]
   },

@@ -114,7 +114,7 @@ export default function BookBulkPage() {
                 ))}
               </div>
             </div>
-            <VenueEnquiry />
+            <VenueEnquiry tone="light" />
           </div>
         </section>
 
