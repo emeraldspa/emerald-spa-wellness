@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { randomUUID } from 'crypto';
 
 /**
  * Security headers, applied per path.
@@ -65,7 +64,7 @@ export function middleware(req: NextRequest) {
   }
 
   const dev = process.env.NODE_ENV === 'development';
-  const nonce = randomUUID();
+  const nonce = crypto.randomUUID();
   const csp = PAGE_CSP(nonce, dev);
 
   // Next.js reads the nonce out of the REQUEST CSP header and stamps it onto
