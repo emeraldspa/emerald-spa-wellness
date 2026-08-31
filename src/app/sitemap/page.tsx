@@ -6,9 +6,9 @@ import { site , SITE_URL, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Sitemap',
-  description: 'Every page on the Emerald Spa & Wellness Centre website.',
+  description: 'Every page on the Emerald Spa & Wellness Centre website: services, venues, gallery, journal, team, booking, payments and policies.',
   alternates: { canonical: '/sitemap' },
-  openGraph: ogFor('/sitemap'),
+  ...ogFor('/sitemap'),
 };
 
 const GROUPS = [
@@ -20,7 +20,11 @@ const GROUPS = [
       { href: '/gallery', label: 'Gallery' },
       { href: '/team', label: 'Our Team' },
       { href: '/visit', label: 'Visit and Contact' },
+      { href: '/venues', label: 'Venue Hire' },
+      { href: '/journal', label: 'Journal' },
       { href: '/book', label: 'Book Now' },
+      { href: '/pay', label: 'Book and Pay' },
+      { href: '/book-bulk', label: 'Book in Bulk' },
       { href: '/whatsapp', label: 'Book on WhatsApp' },
       { href: '/vouchers', label: 'Gift Vouchers' },
     ],
@@ -29,6 +33,7 @@ const GROUPS = [
     title: 'Reference',
     links: [
       { href: '/brand', label: 'Brand' },
+      { href: '/promotions', label: 'Current Offers' },
       { href: '/privacy', label: 'Privacy Notice' },
       { href: '/terms', label: 'Terms of Use' },
       { href: '/sitemap', label: 'Sitemap' },

@@ -5,13 +5,13 @@ import { FooterFull } from '@/components/FooterFull';
 import { PageHero } from '@/components/PageHero';
 import { FadeUp } from '@/components/motion';
 import { getActivePromotions } from '@/lib/wordpress';
-import { BOOKING_CTA, BOOKING_PATH, PAY_PATH, SITE_URL, formatNad, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_PATH, PAY_PATH, SITE_URL, formatNad, ogFor, site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Current Offers',
   description: `Current offers and packages at Emerald Spa & Wellness Centre, Windhoek North: massage packages for two, group escapes and more. ${site.phone}.`,
   alternates: { canonical: '/promotions' },
-  openGraph: { url: `${SITE_URL}/promotions` },
+  ...ogFor('/promotions'),
 };
 
 type Offer = {

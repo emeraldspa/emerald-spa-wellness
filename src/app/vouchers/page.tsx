@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     'Buy a gift voucher for Emerald Spa & Wellness Centre in Windhoek. Choose a value, tell us the occasion, and we send the voucher number and expiry date back to you.',
   alternates: { canonical: '/vouchers' },
-  openGraph: ogFor('/vouchers'),
+  ...ogFor('/vouchers'),
 };
 
 export default function VouchersPage() {

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Book on WhatsApp',
   description: `Message Emerald Spa & Wellness Centre on WhatsApp. Pick what you need and open a chat with your message ready to send. Windhoek North, ${site.phone}.`,
   alternates: { canonical: '/whatsapp' },
-  openGraph: ogFor('/whatsapp'),
+  ...ogFor('/whatsapp'),
 };
 
 export default function WhatsAppPage() {

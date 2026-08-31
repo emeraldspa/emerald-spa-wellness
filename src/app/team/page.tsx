@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     'Meet the founders and spa professionals at Emerald Spa & Wellness Centre in Windhoek North, Namibia.',
   alternates: { canonical: '/team' },
-  openGraph: ogFor('/team'),
+  ...ogFor('/team'),
 };
 
 function Avatar({

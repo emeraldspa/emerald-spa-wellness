@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Book Now',
   description: `Book a treatment at Emerald Spa & Wellness Centre, 7 Blackett Street, Windhoek North. Pick a service, a professional and a time in the live calendar.`,
   alternates: { canonical: '/book' },
-  openGraph: ogFor('/book'),
+  ...ogFor('/book'),
 };
 
 /**

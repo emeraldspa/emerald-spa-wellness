@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     'The Emerald Spa & Wellness Centre design system: logo, colour, typography, motion, and image rules.',
   alternates: { canonical: '/brand' },
-  openGraph: ogFor('/brand'),
+  ...ogFor('/brand'),
 };
 
 const EMERALD = [

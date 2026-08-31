@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: 'Visit and Contact',
   description: `Emerald Spa & Wellness Centre is at ${site.address.street}, ${site.address.suburb}, Windhoek. Open seven days. Call ${site.phone} or book online.`,
   alternates: { canonical: '/visit' },
-  openGraph: ogFor('/visit'),
+  ...ogFor('/visit'),
 };
 
 /** Arrival sequence: the entrance, the lounge, the garden, a welcome drink. */

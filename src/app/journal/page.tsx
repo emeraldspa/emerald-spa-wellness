@@ -4,15 +4,16 @@ import { ArrowUpRight, Feather } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { FooterFull } from '@/components/FooterFull';
 import { FadeUp } from '@/components/motion';
+import { Picture } from '@/components/Picture';
 import { getPosts, hasJournal } from '@/lib/wordpress';
-import { SITE_URL, WHATSAPP_PATH, ogFor } from '@/lib/site';
+import { imageMap, SITE_URL, WHATSAPP_PATH, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Journal',
   description:
     'Stories, notes and announcements from Emerald Spa and Wellness Centre in Windhoek North.',
   alternates: { canonical: '/journal' },
-  openGraph: ogFor('/journal'),
+  ...ogFor('/journal'),
 };
 
 export const revalidate = 900;
@@ -27,6 +28,47 @@ function Placeholder({ title }: { title: string }) {
       <p className="display text-xl leading-none text-emerald-200/90">{title}</p>
     </div>
   );
+}
+
+/**
+ * Card art. House stories render through the responsive Picture pipeline
+ * (avif + webp variants that already exist); WordPress posts carry a srcset
+ * built from the renditions the back office generated on upload. Either way
+ * the browser only downloads what the card size needs, never the 1600px
+ * original a 424px card would otherwise pay for.
+ */
+function CardImage({ post }: { post: { image: string | null; imageSrcset: string; imageAlt: string; title: string } }) {
+  const houseSlug = post.image?.startsWith('/media/')
+    ? post.image.match(/^\/media\/([a-z0-9-]+)-\d+\.(?:jpg|webp|avif)$/i)?.[1]
+    : null;
+  const pictureImg = houseSlug ? imageMap[houseSlug] : undefined;
+
+  if (pictureImg) {
+    return (
+      <Picture
+        slug={houseSlug as never}
+        sizes="(min-width: 1024px) 424px, (min-width: 640px) 45vw, 92vw"
+        imgClassName="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.03]"
+      />
+    );
+  }
+
+  if (post.image) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={post.image}
+        srcSet={post.imageSrcset || undefined}
+        sizes="(min-width: 1024px) 424px, (min-width: 640px) 45vw, 92vw"
+        alt={post.imageAlt || post.title}
+        loading="lazy"
+        decoding="async"
+        className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.03]"
+      />
+    );
+  }
+
+  return <Placeholder title={post.title} />;
 }
 
 export default async function JournalPage() {
@@ -76,18 +118,7 @@ export default async function JournalPage() {
                   <Link href={`/journal/${post.slug}`} className="group block">
                     <article className="overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-sm transition-shadow duration-300 hover:shadow-[0_20px_50px_-24px_rgba(7,33,26,0.35)]">
                       <div className="overflow-hidden">
-                        {post.image ? (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            src={post.image}
-                            alt={post.imageAlt || post.title}
-                            loading="lazy"
-                            decoding="async"
-                            className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.03]"
-                          />
-                        ) : (
-                          <Placeholder title={post.title} />
-                        )}
+                        <CardImage post={post} />
                       </div>
                       <div className="p-6">
                         <p className="text-xs font-semibold uppercase tracking-widest text-emerald-700">

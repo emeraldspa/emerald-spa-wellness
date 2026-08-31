@@ -7,24 +7,82 @@ import { FooterFull } from '@/components/FooterFull';
 import { getPost } from '@/lib/wordpress';
 import { SITE_URL, WHATSAPP_PATH, ogFor } from '@/lib/site';
 
-export const revalidate = 900;
+/**
+ * Articles are resolved from WordPress over the network, so the page must
+ * render dynamically: streaming a static shell first would send HTTP 200
+ * before notFound() can act on an unknown slug (a soft 404 that search
+ * engines index). The WordPress fetch below keeps its own 15-minute cache.
+ */
+export const dynamic = 'force-dynamic';
 
 type Params = { params: { slug: string } };
+
+/** Meta descriptions render at ~155-160 characters before truncation. */
+function clampDescription(text: string): string {
+  if (text.length <= 158) return text;
+  const cut = text.slice(0, 158);
+  const lastSpace = cut.lastIndexOf(' ');
+  return `${cut.slice(0, lastSpace > 120 ? lastSpace : 158).trimEnd()}...`;
+}
+
+/**
+ * The full headline stays on the page; the <title> gets the leading clause
+ * when the headline is too long for a search result line.
+ */
+function seoTitle(title: string): string {
+  if (title.length <= 62) return title;
+  const firstClause = title.split(/[:?]/)[0].trim();
+  return firstClause.length >= 24 && firstClause.length <= 62
+    ? firstClause
+    : `${title.slice(0, 59).trimEnd()}...`;
+}
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const post = await getPost(params.slug);
   if (!post) return { title: 'Journal' };
   return {
-    title: post.title,
-    description: post.excerpt,
+    title: seoTitle(post.title),
+    description: clampDescription(post.excerpt || post.title),
     alternates: { canonical: `/journal/${post.slug}` },
-    openGraph: ogFor(`/journal/${post.slug}`),
+    ...ogFor(`/journal/${post.slug}`, {
+      type: 'article',
+      publishedTime: post.date,
+      image: post.image ?? undefined,
+      imageAlt: post.imageAlt || post.title,
+    }),
   };
 }
 
 export default async function JournalPostPage({ params }: Params) {
   const post = await getPost(params.slug);
   if (!post) notFound();
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${SITE_URL}/journal/${post.slug}#article`,
+    headline: post.title,
+    description: post.excerpt || undefined,
+    datePublished: post.date,
+    dateModified: post.date,
+    image: post.image
+      ? [post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`]
+      : [`${SITE_URL}/og-image.jpg`],
+    author: {
+      '@type': 'Organization',
+      name: 'Emerald Spa & Wellness Centre',
+      url: SITE_URL,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Emerald Spa & Wellness Centre',
+      url: SITE_URL,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${SITE_URL}/journal/${post.slug}`,
+    },
+  };
 
   return (
     <>
@@ -59,6 +117,8 @@ export default async function JournalPostPage({ params }: Params) {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={post.image}
+                srcSet={post.imageSrcset || undefined}
+                sizes="(min-width: 768px) 672px, 92vw"
                 alt={post.imageAlt || post.title}
                 className="w-full object-cover"
               />
@@ -87,6 +147,11 @@ export default async function JournalPostPage({ params }: Params) {
             </Link>
           </div>
         </article>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        />
       </main>
       <FooterFull />
     </>

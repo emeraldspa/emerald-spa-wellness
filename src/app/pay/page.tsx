@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     'Choose your treatment or package, pay straight away, send the proof of payment and receive your voucher. Emerald Spa & Wellness Centre, Windhoek North.',
   alternates: { canonical: '/pay' },
-  openGraph: ogFor('/pay'),
+  ...ogFor('/pay'),
 };
 
 /**

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description:
     'Host your celebration at Emerald Spa and Wellness Centre in Windhoek North. Gender reveals, birthday parties, corporate events and family gatherings, with the space, the garden and the team to make it memorable.',
   alternates: { canonical: '/venues' },
-  openGraph: ogFor('/venues'),
+  ...ogFor('/venues'),
 };
 
 const REVEAL_PHOTOS = ['venue-party-1', 'venue-party-2', 'venue-party-3'];

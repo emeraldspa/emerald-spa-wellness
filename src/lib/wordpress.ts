@@ -34,6 +34,8 @@ export type WpPost = {
   content: string;
   date: string;
   image: string | null;
+  /** Responsive candidates for the featured image, as a srcset string. */
+  imageSrcset: string;
   imageAlt: string;
 };
 
@@ -55,8 +57,16 @@ type RawPost = {
   excerpt?: { rendered?: string };
   content?: { rendered?: string };
   acf?: Record<string, unknown>;
-  _embedded?: {
-    'wp:featuredmedia'?: Array<{ source_url?: string; alt_text?: string }>;
+  _embedded?: { 'wp:featuredmedia'?: RawMedia[] };
+};
+
+type RawMedia = {
+  source_url?: string;
+  alt_text?: string;
+  media_details?: {
+    width?: number;
+    height?: number;
+    sizes?: Record<string, { source_url?: string; width?: number; height?: number }>;
   };
 };
 
@@ -98,9 +108,38 @@ function toPost(raw: RawPost): WpPost {
     excerpt: plain(raw.excerpt?.rendered),
     content: raw.content?.rendered ?? '',
     date: raw.date,
-    image: media?.source_url ?? null,
+    image: bestImage(media),
+    imageSrcset: srcsetFrom(media),
     imageAlt: media?.alt_text ?? '',
   };
+}
+
+/** Every rendition WordPress made, joined as a srcset string. */
+function srcsetFrom(media: RawMedia | undefined): string {
+  const sizes = media?.media_details?.sizes;
+  if (!sizes) return '';
+  return Object.values(sizes)
+    .filter((s) => s.source_url && (s.width ?? 0) >= 300 && (s.width ?? 0) <= 1600)
+    .sort((a, b) => (a.width ?? 0) - (b.width ?? 0))
+    .map((s) => `${s.source_url} ${s.width}w`)
+    .join(', ');
+}
+
+/**
+ * The featured image URL to send to browsers: the original only when no
+ * intermediate size exists, otherwise a card-sized WordPress rendition.
+ * Editors upload 1600px+ photos, but journal cards render at ~400px, so
+ * using the original would ship 3x or more pixels than any card needs.
+ */
+function bestImage(media: RawMedia | undefined): string | null {
+  const sizes = media?.media_details?.sizes;
+  if (!sizes) return media?.source_url ?? null;
+  const candidates = ['medium_large', 'large', 'medium'] as const;
+  for (const key of candidates) {
+    const size = sizes[key];
+    if (size?.source_url && (size.width ?? 0) >= 480) return size.source_url;
+  }
+  return media?.source_url ?? null;
 }
 
 /** Published journal posts, newest first. Empty list if there are none. */

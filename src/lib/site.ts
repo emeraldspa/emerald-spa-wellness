@@ -387,27 +387,53 @@ export const LISTED_SERVICE_COUNT = site.categories.reduce(
 
 
 /**
- * Open Graph block for a subpage.
+ * Social share blocks for a subpage: returns BOTH the openGraph and the
+ * twitter objects, so a page spreads them ( ...ogFor('/services') ) and each
+ * network gets page-correct cards.
  *
- * Next.js replaces `openGraph` wholesale instead of merging it with the root
- * layout, so a page that declares only a url loses the share image, the type
- * and the site name. Building it here keeps every page complete and means the
- * image is defined in exactly one place.
+ * Why both: Next.js replaces `openGraph` and `twitter` wholesale instead of
+ * merging them with the root layout, so a page that declares only a url loses
+ * the share image and type, and a page that declares no twitter block at all
+ * inherits the root's generic card (which overrides the page-correct
+ * openGraph values on X). Title and description are deliberately left unset
+ * here: Next falls back to the page's own metadata title and description,
+ * which are always page-specific.
+ *
+ * og:locale uses en_GB because Facebook's supported-locale list has no
+ * en_NA, and the site's English follows British/Namibian conventions.
  */
-export function ogFor(path: string) {
+export function ogFor(
+  path: string,
+  opts: {
+    type?: 'website' | 'article';
+    publishedTime?: string;
+    /** Absolute or root-relative URL of the article photo. */
+    image?: string;
+    imageAlt?: string;
+  } = {},
+) {
+  const image = opts.image ?? '/og-image.jpg';
+  const absoluteImage = image.startsWith('http') ? image : `${SITE_URL}${image}`;
   return {
-    type: 'website' as const,
-    siteName: 'Emerald Spa & Wellness Centre',
-    locale: 'en_NA',
-    url: `${SITE_URL}${path}`,
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        type: 'image/jpeg',
-        alt: 'Emerald Spa & Wellness Centre, Windhoek',
-      },
-    ],
+    openGraph: {
+      type: opts.type ?? ('website' as const),
+      siteName: 'Emerald Spa & Wellness Centre',
+      locale: 'en_GB',
+      url: `${SITE_URL}${path}`,
+      publishedTime: opts.publishedTime,
+      images: [
+        {
+          url: absoluteImage,
+          width: 1200,
+          height: 630,
+          type: 'image/jpeg',
+          alt: opts.imageAlt ?? 'Emerald Spa & Wellness Centre, Windhoek',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image' as const,
+      images: [absoluteImage],
+    },
   };
 }

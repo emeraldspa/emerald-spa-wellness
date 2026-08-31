@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: 'Services and Prices',
   description: `All ${LISTED_SERVICE_COUNT} treatments at Emerald Spa & Wellness Centre, Windhoek North: massages, facials, hydrotherapy, nails, lashes and hair removal. Prices in Namibian dollars.`,
   alternates: { canonical: '/services' },
-  openGraph: ogFor('/services'),
+  ...ogFor('/services'),
 };
 
 /**

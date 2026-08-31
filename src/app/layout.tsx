@@ -53,18 +53,17 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
-    locale: 'en_NA',
+    locale: 'en_GB',
     url: SITE_URL,
     siteName: site.legalName,
     title: 'Emerald Spa & Wellness Centre | Spa in Windhoek North',
-    description:
-      'A refined retreat in Windhoek North. Massages, facials, hydrotherapy and nails, rated 4.8 from 228 verified reviews.',
+    description: `A refined retreat in Windhoek North. Massages, facials, hydrotherapy and nails, rated ${site.rating} from ${site.reviewCount} verified reviews.`,
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, type: 'image/jpeg', alt: `${site.legalName}, Windhoek` }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Emerald Spa & Wellness Centre | Windhoek',
-    description: 'A refined retreat in Windhoek North. Rated 4.8 from 228 verified reviews.',
+    description: `A refined retreat in Windhoek North. Rated ${site.rating} from ${site.reviewCount} verified reviews.`,
     images: ['/og-image.jpg'],
   },
   robots: {

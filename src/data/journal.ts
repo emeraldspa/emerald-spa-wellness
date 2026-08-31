@@ -15,8 +15,8 @@ import type { WpPost } from '@/lib/wordpress';
  * editor publishes appears ahead of these.
  */
 
-function img(src: string, alt: string): Pick<WpPost, 'image' | 'imageAlt'> {
-  return { image: src, imageAlt: alt };
+function img(src: string, alt: string): Pick<WpPost, 'image' | 'imageAlt' | 'imageSrcset'> {
+  return { image: src, imageAlt: alt, imageSrcset: '' };
 }
 
 export const HOUSE_POSTS: WpPost[] = [

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { randomUUID } from 'crypto';
 
 /**
  * Security headers, applied per path.
@@ -13,49 +14,85 @@ import { NextRequest, NextResponse } from 'next/server';
  *
  * The proxy route itself sets `frame-ancestors 'self'` on every response, so
  * middleware only needs to stay out of its way.
+ *
+ * Page scripts are nonce-based: Next.js reads the nonce out of this CSP and
+ * stamps it onto every script it emits, so 'unsafe-inline' is not needed for
+ * scripts. Styles keep 'unsafe-inline' because framer-motion sets inline
+ * styles during animation. 'unsafe-eval' is dev-only and dropped in
+ * production.
  */
 
-const PAGE_CSP = [
-  "default-src 'self'",
-  "base-uri 'self'",
-  "object-src 'none'",
-  "frame-ancestors 'self'",
-  "form-action 'self' https://wa.me https://api.whatsapp.com",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
-  "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://maps.gstatic.com https://maps.googleapis.com https://admin.emeraldspacc.com https://*.wp.com",
-  "font-src 'self' data: https://d8j0ntlcm91z4.cloudfront.net",
-  "connect-src 'self' https://d8j0ntlcm91z4.cloudfront.net",
-  "media-src 'self' blob:",
-  "frame-src 'self' https://www.google.com https://maps.google.com",
-  "manifest-src 'self'",
-  'upgrade-insecure-requests',
-].join('; ');
+const PAGE_CSP = (nonce: string, dev: boolean) =>
+  [
+    "default-src 'self'",
+    "base-uri 'self'",
+    "object-src 'none'",
+    "frame-ancestors 'self'",
+    "form-action 'self' https://wa.me https://api.whatsapp.com",
+    `script-src 'self' 'nonce-${nonce}'${dev ? " 'unsafe-eval'" : ''}`,
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: blob: https://maps.gstatic.com https://maps.googleapis.com https://admin.emeraldspacc.com https://*.wp.com",
+    "font-src 'self' data: https://d8j0ntlcm91z4.cloudfront.net",
+    "connect-src 'self' https://d8j0ntlcm91z4.cloudfront.net",
+    "media-src 'self' blob:",
+    "frame-src 'self' https://www.google.com https://maps.google.com",
+    "manifest-src 'self'",
+    'upgrade-insecure-requests',
+  ].join('; ');
+
+/** OWASP-recommended disable list, broader than the obvious three. */
+const PERMISSIONS_POLICY = [
+  'camera=()',
+  'microphone=()',
+  'geolocation=()',
+  'payment=()',
+  'usb=()',
+  'accelerometer=()',
+  'gyroscope=()',
+  'magnetometer=()',
+  'interest-cohort=()',
+  'idle-detection=()',
+  'local-fonts=()',
+  'xr-spatial-tracking=()',
+].join(', ');
 
 export function middleware(req: NextRequest) {
-  const res = NextResponse.next();
-
   if (req.nextUrl.pathname.startsWith('/api/booking')) {
+    const res = NextResponse.next();
     // The proxy route owns its own headers. Only the shared basics apply.
     res.headers.set('X-Content-Type-Options', 'nosniff');
     return res;
   }
 
-  res.headers.set('Content-Security-Policy', PAGE_CSP);
+  const dev = process.env.NODE_ENV === 'development';
+  const nonce = randomUUID();
+  const csp = PAGE_CSP(nonce, dev);
+
+  // Next.js reads the nonce out of the REQUEST CSP header and stamps it onto
+  // every script it renders; the same policy is then returned to the browser.
+  const requestHeaders = new Headers(req.headers);
+  requestHeaders.set('x-nonce', nonce);
+  requestHeaders.set('Content-Security-Policy', csp);
+
+  const res = NextResponse.next({ request: { headers: requestHeaders } });
+  res.headers.set('Content-Security-Policy', csp);
   res.headers.set('X-Content-Type-Options', 'nosniff');
   res.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.headers.set('X-Frame-Options', 'SAMEORIGIN');
-  res.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  res.headers.set('Permissions-Policy', PERMISSIONS_POLICY);
   res.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
   res.headers.set('Cross-Origin-Resource-Policy', 'same-site');
-  res.headers.set('X-XSS-Protection', '1; mode=block');
+  res.headers.set(
+    'Strict-Transport-Security',
+    'max-age=63072000; includeSubDomains',
+  );
   return res;
 }
 
 export const config = {
   /*
     Everything except the framework's own static assets, which are immutable
-    and carry their own caching rules from next.config.mjs.
+    and carry their own caching rules (plus nosniff) from next.config.mjs.
   */
   matcher: ['/((?!_next/static|_next/image|favicon.ico|media/).*)'],
 };

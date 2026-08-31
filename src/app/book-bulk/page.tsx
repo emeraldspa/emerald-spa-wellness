@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description:
     'Arrange a group visit, a celebration or the venue at Emerald Spa & Wellness Centre, Windhoek North. Tell us who, how many and when, and we take it from there.',
   alternates: { canonical: '/book-bulk' },
-  openGraph: ogFor('/book-bulk'),
+  ...ogFor('/book-bulk'),
 };
 
 const BULK_PHOTOS = [

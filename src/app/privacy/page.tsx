@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'How Emerald Spa & Wellness Centre handles personal information collected through this website.',
   alternates: { canonical: '/privacy' },
-  openGraph: ogFor('/privacy'),
+  ...ogFor('/privacy'),
   robots: { index: true, follow: true },
 };
 
@@ -37,10 +37,23 @@ export default function PrivacyPage() {
             <div>
               <h2 className="display text-2xl text-ink">Booking through Fresha</h2>
               <p className="mt-3 leading-relaxed">
-                Every booking link on this site sends you to Fresha, the booking platform we
-                use. Once you are on Fresha, their privacy terms apply to the information you
-                give them, including your name, contact details, and appointment history. We
+                Online booking happens on Fresha, the booking platform we use. On the
+                booking page the Fresha schedule is embedded in this site, and the other
+                booking options send you there directly; either way, once you are inside
+                Fresha their privacy terms apply to the information you give them,
+                including your name, contact details, and appointment history. We
                 receive your booking details from Fresha so we can prepare for your visit.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="display text-2xl text-ink">The visit page map</h2>
+              <p className="mt-3 leading-relaxed">
+                The visit page embeds a Google Maps frame so you can find us. Loading
+                that page sends your browser a Google cookie and standard request data
+                such as IP address. If you prefer to avoid that, the street address is
+                written out on the same page, and the other pages of this site load
+                nothing from Google at all.
               </p>
             </div>
 

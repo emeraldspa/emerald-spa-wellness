@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     'Photographs of Emerald Spa & Wellness Centre in Windhoek North: treatment rooms, the reception, the hydrotherapy suite, the garden and finished treatments. View any photo full size.',
   alternates: { canonical: '/gallery' },
-  openGraph: ogFor('/gallery'),
+  ...ogFor('/gallery'),
 };
 
 /**
@@ -96,6 +96,17 @@ export default function GalleryPage() {
               '@type': 'ImageGallery',
               name: `${site.legalName} gallery`,
               url: `${SITE_URL}/gallery`,
+              image: GALLERY_SECTIONS.flatMap((section) =>
+                section.slugs
+                  .map((slug) => getImage(slug))
+                  .filter((img): img is NonNullable<ReturnType<typeof getImage>> => Boolean(img))
+                  .map((img) => ({
+                    '@type': 'ImageObject',
+                    contentUrl: img.src.startsWith('http') ? img.src : `${SITE_URL}${img.src}`,
+                    name: img.alt,
+                    description: img.alt,
+                  })),
+              ),
             }),
           }}
         />

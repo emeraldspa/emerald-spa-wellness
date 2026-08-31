@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'Terms covering the use of the Emerald Spa & Wellness Centre website, including pricing and booking.',
   alternates: { canonical: '/terms' },
-  openGraph: ogFor('/terms'),
+  ...ogFor('/terms'),
 };
 
 export default function TermsPage() {
