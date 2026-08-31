@@ -171,6 +171,7 @@ export function StickyNav({
                 <button
                   type="button"
                   onClick={() => setOpenDropdown(openDropdown === 'services' ? null : 'services')}
+                  aria-haspopup='true'
                   aria-expanded={openDropdown === 'services'}
                   className={`flex min-h-[44px] items-center gap-1.5 rounded-full px-3.5 text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors ${
                     pathname.startsWith('/services')
@@ -222,6 +223,7 @@ export function StickyNav({
                 <button
                   type="button"
                   onClick={() => setOpenDropdown(openDropdown === 'venues' ? null : 'venues')}
+                  aria-haspopup='true'
                   aria-expanded={openDropdown === 'venues'}
                   className={`flex min-h-[44px] items-center gap-1.5 rounded-full px-3.5 text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors ${
                     pathname.startsWith('/venues') || pathname === '/book-bulk'
@@ -305,6 +307,7 @@ export function StickyNav({
                 <button
                   type="button"
                   onClick={() => setOpenDropdown(openDropdown === 'journal' ? null : 'journal')}
+                  aria-haspopup='true'
                   aria-expanded={openDropdown === 'journal'}
                   className={`flex min-h-[44px] items-center gap-1.5 rounded-full px-3.5 text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors ${
                     pathname.startsWith('/journal')
