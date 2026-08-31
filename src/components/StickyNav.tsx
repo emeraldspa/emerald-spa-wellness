@@ -196,7 +196,7 @@ export function StickyNav({
                         className="rounded-xl px-3.5 py-3 transition-colors hover:bg-white/6"
                       >
                         <span className="block text-sm text-ground">{cat.name}</span>
-                        <span className="mt-0.5 block text-[11px] text-ground/50">
+                        <span className="mt-0.5 block text-[11px] text-ground/75">
                           {cat.items.length} treatments
                         </span>
                       </Link>
@@ -256,7 +256,7 @@ export function StickyNav({
                       />
                       <span>
                         <span className="block text-sm text-ground">Gender reveal</span>
-                        <span className="block text-[11px] text-ground/50">The big moment</span>
+                        <span className="block text-[11px] text-ground/75">The big moment</span>
                       </span>
                     </Link>
                     <Link
@@ -276,7 +276,7 @@ export function StickyNav({
                       />
                       <span>
                         <span className="block text-sm text-ground">Party at the venue</span>
-                        <span className="block text-[11px] text-ground/50">The night in full</span>
+                        <span className="block text-[11px] text-ground/75">The night in full</span>
                       </span>
                     </Link>
                     <Link
@@ -289,7 +289,7 @@ export function StickyNav({
                       </span>
                       <span>
                         <span className="block text-sm text-ground">Book the venue</span>
-                        <span className="block text-[11px] text-ground/50">Availability and pricing</span>
+                        <span className="block text-[11px] text-ground/75">Availability and pricing</span>
                       </span>
                     </Link>
                   </div>
@@ -337,7 +337,7 @@ export function StickyNav({
                         </Link>
                       ))
                     ) : (
-                      <p className="px-3.5 py-3 text-sm text-ground/60">Stories are on the way.</p>
+                      <p className="px-3.5 py-3 text-sm text-ground/75">Stories are on the way.</p>
                     )}
                     <Link
                       href="/journal"
@@ -454,13 +454,13 @@ export function StickyNav({
                 >
                   <Search className="h-4 w-4 shrink-0" aria-hidden="true" />
                   <span className="flex-1">Search treatments, packages, stories</span>
-                  <kbd className="rounded-md border border-white/25 px-2 py-0.5 text-[10px] uppercase tracking-widest text-ground/60">
+                  <kbd className="rounded-md border border-white/25 px-2 py-0.5 text-[10px] uppercase tracking-widest text-ground/75">
                     ⌘K
                   </kbd>
                 </button>
 
                 <nav className="mt-5" aria-label="Menu">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-ground/50">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-ground/75">
                     Explore
                   </p>
                   <ul className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1">
@@ -482,7 +482,7 @@ export function StickyNav({
                     })}
                   </ul>
 
-                  <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.3em] text-ground/50">
+                  <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.3em] text-ground/75">
                     Book
                   </p>
                   <ul className="mt-2 space-y-1">

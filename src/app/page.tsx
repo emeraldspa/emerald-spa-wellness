@@ -233,7 +233,7 @@ export default async function HomePage() {
                     <p className="text-pretty text-lg leading-relaxed text-ground/90">
                       {r.text}
                     </p>
-                    <figcaption className="mt-6 flex items-center gap-3 text-sm text-ground/60">
+                    <figcaption className="mt-6 flex items-center gap-3 text-sm text-ground/75">
                       <span className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500/20 text-xs font-semibold text-emerald-200">
                         {r.initials}
                       </span>
@@ -327,7 +327,7 @@ export default async function HomePage() {
                   <ClipReveal>The skincare in our treatments.</ClipReveal>
                 </h2>
               </div>
-              <p className="max-w-xs text-sm text-ink/60">
+              <p className="max-w-xs text-sm text-ink/70">
                 Professional products from BioMedical Emporium, chosen for the results. Ask the
                 team about them in store.
               </p>

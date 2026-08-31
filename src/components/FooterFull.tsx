@@ -120,7 +120,7 @@ export function FooterFull() {
       </div>
 
       <div className="relative border-t border-ground/15">
-        <div className="shell flex flex-col gap-3 py-5 pb-24 text-xs text-ground/60 sm:flex-row sm:items-center sm:justify-between sm:pb-6 sm:pr-24">
+        <div className="shell flex flex-col gap-3 py-5 pb-24 text-xs text-ground/75 sm:flex-row sm:items-center sm:justify-between sm:pb-6 sm:pr-24">
           <p>
             &copy; {new Date().getFullYear()} {site.legalName}. Windhoek, Namibia.
           </p>

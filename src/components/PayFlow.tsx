@@ -153,7 +153,7 @@ export function PayFlow({
                     ? 'bg-emerald-600 text-white'
                     : i < step
                       ? 'bg-emerald-100 text-emerald-800'
-                      : 'bg-ink/5 text-ink/45'
+                      : 'bg-ink/5 text-ink/70'
                 }`}
               >
                 <span className="tabular-nums">{i + 1}</span>
@@ -177,7 +177,7 @@ export function PayFlow({
                   <p className="eyebrow text-emerald-600">What are you paying for</p>
                 </div>
 
-                <p className="mt-4 text-sm font-semibold uppercase tracking-widest text-ink/55">
+                <p className="mt-4 text-sm font-semibold uppercase tracking-widest text-ink/70">
                   Packages
                 </p>
                 <ul className="mt-3 grid gap-3 sm:grid-cols-2">
@@ -212,7 +212,7 @@ export function PayFlow({
                   })}
                 </ul>
 
-                <p className="mt-8 text-sm font-semibold uppercase tracking-widest text-ink/55">
+                <p className="mt-8 text-sm font-semibold uppercase tracking-widest text-ink/70">
                   A single treatment
                 </p>
                 <div className="mt-3">
@@ -248,7 +248,7 @@ export function PayFlow({
                   </select>
                 </div>
 
-                <p className="mt-8 text-sm font-semibold uppercase tracking-widest text-ink/55">
+                <p className="mt-8 text-sm font-semibold uppercase tracking-widest text-ink/70">
                   Or another amount
                 </p>
                 <div className="mt-3 flex flex-wrap items-center gap-3">
@@ -267,7 +267,7 @@ export function PayFlow({
                     />
                   </div>
                   {customAmount && !customValid ? (
-                    <p className="text-xs text-ink/55">Minimum NAD 50.</p>
+                    <p className="text-xs text-ink/70">Minimum NAD 50.</p>
                   ) : null}
                 </div>
 
@@ -290,7 +290,7 @@ export function PayFlow({
                   <button
                     type="button"
                     onClick={() => setStep(0)}
-                    className="flex min-h-[36px] items-center gap-1 text-xs font-semibold uppercase tracking-widest text-ink/55 transition-colors hover:text-emerald-600"
+                    className="flex min-h-[36px] items-center gap-1 text-xs font-semibold uppercase tracking-widest text-ink/70 transition-colors hover:text-emerald-600"
                   >
                     <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
                     Back
@@ -298,7 +298,7 @@ export function PayFlow({
                 </div>
 
                 <div className="mt-5 rounded-2xl border border-ink/10 bg-emerald-50/60 p-5">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-ink/55">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-ink/70">
                     You are paying
                   </p>
                   <p className="mt-1 text-lg font-semibold text-ink">
@@ -311,7 +311,7 @@ export function PayFlow({
                   ) : null}
 
                   <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-ink/10 pt-4">
-                    <span className="text-xs font-semibold uppercase tracking-widest text-ink/55">
+                    <span className="text-xs font-semibold uppercase tracking-widest text-ink/70">
                       Your reference
                     </span>
                     <code className="rounded-lg bg-ground px-3 py-1.5 text-sm font-semibold tracking-[0.18em] text-emerald-800">
@@ -330,7 +330,7 @@ export function PayFlow({
                       {copied ? 'Copied' : 'Copy'}
                     </button>
                   </div>
-                  <p className="mt-3 text-xs leading-relaxed text-ink/60">
+                  <p className="mt-3 text-xs leading-relaxed text-ink/70">
                     Use this reference on your payment so we can match it to you the moment
                     your proof arrives.
                   </p>
@@ -365,15 +365,15 @@ export function PayFlow({
                       </p>
                       <dl className="mt-3 space-y-1.5 text-sm text-ink/75">
                         <div className="flex justify-between gap-4">
-                          <dt className="text-ink/55">Bank</dt>
+                          <dt className="text-ink/70">Bank</dt>
                           <dd className="font-medium">{PAYMENT_ACCOUNT.bank}</dd>
                         </div>
                         <div className="flex justify-between gap-4">
-                          <dt className="text-ink/55">Account name</dt>
+                          <dt className="text-ink/70">Account name</dt>
                           <dd className="font-medium">{PAYMENT_ACCOUNT.accountName}</dd>
                         </div>
                         <div className="flex justify-between gap-4">
-                          <dt className="text-ink/55">Account number</dt>
+                          <dt className="text-ink/70">Account number</dt>
                           <dd className="font-medium tabular-nums">
                             {PAYMENT_ACCOUNT.accountNumber}
                           </dd>
@@ -425,7 +425,7 @@ export function PayFlow({
                   <button
                     type="button"
                     onClick={() => setStep(1)}
-                    className="flex min-h-[36px] items-center gap-1 text-xs font-semibold uppercase tracking-widest text-ink/55 transition-colors hover:text-emerald-600"
+                    className="flex min-h-[36px] items-center gap-1 text-xs font-semibold uppercase tracking-widest text-ink/70 transition-colors hover:text-emerald-600"
                   >
                     <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
                     Back
@@ -552,7 +552,7 @@ export function PayFlow({
           <p className="eyebrow text-emerald-700">Your request</p>
           <dl className="mt-5 space-y-4 text-sm">
             <div>
-              <dt className="text-xs font-semibold uppercase tracking-widest text-ink/55">
+              <dt className="text-xs font-semibold uppercase tracking-widest text-ink/70">
                 Paying for
               </dt>
               <dd className="mt-1 font-semibold text-ink">
@@ -560,7 +560,7 @@ export function PayFlow({
               </dd>
             </div>
             <div>
-              <dt className="text-xs font-semibold uppercase tracking-widest text-ink/55">
+              <dt className="text-xs font-semibold uppercase tracking-widest text-ink/70">
                 Amount
               </dt>
               <dd className="mt-1 font-semibold tabular-nums text-ink">
@@ -568,7 +568,7 @@ export function PayFlow({
               </dd>
             </div>
             <div>
-              <dt className="text-xs font-semibold uppercase tracking-widest text-ink/55">
+              <dt className="text-xs font-semibold uppercase tracking-widest text-ink/70">
                 Reference
               </dt>
               <dd className="mt-1">
@@ -578,7 +578,7 @@ export function PayFlow({
               </dd>
             </div>
           </dl>
-          <p className="mt-6 border-t border-ink/10 pt-5 text-xs leading-relaxed text-ink/60">
+          <p className="mt-6 border-t border-ink/10 pt-5 text-xs leading-relaxed text-ink/70">
             Nothing is charged on this page. Payment happens between you and the spa, and
             the voucher is issued once your proof of payment is confirmed. Prefer to talk
             first? Call {site.phone}.

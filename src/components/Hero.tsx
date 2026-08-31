@@ -37,13 +37,16 @@ export function Hero() {
 
       {/*
         A dark wash over the footage: enough to seat light type without
-        hiding the film. The gradient deepens toward the bottom where the
-        headline sits, and the top stays light so the brand logo holds.
+        hiding the film. The wash holds at 45% through the middle and top
+        because the footage has bright window frames in every scene, and the
+        headline, eyebrow and stats must keep WCAG AA contrast on the
+        brightest frame, deepening to 75% at the bottom where the type is
+        densest.
       */}
       <div aria-hidden="true" className="absolute inset-0 bg-[#07211A]/30" />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-[#07211A]/75 via-[#07211A]/10 to-[#07211A]/25"
+        className="absolute inset-0 bg-gradient-to-t from-[#07211A]/75 via-[#07211A]/45 to-[#07211A]/45"
       />
 
       <div className="relative z-10 flex min-h-[100svh] flex-col">
@@ -53,7 +56,7 @@ export function Hero() {
             where it collided with these numbers on short viewports. */}
         <div className="flex flex-1 flex-col justify-center gap-4 px-5 py-8 sm:px-8 md:px-12 md:py-0">
           <div className="flex justify-end">
-            <div className="flex gap-5 rounded-2xl bg-[#07211A]/15 px-4 py-3 backdrop-blur-[3px] sm:gap-8 sm:px-5 md:gap-10">
+            <div className="flex gap-5 rounded-2xl bg-[#07211A]/55 px-4 py-3 backdrop-blur-md sm:gap-8 sm:px-5 md:gap-10">
             {STATS.map((stat, i) => (
               <div
                 key={stat.label}
@@ -86,7 +89,7 @@ export function Hero() {
             margin clears the floating contact cluster on small screens:
             mb-28 lifts the headline above the fixed toggle button that would
             otherwise sit on the last word of the heading. */}
-        <div className="mx-5 mb-28 flex flex-col gap-6 rounded-3xl bg-[#07211A]/15 p-4 backdrop-blur-[3px] sm:mx-8 sm:p-5 md:mx-12 md:mb-20 md:gap-10 md:p-6">
+        <div className="mx-5 mb-28 flex flex-col gap-6 rounded-3xl bg-[#07211A]/25 p-4 backdrop-blur-md sm:mx-8 sm:p-5 md:mx-12 md:mb-20 md:gap-10 md:p-6">
           <div className="flex items-center justify-between gap-4">
             <p
               className="hero-up max-w-[130px] text-[12px] font-semibold uppercase tracking-widest text-ground/85 sm:max-w-[160px] sm:text-xs md:max-w-xs md:text-sm"

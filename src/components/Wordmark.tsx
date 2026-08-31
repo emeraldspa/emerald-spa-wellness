@@ -82,7 +82,7 @@ export function Wordmark({
           Emerald
         </span>
         <span
-          className={`display ${tone === 'dark' ? 'text-ground/70' : 'text-ink/60'} transition-colors duration-300 ${
+          className={`display ${tone === 'dark' ? 'text-ground/70' : 'text-ink/70'} transition-colors duration-300 ${
             tone === 'dark' ? 'group-hover:text-gold-200/90' : 'group-hover:text-emerald-700/90'
           }`}
           style={{ fontSize: subPx, lineHeight: 1, marginTop: subGap }}

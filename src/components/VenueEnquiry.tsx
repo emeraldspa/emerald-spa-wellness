@@ -59,7 +59,7 @@ export function VenueEnquiry({ tone = 'dark' }: { tone?: 'dark' | 'light' }) {
     tone === 'dark'
       ? 'rounded-2xl border border-ground/15 bg-ground/[0.06] p-6 backdrop-blur'
       : 'rounded-2xl border border-ink/12 bg-white/70 p-6 backdrop-blur';
-  const note = tone === 'dark' ? 'text-ground/60' : 'text-ink/60';
+  const note = tone === 'dark' ? 'text-ground/75' : 'text-ink/70';
 
   return (
     <div className="grid gap-10 lg:grid-cols-2">

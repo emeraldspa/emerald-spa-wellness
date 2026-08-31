@@ -246,7 +246,7 @@ export function GalleryGrid({ sections }: { sections: GallerySectionData[] }) {
                           className="h-auto w-full transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.015]"
                         />
                       </picture>
-                      <span className="flex items-center justify-between gap-3 border-t border-ink/10 px-5 py-3 text-xs font-semibold uppercase tracking-widest text-ink/60">
+                      <span className="flex items-center justify-between gap-3 border-t border-ink/10 px-5 py-3 text-xs font-semibold uppercase tracking-widest text-ink/70">
                         {section.eyebrow}
                         <span className="inline-flex items-center gap-1.5 text-emerald-700 opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
                           <Maximize2 className="h-3.5 w-3.5" aria-hidden="true" />
@@ -260,13 +260,13 @@ export function GalleryGrid({ sections }: { sections: GallerySectionData[] }) {
                 <FadeUp delay={0.08} className="md:col-span-5" as="div">
                   <p className="eyebrow text-emerald-600">
                     {section.eyebrow}
-                    <span className="ml-2 tabular-nums text-ink/45">{photoCount} photos</span>
+                    <span className="ml-2 tabular-nums text-ink/70">{photoCount} photos</span>
                   </p>
                   <h2 className="display mt-4 text-3xl text-balance sm:text-4xl">
                     {section.title}
                   </h2>
                   <p className="mt-4 text-ink/70 text-pretty">{section.lead}</p>
-                  <p className="mt-6 text-sm leading-relaxed text-ink/55">
+                  <p className="mt-6 text-sm leading-relaxed text-ink/70">
                     Tap any photograph to see it full size. The viewer moves with
                     the arrow keys and closes with Escape.
                   </p>
@@ -318,7 +318,7 @@ export function GalleryGrid({ sections }: { sections: GallerySectionData[] }) {
                           </picture>
                           <span
                             aria-hidden="true"
-                            className="flex items-center justify-end gap-1.5 border-t border-ink/10 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-widest text-ink/45 transition-colors group-hover:text-emerald-700"
+                            className="flex items-center justify-end gap-1.5 border-t border-ink/10 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-widest text-ink/70 transition-colors group-hover:text-emerald-700"
                           >
                             <Maximize2 className="h-3 w-3" />
                             {String(i + 2).padStart(2, '0')}

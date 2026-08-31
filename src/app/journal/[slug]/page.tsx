@@ -39,13 +39,13 @@ export default async function JournalPostPage({ params }: Params) {
         <article className="shell py-16 md:py-24">
           <Link
             href="/journal"
-            className="inline-flex min-h-[44px] items-center gap-2 text-xs font-semibold uppercase tracking-widest text-ink/60 transition-colors hover:text-emerald-600"
+            className="inline-flex min-h-[44px] items-center gap-2 text-xs font-semibold uppercase tracking-widest text-ink/70 transition-colors hover:text-emerald-600"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             All stories
           </Link>
 
-          <p className="mt-8 text-sm text-ink/60">
+          <p className="mt-8 text-sm text-ink/70">
             {new Date(post.date).toLocaleDateString('en-GB', {
               weekday: 'long',
               day: 'numeric',

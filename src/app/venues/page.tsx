@@ -178,7 +178,7 @@ export default function VenuesPage() {
               </figcaption>
             </figure>
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-ground/70">
-              <span className="text-xs font-semibold uppercase tracking-widest text-ground/50">
+              <span className="text-xs font-semibold uppercase tracking-widest text-ground/75">
                 Or reach us directly
               </span>
               <a

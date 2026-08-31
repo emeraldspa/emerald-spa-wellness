@@ -116,7 +116,7 @@ export default async function PromotionsPage() {
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
-            <p className="mt-4 text-sm text-ink/60">
+            <p className="mt-4 text-sm text-ink/70">
               Prefer to talk first? Call {site.phone}.
             </p>
           </div>

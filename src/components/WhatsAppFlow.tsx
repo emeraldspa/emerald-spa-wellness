@@ -105,7 +105,7 @@ export function WhatsAppFlow({
                     ? 'bg-emerald-600 text-white'
                     : i < step
                       ? 'bg-emerald-100 text-emerald-800'
-                      : 'bg-ink/5 text-ink/45'
+                      : 'bg-ink/5 text-ink/70'
                 }`}
               >
                 <span className="tabular-nums">{i + 1}</span>
@@ -158,7 +158,7 @@ export function WhatsAppFlow({
                   <button
                     type="button"
                     onClick={() => setStep(0)}
-                    className="flex min-h-[36px] items-center gap-1 text-xs font-semibold uppercase tracking-widest text-ink/55 transition-colors hover:text-emerald-600"
+                    className="flex min-h-[36px] items-center gap-1 text-xs font-semibold uppercase tracking-widest text-ink/70 transition-colors hover:text-emerald-600"
                   >
                     <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
                     Back
@@ -234,7 +234,7 @@ export function WhatsAppFlow({
                   <button
                     type="button"
                     onClick={() => setStep(1)}
-                    className="flex min-h-[36px] items-center gap-1 text-xs font-semibold uppercase tracking-widest text-ink/55 transition-colors hover:text-emerald-600"
+                    className="flex min-h-[36px] items-center gap-1 text-xs font-semibold uppercase tracking-widest text-ink/70 transition-colors hover:text-emerald-600"
                   >
                     <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
                     Back
@@ -277,7 +277,7 @@ export function WhatsAppFlow({
           <p className="eyebrow text-emerald-600">Your message</p>
           <div className="mt-4 rounded-2xl rounded-bl-sm bg-[#DCF8C6] p-4 text-sm leading-relaxed text-ink/90">
             <p aria-live="polite">{message}</p>
-            <p className="mt-2 text-right text-[10px] text-ink/45">{site.phone}</p>
+            <p className="mt-2 text-right text-[10px] text-ink/70">{site.phone}</p>
           </div>
 
           <a
@@ -290,7 +290,7 @@ export function WhatsAppFlow({
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </a>
 
-          <p className="mt-3 text-xs text-ink/60">
+          <p className="mt-3 text-xs text-ink/70">
             Opens a chat with {site.phone} with this message ready. Nothing is sent until you tap
             send in WhatsApp.
           </p>
