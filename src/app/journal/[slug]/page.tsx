@@ -39,7 +39,9 @@ function seoTitle(title: string): string {
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const post = await getPost(params.slug);
-  if (!post) return { title: 'Journal' };
+  // Throwing here, before the shell streams, is what makes an unknown slug
+  // answer with a real HTTP 404 instead of a soft 200.
+  if (!post) notFound();
   return {
     title: seoTitle(post.title),
     description: clampDescription(post.excerpt || post.title),

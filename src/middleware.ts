@@ -14,21 +14,22 @@ import { NextRequest, NextResponse } from 'next/server';
  * The proxy route itself sets `frame-ancestors 'self'` on every response, so
  * middleware only needs to stay out of its way.
  *
- * Page scripts are nonce-based: Next.js reads the nonce out of this CSP and
- * stamps it onto every script it emits, so 'unsafe-inline' is not needed for
- * scripts. Styles keep 'unsafe-inline' because framer-motion sets inline
- * styles during animation. 'unsafe-eval' is dev-only and dropped in
- * production.
+ * Page scripts keep 'unsafe-inline': every main route is prerendered as
+ * static HTML at build time, and a nonce only works when the document is
+ * rendered per-request (Next stamps nonces at render time, never into the
+ * static shell). 'unsafe-eval' is dev-only and dropped in production.
+ * script-src stays pinned to 'self' + inline, which still blocks every
+ * injected third-party or remote script.
  */
 
-const PAGE_CSP = (nonce: string, dev: boolean) =>
+const PAGE_CSP = (dev: boolean) =>
   [
     "default-src 'self'",
     "base-uri 'self'",
     "object-src 'none'",
     "frame-ancestors 'self'",
     "form-action 'self' https://wa.me https://api.whatsapp.com",
-    `script-src 'self' 'nonce-${nonce}'${dev ? " 'unsafe-eval'" : ''}`,
+    `script-src 'self' 'unsafe-inline'${dev ? " 'unsafe-eval'" : ''}`,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https://maps.gstatic.com https://maps.googleapis.com https://admin.emeraldspacc.com https://*.wp.com",
     "font-src 'self' data: https://d8j0ntlcm91z4.cloudfront.net",
@@ -64,16 +65,9 @@ export function middleware(req: NextRequest) {
   }
 
   const dev = process.env.NODE_ENV === 'development';
-  const nonce = crypto.randomUUID();
-  const csp = PAGE_CSP(nonce, dev);
+  const csp = PAGE_CSP(dev);
 
-  // Next.js reads the nonce out of the REQUEST CSP header and stamps it onto
-  // every script it renders; the same policy is then returned to the browser.
-  const requestHeaders = new Headers(req.headers);
-  requestHeaders.set('x-nonce', nonce);
-  requestHeaders.set('Content-Security-Policy', csp);
-
-  const res = NextResponse.next({ request: { headers: requestHeaders } });
+  const res = NextResponse.next();
   res.headers.set('Content-Security-Policy', csp);
   res.headers.set('X-Content-Type-Options', 'nosniff');
   res.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');

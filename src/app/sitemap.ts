@@ -3,6 +3,12 @@ import { SITE_URL } from '@/lib/site';
 import { HOUSE_POSTS } from '@/data/journal';
 import { getPosts } from '@/lib/wordpress';
 
+/**
+ * Editors publish articles without redeploys, so the sitemap re-derives
+ * itself on the same 15-minute window the journal pages use.
+ */
+export const revalidate = 900;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes: { path: string; priority: number; freq: 'weekly' | 'monthly' | 'yearly' }[] = [
     { path: '', priority: 1.0, freq: 'weekly' },
