@@ -102,7 +102,7 @@ export default function BookPage() {
                 href="/book-bulk"
                 className="font-semibold text-emerald-700 underline underline-offset-2 hover:text-emerald-800"
               >
-                Book in bulk
+                Group booking
               </Link>{' '}
               and we will arrange it with you directly.
             </span>

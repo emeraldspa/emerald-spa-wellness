@@ -30,7 +30,7 @@ const PAGES: Omit<Entry, 'icon'>[] = [
   { type: 'Page', title: 'Home', subtitle: 'The retreat at a glance', href: '/' },
   { type: 'Page', title: 'Services', subtitle: 'Every treatment and price', href: '/services' },
   { type: 'Page', title: 'Book online', subtitle: 'The spa calendar', href: '/book' },
-  { type: 'Page', title: 'Book in bulk', subtitle: 'Groups, parties and the venue', href: '/book-bulk' },
+  { type: 'Page', title: 'Group booking', subtitle: 'Groups, parties and the venue', href: '/book-bulk' },
   { type: 'Page', title: 'Venues', subtitle: 'Gender reveals and celebrations', href: '/venues' },
   { type: 'Page', title: 'Gallery', subtitle: 'The rooms and the garden', href: '/gallery' },
   { type: 'Page', title: 'Journal', subtitle: 'Stories from the spa', href: '/journal' },

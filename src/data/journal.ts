@@ -28,8 +28,8 @@ export const HOUSE_POSTS: WpPost[] = [
       'The warm water, the pressure, the half hour that feels like two. A practical walkthrough of your first hydrotherapy session in Windhoek North, from arrival to the moment you float home.',
     date: '2026-08-26T09:00:00',
     ...img(
-      '/media/hydro-new-1-1600.jpg',
-      'The hydrotherapy suite at Emerald Spa and Wellness Centre, Windhoek North',
+      '/media/hydrotherapy-tub-set-1600.jpg',
+      'The hydrotherapy tub prepared for a session at Emerald Spa and Wellness Centre, Windhoek North',
     ),
     content: `
 <p>Most people book their first hydrotherapy session out of curiosity and leave wondering why nobody told them about it sooner. The treatment is simple in principle: you settle into a private tub of warm, moving water and let it do the work. In practice there is a rhythm to it, and knowing the rhythm beforehand makes the session better. Here is the honest version of what happens.</p>

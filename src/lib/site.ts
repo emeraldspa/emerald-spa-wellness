@@ -212,6 +212,11 @@ export const GALLERY_SECTIONS = [
       'towel-shelf',
       'retail-display',
       'spa-retreat',
+      'hydro-new-2',
+      'hydro-new-3',
+      'hydro-new-4',
+      'hydro-new-5',
+      'hydro-new-6',
     ],
   },
   {
@@ -219,12 +224,17 @@ export const GALLERY_SECTIONS = [
     eyebrow: 'Hydrotherapy',
     title: 'Warm water, taken slowly.',
     lead: 'The hydrotherapy suite, prepared and in use.',
-    slugs: ['hydro-new-1', 'hydro-new-2', 'hydro-new-3', 'hydro-new-4', 'hydro-new-5', 'hydro-new-6'],
+    slugs: [
+      'hydrotherapy-tub-set',
+      'hydrotherapy-suite',
+      'hydrotherapy-soak',
+      'hydrotherapy-guest',
+    ],
   },
   {
     id: 'treatments',
     eyebrow: 'Treatments',
-    title: 'Results on real guests.',
+    title: 'Esteemed clients.',
     lead: 'Lashes, brows, facials and nails, photographed at the end of the appointment.',
     slugs: [
       'lash-extensions',
@@ -364,7 +374,7 @@ export const NAV_LINKS = [
   { href: '/team', label: 'Team' },
   { href: '/visit', label: 'Visit' },
   { href: '/book', label: 'Book' },
-  { href: '/book-bulk', label: 'Book in bulk' },
+  { href: '/book-bulk', label: 'Group booking' },
 ] as const;
 
 export function formatNad(value: number): string {

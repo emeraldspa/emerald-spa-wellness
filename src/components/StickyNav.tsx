@@ -67,7 +67,7 @@ const drawerItems = [
     group: 'Book',
     links: [
       { href: '/book', label: 'Book online' },
-      { href: '/book-bulk', label: 'Book in bulk' },
+      { href: '/book-bulk', label: 'Group booking' },
       { href: '/whatsapp', label: 'Book on WhatsApp' },
     ],
   },
@@ -390,7 +390,7 @@ export function StickyNav({
                 className="hidden min-h-[44px] items-center gap-1.5 rounded-full border border-gold-300/45 px-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-gold-200 transition-colors hover:border-gold-300 hover:bg-gold-300/10 lg:flex"
               >
                 <CalendarCheck className="h-3.5 w-3.5" aria-hidden="true" />
-                Book in bulk
+                Group booking
               </Link>
               <Link
                 href={BOOKING_PATH}

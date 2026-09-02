@@ -164,19 +164,6 @@ export default function VenuesPage() {
             <div className="mt-12">
               <VenueEnquiry />
             </div>
-            <figure className="mt-10 max-w-sm">
-              <div className="overflow-hidden rounded-2xl border border-ground/15">
-                <Picture
-                  slug="venue-flyer"
-                  alt="The spa venue flyer, showing the space for celebrations"
-                  sizes="(max-width: 640px) 100vw, 380px"
-                  imgClassName="w-full h-auto"
-                />
-              </div>
-              <figcaption className="mt-3 text-xs text-ground/55">
-                The venue flyer. Ask about dates and pricing below.
-              </figcaption>
-            </figure>
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-ground/70">
               <span className="text-xs font-semibold uppercase tracking-widest text-ground/75">
                 Or reach us directly

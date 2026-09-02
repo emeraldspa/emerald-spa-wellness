@@ -24,7 +24,7 @@ const GROUPS = [
       { href: '/journal', label: 'Journal' },
       { href: '/book', label: 'Book Now' },
       { href: '/pay', label: 'Book and Pay' },
-      { href: '/book-bulk', label: 'Book in Bulk' },
+      { href: '/book-bulk', label: 'Group Booking' },
       { href: '/whatsapp', label: 'Book on WhatsApp' },
       { href: '/vouchers', label: 'Gift Vouchers' },
     ],

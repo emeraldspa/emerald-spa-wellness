@@ -53,10 +53,14 @@ export function Hero() {
 
         {/* Stats: a soft glass chip just behind the numbers, with the room-tone
             toggle in flow beneath it. The toggle used to float under the nav,
-            where it collided with these numbers on short viewports. */}
-        <div className="flex flex-1 flex-col justify-center gap-4 px-5 py-8 sm:px-8 md:px-12 md:py-0">
+            where it collided with these numbers on short viewports.
+            The top padding keeps the chip clear of the fixed header on short
+            viewports: the chip used to centre straight under the nav, which
+            hid the numbers behind it in Chrome. The chip itself is kept
+            deliberately small so it reads as a caption, not a banner. */}
+        <div className="flex flex-1 flex-col justify-center gap-4 px-5 pb-8 pt-24 sm:px-8 md:px-12 md:pb-8 md:pt-28">
           <div className="flex justify-end">
-            <div className="flex gap-5 rounded-2xl bg-[#07211A]/55 px-4 py-3 backdrop-blur-md sm:gap-8 sm:px-5 md:gap-10">
+            <div className="flex gap-4 rounded-xl bg-[#07211A]/55 px-4 py-2.5 backdrop-blur-md sm:gap-6 sm:px-5 md:gap-8">
             {STATS.map((stat, i) => (
               <div
                 key={stat.label}
@@ -65,7 +69,7 @@ export function Hero() {
               >
                 <p
                   className="font-semibold leading-none text-ground"
-                  style={{ fontSize: 'clamp(1.5rem, 5vw, 3.5rem)' }}
+                  style={{ fontSize: 'clamp(1.25rem, 3.2vw, 2.4rem)' }}
                 >
                   {stat.prefix ? (
                     <span className="text-emerald-300" style={{ fontSize: '0.5em' }}>
@@ -74,7 +78,7 @@ export function Hero() {
                   ) : null}
                   {stat.value}
                 </p>
-                <p className="whitespace-pre-line text-[12px] font-semibold uppercase leading-tight tracking-widest text-ground/75 sm:text-xs md:text-sm">
+                <p className="whitespace-pre-line text-[10px] font-semibold uppercase leading-tight tracking-widest text-ground/75 sm:text-[11px] md:text-xs">
                   {stat.label}
                 </p>
               </div>

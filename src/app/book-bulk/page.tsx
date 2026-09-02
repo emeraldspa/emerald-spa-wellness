@@ -11,7 +11,7 @@ import { FooterFull } from '@/components/FooterFull';
 import { site, SITE_URL, WHATSAPP_PATH, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Book in Bulk',
+  title: 'Group Booking',
   description:
     'Arrange a group visit, a celebration or the venue at Emerald Spa & Wellness Centre, Windhoek North. Tell us who, how many and when, and we take it from there.',
   alternates: { canonical: '/book-bulk' },
@@ -37,7 +37,7 @@ export default function BookBulkPage() {
       <main id="main">
         <PageHero
           slug="venue-party-8"
-          eyebrow="Book in bulk"
+          eyebrow="Group booking"
           title="The whole group, taken care of."
           lede="A group of friends, a hen or stag party, a family celebration, a corporate team day: tell us what you are planning and we will build the day around it."
         />
