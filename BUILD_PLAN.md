@@ -131,3 +131,13 @@ Client directives applied on top of Round 2. Full detail in PROOF.md and REVAMP_
 | Tagline casing | "Relax the body, Renew the mind, Rejuvenate the soul" | Sentence case | Client asked for capital Rs. Applied at the single source plus the footer and meta description. |
 | Gallery frames | Uniform 4:3 (posters 4:5), object-cover | Natural proportions (round 8 rule) | Client: photos must not render too tall. The nine-by-sixteen sources made sections taller than the viewport. The lightbox keeps the full frame. |
 | Hero fit | svh-aware heading clamp + landscape collapse (chip and toggle hidden under 500px height) | Scrollable hero | Client: the hero must never scroll at any resolution. The collapsed facts repeat in the status strip directly below. |
+
+## Round 12 (2026-09-03)
+
+| Decision | Chosen | Alternative set aside | Reason |
+|---|---|---|---|
+| Gallery captions | Short factual descriptions (avg 35 chars), no brand name in every line | Long SEO-style alts with full spa name | Client: descriptions must be "actual and minimalistic". The page context already says whose gallery it is; the caption only needs to say what is in the frame. Alt text stays descriptive enough for screen readers. |
+| Placeholder alts | Replaced with per-image descriptions written from the actual frames | One shared caption per section | 51 images shared a single generic line; the gallery read as unlabeled. Each of the 95 records now describes its own photo. |
+| Sideways photographs | Rotated 90 CW on disk (14 photos, 42 variants), dimensions re-synced | CSS rotate hacks | The files themselves were stored sideways; CSS would fight the 4:3 frames and the lightbox. Fixed at the asset layer once. |
+| Section copy | Leads state only what the section shows ("Lounges and green light.") | Marketing phrasing ("Guests, close up.") | Same copywriting rule: honest over sensational; the section lead must match its photographs. |
+| Hero copy | Unchanged (Relax / Renew / Rejuvenate) | Any rewording | Explicit client instruction this round. Verified by a no-diff check in the verify suite. |

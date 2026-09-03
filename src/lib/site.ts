@@ -204,7 +204,7 @@ export const GALLERY_SECTIONS = [
     id: 'rooms',
     eyebrow: 'The rooms',
     title: 'Where the work happens.',
-    lead: 'Reception, the treatment rooms, and the quiet corners in between.',
+    lead: 'Reception, the treatment rooms, and the spaces in between.',
     slugs: [
       'reception-lounge',
       'treatment-room',
@@ -278,7 +278,7 @@ export const GALLERY_SECTIONS = [
     id: 'atmosphere',
     eyebrow: 'Atmosphere',
     title: 'The light, the stone, the calm.',
-    lead: 'The high-resolution atmosphere shots: textures, light and quiet corners of the centre.',
+    lead: 'Textures, light and quiet corners of the centre.',
     slugs: [
       'atmos-1', 'atmos-2', 'atmos-3', 'atmos-4', 'atmos-5', 'atmos-6',
       'atmos-7', 'atmos-8', 'atmos-9', 'atmos-10', 'atmos-11', 'atmos-12',
@@ -288,8 +288,8 @@ export const GALLERY_SECTIONS = [
   {
     id: 'moments',
     eyebrow: 'Moments',
-    title: 'Guests, close up.',
-    lead: 'Portraits and candid moments from the spa, at their natural proportions.',
+    title: 'Lounges and green light.',
+    lead: 'Garden lounges, shade sails and the green-lit treatment rooms.',
     slugs: [
       'portrait-1', 'portrait-2', 'portrait-3', 'portrait-4',
       'portrait-5', 'portrait-6', 'portrait-7', 'portrait-8',

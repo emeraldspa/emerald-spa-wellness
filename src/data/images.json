@@ -1,6 +1,6 @@
 {
   "treatment-room": {
-    "alt": "Cozy massage room at Emerald Spa & Wellness Centre in Windhoek, Khomas Region",
+    "alt": "Massage bed and product shelves",
     "width": 1600,
     "height": 900,
     "src": "/media/treatment-room-1600.jpg",
@@ -42,7 +42,7 @@
     ]
   },
   "spa-retreat": {
-    "alt": "Relaxing treatment room at Emerald Spa & Wellness Centre, Windhoek, featuring massage beds",
+    "alt": "Treatment beds with mustard towels",
     "width": 1600,
     "height": 900,
     "src": "/media/spa-retreat-1600.jpg",
@@ -84,7 +84,7 @@
     ]
   },
   "green-escape": {
-    "alt": "Green garden escape at Emerald Spa & Wellness Centre, Windhoek North",
+    "alt": "Treatment room in green light",
     "width": 1443,
     "height": 812,
     "src": "/media/green-escape-1443.jpg",
@@ -118,7 +118,7 @@
     ]
   },
   "reception": {
-    "alt": "Elegant reception at Emerald Spa & Wellness Centre, Windhoek",
+    "alt": "Reception desk and green sofa",
     "width": 1600,
     "height": 900,
     "src": "/media/reception-1600.jpg",
@@ -160,7 +160,7 @@
     ]
   },
   "serenity-garden": {
-    "alt": "Serenity garden at Emerald Spa & Wellness Centre, Windhoek North",
+    "alt": "Fountain spray in the serenity garden",
     "width": 1600,
     "height": 900,
     "src": "/media/serenity-garden-1600.jpg",
@@ -202,7 +202,7 @@
     ]
   },
   "candlescape": {
-    "alt": "Candlelit treatment setting at Emerald Spa & Wellness Centre, Windhoek",
+    "alt": "Candlelit hallway to the rooms",
     "width": 1320,
     "height": 742,
     "src": "/media/candlescape-1320.jpg",
@@ -236,7 +236,7 @@
     ]
   },
   "portfolio-1": {
-    "alt": "Emerald Spa promotional graphic reading Facials For Days, with booking details",
+    "alt": "Promotional graphic: Facials For Days",
     "width": 864,
     "height": 1080,
     "src": "/media/portfolio-1-864.jpg",
@@ -262,7 +262,7 @@
     ]
   },
   "portfolio-2": {
-    "alt": "Emerald Spa promotional graphic reading You Need To Find Time For Yourself",
+    "alt": "Promotional graphic: You Need To Find Time For Yourself",
     "width": 864,
     "height": 1080,
     "src": "/media/portfolio-2-864.jpg",
@@ -288,7 +288,7 @@
     ]
   },
   "portfolio-3": {
-    "alt": "Emerald Spa promotional graphic reading Allow Yourself To Relax, Beauty and Spa",
+    "alt": "Promotional graphic: Allow Yourself To Relax",
     "width": 864,
     "height": 1080,
     "src": "/media/portfolio-3-864.jpg",
@@ -314,7 +314,7 @@
     ]
   },
   "portfolio-4": {
-    "alt": "Emerald Spa opening hours graphic for Monday to Saturday at Blackett Street No. 7",
+    "alt": "Opening hours graphic, Monday to Saturday",
     "width": 607,
     "height": 1080,
     "src": "/media/portfolio-4-607.jpg",
@@ -468,7 +468,7 @@
     ]
   },
   "team-emerald-spa": {
-    "alt": "Emerald Spa, Hydrotherapy at Emerald Spa & Wellness Centre",
+    "alt": "Hydrotherapy at Emerald Spa",
     "width": 340,
     "height": 340,
     "src": "/media/team-emerald-spa-320.jpg",
@@ -494,7 +494,7 @@
     ]
   },
   "garden-lounge-guests": {
-    "alt": "Two guests in green robes relaxing together on the garden sofa at Emerald Spa & Wellness Centre",
+    "alt": "Guests in robes on the garden sofa",
     "width": 1600,
     "height": 900,
     "webp": [
@@ -536,7 +536,7 @@
     "src": "/media/garden-lounge-guests-1600.jpg"
   },
   "robe-garden-seat": {
-    "alt": "Guest in an emerald satin robe seated in the outdoor garden lounge",
+    "alt": "Guest in an emerald robe, garden lounge",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -578,7 +578,7 @@
     "src": "/media/robe-garden-seat-1600.jpg"
   },
   "hydrotherapy-suite": {
-    "alt": "Hydrotherapy suite with a filled soaking tub and hanging plants",
+    "alt": "Hydrotherapy suite and hanging plants",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -620,7 +620,7 @@
     "src": "/media/hydrotherapy-suite-1600.jpg"
   },
   "hydrotherapy-tub-set": {
-    "alt": "Hydrotherapy tub prepared with a serving tray and trailing greenery",
+    "alt": "Hydro tub set with a serving tray",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -662,7 +662,7 @@
     "src": "/media/hydrotherapy-tub-set-1600.jpg"
   },
   "hydrotherapy-soak": {
-    "alt": "Guest enjoying a drink while soaking in the hydrotherapy tub",
+    "alt": "Guest soaking with a drink",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -704,7 +704,7 @@
     "src": "/media/hydrotherapy-soak-1600.jpg"
   },
   "hydrotherapy-guest": {
-    "alt": "Guest relaxing in the warm hydrotherapy tub",
+    "alt": "Guest relaxing in the warm tub",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -746,7 +746,7 @@
     "src": "/media/hydrotherapy-guest-1600.jpg"
   },
   "towel-shelf": {
-    "alt": "Rolled towels and candles arranged on the treatment room shelving",
+    "alt": "Rolled towels and candles on the shelves",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -788,7 +788,7 @@
     "src": "/media/towel-shelf-1600.jpg"
   },
   "retail-display": {
-    "alt": "Skincare and body care products on the display shelving at reception",
+    "alt": "Skincare display at reception",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -830,7 +830,7 @@
     "src": "/media/retail-display-1600.jpg"
   },
   "nail-art": {
-    "alt": "Finished nail set in soft pink with glitter detail, photographed against a foliage wall",
+    "alt": "Soft pink nails with glitter detail",
     "width": 1320,
     "height": 2331,
     "webp": [
@@ -864,7 +864,7 @@
     "src": "/media/nail-art-1320.jpg"
   },
   "facial-treatment": {
-    "alt": "Guest resting during a facial treatment with a headband and warm towel",
+    "alt": "Guest resting during a facial",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -906,7 +906,7 @@
     "src": "/media/facial-treatment-1600.jpg"
   },
   "brow-result": {
-    "alt": "Guest smiling after a brow shaping treatment",
+    "alt": "Smiling after a brow shaping",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -948,7 +948,7 @@
     "src": "/media/brow-result-1600.jpg"
   },
   "brow-detail": {
-    "alt": "Close view of shaped and tinted brows after treatment",
+    "alt": "Shaped and tinted brows, close up",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -990,7 +990,7 @@
     "src": "/media/brow-detail-1600.jpg"
   },
   "treatment-mirror": {
-    "alt": "Guest checking the result in a hand mirror at the end of a treatment",
+    "alt": "Checking the result in a hand mirror",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -1032,7 +1032,7 @@
     "src": "/media/treatment-mirror-1600.jpg"
   },
   "reception-lounge": {
-    "alt": "Reception lounge with a deep green velvet sofa beneath the wall artwork",
+    "alt": "Green velvet sofa in the reception lounge",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -1074,7 +1074,7 @@
     "src": "/media/reception-lounge-1600.jpg"
   },
   "welcome-drink": {
-    "alt": "Chilled welcome drink served to a guest in a robe",
+    "alt": "Chilled welcome drink in a robe",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -1116,7 +1116,7 @@
     "src": "/media/welcome-drink-1600.jpg"
   },
   "treatment-bed-guest": {
-    "alt": "Guest smiling on the treatment bed during a brow appointment",
+    "alt": "Guest on the treatment bed",
     "width": 1600,
     "height": 900,
     "webp": [
@@ -1158,7 +1158,7 @@
     "src": "/media/treatment-bed-guest-1600.jpg"
   },
   "lash-extensions": {
-    "alt": "Close view of a completed eyelash extension set",
+    "alt": "Completed eyelash extensions",
     "width": 1600,
     "height": 900,
     "webp": [
@@ -1200,7 +1200,7 @@
     "src": "/media/lash-extensions-1600.jpg"
   },
   "lash-detail": {
-    "alt": "Detail of individual eyelash extensions after application",
+    "alt": "Lash extensions, close up",
     "width": 1600,
     "height": 900,
     "webp": [
@@ -1242,7 +1242,7 @@
     "src": "/media/lash-detail-1600.jpg"
   },
   "garden-planting": {
-    "alt": "Aloe and succulent planting in the spa garden",
+    "alt": "Aloe and succulents in the garden",
     "width": 1320,
     "height": 2337,
     "webp": [
@@ -1276,7 +1276,7 @@
     "src": "/media/garden-planting-1320.jpg"
   },
   "garden-pond": {
-    "alt": "Landscaped pond and seating area in the spa garden",
+    "alt": "The garden pond and seating",
     "width": 1320,
     "height": 2320,
     "webp": [
@@ -1310,7 +1310,7 @@
     "src": "/media/garden-pond-1320.jpg"
   },
   "garden-walk": {
-    "alt": "Green walkway lined with a living hedge wall in the spa garden",
+    "alt": "Green walkway along the hedge",
     "width": 1320,
     "height": 2313,
     "webp": [
@@ -1344,7 +1344,7 @@
     "src": "/media/garden-walk-1320.jpg"
   },
   "garden-signage": {
-    "alt": "Emerald Spa & Wellness Centre garden with the entrance signage",
+    "alt": "The entrance sign in the garden",
     "width": 1320,
     "height": 2316,
     "webp": [
@@ -1378,7 +1378,7 @@
     "src": "/media/garden-signage-1320.jpg"
   },
   "hanging-chair": {
-    "alt": "Guest reading in the hanging egg chair under the garden tree",
+    "alt": "Reading in the hanging egg chair",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -1420,7 +1420,7 @@
     "src": "/media/hanging-chair-1600.jpg"
   },
   "robe-garden-stand": {
-    "alt": "Guest in an emerald robe holding a warm drink in the garden",
+    "alt": "Guest in a robe with a warm drink",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -1462,7 +1462,7 @@
     "src": "/media/robe-garden-stand-1600.jpg"
   },
   "garden-reading": {
-    "alt": "Guest reading with a cold drink on the garden lounger",
+    "alt": "Reading on the garden lounger",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -1504,7 +1504,7 @@
     "src": "/media/garden-reading-1600.jpg"
   },
   "wine-pair": {
-    "alt": "Glasses of red and white wine served on the marble counter",
+    "alt": "Red and white wine on marble",
     "width": 1600,
     "height": 900,
     "webp": [
@@ -1546,7 +1546,7 @@
     "src": "/media/wine-pair-1600.jpg"
   },
   "wine-service": {
-    "alt": "Wine service at Emerald Spa & Wellness Centre",
+    "alt": "Wine served on the marble table",
     "width": 1600,
     "height": 2844,
     "webp": [
@@ -1588,7 +1588,7 @@
     "src": "/media/wine-service-1600.jpg"
   },
   "refreshments": {
-    "alt": "Cold refreshments available to guests during a visit",
+    "alt": "Cold refreshments for guests",
     "width": 1600,
     "height": 2842,
     "webp": [
@@ -1630,7 +1630,7 @@
     "src": "/media/refreshments-1600.jpg"
   },
   "hydro-new-1": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Suite entrance with mirror and marble steps",
     "width": 1920,
     "height": 2560,
     "src": "/media/hydro-new-1-1600.jpg",
@@ -1647,7 +1647,7 @@
     "avif": []
   },
   "hydro-new-2": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Pedicure chairs on marble platforms",
     "width": 1920,
     "height": 2560,
     "src": "/media/hydro-new-2-1600.jpg",
@@ -1664,7 +1664,7 @@
     "avif": []
   },
   "hydro-new-3": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Manicure table beside the polish shelf",
     "width": 1920,
     "height": 2560,
     "src": "/media/hydro-new-3-1600.jpg",
@@ -1681,7 +1681,7 @@
     "avif": []
   },
   "hydro-new-4": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Red velvet chairs in the lounge corner",
     "width": 1920,
     "height": 2560,
     "src": "/media/hydro-new-4-1600.jpg",
@@ -1698,7 +1698,7 @@
     "avif": []
   },
   "hydro-new-5": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Red chairs by the garden door",
     "width": 1920,
     "height": 2560,
     "src": "/media/hydro-new-5-1600.jpg",
@@ -1715,7 +1715,7 @@
     "avif": []
   },
   "hydro-new-6": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Couples room with green LED lighting",
     "width": 1920,
     "height": 2560,
     "src": "/media/hydro-new-6-1600.jpg",
@@ -1732,75 +1732,75 @@
     "avif": []
   },
   "venue-party-1": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
-    "width": 1920,
-    "height": 1440,
+    "alt": "Gender reveal table and balloon arch",
+    "width": 1440,
+    "height": 1920,
     "src": "/media/venue-party-1-1600.jpg",
     "webp": [
       {
-        "w": 800,
+        "w": 600,
         "p": "/media/venue-party-1-800.webp"
       },
       {
-        "w": 1920,
+        "w": 1440,
         "p": "/media/venue-party-1.webp"
       }
     ],
     "avif": []
   },
   "venue-party-2": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
-    "width": 1920,
-    "height": 1440,
+    "alt": "Balloon arch behind the party table",
+    "width": 1440,
+    "height": 1920,
     "src": "/media/venue-party-2-1600.jpg",
     "webp": [
       {
-        "w": 800,
+        "w": 600,
         "p": "/media/venue-party-2-800.webp"
       },
       {
-        "w": 1920,
+        "w": 1440,
         "p": "/media/venue-party-2.webp"
       }
     ],
     "avif": []
   },
   "venue-party-3": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
-    "width": 1920,
-    "height": 1440,
+    "alt": "Balloon arch over the party table",
+    "width": 1440,
+    "height": 1920,
     "src": "/media/venue-party-3-1600.jpg",
     "webp": [
       {
-        "w": 800,
+        "w": 600,
         "p": "/media/venue-party-3-800.webp"
       },
       {
-        "w": 1920,
+        "w": 1440,
         "p": "/media/venue-party-3.webp"
       }
     ],
     "avif": []
   },
   "venue-party-4": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
-    "width": 1920,
-    "height": 1440,
+    "alt": "Balloon arch with a teddy bear",
+    "width": 1440,
+    "height": 1920,
     "src": "/media/venue-party-4-1600.jpg",
     "webp": [
       {
-        "w": 800,
+        "w": 600,
         "p": "/media/venue-party-4-800.webp"
       },
       {
-        "w": 1920,
+        "w": 1440,
         "p": "/media/venue-party-4.webp"
       }
     ],
     "avif": []
   },
   "venue-party-5": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Boy or Girl balloon wall with a teddy",
     "width": 1920,
     "height": 1440,
     "src": "/media/venue-party-5-1600.jpg",
@@ -1817,41 +1817,41 @@
     "avif": []
   },
   "venue-party-6": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
-    "width": 1920,
-    "height": 1440,
+    "alt": "Party table with gold chairs",
+    "width": 1440,
+    "height": 1920,
     "src": "/media/venue-party-6-1600.jpg",
     "webp": [
       {
-        "w": 800,
+        "w": 600,
         "p": "/media/venue-party-6-800.webp"
       },
       {
-        "w": 1920,
+        "w": 1440,
         "p": "/media/venue-party-6.webp"
       }
     ],
     "avif": []
   },
   "venue-party-7": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
-    "width": 1920,
-    "height": 1440,
+    "alt": "Party table with gold chairs and florals",
+    "width": 1440,
+    "height": 1920,
     "src": "/media/venue-party-7-1600.jpg",
     "webp": [
       {
-        "w": 800,
+        "w": 600,
         "p": "/media/venue-party-7-800.webp"
       },
       {
-        "w": 1920,
+        "w": 1440,
         "p": "/media/venue-party-7.webp"
       }
     ],
     "avif": []
   },
   "venue-party-8": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Party tables and dessert buffet under the tree",
     "width": 1920,
     "height": 1440,
     "src": "/media/venue-party-8-1600.jpg",
@@ -1868,75 +1868,75 @@
     "avif": []
   },
   "venue-party-9": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
-    "width": 1920,
-    "height": 1440,
+    "alt": "Dessert table with cupcakes and sweets",
+    "width": 1440,
+    "height": 1920,
     "src": "/media/venue-party-9-1600.jpg",
     "webp": [
       {
-        "w": 800,
+        "w": 600,
         "p": "/media/venue-party-9-800.webp"
       },
       {
-        "w": 1920,
+        "w": 1440,
         "p": "/media/venue-party-9.webp"
       }
     ],
     "avif": []
   },
   "venue-party-10": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
-    "width": 1920,
-    "height": 1440,
+    "alt": "Dessert table with cupcakes and marshmallows",
+    "width": 1440,
+    "height": 1920,
     "src": "/media/venue-party-10-1600.jpg",
     "webp": [
       {
-        "w": 800,
+        "w": 600,
         "p": "/media/venue-party-10-800.webp"
       },
       {
-        "w": 1920,
+        "w": 1440,
         "p": "/media/venue-party-10.webp"
       }
     ],
     "avif": []
   },
   "venue-party-11": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
-    "width": 1920,
-    "height": 1440,
+    "alt": "Cupcake stands over the party table",
+    "width": 1440,
+    "height": 1920,
     "src": "/media/venue-party-11-1600.jpg",
     "webp": [
       {
-        "w": 800,
+        "w": 600,
         "p": "/media/venue-party-11-800.webp"
       },
       {
-        "w": 1920,
+        "w": 1440,
         "p": "/media/venue-party-11.webp"
       }
     ],
     "avif": []
   },
   "venue-party-12": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
-    "width": 1920,
-    "height": 1440,
+    "alt": "Balloon plinth with a teddy bear",
+    "width": 1440,
+    "height": 1920,
     "src": "/media/venue-party-12-1600.jpg",
     "webp": [
       {
-        "w": 800,
+        "w": 600,
         "p": "/media/venue-party-12-800.webp"
       },
       {
-        "w": 1920,
+        "w": 1440,
         "p": "/media/venue-party-12.webp"
       }
     ],
     "avif": []
   },
   "venue-flyer": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Handwritten package flyer",
     "width": 1920,
     "height": 1440,
     "src": "/media/venue-flyer-1600.jpg",
@@ -1953,7 +1953,7 @@
     "avif": []
   },
   "atmos-1": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Reception with the black velvet sofa",
     "width": 1920,
     "height": 1440,
     "src": "/media/atmos-1-1600.jpg",
@@ -1970,7 +1970,7 @@
     "avif": []
   },
   "atmos-2": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Floor lamp by the suite entrance",
     "width": 1920,
     "height": 1440,
     "src": "/media/atmos-2-1600.jpg",
@@ -1987,7 +1987,7 @@
     "avif": []
   },
   "atmos-3": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Marble corner with the glass water feature",
     "width": 1920,
     "height": 1440,
     "src": "/media/atmos-3-1600.jpg",
@@ -2004,7 +2004,7 @@
     "avif": []
   },
   "atmos-4": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Green sofa under relax, rejuvenate, renew art",
     "width": 1920,
     "height": 1440,
     "src": "/media/atmos-4-1600.jpg",
@@ -2021,24 +2021,24 @@
     "avif": []
   },
   "atmos-5": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
-    "width": 1920,
-    "height": 1440,
+    "alt": "Pedicure chairs and basin from the side",
+    "width": 1440,
+    "height": 1920,
     "src": "/media/atmos-5-1600.jpg",
     "webp": [
       {
-        "w": 800,
+        "w": 600,
         "p": "/media/atmos-5-800.webp"
       },
       {
-        "w": 1920,
+        "w": 1440,
         "p": "/media/atmos-5.webp"
       }
     ],
     "avif": []
   },
   "atmos-6": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Nail studio with manicure stations",
     "width": 1920,
     "height": 1440,
     "src": "/media/atmos-6-1600.jpg",
@@ -2055,7 +2055,7 @@
     "avif": []
   },
   "atmos-7": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Manicure stations and wall mirror",
     "width": 1920,
     "height": 1440,
     "src": "/media/atmos-7-1600.jpg",
@@ -2072,41 +2072,41 @@
     "avif": []
   },
   "atmos-8": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
-    "width": 1920,
-    "height": 1440,
+    "alt": "Chrome taps and basin, close up",
+    "width": 1440,
+    "height": 1920,
     "src": "/media/atmos-8-1600.jpg",
     "webp": [
       {
-        "w": 800,
+        "w": 600,
         "p": "/media/atmos-8-800.webp"
       },
       {
-        "w": 1920,
+        "w": 1440,
         "p": "/media/atmos-8.webp"
       }
     ],
     "avif": []
   },
   "atmos-9": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
-    "width": 1920,
-    "height": 1440,
+    "alt": "Mirror over the wash basin",
+    "width": 1440,
+    "height": 1920,
     "src": "/media/atmos-9-1600.jpg",
     "webp": [
       {
-        "w": 800,
+        "w": 600,
         "p": "/media/atmos-9-800.webp"
       },
       {
-        "w": 1920,
+        "w": 1440,
         "p": "/media/atmos-9.webp"
       }
     ],
     "avif": []
   },
   "atmos-10": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Green velvet chair and marble side table",
     "width": 1920,
     "height": 1440,
     "src": "/media/atmos-10-1600.jpg",
@@ -2123,7 +2123,7 @@
     "avif": []
   },
   "atmos-11": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Twin pedicure chairs beneath the mirror",
     "width": 1920,
     "height": 1440,
     "src": "/media/atmos-11-1600.jpg",
@@ -2140,7 +2140,7 @@
     "avif": []
   },
   "atmos-12": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Log fountain over the stone-lined pond",
     "width": 1920,
     "height": 1440,
     "src": "/media/atmos-12-1600.jpg",
@@ -2157,7 +2157,7 @@
     "avif": []
   },
   "atmos-13": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "The Emerald entrance sign",
     "width": 1920,
     "height": 1440,
     "src": "/media/atmos-13-1600.jpg",
@@ -2174,7 +2174,7 @@
     "avif": []
   },
   "atmos-14": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Swing bench beside the fountain",
     "width": 1920,
     "height": 1440,
     "src": "/media/atmos-14-1600.jpg",
@@ -2191,7 +2191,7 @@
     "avif": []
   },
   "atmos-15": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Relax the body prints along the hallway",
     "width": 1920,
     "height": 1440,
     "src": "/media/atmos-15-1600.jpg",
@@ -2208,24 +2208,24 @@
     "avif": []
   },
   "atmos-16": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
-    "width": 1920,
-    "height": 1440,
+    "alt": "Lit mirror by the treatment bed",
+    "width": 1440,
+    "height": 1920,
     "src": "/media/atmos-16-1600.jpg",
     "webp": [
       {
-        "w": 800,
+        "w": 600,
         "p": "/media/atmos-16-800.webp"
       },
       {
-        "w": 1920,
+        "w": 1440,
         "p": "/media/atmos-16.webp"
       }
     ],
     "avif": []
   },
   "atmos-17": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Couples room with yellow towel accents",
     "width": 1920,
     "height": 1440,
     "src": "/media/atmos-17-1600.jpg",
@@ -2242,7 +2242,7 @@
     "avif": []
   },
   "atmos-18": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Garden swing under the leafy pergola",
     "width": 1920,
     "height": 1440,
     "src": "/media/atmos-18-1600.jpg",
@@ -2259,7 +2259,7 @@
     "avif": []
   },
   "portrait-1": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Lounge set under the green shade sail",
     "width": 1920,
     "height": 2560,
     "src": "/media/portrait-1-1600.jpg",
@@ -2276,7 +2276,7 @@
     "avif": []
   },
   "portrait-2": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Garden seating beneath the shade sail",
     "width": 1920,
     "height": 2560,
     "src": "/media/portrait-2-1600.jpg",
@@ -2293,7 +2293,7 @@
     "avif": []
   },
   "portrait-3": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Side garden by the Emerald sign",
     "width": 1920,
     "height": 2560,
     "src": "/media/portrait-3-1600.jpg",
@@ -2310,7 +2310,7 @@
     "avif": []
   },
   "portrait-4": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Red chairs under the wall clock",
     "width": 1920,
     "height": 2560,
     "src": "/media/portrait-4-1600.jpg",
@@ -2327,7 +2327,7 @@
     "avif": []
   },
   "portrait-5": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Outdoor shower beside the soaking tub",
     "width": 1920,
     "height": 2560,
     "src": "/media/portrait-5-1600.jpg",
@@ -2344,7 +2344,7 @@
     "avif": []
   },
   "portrait-6": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Robes and towels beside the hydro tub",
     "width": 1920,
     "height": 2560,
     "src": "/media/portrait-6-1600.jpg",
@@ -2361,7 +2361,7 @@
     "avif": []
   },
   "portrait-7": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Skincare products on white shelves",
     "width": 1920,
     "height": 2560,
     "src": "/media/portrait-7-1600.jpg",
@@ -2378,7 +2378,7 @@
     "avif": []
   },
   "portrait-8": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Snack platter and robes by the tub",
     "width": 1920,
     "height": 2560,
     "src": "/media/portrait-8-1600.jpg",
@@ -2395,7 +2395,7 @@
     "avif": []
   },
   "spa-photo-1": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Green-lit room with rolled towels",
     "width": 1920,
     "height": 2560,
     "src": "/media/spa-photo-1-1600.jpg",
@@ -2412,7 +2412,7 @@
     "avif": []
   },
   "spa-photo-2": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Treatment bed under the green light",
     "width": 1920,
     "height": 2560,
     "src": "/media/spa-photo-2-1600.jpg",
@@ -2429,7 +2429,7 @@
     "avif": []
   },
   "spa-photo-3": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Green suite with LED strip lighting",
     "width": 1920,
     "height": 2560,
     "src": "/media/spa-photo-3-1600.jpg",
@@ -2446,7 +2446,7 @@
     "avif": []
   },
   "spa-whatsapp-1": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Fountain spray against the leaf fence",
     "width": 1440,
     "height": 2560,
     "src": "/media/spa-whatsapp-1-1600.jpg",
@@ -2463,7 +2463,7 @@
     "avif": []
   },
   "spa-whatsapp-2": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Log fountain on the lawn",
     "width": 1920,
     "height": 2560,
     "src": "/media/spa-whatsapp-2-1600.jpg",
@@ -2480,7 +2480,7 @@
     "avif": []
   },
   "ceo-evelyne-mulilo": {
-    "alt": "Photograph from Emerald Spa and Wellness Centre, Windhoek North",
+    "alt": "Evelyne Mulilo, founder of the spa",
     "width": 1920,
     "height": 2400,
     "src": "/media/ceo-evelyne-mulilo-1600.jpg",
@@ -2497,7 +2497,7 @@
     "avif": []
   },
   "emerald-stone": {
-    "alt": "The emerald stone that gave the spa its name, photographed in natural light",
+    "alt": "The emerald stone that named the spa",
     "width": 512,
     "height": 512,
     "src": "/media/emerald-stone.jpg",

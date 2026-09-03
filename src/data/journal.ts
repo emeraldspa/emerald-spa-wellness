@@ -29,7 +29,7 @@ export const HOUSE_POSTS: WpPost[] = [
     date: '2026-08-26T09:00:00',
     ...img(
       '/media/hydrotherapy-tub-set-1600.jpg',
-      'The hydrotherapy tub prepared for a session at Emerald Spa and Wellness Centre, Windhoek North',
+      'Hydro tub prepared for a session',
     ),
     content: `
 <p>Most people book their first hydrotherapy session out of curiosity and leave wondering why nobody told them about it sooner. The treatment is simple in principle: you settle into a private tub of warm, moving water and let it do the work. In practice there is a rhythm to it, and knowing the rhythm beforehand makes the session better. Here is the honest version of what happens.</p>
@@ -61,7 +61,7 @@ export const HOUSE_POSTS: WpPost[] = [
     date: '2026-08-19T09:00:00',
     ...img(
       '/media/treatment-room-1600.jpg',
-      'Cozy massage room at Emerald Spa and Wellness Centre in Windhoek',
+      'Massage bed ready in the treatment room',
     ),
     content: `
 <p>The most common message we receive reads roughly: I want a massage but I do not know which one. It is a fair question. The menu says Swedish, aromatherapy, hot stone, and the differences are not obvious from the names. Here is the guide we give people in person, written down.</p>
@@ -97,7 +97,7 @@ export const HOUSE_POSTS: WpPost[] = [
     date: '2026-08-12T09:00:00',
     ...img(
       '/media/facial-treatment-1600.jpg',
-      'Guest resting during a facial treatment at Emerald Spa and Wellness Centre',
+      'Guest resting during a facial',
     ),
     content: `
 <p>Ask a facialist what sells facials and you will hear words like glow, radiance, and transformation. Ask a guest what they actually want and the answer is usually more modest: skin that behaves. That gap between the marketing and the want is why our facial menu is built around a small, serious range from BioMedical Emporium rather than a shelf of everything. Here is what we use and, more usefully, what each product actually does.</p>
@@ -132,7 +132,7 @@ export const HOUSE_POSTS: WpPost[] = [
     date: '2026-08-05T09:00:00',
     ...img(
       '/media/venue-party-1-1600.jpg',
-      'A private celebration set up in the garden at Emerald Spa and Wellness Centre',
+      'Private celebration set up in the garden',
     ),
     content: `
 <p>The spa was built for quiet. Then one afternoon a family asked whether they could use the garden for a baby gender reveal, and we spent a confused happy hour watching our calmest space fill with balloons, grandmothers, and a box that was about to release pink confetti. The reveal was loud. The garden held it perfectly. That afternoon the venue side of Emerald was born, more or less by accident.</p>
@@ -161,7 +161,7 @@ export const HOUSE_POSTS: WpPost[] = [
     date: '2026-07-29T09:00:00',
     ...img(
       '/media/serenity-garden-1600.jpg',
-      'The serenity garden at Emerald Spa and Wellness Centre, Windhoek North',
+      'Fountain spray in the serenity garden',
     ),
     content: `
 <p>Every spa tells you it is an escape. In Windhoek the word means something specific: the city is quick, dry, and bright, a place of long drives and longer to-do lists. What a Windhoek week wants is not an escape from the city but a soft place inside it. That is the idea Emerald was built on, on a quiet street in Windhoek North, behind a gate you would drive past without a second look.</p>
@@ -191,7 +191,7 @@ export const HOUSE_POSTS: WpPost[] = [
     date: '2026-07-22T09:00:00',
     ...img(
       '/media/spa-retreat-1600.jpg',
-      'Relaxing treatment room with massage beds at Emerald Spa and Wellness Centre',
+      'Treatment room with massage beds',
     ),
     content: `
 <p>There is a version of the spa day that belongs to one person: the solo hour, the silent treatment room, the book afterwards. We love that version. But there is another version we keep witnessing, the group one, and it is quietly the more powerful medicine. Here is the case for bringing people.</p>
