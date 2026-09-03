@@ -233,13 +233,13 @@ export default async function HomePage() {
                     <p className="text-pretty text-lg leading-relaxed text-ground/90">
                       {r.text}
                     </p>
+                    {/* Round 11 (client): dates removed from every review
+                        card. Name and initials only. */}
                     <figcaption className="mt-6 flex items-center gap-3 text-sm text-ground/75">
                       <span className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500/20 text-xs font-semibold text-emerald-200">
                         {r.initials}
                       </span>
                       {r.author}
-                      <span className="mx-1 text-ground/30">/</span>
-                      {r.date.split(' at ')[0]}
                     </figcaption>
                   </blockquote>
                 </FadeUp>

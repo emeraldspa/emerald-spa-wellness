@@ -231,6 +231,75 @@
   animation: hero-rise 0.7s var(--ease-reveal) backwards;
 }
 
+/*
+  Hero word size and panel margin, svh-aware (round 11).
+
+  The client asked for a hero that never scrolls: at every resolution the
+  whole section fits the viewport. The old heading clamp only respected
+  width, so on short viewports (laptops under 800px tall, landscape
+  tablets) three stacked words pushed the glass panel past the fold. The
+  min() inside the clamp caps the words by height as well as width. The
+  first plain clamp declaration is the fallback for browsers without svh
+  units: they drop the second declaration and keep today's behaviour.
+  The panel margin scales the same way, with a 72px floor that still
+  clears the fixed floating contact button.
+
+  The max-height media block is the landscape-phone collapse: the stats
+  chip and the room-tone toggle leave (the status strip below the hero
+  carries the same facts), paddings tighten, and the panel fits a
+  390px-tall viewport.
+*/
+.hero-word {
+  font-size: clamp(2rem, 9vw, 9rem);
+  font-size: clamp(2rem, min(9vw, 12svh), 9rem);
+  line-height: 0.88;
+  font-weight: 400;
+}
+
+.hero-panel-mb {
+  margin-bottom: clamp(4.5rem, 13svh, 7rem);
+}
+
+@media (min-width: 768px) {
+  .hero-panel-mb {
+    margin-bottom: clamp(4.5rem, 11svh, 5rem);
+  }
+}
+
+@media (max-height: 500px) {
+  /*
+    Landscape phones. The stats chip and the room-tone toggle collapse:
+    the same facts sit in the status strip directly below the hero, and
+    room tone is a delight feature, not a task. With both gone the words,
+    the panel and the header clearance fit a 390px-tall viewport with
+    room to spare.
+  */
+  .hero-extras {
+    display: none;
+  }
+  /*
+    !important is required here: the minifier consolidates Tailwind's
+    responsive variants (md:pt-28, md:pb-8) into a media block that lands
+    AFTER these rules in the served stylesheet, and at equal specificity
+    source order would let 112px of header clearance survive on a 390px
+    viewport.
+  */
+  .hero-top {
+    padding-top: 5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  .hero-word {
+    font-size: clamp(1.5rem, min(9vw, 12svh), 4.5rem);
+  }
+  .hero-panel-compact {
+    padding: 0.75rem !important;
+    gap: 0.75rem !important;
+  }
+  .hero-panel-mb {
+    margin-bottom: 3rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-down,
   .hero-up,

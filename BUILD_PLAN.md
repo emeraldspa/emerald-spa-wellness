@@ -122,3 +122,12 @@ Client directives applied on top of Round 2. Full detail in PROOF.md and REVAMP_
 | Font | Radley display (single weight) with Poppins UI | Client request |
 | Pages | /venues (stories + reels + masonry + venue enquiry), /journal + /journal/[slug] (headless WP) | Client: venues, articles, blog |
 | WhatsApp | Three-step guided flows with progress rail (WhatsAppFlow, VenueEnquiry) | Client: intuitive, process-like forms |
+
+## Round 11 (2026-09-03)
+
+| Decision | Chosen | Alternative set aside | Reason |
+|---|---|---|---|
+| Hero heading | Relax / Renew / Rejuvenate | Restore / Balance / Glow (round 1) | Client instruction: the words now echo the tagline's own verbs. Structure and motion unchanged. |
+| Tagline casing | "Relax the body, Renew the mind, Rejuvenate the soul" | Sentence case | Client asked for capital Rs. Applied at the single source plus the footer and meta description. |
+| Gallery frames | Uniform 4:3 (posters 4:5), object-cover | Natural proportions (round 8 rule) | Client: photos must not render too tall. The nine-by-sixteen sources made sections taller than the viewport. The lightbox keeps the full frame. |
+| Hero fit | svh-aware heading clamp + landscape collapse (chip and toggle hidden under 500px height) | Scrollable hero | Client: the hero must never scroll at any resolution. The collapsed facts repeat in the status strip directly below. |

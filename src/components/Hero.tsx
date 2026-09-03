@@ -14,7 +14,12 @@ const STATS = [
   { value: site.rating, prefix: '', label: 'GUEST\nRATING' },
 ];
 
-const HEADING = ['Restore', 'Balance', 'Glow'];
+/*
+  Client round 11 (2026-09-03): the three hero words become the tagline's own
+  verbs, matching "Relax the body, Renew the mind, Rejuvenate the soul".
+  Structure and motion are unchanged.
+*/
+const HEADING = ['Relax', 'Renew', 'Rejuvenate'];
 
 
 /**
@@ -49,7 +54,15 @@ export function Hero() {
         className="absolute inset-0 bg-gradient-to-t from-[#07211A]/75 via-[#07211A]/45 to-[#07211A]/45"
       />
 
-      <div className="relative z-10 flex min-h-[100svh] flex-col">
+      {/*
+        The inner column is height-capped, not just min-heighted, so on short
+        viewports the hero ends where the viewport ends instead of pushing a
+        second scroll page under the fold. The svh-aware clamps on the heading
+        (.hero-word) and the panel margin (.hero-panel-mb) shrink the content
+        budget first, so the cap is reached, not exceeded, at every common
+        resolution.
+      */}
+      <div className="relative z-10 flex h-full min-h-[100svh] flex-col">
 
         {/* Stats: a soft glass chip just behind the numbers, with the room-tone
             toggle in flow beneath it. The toggle used to float under the nav,
@@ -58,8 +71,8 @@ export function Hero() {
             viewports: the chip used to centre straight under the nav, which
             hid the numbers behind it in Chrome. The chip itself is kept
             deliberately small so it reads as a caption, not a banner. */}
-        <div className="flex flex-1 flex-col justify-center gap-4 px-5 pb-8 pt-24 sm:px-8 md:px-12 md:pb-8 md:pt-28">
-          <div className="flex justify-end">
+        <div className="hero-top flex min-h-0 flex-1 flex-col justify-center gap-4 px-5 pb-8 pt-24 sm:px-8 md:px-12 md:pb-8 md:pt-28">
+          <div className="hero-extras flex justify-end">
             <div className="flex gap-4 rounded-xl bg-[#07211A]/55 px-4 py-2.5 backdrop-blur-md sm:gap-6 sm:px-5 md:gap-8">
             {STATS.map((stat, i) => (
               <div
@@ -85,15 +98,17 @@ export function Hero() {
             ))}
             </div>
           </div>
-          <SoundToggle />
+          <div className="hero-extras">
+            <SoundToggle />
+          </div>
         </div>
 
         {/* The words, on a whisper of glass: a little blur exactly behind the
             type so the film still shows through everywhere else. The bottom
-            margin clears the floating contact cluster on small screens:
-            mb-28 lifts the headline above the fixed toggle button that would
-            otherwise sit on the last word of the heading. */}
-        <div className="mx-5 mb-28 flex flex-col gap-6 rounded-3xl bg-[#07211A]/25 p-4 backdrop-blur-md sm:mx-8 sm:p-5 md:mx-12 md:mb-20 md:gap-10 md:p-6">
+            margin (.hero-panel-mb) scales with the viewport and keeps a floor
+            that clears the fixed contact cluster on small screens, so the
+            floating toggle never sits on the last word of the heading. */}
+        <div className="hero-panel-mb hero-panel-compact mx-5 flex flex-col gap-6 rounded-3xl bg-[#07211A]/25 p-4 backdrop-blur-md sm:mx-8 sm:p-5 md:mx-12 md:gap-8 md:p-6">
           <div className="flex items-center justify-between gap-4">
             <p
               className="hero-up max-w-[130px] text-[12px] font-semibold uppercase tracking-widest text-ground/85 sm:max-w-[160px] sm:text-xs md:max-w-xs md:text-sm"
@@ -131,13 +146,8 @@ export function Hero() {
               {HEADING.map((word, i) => (
                 <span key={word} className="reveal-clip">
                   <span
-                    className="hero-rise"
-                    style={{
-                      animationDelay: `${0.4 + i * 0.14}s`,
-                      fontSize: 'clamp(2rem, 9vw, 9rem)',
-                      lineHeight: 0.88,
-                      fontWeight: 400,
-                    }}
+                    className="hero-rise hero-word"
+                    style={{ animationDelay: `${0.4 + i * 0.14}s` }}
                   >
                     {word}
                   </span>

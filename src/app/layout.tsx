@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     template: '%s | Emerald Spa & Wellness Centre',
   },
   description:
-    `Relax the body, renew the mind, rejuvenate the soul at Emerald Spa & Wellness Centre in Windhoek North. Massages, facials, hydrotherapy and nails. Rated ${site.rating} from ${site.reviewCount} verified reviews.`,
+    `Relax the body, Renew the mind, Rejuvenate the soul at Emerald Spa & Wellness Centre in Windhoek North. Massages, facials, hydrotherapy and nails. Rated ${site.rating} from ${site.reviewCount} verified reviews.`,
   keywords: [
     'spa Windhoek',
     'massage Windhoek',

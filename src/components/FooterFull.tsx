@@ -44,8 +44,8 @@ export function FooterFull() {
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
           <Wordmark tone="dark" size="xl" />
           <p className="max-w-xs pb-2 text-sm leading-relaxed text-ground/75 sm:max-w-sm">
-            Quiet luxury in the heart of Windhoek North. Relax the body, renew the mind,
-            rejuvenate the soul.
+            Quiet luxury in the heart of Windhoek North. Relax the body, Renew the mind,
+            Rejuvenate the soul.
           </p>
         </div>
 

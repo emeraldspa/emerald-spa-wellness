@@ -116,13 +116,16 @@ export default async function JournalPostPage({ params }: Params) {
 
           {post.image ? (
             <div className="mt-6 overflow-hidden rounded-2xl border border-ink/10">
+              {/* Round 11 (client): the article photograph sits in a 4:3
+                  frame. Several story photos are nine-by-sixteen portrait
+                  shots that otherwise render taller than the viewport. */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={post.image}
                 srcSet={post.imageSrcset || undefined}
                 sizes="(min-width: 768px) 672px, 92vw"
                 alt={post.imageAlt || post.title}
-                className="w-full object-cover"
+                className="aspect-[4/3] w-full object-cover"
               />
             </div>
           ) : null}

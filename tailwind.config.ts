@@ -12,6 +12,14 @@ import type { Config } from 'tailwindcss';
  */
 const config: Config = {
   content: ['./src/**/*.{ts,tsx}'],
+  // Gate every hover: variant behind (hover: hover). On touch devices a
+  // fired hover state sticks until the next tap, so image zooms and colour
+  // shifts lingered after a scroll-tap. The animate skill's hard rule:
+  // hover motion is for fine pointers only. Dropdowns and menus driven by
+  // JavaScript state are unaffected.
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       colors: {

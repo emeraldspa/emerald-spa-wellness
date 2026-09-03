@@ -76,11 +76,14 @@ export default function GalleryPage() {
             {POSTER_SLUGS.map((slug, i) => (
               <FadeUp key={slug} delay={(i % 4) * 0.07} as="li">
                 <div className="overflow-hidden rounded-2xl border border-ink/10 bg-emerald-900/5">
+                  {/* Round 11: uniform 4:5 poster frame, the designed
+                      proportion of the artwork; the one taller poster is
+                      cropped to match instead of towering over the row. */}
                   <Picture
                     slug={slug}
                     alt={getImage(slug).alt}
                     sizes="(max-width: 768px) 50vw, 25vw"
-                    imgClassName="w-full object-cover"
+                    imgClassName="aspect-[4/5] w-full object-cover"
                   />
                 </div>
               </FadeUp>

@@ -3,7 +3,6 @@
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Picture } from '@/components/Picture';
-import { getImage } from '@/lib/site';
 
 /**
  * Scroll-snap carousel.
@@ -12,6 +11,10 @@ import { getImage } from '@/lib/site';
  * autoplay. Keyboard, trackpad, and touch all behave the way the platform
  * already defines. Arrows are progressive enhancement on top of a list that
  * is already usable without JavaScript.
+ *
+ * Round 11 (client): the caption copy under each slide is gone completely.
+ * The strip is just images now, so every photograph carries its own alt
+ * text instead of repeating a caption the page no longer shows.
  */
 export function Carousel({ slugs, label }: { slugs: readonly string[]; label: string }) {
   const trackRef = useRef<HTMLUListElement>(null);
@@ -59,13 +62,12 @@ export function Carousel({ slugs, label }: { slugs: readonly string[]; label: st
         aria-label={label}
       >
         {slugs.map((slug, i) => {
-          const img = getImage(slug);
           return (
             <li
               key={slug}
               className="w-[78vw] shrink-0 snap-start sm:w-[46vw] lg:w-[30vw]"
             >
-              <figure className="group">
+              <div className="group">
                 {/*
                   Every slide is the same width and the same fixed height, so
                   the strip reads as one band instead of a ragged skyline.
@@ -73,22 +75,14 @@ export function Carousel({ slugs, label }: { slugs: readonly string[]; label: st
                   object-cover rather than changing the card size.
                 */}
                 <div className="h-[300px] overflow-hidden bg-emerald-900/5 sm:h-[360px] lg:h-[420px]">
-                  {/*
-                    The visible figcaption already carries this description,
-                    so repeating it in alt would make screen readers announce
-                    the same sentence twice. Empty alt marks the image as
-                    decorative and lets the caption do the work.
-                  */}
                   <Picture
                     slug={slug}
-                    alt=""
                     sizes="(max-width: 640px) 78vw, (max-width: 1024px) 46vw, 30vw"
                     imgClassName="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.04]"
                     priority={i === 0}
                   />
                 </div>
-                <figcaption className="mt-3 text-sm text-ink/70">{img.alt}</figcaption>
-              </figure>
+              </div>
             </li>
           );
         })}

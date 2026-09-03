@@ -10,8 +10,10 @@ import { FadeUp } from '@/components/motion';
  * Gallery grid with a lightbox.
  *
  * Each section opens with its feature photograph beside the section text,
- * then the remaining photographs run in a numbered grid below. Frames keep
- * their natural proportions: no cropping, no masonry.
+ * then the remaining photographs run in a numbered grid below. Round 11
+ * (client): every frame is a uniform 4:3, so the nine-by-sixteen phone
+ * photographs no longer render taller than the viewport. Nothing is
+ * deleted; the lightbox still opens the full uncropped photograph.
  *
  * Any photograph opens full size in the lightbox. Arrow keys move between
  * photographs, Escape closes, and the buttons are real buttons so the
@@ -235,6 +237,12 @@ export function GalleryGrid({ sections }: { sections: GallerySectionData[] }) {
                           srcSet={feature.webp.map((s) => `${s.p} ${s.w}w`).join(', ')}
                           sizes="(max-width: 768px) 100vw, 58vw"
                         />
+                        {/*
+                          Round 11 (client): frames are capped at 4:3 so no
+                          photograph towers over the page. Portrait sources
+                          fill the frame through object-cover; the lightbox
+                          still shows the full, uncropped photograph.
+                        */}
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={feature.src}
@@ -243,7 +251,7 @@ export function GalleryGrid({ sections }: { sections: GallerySectionData[] }) {
                           height={feature.height}
                           loading={si === 0 ? 'eager' : 'lazy'}
                           fetchPriority={si === 0 ? 'high' : 'auto'}
-                          className="h-auto w-full transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.015]"
+                          className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.015]"
                         />
                       </picture>
                       <span className="flex items-center justify-between gap-3 border-t border-ink/10 px-5 py-3 text-xs font-semibold uppercase tracking-widest text-ink/70">
@@ -305,6 +313,8 @@ export function GalleryGrid({ sections }: { sections: GallerySectionData[] }) {
                               srcSet={img.webp.map((s) => `${s.p} ${s.w}w`).join(', ')}
                               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                             />
+                            {/* Round 11: uniform 4:3 frame, same cap as the
+                                feature photograph. */}
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                               src={img.src}
@@ -313,7 +323,7 @@ export function GalleryGrid({ sections }: { sections: GallerySectionData[] }) {
                               height={img.height}
                               loading="lazy"
                               decoding="async"
-                              className="h-auto w-full transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.02]"
+                              className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.02]"
                             />
                           </picture>
                           <span
