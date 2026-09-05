@@ -418,10 +418,7 @@ body > * {
 */
 .surface-stone-black {
   background-color: rgb(var(--c-ground-deep) / 1);
-  background-image: image-set(
-    url('/media/stone-black.avif') type('image/avif'),
-    url('/media/stone-black.webp') type('image/webp')
-  );
+  background-image: url('/media/stone-black.webp');
   background-size: 300px;
   background-repeat: repeat;
 }
@@ -429,10 +426,7 @@ body > * {
 /* Same stone at a tighter tile for small surfaces like the sticky bar. */
 .surface-stone-bar {
   background-color: #0A1310;
-  background-image: image-set(
-    url('/media/stone-black.avif') type('image/avif'),
-    url('/media/stone-black.webp') type('image/webp')
-  );
+  background-image: url('/media/stone-black.webp');
   background-size: 300px;
   background-repeat: repeat;
 }

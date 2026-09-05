@@ -61,7 +61,6 @@ export default function VenuesPage() {
                     poster="/media/video/gender-reveal-poster.webp"
                     srcs={[
                       { type: 'video/mp4', src: '/media/video/gender-reveal.mp4' },
-                      { type: 'video/webm', src: '/media/video/gender-reveal.webm' },
                     ]}
                   />
                 </div>
@@ -96,7 +95,6 @@ export default function VenuesPage() {
                     poster="/media/video/party-reel-poster.webp"
                     srcs={[
                       { type: 'video/mp4', src: '/media/video/party-reel.mp4' },
-                      { type: 'video/webm', src: '/media/video/party-reel.webm' },
                     ]}
                   />
                 </div>

@@ -32,14 +32,14 @@ function Placeholder({ title }: { title: string }) {
 
 /**
  * Card art. House stories render through the responsive Picture pipeline
- * (avif + webp variants that already exist); WordPress posts carry a srcset
+ * (WebP variants that already exist); WordPress posts carry a srcset
  * built from the renditions the back office generated on upload. Either way
  * the browser only downloads what the card size needs, never the 1600px
  * original a 424px card would otherwise pay for.
  */
 function CardImage({ post }: { post: { image: string | null; imageSrcset: string; imageAlt: string; title: string } }) {
   const houseSlug = post.image?.startsWith('/media/')
-    ? post.image.match(/^\/media\/([a-z0-9-]+)-\d+\.(?:jpg|webp|avif)$/i)?.[1]
+    ? post.image.match(/^\/media\/([a-z0-9-]+)-\d+\.(?:jpg|webp)$/i)?.[1]
     : null;
   const pictureImg = houseSlug ? imageMap[houseSlug] : undefined;
 

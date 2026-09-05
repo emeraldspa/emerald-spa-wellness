@@ -38,7 +38,6 @@ type Photo = {
   width: number;
   height: number;
   webp: { w: number; p: string }[];
-  avif: { w: number; p: string }[];
   section: string;
 };
 
@@ -76,7 +75,6 @@ function LightboxFrame({
     return () => window.removeEventListener('keydown', onKey);
   }, [index, total, onClose, onMove]);
 
-  const avif = photo.avif.map((s) => `${s.p} ${s.w}w`).join(', ');
   const webp = photo.webp.map((s) => `${s.p} ${s.w}w`).join(', ');
 
   return (
@@ -115,7 +113,6 @@ function LightboxFrame({
         onClick={(e) => e.stopPropagation()}
       >
         <picture className="flex h-full min-h-0 w-full items-center justify-center">
-          {avif ? <source type="image/avif" srcSet={avif} /> : null}
           <source type="image/webp" srcSet={webp} />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -178,7 +175,6 @@ export function GalleryGrid({ sections }: { sections: GallerySectionData[] }) {
           width: img.width,
           height: img.height,
           webp: img.webp,
-          avif: img.avif,
           section: section.eyebrow,
         });
       }
@@ -225,13 +221,6 @@ export function GalleryGrid({ sections }: { sections: GallerySectionData[] }) {
                       className="group block w-full cursor-zoom-in overflow-hidden rounded-2xl border border-ink/10 bg-emerald-900/5 text-left"
                     >
                       <picture>
-                        {feature.avif.length ? (
-                          <source
-                            type="image/avif"
-                            srcSet={feature.avif.map((s) => `${s.p} ${s.w}w`).join(', ')}
-                            sizes="(max-width: 768px) 100vw, 58vw"
-                          />
-                        ) : null}
                         <source
                           type="image/webp"
                           srcSet={feature.webp.map((s) => `${s.p} ${s.w}w`).join(', ')}
@@ -301,13 +290,6 @@ export function GalleryGrid({ sections }: { sections: GallerySectionData[] }) {
                           className="block w-full cursor-zoom-in overflow-hidden rounded-2xl border border-ink/10 bg-emerald-900/5 text-left"
                         >
                           <picture>
-                            {img.avif.length ? (
-                              <source
-                                type="image/avif"
-                                srcSet={img.avif.map((s) => `${s.p} ${s.w}w`).join(', ')}
-                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                              />
-                            ) : null}
                             <source
                               type="image/webp"
                               srcSet={img.webp.map((s) => `${s.p} ${s.w}w`).join(', ')}

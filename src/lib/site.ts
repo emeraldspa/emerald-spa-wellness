@@ -51,7 +51,6 @@ export type ImageAsset = {
   height: number;
   src: string;
   webp: { w: number; p: string }[];
-  avif: { w: number; p: string }[];
 };
 
 export const site = business as typeof business & {
