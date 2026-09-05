@@ -161,14 +161,20 @@ async function handle(req: NextRequest, path: string[]) {
   });
 }
 
-export async function GET(req: NextRequest, ctx: { params: { path: string[] } }) {
-  return handle(req, ctx.params.path);
+/** Next.js 15: route params arrive as a Promise and must be awaited. */
+type RouteCtx = { params: Promise<{ path: string[] }> };
+
+export async function GET(req: NextRequest, ctx: RouteCtx) {
+  const { path } = await ctx.params;
+  return handle(req, path);
 }
 
-export async function POST(req: NextRequest, ctx: { params: { path: string[] } }) {
-  return handle(req, ctx.params.path);
+export async function POST(req: NextRequest, ctx: RouteCtx) {
+  const { path } = await ctx.params;
+  return handle(req, path);
 }
 
-export async function OPTIONS(req: NextRequest, ctx: { params: { path: string[] } }) {
-  return handle(req, ctx.params.path);
+export async function OPTIONS(req: NextRequest, ctx: RouteCtx) {
+  const { path } = await ctx.params;
+  return handle(req, path);
 }

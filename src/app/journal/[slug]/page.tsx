@@ -15,7 +15,8 @@ import { SITE_URL, WHATSAPP_PATH, ogFor } from '@/lib/site';
  */
 export const dynamic = 'force-dynamic';
 
-type Params = { params: { slug: string } };
+/** Next.js 15: route params arrive as a Promise and must be awaited. */
+type Params = { params: Promise<{ slug: string }> };
 
 /** Meta descriptions render at ~155-160 characters before truncation. */
 function clampDescription(text: string): string {
@@ -38,7 +39,8 @@ function seoTitle(title: string): string {
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
-  const post = await getPost(params.slug);
+  const { slug } = await params;
+  const post = await getPost(slug);
   // Throwing here, before the shell streams, is what makes an unknown slug
   // answer with a real HTTP 404 instead of a soft 200.
   if (!post) notFound();
@@ -56,7 +58,8 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 }
 
 export default async function JournalPostPage({ params }: Params) {
-  const post = await getPost(params.slug);
+  const { slug } = await params;
+  const post = await getPost(slug);
   if (!post) notFound();
 
   const articleSchema = {
