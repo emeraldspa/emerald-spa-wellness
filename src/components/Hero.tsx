@@ -134,9 +134,13 @@ export function Hero() {
             </Link>
           </div>
 
-          <div className="flex items-end justify-between gap-3 sm:gap-4">
+          {/* Stacks on phones: the tagline sits above the words so the
+              headline owns the full panel width. Forcing both into one row
+              left ~86px for a ~175px-wide word at 320-375px, and the
+              headline clipped off the right edge. */}
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
             <p
-              className="hero-up w-[150px] shrink-0 text-left text-[11px] leading-snug text-ground/90 sm:w-[220px] sm:text-sm md:w-[320px] md:text-right md:text-base md:leading-relaxed"
+              className="hero-up max-w-[280px] text-left text-[11px] leading-snug text-ground/90 sm:max-w-none sm:w-[220px] sm:text-sm md:w-[320px] md:text-base md:leading-relaxed"
               style={{ animationDelay: '0.84s' }}
             >
               {site.tagline}

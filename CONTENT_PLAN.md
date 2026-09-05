@@ -62,3 +62,12 @@ Writing rules for generated copy live in src/lib/cms/compose.ts and follow the
 copywriting skill: clarity over cleverness, benefits over features, specific
 over vague, customer language, honest over sensational, no AI-tell phrases,
 no exclamation marks, and never a fact the notes did not contain.
+
+## Round 14 update (2026-09-05)
+
+The Content Manager layer and its data files (src/data/cms/*, products.json,
+AnnouncementCard) were removed at the client's request. The content sources of
+truth are again: src/data/business.json (services, prices, reviews, team),
+src/data/products.ts (products), src/data/journal.ts (house stories) and the
+live WordPress layer (journal posts), exactly as in Round 12. Announcements no
+longer render anywhere.

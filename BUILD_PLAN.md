@@ -152,3 +152,12 @@ Client directives applied on top of Round 2. Full detail in PROOF.md and REVAMP_
 | Announcements surface | Dismissible floating card, bottom-left | Top banner above the header | A banner pushes the hero past the viewport, breaking the Round 11 "hero never scrolls" rule. The card adds zero layout shift. |
 | Compose from notes | Deterministic text engine applying the copywriting skill rules | Live LLM call | No API key to pay for or leak, works offline, and every suggestion is derived from facts the note actually contains. The owner edits the draft before saving either way. |
 | Services editing | Per-category editor with a category rail | One 93-row grid | Matches how the menu is read and priced; keeps each save a small, reviewable diff. |
+
+## Round 14 (2026-09-05) — CMS withdrawn, header/navigation made honest
+
+| Decision | Chosen | Alternative set aside | Reason |
+|---|---|---|---|
+| Content Manager | Removed entirely (client: "don't create the CMS manager") | Keep it dormant behind env vars | The client asked for it to not exist. Dormant code still ships, still widens the attack surface, and still shows /admin in the sitemap of truth. Round 12 state is the approved baseline; content edits stay a dev task for now. |
+| Desktop navigation gate | Inline links from xl (1280px), secondary CTA from 2xl, glass drawer below xl | Squeeze links+CTAs into lg (1024px) with smaller type | The full row measures ~1250px. No typographic gymnastics can honestly fit it into a 960px pill; the drawer is already built, fast and accessible, and 1024-1279 laptops are exactly where the old header fell. |
+| Dropdown centring | Plain wrapper div owns left-1/2 -translate-x-1/2; motion.div owns opacity/y/scale | framer-motion x: '-50%' on the same element | Mixing Tailwind transforms with framer's inline transform silently drops one of them; separating layers makes both always true. |
+| Mobile hero panel | Tagline stacks above the headline below sm | Keep the row and shrink the words | The three words are the brand moment; clipping them to fit a 150px tagline column inverts the priority. |

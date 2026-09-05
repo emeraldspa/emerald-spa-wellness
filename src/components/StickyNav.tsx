@@ -160,8 +160,12 @@ export function StickyNav({
           >
             <Wordmark tone="dark" size="md" />
 
-            {/* Desktop links + dropdowns */}
-            <ul className="hidden items-center gap-0.5 lg:flex">
+            {/* Desktop links + dropdowns. They carry the room from xl up:
+                at lg the full row (wordmark + 7 links + search + both CTAs)
+                measures ~1250px, which physically cannot fit a 1024px pill
+                and was the "header falling on some screens" bug. Below xl
+                the glass drawer carries the same links. */}
+            <ul className="hidden items-center gap-0.5 xl:flex">
               {/* Services */}
               <li
                 className="relative"
@@ -384,17 +388,19 @@ export function StickyNav({
                 <Search className="h-4 w-4" aria-hidden="true" />
               </button>
 
-              {/* Two CTAs, desktop only */}
+              {/* Two CTAs, desktop only. The primary Book Now joins the row
+                  from xl; the secondary Group booking waits for 2xl, where
+                  both plus the links still leave air to spare. */}
               <Link
                 href="/book-bulk"
-                className="hidden min-h-[44px] items-center gap-1.5 rounded-full border border-gold-300/45 px-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-gold-200 transition-colors hover:border-gold-300 hover:bg-gold-300/10 lg:flex"
+                className="hidden min-h-[44px] items-center gap-1.5 rounded-full border border-gold-300/45 px-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-gold-200 transition-colors hover:border-gold-300 hover:bg-gold-300/10 2xl:flex"
               >
                 <CalendarCheck className="h-3.5 w-3.5" aria-hidden="true" />
                 Group booking
               </Link>
               <Link
                 href={BOOKING_PATH}
-                className="hidden min-h-[44px] items-center gap-1.5 rounded-full bg-gold-300 px-5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#0A1310] transition-colors hover:bg-gold-200 lg:flex"
+                className="hidden min-h-[44px] items-center gap-1.5 rounded-full bg-gold-300 px-5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#0A1310] transition-colors hover:bg-gold-200 xl:flex"
               >
                 {BOOKING_CTA}
                 <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -407,7 +413,7 @@ export function StickyNav({
                 aria-expanded={drawerOpen}
                 aria-controls="site-menu"
                 aria-label={drawerOpen ? 'Close menu' : 'Open menu'}
-                className="relative flex h-9 w-9 items-center justify-center rounded-full bg-ground text-[#07211A] transition-colors hover:bg-gold-200 md:h-11 md:w-11 lg:hidden"
+                className="relative flex h-9 w-9 items-center justify-center rounded-full bg-ground text-[#07211A] transition-colors hover:bg-gold-200 md:h-11 md:w-11 xl:hidden"
               >
                 <span className="relative block h-[14px] w-[18px]" aria-hidden="true">
                   <span
@@ -426,14 +432,14 @@ export function StickyNav({
           </nav>
 
                 {/* Mobile menu: a compact glass panel under the pill, not an off-canvas
-          drawer. Desktop keeps its inline links; this only exists on small
-          screens (lg:hidden). Legible text throughout, closes on Esc or any
-          navigation. */}
+          drawer. Desktop keeps its inline links; this only exists below xl
+          (phones, tablets and 1024-1279px laptops). Legible text throughout,
+          closes on Esc or any navigation. */}
       <AnimatePresence>
         {drawerOpen ? (
           <motion.div
             id="site-menu"
-            className="absolute inset-x-0 top-full z-[60] mt-3 lg:hidden"
+            className="absolute inset-x-0 top-full z-[60] mt-3 xl:hidden"
             initial={{ opacity: 0, y: -8, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.98 }}
@@ -582,20 +588,29 @@ export function StickyNav({
   );
 }
 
-/** Liquid-glass panel shared by the desktop dropdowns. */
+/**
+ * Liquid-glass panel shared by the desktop dropdowns.
+ *
+ * The centering lives on a plain wrapper, NOT on the motion.div: framer
+ * motion writes its own inline transform (opacity/scale/y), which silently
+ * replaces the class-based -translate-x-1/2 and shoves every panel to the
+ * right by half its width. Wrapper positions, motion animates.
+ */
 function DropdownPanel({ open, children }: { open: boolean; children: ReactNode }) {
   return (
     <AnimatePresence>
       {open ? (
-        <motion.div
-          initial={{ opacity: 0, y: 10, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 8, scale: 0.98 }}
-          transition={{ duration: 0.22, ease: EASE }}
-          className="absolute left-1/2 top-full z-50 mt-3 -translate-x-1/2 rounded-2xl border border-white/20 bg-[#0E4634]/95 p-3 shadow-[0_28px_70px_-20px_rgba(0,0,0,0.5)] backdrop-blur-2xl"
-        >
-          {children}
-        </motion.div>
+        <div className="absolute left-1/2 top-full z-50 mt-3 -translate-x-1/2">
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 8, scale: 0.98 }}
+            transition={{ duration: 0.22, ease: EASE }}
+            className="rounded-2xl border border-white/20 bg-[#0E4634]/95 p-3 shadow-[0_28px_70px_-20px_rgba(0,0,0,0.5)] backdrop-blur-2xl"
+          >
+            {children}
+          </motion.div>
+        </div>
       ) : null}
     </AnimatePresence>
   );
