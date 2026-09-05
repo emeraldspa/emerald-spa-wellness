@@ -141,3 +141,14 @@ Client directives applied on top of Round 2. Full detail in PROOF.md and REVAMP_
 | Sideways photographs | Rotated 90 CW on disk (14 photos, 42 variants), dimensions re-synced | CSS rotate hacks | The files themselves were stored sideways; CSS would fight the 4:3 frames and the lightbox. Fixed at the asset layer once. |
 | Section copy | Leads state only what the section shows ("Lounges and green light.") | Marketing phrasing ("Guests, close up.") | Same copywriting rule: honest over sensational; the section lead must match its photographs. |
 | Hero copy | Unchanged (Relax / Renew / Rejuvenate) | Any rewording | Explicit client instruction this round. Verified by a no-diff check in the verify suite. |
+
+## Round 13 (2026-09-05) — emerald-content-manager
+
+| Decision | Chosen | Alternative set aside | Reason |
+|---|---|---|---|
+| CMS architecture | Git-backed: /admin edits commit JSON to the repository; Vercel's Git integration deploys the commit | Database (Supabase/Prisma) or WP headless | The site's content already lives in JSON read at build time; a commit is the same mechanism the team already trusts, costs nothing, gives full history and one-click undo. No new infrastructure to secure or pay for. |
+| Writes | GitHub Contents API with sha-guarded commits, author Emerald Webmaster | Local fs writes on the server | Serverless filesystems are read-only; the repo is the source of truth. |
+| Auth | Shared password + HMAC-signed 12h cookie | OAuth/GitHub login | One spa, one webmaster, one gatekeeper password the owner can change in the Vercel dashboard. No third-party identity dependency. |
+| Announcements surface | Dismissible floating card, bottom-left | Top banner above the header | A banner pushes the hero past the viewport, breaking the Round 11 "hero never scrolls" rule. The card adds zero layout shift. |
+| Compose from notes | Deterministic text engine applying the copywriting skill rules | Live LLM call | No API key to pay for or leak, works offline, and every suggestion is derived from facts the note actually contains. The owner edits the draft before saving either way. |
+| Services editing | Per-category editor with a category rail | One 93-row grid | Matches how the menu is read and priced; keeps each save a small, reviewable diff. |

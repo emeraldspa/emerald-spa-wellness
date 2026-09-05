@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from 'next';
 import { Poppins, Radley } from 'next/font/google';
 import type { ReactNode } from 'react';
+import { AnnouncementCard } from '@/components/AnnouncementCard';
 import { FloatingActions } from '@/components/FloatingActions';
 import { StickyNav } from '@/components/StickyNav';
 import { VoucherPopup } from '@/components/VoucherPopup';
+import announcementsData from '@/data/cms/announcements.json';
 import { GOOGLE_MAPS_URL, SITE_URL, site } from '@/lib/site';
 import { getPosts } from '@/lib/wordpress';
 import './globals.css';
@@ -134,6 +136,38 @@ function StructuredData() {
   );
 }
 
+/**
+ * The one active announcement, if any, resolved on the server so the client
+ * bundle only ever receives the notice that should show. Status and dates
+ * are maintained in the Content Manager; an expired or archived notice is
+ * simply absent here.
+ */
+function activeAnnouncement(): {
+  id: string;
+  title: string;
+  body: string;
+  linkText?: string;
+  linkUrl?: string;
+} | null {
+  const today = new Date().toISOString().slice(0, 10);
+  const found = (announcementsData as Array<Record<string, unknown>>).find((a) => {
+    if (a.status !== 'active') return false;
+    const from = typeof a.startsOn === 'string' && a.startsOn ? a.startsOn : null;
+    const until = typeof a.endsOn === 'string' && a.endsOn ? a.endsOn : null;
+    if (from && from > today) return false;
+    if (until && until < today) return false;
+    return typeof a.title === 'string' && typeof a.body === 'string';
+  });
+  if (!found) return null;
+  return {
+    id: String(found.id ?? found.title ?? 'notice'),
+    title: String(found.title),
+    body: String(found.body),
+    linkText: typeof found.linkText === 'string' && found.linkText ? found.linkText : undefined,
+    linkUrl: typeof found.linkUrl === 'string' && found.linkUrl ? found.linkUrl : undefined,
+  };
+}
+
 export default async function RootLayout({ children }: { children: ReactNode }) {
   /* The header's Journal dropdown and search are fed by WordPress when it has
      content, and render their empty states when it does not. The fetch is
@@ -166,6 +200,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <StickyNav journalPosts={journalPosts} />
         <FloatingActions />
         <VoucherPopup />
+        <AnnouncementCard notice={activeAnnouncement()} />
       </body>
     </html>
   );

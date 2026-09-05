@@ -42,3 +42,23 @@ None outstanding. Every published fact traces to the Fresha record.
   hydrotherapy for One / Two / Three at N$1,000 / N$1,700 / N$2,400, no duration shown.
 - Products section lists the skincare used (BioMedical Emporium) with descriptions only, never a price.
 - Venue stories use the client's own footage and photography only; no stock.
+
+## Content Manager content types (Round 13)
+
+Editable without code at /admin, each backed by a JSON file in the repository:
+
+| Content type | File | Shown on |
+|---|---|---|
+| Specials and Promotions | src/data/business.json (categories.promotions.items) | /promotions, /book-bulk |
+| Treatments and Prices | src/data/business.json (all 13 categories) | /services, booking pages |
+| Guest Reviews | src/data/business.json (reviews) | home spiral |
+| Team Members | src/data/business.json (team) | /team |
+| Products | src/data/products.json | /brand, home |
+| Journal Posts | src/data/cms/journal.json | /journal, sitemap |
+| Announcements | src/data/cms/announcements.json | site-wide floating notice |
+| FAQ | src/data/cms/faqs.json | /visit |
+
+Writing rules for generated copy live in src/lib/cms/compose.ts and follow the
+copywriting skill: clarity over cleverness, benefits over features, specific
+over vague, customer language, honest over sensational, no AI-tell phrases,
+no exclamation marks, and never a fact the notes did not contain.

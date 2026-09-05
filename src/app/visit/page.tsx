@@ -5,6 +5,7 @@ import { FooterMinimal } from '@/components/FooterMinimal';
 import { MapEmbed } from '@/components/MapEmbed';
 import { Picture } from '@/components/Picture';
 import { Faq } from '@/components/Faq';
+import faqData from '@/data/cms/faqs.json';
 import { PageHero } from '@/components/PageHero';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, WHATSAPP_PATH, getImage, site , SITE_URL, ogFor } from '@/lib/site';
@@ -20,44 +21,14 @@ export const metadata: Metadata = {
 const ARRIVAL_SLUGS = ['garden-signage', 'reception-lounge', 'hanging-chair', 'welcome-drink'];
 
 /**
- * Answers drawn from the venue record: the amenity list, the published hours,
- * and the booking settings confirmed against the live listing. Nothing here is
- * invented, and no price or policy is stated that the spa has not published.
+ * Answers maintained in the Content Manager (src/data/cms/faqs.json) and
+ * seeded from the venue record: the amenity list, the published hours, and
+ * the booking settings confirmed against the live listing. Nothing here is
+ * invented, and no price or policy is stated that the spa has not
+ * published. The spa edits this list in the Content Manager; a rebuild
+ * ships the change.
  */
-const FAQ_ITEMS = [
-  {
-    q: 'Do I need to book, or can I walk in?',
-    a: `Booking is the safer option, especially at weekends. You can reserve online in a few taps, or send a WhatsApp message on ${site.phone} and a person will answer during opening hours.`,
-  },
-  {
-    q: 'Is there parking?',
-    a: 'Yes. There is parking at the spa, and the venue is near public transport if you would rather not drive.',
-  },
-  {
-    q: 'What is provided when I arrive?',
-    a: 'Showers, lockers and bath towels are all available on site, so you can come straight from work or the gym.',
-  },
-  {
-    q: 'Can I choose my therapist?',
-    a: 'Yes. You can request a specific therapist when you book, subject to their availability that day.',
-  },
-  {
-    q: 'How do I pay?',
-    a: 'Payment is taken at the spa rather than online, so nothing is charged when you reserve your appointment.',
-  },
-  {
-    q: 'Are children welcome?',
-    a: 'Yes. The spa is kid-friendly and there is a dedicated Kiddie\u2019s Corner menu of treatments for younger guests.',
-  },
-  {
-    q: 'Are you open on Sunday?',
-    a: 'Yes, from 10:00 AM to 4:00 PM. Monday to Saturday the spa is open 9:00 AM to 6:00 PM.',
-  },
-  {
-    q: 'Can I buy a gift voucher?',
-    a: 'Yes. Choose a value on the vouchers page and send the order over WhatsApp or email. Staff confirm payment, then send you the voucher number and its expiry date.',
-  },
-] as const;
+const FAQ_ITEMS: { q: string; a: string }[] = faqData;
 
 export default function VisitPage() {
   return (

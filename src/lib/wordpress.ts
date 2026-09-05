@@ -1,4 +1,5 @@
 import { HOUSE_POSTS } from '@/data/journal';
+import cmsJournalData from '@/data/cms/journal.json';
 
 /**
  * WordPress content layer.
@@ -69,6 +70,40 @@ type RawMedia = {
     sizes?: Record<string, { source_url?: string; width?: number; height?: number }>;
   };
 };
+
+/**
+ * Posts written in the Content Manager, committed to the repository as
+ * data. They slot into the same journal between the WordPress posts and
+ * the house stories, and reappear in the sitemap and the middleware slug
+ * check through the same imports, so a CMS post is a first-class article
+ * everywhere an article matters.
+ */
+type CmsJournalRecord = {
+  id?: number | string;
+  slug?: string;
+  title?: string;
+  excerpt?: string;
+  content?: string;
+  date?: string;
+  image?: string | null;
+  imageAlt?: string;
+};
+
+export const CMS_POSTS: WpPost[] = (
+  cmsJournalData as CmsJournalRecord[]
+)
+  .filter((p) => typeof p.slug === 'string' && p.slug.length > 0 && typeof p.title === 'string')
+  .map((p, i) => ({
+    id: typeof p.id === 'number' ? p.id : 950000 + i,
+    slug: p.slug as string,
+    title: p.title as string,
+    excerpt: p.excerpt ?? '',
+    content: p.content ?? '',
+    date: p.date ?? new Date().toISOString(),
+    image: p.image ?? null,
+    imageSrcset: '',
+    imageAlt: p.imageAlt ?? '',
+  }));
 
 /** Strip tags and decode the handful of entities WordPress emits in titles. */
 function plain(html: string | undefined): string {
@@ -158,15 +193,21 @@ export async function getPosts(limit = 6): Promise<WpPost[]> {
   // the WordPress version (the one they can edit) wins the slug and the
   // house copy steps aside rather than doubling the card.
   const wpSlugs = new Set(wpPosts.map((p) => p.slug));
-  const combined = [...wpPosts, ...HOUSE_POSTS.filter((h) => !wpSlugs.has(h.slug))];
+  const cmsSlugs = new Set(CMS_POSTS.map((p) => p.slug));
+  const combined = [
+    ...wpPosts,
+    ...CMS_POSTS.filter((c) => !wpSlugs.has(c.slug)),
+    ...HOUSE_POSTS.filter((h) => !wpSlugs.has(h.slug) && !cmsSlugs.has(h.slug)),
+  ];
   return combined.slice(0, limit);
 }
 
 export async function getPost(slug: string): Promise<WpPost | null> {
   const raw = await wpFetch<RawPost>(`posts?slug=${encodeURIComponent(slug)}&_embed=wp:featuredmedia`);
   if (raw.length && !isDemo(raw[0])) return toPost(raw[0]);
-  // House stories are served under the same route as WordPress posts.
-  return HOUSE_POSTS.find((p) => p.slug === slug) ?? null;
+  // Content Manager and house stories are served under the same route as
+  // WordPress posts.
+  return CMS_POSTS.find((p) => p.slug === slug) ?? HOUSE_POSTS.find((p) => p.slug === slug) ?? null;
 }
 
 function asString(v: unknown): string | null {
@@ -212,9 +253,9 @@ export async function getPopupPromotion(): Promise<WpPromotion | null> {
   return active.find((p) => p.showAsPopup) ?? null;
 }
 
-/** True when there is anything to show: real WordPress posts or house stories. */
+/** True when there is anything to show: WordPress posts, CMS posts or house stories. */
 export async function hasJournal(): Promise<boolean> {
-  if (HOUSE_POSTS.length > 0) return true;
+  if (CMS_POSTS.length > 0 || HOUSE_POSTS.length > 0) return true;
   const posts = await getPosts(1);
   return posts.length > 0;
 }
