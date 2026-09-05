@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useInView, useReducedMotion, type Variants } from 'framer-motion';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { useRef, type ReactNode } from 'react';
 
 const EASE_REVEAL = [0.22, 1, 0.36, 1] as const;
@@ -84,23 +84,5 @@ export function FadeUp({
     </Tag>
   );
 }
-
-export const fadeDownVariants: Variants = {
-  hidden: { opacity: 0, y: -20 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.1, ease: EASE_REVEAL },
-  }),
-};
-
-export const fadeUpVariants: Variants = {
-  hidden: { opacity: 0, y: 32 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.12, ease: EASE_REVEAL },
-  }),
-};
 
 export { EASE_REVEAL };

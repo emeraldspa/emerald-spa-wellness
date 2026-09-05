@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  images: { formats: ['image/avif', 'image/webp'] },
   async headers() {
     /*
       Content Security Policy and the page security headers live in

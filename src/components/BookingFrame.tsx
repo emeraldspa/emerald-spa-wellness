@@ -2,7 +2,7 @@
 
 import { AlertCircle, Loader2, RotateCw } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import { BOOKING_EMBED_PATH, BOOKING_FALLBACK_URL, site } from '@/lib/site';
+import { BOOKING_EMBED_PATH, BOOKING_URL, site } from '@/lib/site';
 
 /**
  * Embedded booking.
@@ -97,7 +97,7 @@ export function BookingFrame() {
               Call {site.phone}
             </a>
             <a
-              href={BOOKING_FALLBACK_URL}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-ink/20 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-ink transition-colors hover:border-emerald-600 hover:text-emerald-600"

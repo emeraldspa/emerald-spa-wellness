@@ -18,6 +18,7 @@ import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { SearchOverlay } from '@/components/SearchOverlay';
 import { Wordmark } from '@/components/Wordmark';
+import { EASE_REVEAL } from '@/components/motion';
 import {
   BOOKING_CTA,
   BOOKING_PATH,
@@ -41,9 +42,6 @@ import {
  */
 
 type DropdownKey = 'services' | 'venues' | 'journal' | null;
-
-/** The one entrance curve used across the header, drawer and dropdowns. */
-const EASE = [0.22, 1, 0.36, 1] as const;
 
 const PLAIN_LINKS = NAV_LINKS.filter((l) =>
   ['gallery', 'team', 'visit', 'vouchers'].includes(l.href.replace('/', '')),
@@ -443,7 +441,7 @@ export function StickyNav({
             initial={{ opacity: 0, y: -8, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.98 }}
-            transition={{ duration: 0.22, ease: EASE }}
+            transition={{ duration: 0.22, ease: EASE_REVEAL }}
           >
             <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-[#0E4634]/96 shadow-[0_28px_70px_-20px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
               {/* Top glass sheen, matching the header pill. */}
@@ -605,7 +603,7 @@ function DropdownPanel({ open, children }: { open: boolean; children: ReactNode 
             initial={{ opacity: 0, y: 10, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.98 }}
-            transition={{ duration: 0.22, ease: EASE }}
+            transition={{ duration: 0.22, ease: EASE_REVEAL }}
             className="rounded-2xl border border-white/20 bg-[#0E4634]/95 p-3 shadow-[0_28px_70px_-20px_rgba(0,0,0,0.5)] backdrop-blur-2xl"
           >
             {children}

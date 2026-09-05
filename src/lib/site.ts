@@ -95,7 +95,6 @@ export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
  * the rule cannot drift as pages are edited.
  */
 export const BOOKING_CTA = 'Book Now';
-export const BOOKING_CTA_LONG = 'Book Your Visit';
 export const BOOKING_PATH = '/book';
 
 /**
@@ -115,9 +114,6 @@ export const BOOKING_URL =
  * guest stays on this domain for the whole flow.
  */
 export const BOOKING_EMBED_PATH = '/api/booking/a/emerald-spa-wellness-centre-windhoek-blackett-street-awio4ik8';
-
-/** The provider's page, opened in a new tab, if the frame fails. */
-export const BOOKING_FALLBACK_URL = BOOKING_URL;
 
 /**
  * Book and pay.
@@ -179,19 +175,6 @@ export const GOOGLE_DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&des
  */
 export const GOOGLE_MAPS_EMBED_URL = `https://maps.google.com/maps?cid=${GOOGLE_CID}&output=embed`;
 
-
-/**
- * Photographs of the actual rooms. Order is deliberate: arrival, treatment,
- * candlelight, garden.
- */
-export const GALLERY_SLUGS = [
-  'reception',
-  'treatment-room',
-  'spa-retreat',
-  'candlescape',
-  'serenity-garden',
-  'green-escape',
-] as const;
 
 /**
  * The client's own photographs, grouped by what they actually show. Every
