@@ -1,7 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { HeroVideo } from '@/components/HeroVideo';
-import { SoundToggle } from '@/components/SoundToggle';
 import { BOOKING_CTA, BOOKING_PATH, LISTED_SERVICE_COUNT, site } from '@/lib/site';
 
 /**
@@ -64,9 +63,11 @@ export function Hero() {
       */}
       <div className="relative z-10 flex h-full min-h-[100svh] flex-col">
 
-        {/* Stats: a soft glass chip just behind the numbers, with the room-tone
-            toggle in flow beneath it. The toggle used to float under the nav,
-            where it collided with these numbers on short viewports.
+        {/* Stats: a soft glass chip just behind the numbers.
+            The room-tone pill that used to sit in flow here (Round 9) was
+            retired in Round 19: the reel now carries its own soundtrack and
+            the mute control lives in the floating action stack, bottom
+            right, next to WhatsApp and scroll-to-top.
             The top padding keeps the chip clear of the fixed header on short
             viewports: the chip used to centre straight under the nav, which
             hid the numbers behind it in Chrome. The chip itself is kept
@@ -97,9 +98,6 @@ export function Hero() {
               </div>
             ))}
             </div>
-          </div>
-          <div className="hero-extras">
-            <SoundToggle />
           </div>
         </div>
 

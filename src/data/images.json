@@ -513,8 +513,8 @@
   },
   "retail-display": {
     "alt": "Skincare display at reception",
-    "width": 1600,
-    "height": 2844,
+    "width": 900,
+    "height": 1600,
     "webp": [
       {
         "w": 480,
@@ -529,11 +529,11 @@
         "p": "/media/retail-display-768.webp"
       },
       {
-        "w": 1200,
+        "w": 674,
         "p": "/media/retail-display-1200.webp"
       },
       {
-        "w": 1600,
+        "w": 900,
         "p": "/media/retail-display-1600.webp"
       }
     ],
@@ -1009,7 +1009,7 @@
         "p": "/media/wine-service-1600.webp"
       },
       {
-        "w": 1200,
+        "w": 674,
         "p": "/media/wine-service-1200.webp"
       }
     ],
@@ -1137,8 +1137,8 @@
   },
   "venue-party-1": {
     "alt": "Gender reveal table and balloon arch",
-    "width": 1440,
-    "height": 1920,
+    "width": 1200,
+    "height": 1600,
     "src": "/media/venue-party-1.webp",
     "webp": [
       {
@@ -1154,7 +1154,7 @@
         "p": "/media/venue-party-1-1080.webp"
       },
       {
-        "w": 1440,
+        "w": 1200,
         "p": "/media/venue-party-1.webp"
       }
     ]
@@ -1181,8 +1181,8 @@
   },
   "venue-party-3": {
     "alt": "Balloon arch over the party table",
-    "width": 1440,
-    "height": 1920,
+    "width": 1200,
+    "height": 1600,
     "src": "/media/venue-party-3.webp",
     "webp": [
       {
@@ -1194,7 +1194,7 @@
         "p": "/media/venue-party-3-1080.webp"
       },
       {
-        "w": 1440,
+        "w": 1200,
         "p": "/media/venue-party-3.webp"
       }
     ]
@@ -1321,8 +1321,8 @@
   },
   "venue-party-10": {
     "alt": "Dessert table with cupcakes and marshmallows",
-    "width": 1440,
-    "height": 1920,
+    "width": 1200,
+    "height": 1600,
     "src": "/media/venue-party-10.webp",
     "webp": [
       {
@@ -1334,7 +1334,7 @@
         "p": "/media/venue-party-10-1080.webp"
       },
       {
-        "w": 1440,
+        "w": 1200,
         "p": "/media/venue-party-10.webp"
       }
     ]
@@ -1361,8 +1361,8 @@
   },
   "venue-party-12": {
     "alt": "Balloon plinth with a teddy bear",
-    "width": 1440,
-    "height": 1920,
+    "width": 1200,
+    "height": 1600,
     "src": "/media/venue-party-12.webp",
     "webp": [
       {
@@ -1374,15 +1374,15 @@
         "p": "/media/venue-party-12-1080.webp"
       },
       {
-        "w": 1440,
+        "w": 1200,
         "p": "/media/venue-party-12.webp"
       }
     ]
   },
   "venue-flyer": {
     "alt": "Handwritten package flyer",
-    "width": 1920,
-    "height": 1440,
+    "width": 1600,
+    "height": 1200,
     "src": "/media/venue-flyer.webp",
     "webp": [
       {
@@ -1398,7 +1398,7 @@
         "p": "/media/venue-flyer-1440.webp"
       },
       {
-        "w": 1920,
+        "w": 1600,
         "p": "/media/venue-flyer.webp"
       }
     ]
@@ -1545,8 +1545,8 @@
   },
   "atmos-8": {
     "alt": "Chrome taps and basin, close up",
-    "width": 1440,
-    "height": 1920,
+    "width": 1200,
+    "height": 1600,
     "src": "/media/atmos-8.webp",
     "webp": [
       {
@@ -1562,7 +1562,7 @@
         "p": "/media/atmos-8-1080.webp"
       },
       {
-        "w": 1440,
+        "w": 1200,
         "p": "/media/atmos-8.webp"
       }
     ]
@@ -1589,8 +1589,8 @@
   },
   "atmos-10": {
     "alt": "Green velvet chair and marble side table",
-    "width": 1920,
-    "height": 1440,
+    "width": 1600,
+    "height": 1200,
     "src": "/media/atmos-10.webp",
     "webp": [
       {
@@ -1606,7 +1606,7 @@
         "p": "/media/atmos-10-1440.webp"
       },
       {
-        "w": 1920,
+        "w": 1600,
         "p": "/media/atmos-10.webp"
       }
     ]
@@ -1653,8 +1653,8 @@
   },
   "atmos-13": {
     "alt": "The Emerald entrance sign",
-    "width": 1920,
-    "height": 1440,
+    "width": 1600,
+    "height": 1200,
     "src": "/media/atmos-13.webp",
     "webp": [
       {
@@ -1666,7 +1666,7 @@
         "p": "/media/atmos-13-1440.webp"
       },
       {
-        "w": 1920,
+        "w": 1600,
         "p": "/media/atmos-13.webp"
       }
     ]
@@ -1693,8 +1693,8 @@
   },
   "atmos-15": {
     "alt": "Relax the body prints along the hallway",
-    "width": 1920,
-    "height": 1440,
+    "width": 1600,
+    "height": 1200,
     "src": "/media/atmos-15.webp",
     "webp": [
       {
@@ -1706,15 +1706,15 @@
         "p": "/media/atmos-15-1440.webp"
       },
       {
-        "w": 1920,
+        "w": 1600,
         "p": "/media/atmos-15.webp"
       }
     ]
   },
   "atmos-16": {
     "alt": "Lit mirror by the treatment bed",
-    "width": 1440,
-    "height": 1920,
+    "width": 1200,
+    "height": 1600,
     "src": "/media/atmos-16.webp",
     "webp": [
       {
@@ -1726,7 +1726,7 @@
         "p": "/media/atmos-16-1080.webp"
       },
       {
-        "w": 1440,
+        "w": 1200,
         "p": "/media/atmos-16.webp"
       }
     ]
@@ -1981,8 +1981,8 @@
   },
   "ceo-evelyne-mulilo": {
     "alt": "Evelyne Mulilo, founder of the spa",
-    "width": 1920,
-    "height": 2400,
+    "width": 1280,
+    "height": 1600,
     "src": "/media/ceo-evelyne-mulilo.webp",
     "webp": [
       {
@@ -1994,11 +1994,11 @@
         "p": "/media/ceo-evelyne-mulilo-1440-1080.webp"
       },
       {
-        "w": 1440,
+        "w": 1280,
         "p": "/media/ceo-evelyne-mulilo-1440.webp"
       },
       {
-        "w": 1920,
+        "w": 1280,
         "p": "/media/ceo-evelyne-mulilo.webp"
       }
     ]
