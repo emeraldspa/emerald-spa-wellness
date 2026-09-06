@@ -1,32 +1,4 @@
 {
-  "treatment-room": {
-    "alt": "Massage bed and product shelves",
-    "width": 1600,
-    "height": 900,
-    "src": "/media/treatment-room-1600.webp",
-    "webp": [
-      {
-        "w": 480,
-        "p": "/media/treatment-room-480.webp"
-      },
-      {
-        "w": 576,
-        "p": "/media/treatment-room-768-576.webp"
-      },
-      {
-        "w": 768,
-        "p": "/media/treatment-room-768.webp"
-      },
-      {
-        "w": 1200,
-        "p": "/media/treatment-room-1200.webp"
-      },
-      {
-        "w": 1600,
-        "p": "/media/treatment-room-1600.webp"
-      }
-    ]
-  },
   "spa-retreat": {
     "alt": "Treatment beds with mustard towels",
     "width": 1600,

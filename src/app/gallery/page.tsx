@@ -53,7 +53,7 @@ export default function GalleryPage() {
                     className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-ink/15 px-4 text-xs font-semibold uppercase tracking-widest text-ink/75 transition-colors hover:border-emerald-600 hover:text-emerald-700"
                   >
                     {section.eyebrow}
-                    <span className="tabular-nums text-ink/40">{section.slugs.length}</span>
+                    <span className="tabular-nums text-ink/60">{section.slugs.length}</span>
                   </a>
                 </li>
               ))}

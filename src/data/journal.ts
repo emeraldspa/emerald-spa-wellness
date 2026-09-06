@@ -31,17 +31,22 @@ export const HOUSE_POSTS: WpPost[] = [
       '/media/hydrotherapy-tub-set-1600.jpg',
       'Hydro tub prepared for a session',
     ),
+    gallerySlugs: [
+      'hydrotherapy-suite',
+      'hydrotherapy-tub-set',
+      'hydrotherapy-guest',
+      'portrait-6',
+    ],
     content: `
-<p>Most people book their first hydrotherapy session out of curiosity and leave wondering why nobody told them about it sooner. The treatment is simple in principle: you settle into a private tub of warm, moving water and let it do the work. In practice there is a rhythm to it, and knowing the rhythm beforehand makes the session better. Here is the honest version of what happens.</p>
+<p>Most people book their first hydrotherapy session out of curiosity and leave wondering why nobody told them about it sooner. The idea is simple: you settle into a private tub, and warm water jets do the work. The jets push pressurised water against the body, a strong, targeted massaging effect. That pressure, with the warmth, loosens tight muscle fibres and releases the tension a working week stores in them.</p>
 
-<h2>Before you arrive</h2>
-<p>Hydrotherapy is best booked for a day when you can go slow afterwards. The warm water relaxes you more than most people expect, and the treatment loses a little of its value if you sprint back into a packed schedule. Eat something light an hour or two before, drink water through the day, and skip the heavy perfume: the suite is a quiet space and strong scents carry. If you are pregnant, managing a heart condition, or recovering from surgery, tell us when you book so we can advise you properly or suggest an alternative.</p>
+<p>The same water is quietly doing three more jobs while you lie there. Its pressure widens blood vessels, so oxygen-rich blood keeps flowing to the areas that ache. The beat of the jets lands like a deep tissue massage, which helps quiet pain signals and loosen stiff joints. And the steady rhythmic pulsing calms the nervous system, drawing out endorphins and lowering mental stress. In practice there is a rhythm to a session, and knowing it beforehand makes it better. Here is the honest version of what happens.</p>
 
 <h2>Arrival and the first ten minutes</h2>
-<p>You will be shown to the suite and left alone to change. The room is private, dim, and warm, with everything you need within reach: robes, towels, water to drink. The tub fills and holds its temperature, so there is no waiting for heat and no moment of stepping into water that has gone lukewarm. Sit, lower yourself in, and give yourself a full minute before you judge anything. The first minute always feels like too little happening. That is the point.</p>
+<p>You will be shown to the suite and left alone to change. The room is private and warm, with everything you need within reach: robes, towels, water to drink. The tub fills and holds its temperature, so there is no waiting for heat and no moment of stepping into water that has gone lukewarm. Sit, lower yourself in, and give yourself a full minute before you judge anything. The first minute always feels like too little happening. That is the point.</p>
 
 <h2>What the water is doing</h2>
-<p>The moving water does three things at once. The warmth widens blood vessels near the skin, which helps muscles let go of the tension they have been holding. The pressure of the water itself gives your body something gentle to push against, which is why joints feel lighter in the tub than they do on land. And the movement, the slow churn of the jets, gives your nervous system a steady, repetitive signal that crowds out the busy one it was carrying. People fall asleep in these tubs with surprising regularity. Nobody here thinks that is a problem.</p>
+<p>The mechanics are one thing; the half hour itself is another. The warmth tells the muscles near the skin they can stop holding. The pressure gives your body something gentle to push against, which is why joints feel lighter in the tub than they do on land. And the slow churn of the jets gives your nervous system a steady, repetitive signal that crowds out the busy one it was carrying. People fall asleep in these tubs with surprising regularity. Nobody here thinks that is a problem.</p>
 
 <h2>After the soak</h2>
 <p>When the session ends, rise slowly. Sit on the edge for a moment, drink the water, and let your blood pressure remember what it is doing. This is also when the treatment lands hardest: the half hour after a soak is when tight backs loosen and stiff knees start cooperating. If you can, book a massage in the same visit. Warm muscle tissue responds to massage better than cold tissue does, and the pairing is why our massage packages pair the two on purpose.</p>
@@ -60,8 +65,8 @@ export const HOUSE_POSTS: WpPost[] = [
       'Three massages, three different jobs. A plain-language guide to what each one does, who each one suits, and how to pick without guessing.',
     date: '2026-08-19T09:00:00',
     ...img(
-      '/media/treatment-room-1600.jpg',
-      'Massage bed ready in the treatment room',
+      '/media/spa-retreat-1600.jpg',
+      'Treatment beds with mustard towels ready for a massage',
     ),
     content: `
 <p>The most common message we receive reads roughly: I want a massage but I do not know which one. It is a fair question. The menu says Swedish, aromatherapy, hot stone, and the differences are not obvious from the names. Here is the guide we give people in person, written down.</p>
@@ -190,8 +195,8 @@ export const HOUSE_POSTS: WpPost[] = [
       'One guest relaxes. Two reconnect. Six remember it for a year. Why treatments are better together, and how to plan a group day that suits everyone.',
     date: '2026-07-22T09:00:00',
     ...img(
-      '/media/spa-retreat-1600.jpg',
-      'Treatment room with massage beds',
+      '/media/venue-party-8-1600.jpg',
+      'Party tables and dessert buffet under the garden trees',
     ),
     content: `
 <p>There is a version of the spa day that belongs to one person: the solo hour, the silent treatment room, the book afterwards. We love that version. But there is another version we keep witnessing, the group one, and it is quietly the more powerful medicine. Here is the case for bringing people.</p>

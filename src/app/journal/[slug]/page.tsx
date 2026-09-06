@@ -3,9 +3,10 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/PageHero';
+import { Picture } from '@/components/Picture';
 import { FooterFull } from '@/components/FooterFull';
 import { getPost } from '@/lib/wordpress';
-import { SITE_URL, WHATSAPP_PATH, ogFor } from '@/lib/site';
+import { imageMap, SITE_URL, WHATSAPP_PATH, ogFor } from '@/lib/site';
 
 /**
  * Articles are resolved from WordPress over the network, so the page must
@@ -108,26 +109,38 @@ export default async function JournalPostPage({ params }: Params) {
             All stories
           </Link>
 
-          <p className="mt-8 text-sm text-ink/70">
-            {new Date(post.date).toLocaleDateString('en-GB', {
-              weekday: 'long',
-              day: 'numeric',
-              month: 'long',
-              year: 'numeric',
-            })}
-          </p>
-
-          {post.image ? (
-            <div className="mt-6 overflow-hidden rounded-2xl border border-ink/10">
+          {post.gallerySlugs?.length ? (
+            <div className="mt-8 grid grid-cols-2 gap-3">
+              {post.gallerySlugs.map((gSlug) => {
+                const gImg = imageMap[gSlug as keyof typeof imageMap];
+                return (
+                  <div key={gSlug} className="overflow-hidden rounded-2xl border border-ink/10">
+                    <Picture
+                      slug={gSlug as never}
+                      sizes="(min-width: 768px) 46vw, 336px"
+                      alt={gImg?.alt}
+                      imgClassName="aspect-[4/3] w-full object-cover"
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          ) : post.image ? (
+            <div className="mx-auto mt-8 max-w-2xl overflow-hidden rounded-2xl border border-ink/10">
               {/* Round 11 (client): the article photograph sits in a 4:3
                   frame. Several story photos are nine-by-sixteen portrait
-                  shots that otherwise render taller than the viewport. */}
+                  shots that otherwise render taller than the viewport.
+                  Round 18: the frame follows the text measure (max-w-2xl)
+                  instead of the full shell, after the client flagged a
+                  featured photograph that dominated the page. */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={post.image}
                 srcSet={post.imageSrcset || undefined}
                 sizes="(min-width: 768px) 672px, 92vw"
                 alt={post.imageAlt || post.title}
+                loading="lazy"
+                decoding="async"
                 className="aspect-[4/3] w-full object-cover"
               />
             </div>

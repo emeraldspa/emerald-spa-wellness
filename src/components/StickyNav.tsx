@@ -44,7 +44,7 @@ import {
 type DropdownKey = 'services' | 'venues' | 'journal' | null;
 
 const PLAIN_LINKS = NAV_LINKS.filter((l) =>
-  ['gallery', 'team', 'visit', 'vouchers'].includes(l.href.replace('/', '')),
+  ['gallery', 'team', 'visit', 'vouchers', 'specials'].includes(l.href.replace('/', '')),
 );
 
 const drawerItems = [
@@ -54,6 +54,7 @@ const drawerItems = [
       { href: '/', label: 'Home' },
       { href: '/services', label: 'Services' },
       { href: '/venues', label: 'Venues' },
+      { href: '/specials', label: 'Specials' },
       { href: '/gallery', label: 'Gallery' },
       { href: '/journal', label: 'Journal' },
       { href: '/team', label: 'Team' },

@@ -277,7 +277,7 @@ export default async function HomePage() {
                 </h2>
               </div>
               <Link
-                href="/promotions"
+                href="/specials"
                 className="group flex items-center gap-1.5 text-sm font-semibold uppercase tracking-widest text-emerald-600"
               >
                 All offers
@@ -337,7 +337,12 @@ export default async function HomePage() {
               {PRODUCTS.map((p, i) => (
                 <FadeUp key={p.slug} delay={(i % 6) * 0.05} as="li">
                   <figure className="group">
-                    <div className="overflow-hidden rounded-2xl border border-ink/10 bg-white p-4">
+                    <div className="relative overflow-hidden rounded-2xl border border-ink/10 bg-white p-4">
+                      {p.featured ? (
+                        <span className="absolute left-3 top-3 z-10 rounded-full bg-emerald-600 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-white shadow-sm">
+                          Best
+                        </span>
+                      ) : null}
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={p.image}
@@ -354,9 +359,25 @@ export default async function HomePage() {
                         {p.use}
                       </p>
                       <h3 className="mt-1 text-sm font-semibold leading-snug text-ink">{p.name}</h3>
-                      <p className="mt-1.5 text-[13px] leading-relaxed text-ink/65 text-pretty">
-                        {p.description}
-                      </p>
+                      {/* The full description lives in a native disclosure, so
+                          the grid stays scannable and the detail is one tap
+                          away. No JavaScript: details/summary is accessible
+                          and keyboard-complete on its own. */}
+                      <details className="group/d mt-1.5">
+                        <summary className="flex min-h-[32px] cursor-pointer list-none items-center gap-1 text-[13px] font-semibold text-emerald-700 transition-colors hover:text-emerald-800 [&::-webkit-details-marker]:hidden">
+                          What it does
+                          <svg
+                            aria-hidden="true"
+                            viewBox="0 0 12 12"
+                            className="h-3 w-3 transition-transform duration-200 group-open/d:rotate-45"
+                          >
+                            <path d="M6 1v10M1 6h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                          </svg>
+                        </summary>
+                        <p className="mt-1.5 text-[13px] leading-relaxed text-ink/65 text-pretty">
+                          {p.description}
+                        </p>
+                      </details>
                     </figcaption>
                   </figure>
                 </FadeUp>

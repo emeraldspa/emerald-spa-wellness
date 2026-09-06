@@ -37,7 +37,7 @@ const PAGES: Omit<Entry, 'icon'>[] = [
   { type: 'Page', title: 'Team', subtitle: 'The hands behind the calm', href: '/team' },
   { type: 'Page', title: 'Visit', subtitle: 'Address, hours and directions', href: '/visit' },
   { type: 'Page', title: 'Vouchers', subtitle: 'Gift a visit', href: '/vouchers' },
-  { type: 'Page', title: 'Promotions', subtitle: 'Packages running now', href: '/promotions' },
+  { type: 'Page', title: 'Specials', subtitle: 'Packages running now', href: '/specials' },
   { type: 'Page', title: 'Book on WhatsApp', subtitle: 'Message the spa directly', href: '/whatsapp' },
 ];
 

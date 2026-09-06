@@ -14,6 +14,8 @@ export type Product = {
   description: string;
   /** What the product is for, in one line. */
   use: string;
+  /** The one product the spa leads with; renders the Best highlight. */
+  featured?: boolean;
 };
 
 export const PRODUCTS: Product[] = [
@@ -25,6 +27,7 @@ export const PRODUCTS: Product[] = [
     description:
       'A lightweight, non-comedogenic moisturiser that hydrates, nourishes and helps restore the skin natural moisture barrier without feeling heavy.',
     use: 'Daily hydration and barrier repair',
+    featured: true,
   },
   {
     slug: 'nanozyme',

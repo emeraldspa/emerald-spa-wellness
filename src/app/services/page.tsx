@@ -36,7 +36,7 @@ export const metadata: Metadata = {
  * not show. Categories without a matching photograph simply render without one.
  */
 const CATEGORY_IMAGE: Record<string, string> = {
-  massages: 'treatment-room',
+  massages: 'spa-retreat',
   'facials-skincare': 'facial-treatment',
   hydrotherapy: 'hydrotherapy-tub-set',
   nails: 'nail-art',
@@ -75,7 +75,7 @@ export default function ServicesPage() {
       />
       <main id="main">
         <PageHero
-          slug="treatment-room"
+          slug="spa-retreat"
           eyebrow="Treatment Menu"
           title="Every treatment, every price."
           lede={`${LISTED_SERVICE_COUNT} treatments across ${site.categories.length} categories, from a 10 minute add-on to a full day of care. Prices are in Namibian dollars and match our live booking system.`}

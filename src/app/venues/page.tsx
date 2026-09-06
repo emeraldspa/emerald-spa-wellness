@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   ...ogFor('/venues'),
 };
 
-const REVEAL_PHOTOS = ['venue-party-1', 'venue-party-2', 'venue-party-3'];
+const REVEAL_PHOTOS = ['venue-party-1', 'venue-party-9', 'venue-party-12'];
 const PARTY_PHOTOS = [
   'venue-party-4',
   'venue-party-5',

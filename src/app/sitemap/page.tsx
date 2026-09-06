@@ -33,7 +33,7 @@ const GROUPS = [
     title: 'Reference',
     links: [
       { href: '/brand', label: 'Brand' },
-      { href: '/promotions', label: 'Current Offers' },
+      { href: '/specials', label: 'Specials' },
       { href: '/privacy', label: 'Privacy Notice' },
       { href: '/terms', label: 'Terms of Use' },
       { href: '/sitemap', label: 'Sitemap' },

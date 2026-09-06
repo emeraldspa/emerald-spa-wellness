@@ -37,6 +37,13 @@ export type WpPost = {
   /** Responsive candidates for the featured image, as a srcset string. */
   imageSrcset: string;
   imageAlt: string;
+  /**
+   * Optional image-grid slugs (registry keys). House stories can send four
+   * angles instead of one featured photo; the article template renders them
+   * as an even grid and skips the single featured block. WordPress posts
+   * never set this: their featured image comes from the back office.
+   */
+  gallerySlugs?: readonly string[];
 };
 
 export type WpPromotion = WpPost & {

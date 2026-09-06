@@ -8,10 +8,10 @@ import { getActivePromotions } from '@/lib/wordpress';
 import { BOOKING_CTA, BOOKING_PATH, PAY_PATH, SITE_URL, formatNad, ogFor, site } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Current Offers',
-  description: `Current offers and packages at Emerald Spa & Wellness Centre, Windhoek North: massage packages for two, group escapes and more. ${site.phone}.`,
-  alternates: { canonical: '/promotions' },
-  ...ogFor('/promotions'),
+  title: 'Specials',
+  description: `Current specials and packages at Emerald Spa & Wellness Centre, Windhoek North: massage packages for two, group escapes and more. ${site.phone}.`,
+  alternates: { canonical: '/specials' },
+  ...ogFor('/specials'),
 };
 
 type Offer = {
@@ -58,15 +58,15 @@ export default async function PromotionsPage() {
             <main id="main">
         <PageHero
           slug="wine-pair"
-          eyebrow="Current offers"
+          eyebrow="Specials"
           title="Packages worth planning around."
-          lede="Shareable escapes for two, quiet afternoons with friends, and the treatments the spa is best known for. Every offer is confirmed with the team before you book."
+          lede="Shareable escapes for two, quiet afternoons with friends, and the treatments the spa is best known for. Every special is confirmed with the team before you book."
         />
 
         <section className="surface-marble-emerald border-t border-ink/10 py-16 md:py-20">
           {offers.length === 0 ? (
             <p className="text-ink/70">
-              No packages are running right now. The full menu is always
+              No specials are running right now. The full menu is always
               available on the services page.
             </p>
           ) : (

@@ -2,6 +2,18 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  async redirects() {
+    // The specials page was renamed from /promotions (client request, the
+    // nav item reads Specials). The old path 308s so existing links and
+    // search results land on the page instead of a 404.
+    return [
+      {
+        source: '/promotions',
+        destination: '/specials',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     /*
       Content Security Policy and the page security headers live in
