@@ -1,9 +1,15 @@
-name: Deploy to Vercel (production)
+name: CI (quality gate)
 
-# Every push to main deploys to production. The Vercel token lives in the
-# repo's Actions secrets; the pipeline builds locally (fewer remote build
-# minutes, which matter on the plan's fair-use budget) and uploads the
-# prebuilt output. One team, one project, one author.
+# Every push to main is verified here: install, typecheck, build.
+#
+# Production deploys do NOT run in Actions any more. The Vercel project is
+# git-linked to emeraldspa/emerald-spa-wellness (Round 19 migration to the
+# Emerald team, webmaster@emeraldspacc.com), so Vercel builds and ships
+# every push to main on its own. This workflow is the independent check
+# that the push is type-clean and builds before/while that happens.
+#
+# Manual deploys, if ever needed, run from a checkout with:
+#   npx vercel --prod --token <token> --scope emerald-8857
 
 on:
   push:
@@ -11,16 +17,12 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: vercel-production
+  group: ci-gate
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  verify:
     runs-on: ubuntu-latest
-    env:
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,8 +39,5 @@ jobs:
       - name: Typecheck
         run: npx tsc --noEmit
 
-      - name: Build (Vercel build, local)
-        run: npx vercel build --prod --yes
-
-      - name: Deploy prebuilt output to production
-        run: npx vercel deploy --prebuilt --prod --yes --token "$VERCEL_TOKEN"
+      - name: Build (Next.js production)
+        run: npx next build
