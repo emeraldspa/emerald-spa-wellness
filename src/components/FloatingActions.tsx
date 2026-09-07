@@ -21,13 +21,14 @@ import {
  * - The whole cluster is suppressed on `/book`, where a fixed overlay would
  *   sit on top of the booking iframe's own controls.
  * - Scroll to top appears only once the visitor is past the first viewport,
- *   and leaves the tab order entirely while hidden.
+ *   and leaves the layout and the tab order entirely while hidden.
  * - The chat and review actions collapse into a single toggle on small
  *   screens so they never stack into a column that covers content, and
  *   expand on wider screens where there is room.
  * - The sound widget renders only while the hero reel is actually playing
- *   (homepage, motion allowed, desktop cut) and only when that cut carries
- *   audio, so it never shows as a dead button (client round 19).
+ *   and only when that cut carries an audio stream, so it never shows as a
+ *   dead button (client rounds 19 and 22: on the silent portrait cut it
+ *   used to mount, tap and flip its icon without ever making sound).
  *
  * WhatsApp and the review link are real destinations, not a fake chat widget.
  */
@@ -71,8 +72,6 @@ export function FloatingActions() {
       className="fixed right-4 z-40 flex flex-col items-end gap-3 sm:right-6"
       style={{ bottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
     >
-      <SoundWidget />
-
       <button
         type="button"
         onClick={toTop}
@@ -80,13 +79,15 @@ export function FloatingActions() {
         tabIndex={showTop ? 0 : -1}
         aria-hidden={!showTop}
         className={`flex h-12 w-12 items-center justify-center rounded-full border border-ink/15 bg-ground text-ink shadow-lg transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-emerald-600 hover:text-emerald-600 ${
-          showTop
-            ? 'pointer-events-auto translate-y-0 opacity-100'
-            : 'pointer-events-none translate-y-3 opacity-0'
+          showTop ? 'pointer-events-auto translate-y-0 opacity-100' : 'pointer-events-none hidden'
         }`}
       >
         <ArrowUp className="h-5 w-5" aria-hidden="true" />
       </button>
+
+      {/* Sound sits directly above the chat toggle (client round 22: the mute
+          control belongs at the bottom of the stack). */}
+      <SoundWidget />
 
       {/* Secondary actions, revealed by the toggle. */}
       <div
@@ -149,23 +150,29 @@ function WhatsAppGlyph({ className }: { className?: string }) {
 /**
  * Mute control for the hero reel's own soundtrack (client round 19).
  *
- * Mounted in the same stack as WhatsApp and scroll-to-top. It exists only
- * while the reel is playing and only for the desktop cut (the portrait clip
- * has no audio stream), and its icon state is driven entirely by events from
- * HeroVideo, so it can never drift from what the visitor actually hears.
+ * Mounted in the same stack as WhatsApp and scroll-to-top, directly above
+ * the chat toggle. It exists only while the reel is playing AND only for a
+ * cut that actually carries an audio stream: round 22 fixed the widget
+ * mounting on the silent portrait cut on phones, where it could be tapped
+ * and flip its icon without ever producing sound. Its icon state is driven
+ * entirely by events from HeroVideo, so it can never drift from what the
+ * visitor actually hears.
  */
 function SoundWidget() {
   const [ready, setReady] = useState(false);
+  const [hasAudio, setHasAudio] = useState(false);
   const [on, setOn] = useState(false);
 
   useEffect(() => {
     const onReady = () => setReady(true);
     const onGone = () => {
       setReady(false);
+      setHasAudio(false);
       setOn(false);
     };
     const onSound = (e: Event) => {
       const detail = (e as CustomEvent<HeroSoundDetail>).detail;
+      setHasAudio(Boolean(detail?.hasAudio));
       setOn(Boolean(detail?.hasAudio) && !detail.muted);
     };
     window.addEventListener(HERO_VIDEO_READY, onReady);
@@ -178,7 +185,9 @@ function SoundWidget() {
     };
   }, []);
 
-  if (!ready) return null;
+  // No audio stream, no control: on the portrait cut (and wherever the
+  // reel never starts) this stays unmounted instead of showing dead.
+  if (!ready || !hasAudio) return null;
 
   return (
     <button

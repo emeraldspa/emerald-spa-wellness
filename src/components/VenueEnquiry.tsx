@@ -21,10 +21,10 @@ const OCCASIONS = [
 ] as const;
 
 const SIZES = [
-  { id: 's', label: 'Up to 20 guests', line: 'up to 20 guests' },
-  { id: 'm', label: '20 to 40 guests', line: 'between 20 and 40 guests' },
-  { id: 'l', label: '40 to 80 guests', line: 'between 40 and 80 guests' },
-  { id: 'xl', label: '80+ guests', line: 'more than 80 guests' },
+  { id: 's', label: '10 guests', line: '10 guests' },
+  { id: 'm', label: '15 guests', line: '15 guests' },
+  { id: 'l', label: '20 guests', line: '20 guests' },
+  { id: 'xl', label: '30 guests', line: '30 guests' },
 ] as const;
 
 const WHEN = [

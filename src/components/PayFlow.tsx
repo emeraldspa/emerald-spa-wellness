@@ -17,6 +17,7 @@ import {
   EMAILS,
   PAY_REFERENCE_PREFIX,
   PAYMENT_ACCOUNT,
+  SITE_URL,
   WHATSAPP_NUMBER,
   formatNad,
   site,
@@ -86,9 +87,12 @@ export function PayFlow({
   const detailLine = selected
     ? `${selected.label}${selected.note ? ` (${selected.note})` : ''}`
     : customValid
-      ? `a payment of ${formatNad(customValue)}`
+      ? `a voucher of ${formatNad(customValue)}`
       : '';
 
+  // Client brief (voice note, 6 Sep): the handoff text must say that the
+  // proof of payment is coming and that the spot is held on the calendar,
+  // while also pointing at the live calendar as the instant alternative.
   const payMessage = useMemo(() => {
     if (!detailLine || amount === null) return '';
     return [
@@ -96,7 +100,8 @@ export function PayFlow({
       `For: ${detailLine}.`,
       `Amount: ${formatNad(amount)}.`,
       `My reference: ${reference}.`,
-      'Please send me the account details so I can pay right away, and I will send the proof of payment back here.',
+      'Please send me the account details so I can pay right away, and I will send my proof of payment straight back here, so please hold my spot on the calendar while it is verified.',
+      `(I can also reserve instantly on your live calendar: ${SITE_URL}/book.)`,
     ].join(' ');
   }, [detailLine, amount, reference]);
 
@@ -106,6 +111,7 @@ export function PayFlow({
       `Hello ${site.legalName}. Here is my proof of payment.`,
       `For: ${detailLine}.`,
       `My reference: ${reference}.`,
+      'Please consider my spot reserved on the calendar while you verify it.',
       '(I will attach the confirmation from my banking app to this message.)',
     ].join(' ');
   }, [detailLine, reference]);
@@ -249,7 +255,7 @@ export function PayFlow({
                 </div>
 
                 <p className="mt-8 text-sm font-semibold uppercase tracking-widest text-ink/70">
-                  Or another amount
+                  Voucher amount
                 </p>
                 <div className="mt-3 flex flex-wrap items-center gap-3">
                   <div className="flex min-h-[52px] flex-1 items-center rounded-2xl border border-ink/15 bg-ground px-4 focus-within:border-emerald-600 sm:max-w-[260px]">
@@ -262,7 +268,7 @@ export function PayFlow({
                         setSelected(null);
                       }}
                       placeholder="e.g. 500"
-                      aria-label="Custom amount in Namibian dollars"
+                      aria-label="Voucher amount in Namibian dollars"
                       className="ml-2 h-full w-full bg-transparent py-3 text-sm tabular-nums text-ink outline-none placeholder:text-ink/35"
                     />
                   </div>
