@@ -61,3 +61,17 @@ content, per the headless design rules.
 - Before each plugin round: take an hPanel backup; test on staging.
 - Rotate credentials when staff change; revoke agent passwords when flows
   are retired.
+
+## Round 24 addendum (7 Sep 2026)
+
+- `wordpress/mu-plugins/emerald-admin-suite.php` added to the repo: validated
+  mu-plugin delivering the custom dashboard (single Emerald welcome widget,
+  clean slate), bot discouragement (robots.txt, X-Robots-Tag on admin surfaces,
+  XML-RPC off, REST user enumeration blocked, scanner-bot 403 on wp-login only),
+  content-editor menu scope, and login branding. Install: copy to
+  `wp-content/mu-plugins/`. Overlaps with Emerald Hardening are harmless
+  (identical filters). Full HTTP-verified in WordPress Playground
+  (WP 7.1 / PHP 8.3); evidence in the Round 24 playbook.
+- Account provisioning code and the reproducible Playground blueprint live
+  with the client (delivered alongside the playbook); they contain
+  credentials and stay out of this public repository.
