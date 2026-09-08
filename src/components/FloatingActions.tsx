@@ -5,30 +5,24 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { GOOGLE_REVIEW_URL, WHATSAPP_PATH, site } from '@/lib/site';
-import {
-  HERO_SOUND_STATE,
-  HERO_SOUND_TOGGLE,
-  HERO_VIDEO_GONE,
-  HERO_VIDEO_READY,
-  type HeroSoundDetail,
-} from '@/lib/sound';
+import { MUSIC_STATE, MUSIC_TOGGLE, type MusicStateDetail } from '@/lib/sound';
 
 /**
- * Floating actions: sound, WhatsApp chat, Google review, scroll to top.
+ * Floating actions: music, WhatsApp chat, Google review, scroll to top.
  *
- * Every control here is conditional rather than always mounted:
- *
- * - The whole cluster is suppressed on `/book`, where a fixed overlay would
- *   sit on top of the booking iframe's own controls.
+ * - The music button is the site's one obvious sound control (client brief,
+ *   8 Sep 2025): visible on every page, mobile included, sitting on the
+ *   right-hand side directly above the chat toggle. It shows a speaker when
+ *   the soundtrack is playing and a crossed-out speaker when it is paused,
+ *   and it never renders as a dead control: the site audio system answers
+ *   it and reports the truth back through events.
  * - Scroll to top appears only once the visitor is past the first viewport,
  *   and leaves the layout and the tab order entirely while hidden.
  * - The chat and review actions collapse into a single toggle on small
  *   screens so they never stack into a column that covers content, and
  *   expand on wider screens where there is room.
- * - The sound widget renders only while the hero reel is actually playing
- *   and only when that cut carries an audio stream, so it never shows as a
- *   dead button (client rounds 19 and 22: on the silent portrait cut it
- *   used to mount, tap and flip its icon without ever making sound).
+ * - On /whatsapp the page is a single task, so only the music button keeps
+ *   it company: no competing contact cluster.
  *
  * WhatsApp and the review link are real destinations, not a fake chat widget.
  */
@@ -58,9 +52,16 @@ export function FloatingActions() {
     return () => document.removeEventListener('keydown', onKey);
   }, [open]);
 
-  // These routes are a single task. A floating duplicate of that same task
-  // would compete with the page's own primary action.
-  if (pathname === '/book' || pathname === '/whatsapp') return null;
+  if (pathname === '/whatsapp') {
+    return (
+      <div
+        className="fixed right-4 z-40 flex flex-col items-end gap-3 sm:right-6"
+        style={{ bottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
+      >
+        <MusicButton />
+      </div>
+    );
+  }
 
   const toTop = () => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -85,9 +86,10 @@ export function FloatingActions() {
         <ArrowUp className="h-5 w-5" aria-hidden="true" />
       </button>
 
-      {/* Sound sits directly above the chat toggle (client round 22: the mute
-          control belongs at the bottom of the stack). */}
-      <SoundWidget />
+      {/* The site soundtrack control (client round 22 put the sound control
+          at the bottom of the stack; 8 Sep 2025 made it a permanent,
+          always-visible control for the site-wide music). */}
+      <MusicButton />
 
       {/* Secondary actions, revealed by the toggle. */}
       <div
@@ -148,56 +150,40 @@ function WhatsAppGlyph({ className }: { className?: string }) {
 }
 
 /**
- * Mute control for the hero reel's own soundtrack (client round 19).
+ * The site music control.
  *
- * Mounted in the same stack as WhatsApp and scroll-to-top, directly above
- * the chat toggle. It exists only while the reel is playing AND only for a
- * cut that actually carries an audio stream: round 22 fixed the widget
- * mounting on the silent portrait cut on phones, where it could be tapped
- * and flip its icon without ever producing sound. Its icon state is driven
- * entirely by events from HeroVideo, so it can never drift from what the
- * visitor actually hears.
+ * Always mounted, always truthful: its state comes only from the
+ * MUSIC_STATE events SiteAudio broadcasts, so what the icon shows is what
+ * the visitor hears. A soft gold ring breathes around the button while the
+ * track plays, which makes the control findable without shouting about it.
  */
-function SoundWidget() {
-  const [ready, setReady] = useState(false);
-  const [hasAudio, setHasAudio] = useState(false);
-  const [on, setOn] = useState(false);
+function MusicButton() {
+  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
-    const onReady = () => setReady(true);
-    const onGone = () => {
-      setReady(false);
-      setHasAudio(false);
-      setOn(false);
+    const onState = (e: Event) => {
+      setPlaying(Boolean((e as CustomEvent<MusicStateDetail>).detail?.playing));
     };
-    const onSound = (e: Event) => {
-      const detail = (e as CustomEvent<HeroSoundDetail>).detail;
-      setHasAudio(Boolean(detail?.hasAudio));
-      setOn(Boolean(detail?.hasAudio) && !detail.muted);
-    };
-    window.addEventListener(HERO_VIDEO_READY, onReady);
-    window.addEventListener(HERO_VIDEO_GONE, onGone);
-    window.addEventListener(HERO_SOUND_STATE, onSound);
-    return () => {
-      window.removeEventListener(HERO_VIDEO_READY, onReady);
-      window.removeEventListener(HERO_VIDEO_GONE, onGone);
-      window.removeEventListener(HERO_SOUND_STATE, onSound);
-    };
+    window.addEventListener(MUSIC_STATE, onState);
+    return () => window.removeEventListener(MUSIC_STATE, onState);
   }, []);
-
-  // No audio stream, no control: on the portrait cut (and wherever the
-  // reel never starts) this stays unmounted instead of showing dead.
-  if (!ready || !hasAudio) return null;
 
   return (
     <button
       type="button"
-      onClick={() => window.dispatchEvent(new CustomEvent(HERO_SOUND_TOGGLE))}
-      aria-pressed={on}
-      aria-label={on ? 'Mute the website soundtrack' : 'Play the website soundtrack'}
-      className="flex h-12 w-12 items-center justify-center rounded-full border border-ink/15 bg-ground text-ink shadow-lg transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-emerald-600 hover:text-emerald-600"
+      onClick={() => window.dispatchEvent(new CustomEvent(MUSIC_TOGGLE))}
+      aria-pressed={playing}
+      aria-label={playing ? 'Pause the website music' : 'Play the website music'}
+      title={playing ? 'Pause the music' : 'Play the music'}
+      className="relative flex h-12 w-12 items-center justify-center rounded-full border border-ink/15 bg-ground text-ink shadow-lg transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-emerald-600 hover:text-emerald-600"
     >
-      {on ? (
+      {playing ? (
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 rounded-full border-2 border-gold-400/70 motion-safe:animate-[emerald-pulse_2.6s_ease-in-out_infinite]"
+        />
+      ) : null}
+      {playing ? (
         <Volume2 className="h-5 w-5" aria-hidden="true" />
       ) : (
         <VolumeX className="h-5 w-5" aria-hidden="true" />

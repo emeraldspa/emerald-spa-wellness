@@ -2,8 +2,9 @@ import { ArrowUpRight, Facebook, Instagram, MapPin, MessageCircle, Phone } from 
 import Link from 'next/link';
 import {
   BOOKING_CTA,
-  BOOKING_PATH,
+  BOOKING_URL,
   LEGAL_LINKS,
+  MUSIC_CREDIT,
   NAV_LINKS,
   WHATSAPP_PATH,
   site,
@@ -69,20 +70,20 @@ export function FooterFull() {
               <MessageCircle className="h-4 w-4 shrink-0 text-gold-300" aria-hidden="true" />
               Book on WhatsApp
             </Link>
-            <Link
-              href={BOOKING_PATH}
+            <a
+              href={BOOKING_URL}
               className="mt-3 inline-flex items-center gap-2 rounded-full bg-ground px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-emerald-900 transition-colors hover:bg-gold-200"
             >
               {BOOKING_CTA}
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
+            </a>
           </div>
 
           {/* Short link rows */}
           <div className="flex flex-col gap-8">
             <nav aria-label="Footer">
               <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-                {NAV_LINKS.filter((l) => l.href !== BOOKING_PATH).map((l) => (
+                {NAV_LINKS.map((l) => (
                   <li key={l.href}>
                     <Link href={l.href} className="text-ground/80 hover:text-gold-200">
                       {l.label}
@@ -132,6 +133,17 @@ export function FooterFull() {
                 </Link>
               </li>
             ))}
+            <li>
+              {/* The soundtrack credit, for as long as the shipped loop plays. */}
+              <a
+                href={MUSIC_CREDIT.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gold-200"
+              >
+                Music: {MUSIC_CREDIT.title} · {MUSIC_CREDIT.artist} ({MUSIC_CREDIT.license})
+              </a>
+            </li>
           </ul>
           <a
             href="https://studio.tangison.com"

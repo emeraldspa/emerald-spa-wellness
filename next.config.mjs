@@ -3,13 +3,45 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   async redirects() {
-    // The specials page was renamed from /promotions (client request, the
-    // nav item reads Specials). The old path 308s so existing links and
-    // search results land on the page instead of a 404.
+    /*
+      Paths that no longer exist, kept answering instead of 404ing.
+
+      - /promotions: the specials page was renamed (client request); 308 so
+        existing links and search results land on the page.
+      - /book and /journal (with their subpaths): retired on 8 Sep 2025 at
+        the client's request. The embedded booking page is gone - every Book
+        button now opens the live booking page directly in the same tab - so
+        /book forwards to that destination. The journal is removed from the
+        site entirely, so its paths fold into the home page.
+      - /api/booking/*: the same-origin booking proxy was removed with the
+        embed; stale URLs forward to the same live destination.
+    */
     return [
       {
         source: '/promotions',
         destination: '/specials',
+        permanent: true,
+      },
+      {
+        source: '/book',
+        destination:
+          'https://www.fresha.com/book-now/emerald-spa-wellness-centre-qnp9ba1m/all-offer?share=true&pId=1477270',
+        permanent: false,
+      },
+      {
+        source: '/api/booking/:path*',
+        destination:
+          'https://www.fresha.com/book-now/emerald-spa-wellness-centre-qnp9ba1m/all-offer?share=true&pId=1477270',
+        permanent: false,
+      },
+      {
+        source: '/journal',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/journal/:path*',
+        destination: '/',
         permanent: true,
       },
     ];
@@ -17,26 +49,15 @@ const nextConfig = {
   async headers() {
     /*
       Content Security Policy and the page security headers live in
-      src/middleware.ts, not here. The booking proxy at /api/booking/* must be
-      served without the strict page policy (its app boots from the provider's
-      CDN), and this config file cannot exclude a prefix from `/:path*`
-      without duplicating the CSP header on proxy responses, which browsers
-      enforce as an intersection. Middleware can branch on the path.
+      src/middleware.ts, not here. The strict page policy must branch by path
+      when a route needs a looser one, and middleware can do that; this file
+      cannot exclude a prefix from `/:path*` without duplicating headers.
 
       What lives here: immutable caching plus X-Content-Type-Options for every
-      path the middleware matcher skips (static assets, media, favicons) and
-      the booking proxy's noindex.
+      path the middleware matcher skips (static assets, media, favicons).
     */
 
     return [
-      {
-        source: '/api/booking/:path*',
-        headers: [
-          // The proxy mirrors the provider's pages; they must not be indexed.
-          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
-          { key: 'X-Content-Type-Options', value: 'nosniff' },
-        ],
-      },
       {
         source: '/media/:path*',
         headers: [

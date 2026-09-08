@@ -1,32 +1,29 @@
-import { HOUSE_POSTS } from '@/data/journal';
-
 /**
  * WordPress content layer.
  *
- * The back office at admin.emeraldspacc.com is a fresh install with almost no
- * content yet, so every function here is written to degrade to an empty list
- * rather than throw. A page that depends on this must render fine when
- * WordPress is empty, slow, or down: that is the whole contract.
+ * The back office at admin.emeraldspacc.com holds the content the client
+ * edits day to day. Every function here is written to degrade to an empty
+ * list rather than throw: a page that depends on this must render fine when
+ * WordPress is empty, slow, or down. That is the whole contract.
  *
- * The journal is never allowed to sit empty while that is true: the house
- * stories in src/data/journal.ts render whenever WordPress has nothing real
- * to show, and real posts slot in ahead of them the moment they are
- * published. Fetching happens on the server during rendering, so the
- * WordPress address never appears in a visitor's network tab, and its speed
- * never becomes the visitor's problem. Responses are revalidated on a timer,
- * which means an edit appears without a redeploy while the site still serves
- * instantly.
+ * Journal is retired (client request, 8 Sep 2025), so the only live feed the
+ * frontend pulls today is Specials: the `promotion` content type, edited in
+ * wp-admin, shown in the nav dropdown, on the specials page and as the site
+ * popup when an editor flags it. Fetching happens on the server during
+ * rendering, so the WordPress address never appears in a visitor's network
+ * tab. Responses are revalidated on a timer, which means an edit appears
+ * without a redeploy while the site still serves instantly.
  *
  * Why the REST API and not a scraper: we own this install, and WordPress
- * publishes typed JSON. Parsing the theme's markup instead would mean
- * re-deriving fields the API already gives us, and breaking every time an
- * editor changes the layout.
+ * publishes typed JSON. Parsing theme markup instead would mean re-deriving
+ * fields the API already gives us, and breaking every time an editor changes
+ * the layout.
  */
 
 const WP_URL = process.env.WORDPRESS_URL ?? 'https://admin.emeraldspacc.com';
 const REVALIDATE_SECONDS = 900;
 
-export type WpPost = {
+export type WpPromotion = {
   id: number;
   slug: string;
   title: string;
@@ -34,19 +31,9 @@ export type WpPost = {
   content: string;
   date: string;
   image: string | null;
+  imageAlt: string;
   /** Responsive candidates for the featured image, as a srcset string. */
   imageSrcset: string;
-  imageAlt: string;
-  /**
-   * Optional image-grid slugs (registry keys). House stories can send four
-   * angles instead of one featured photo; the article template renders them
-   * as an even grid and skips the single featured block. WordPress posts
-   * never set this: their featured image comes from the back office.
-   */
-  gallerySlugs?: readonly string[];
-};
-
-export type WpPromotion = WpPost & {
   startsOn: string | null;
   endsOn: string | null;
   showAsPopup: boolean;
@@ -106,21 +93,6 @@ async function wpFetch<T>(path: string): Promise<T[]> {
   }
 }
 
-function toPost(raw: RawPost): WpPost {
-  const media = raw._embedded?.['wp:featuredmedia']?.[0];
-  return {
-    id: raw.id,
-    slug: raw.slug,
-    title: plain(raw.title?.rendered),
-    excerpt: plain(raw.excerpt?.rendered),
-    content: raw.content?.rendered ?? '',
-    date: raw.date,
-    image: bestImage(media),
-    imageSrcset: srcsetFrom(media),
-    imageAlt: media?.alt_text ?? '',
-  };
-}
-
 /** Every rendition WordPress made, joined as a srcset string. */
 function srcsetFrom(media: RawMedia | undefined): string {
   const sizes = media?.media_details?.sizes;
@@ -135,7 +107,7 @@ function srcsetFrom(media: RawMedia | undefined): string {
 /**
  * The featured image URL to send to browsers: the original only when no
  * intermediate size exists, otherwise a card-sized WordPress rendition.
- * Editors upload 1600px+ photos, but journal cards render at ~400px, so
+ * Editors upload 1600px+ photos, but special cards render at ~400px, so
  * using the original would ship 3x or more pixels than any card needs.
  */
 function bestImage(media: RawMedia | undefined): string | null {
@@ -149,35 +121,13 @@ function bestImage(media: RawMedia | undefined): string | null {
   return media?.source_url ?? null;
 }
 
-/** Published journal posts, newest first. Empty list if there are none. */
-/** WordPress demo/sample posts must never appear on the public site. */
-function isDemo(raw: RawPost): boolean {
-  return typeof raw.slug === 'string' && raw.slug.startsWith('demo-');
-}
-
-export async function getPosts(limit = 6): Promise<WpPost[]> {
-  const raw = await wpFetch<RawPost>(
-    `posts?per_page=${limit * 2}&_embed=wp:featuredmedia&status=publish&orderby=date&order=desc`,
-  );
-  const wpPosts = raw.filter((r) => !isDemo(r)).slice(0, limit).map(toPost);
-  // House stories fill the page only when WordPress has nothing real yet.
-  // Editors sometimes publish a story that also exists as a house story, so
-  // the WordPress version (the one they can edit) wins the slug and the
-  // house copy steps aside rather than doubling the card.
-  const wpSlugs = new Set(wpPosts.map((p) => p.slug));
-  const combined = [...wpPosts, ...HOUSE_POSTS.filter((h) => !wpSlugs.has(h.slug))];
-  return combined.slice(0, limit);
-}
-
-export async function getPost(slug: string): Promise<WpPost | null> {
-  const raw = await wpFetch<RawPost>(`posts?slug=${encodeURIComponent(slug)}&_embed=wp:featuredmedia`);
-  if (raw.length && !isDemo(raw[0])) return toPost(raw[0]);
-  // House stories are served under the same route as WordPress posts.
-  return HOUSE_POSTS.find((p) => p.slug === slug) ?? null;
-}
-
 function asString(v: unknown): string | null {
   return typeof v === 'string' && v.trim() ? v.trim() : null;
+}
+
+/** WordPress demo/sample content must never appear on the public site. */
+function isDemo(raw: RawPost): boolean {
+  return typeof raw.slug === 'string' && raw.slug.startsWith('demo-');
 }
 
 /**
@@ -192,13 +142,22 @@ export async function getActivePromotions(): Promise<WpPromotion[]> {
     'promotion?per_page=20&_embed=wp:featuredmedia&status=publish',
   );
   const today = new Date().toISOString().slice(0, 10);
+  const media = (r: RawPost) => r._embedded?.['wp:featuredmedia']?.[0];
 
   return raw
     .filter((r) => !isDemo(r))
     .map((r): WpPromotion => {
       const acf = r.acf ?? {};
       return {
-        ...toPost(r),
+        id: r.id,
+        slug: r.slug,
+        title: plain(r.title?.rendered),
+        excerpt: plain(r.excerpt?.rendered),
+        content: r.content?.rendered ?? '',
+        date: r.date,
+        image: bestImage(media(r)),
+        imageAlt: media(r)?.alt_text ?? '',
+        imageSrcset: srcsetFrom(media(r)),
         startsOn: asString(acf.starts_on),
         endsOn: asString(acf.valid_until) ?? asString(acf.ends_on),
         showAsPopup: acf.show_as_popup === true || acf.show_as_popup === 1,
@@ -217,11 +176,4 @@ export async function getActivePromotions(): Promise<WpPromotion[]> {
 export async function getPopupPromotion(): Promise<WpPromotion | null> {
   const active = await getActivePromotions();
   return active.find((p) => p.showAsPopup) ?? null;
-}
-
-/** True when there is anything to show: real WordPress posts or house stories. */
-export async function hasJournal(): Promise<boolean> {
-  if (HOUSE_POSTS.length > 0) return true;
-  const posts = await getPosts(1);
-  return posts.length > 0;
 }

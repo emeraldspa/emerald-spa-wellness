@@ -1,7 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
-import Link from 'next/link';
 import { HeroVideo } from '@/components/HeroVideo';
-import { BOOKING_CTA, BOOKING_PATH, LISTED_SERVICE_COUNT, site } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_URL, LISTED_SERVICE_COUNT, site } from '@/lib/site';
 
 /**
  * Stats are verified Fresha figures pulled from the live venue record,
@@ -119,8 +118,8 @@ export function Hero() {
               Windhoek North
             </p>
 
-            <Link
-              href={BOOKING_PATH}
+            <a
+              href={BOOKING_URL}
               className="hero-up flex min-h-[44px] items-center gap-1 whitespace-nowrap font-semibold text-emerald-300 transition-opacity hover:opacity-75"
               style={{ animationDelay: '0.72s', fontWeight: 600 }}
             >
@@ -129,7 +128,7 @@ export function Hero() {
                 className="h-[18px] w-[18px] sm:h-[22px] sm:w-[22px]"
                 aria-hidden="true"
               />
-            </Link>
+            </a>
           </div>
 
           {/* Stacks on phones: the tagline sits above the words so the

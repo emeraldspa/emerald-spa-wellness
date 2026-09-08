@@ -14,10 +14,10 @@ import {
 } from 'lucide-react';
 import { useEffect, useId, useMemo, useState } from 'react';
 import {
+  BOOKING_URL,
   EMAILS,
   PAY_REFERENCE_PREFIX,
   PAYMENT_ACCOUNT,
-  SITE_URL,
   WHATSAPP_NUMBER,
   formatNad,
   site,
@@ -77,6 +77,7 @@ export function PayFlow({
   }, []);
   const [customAmount, setCustomAmount] = useState('');
   const [copied, setCopied] = useState(false);
+  const [accountCopied, setAccountCopied] = useState(false);
   const treatmentId = useId();
 
   const customValue = Number(customAmount.replace(/[^0-9.]/g, ''));
@@ -92,7 +93,7 @@ export function PayFlow({
 
   // Client brief (voice note, 6 Sep): the handoff text must say that the
   // proof of payment is coming and that the spot is held on the calendar,
-  // while also pointing at the live calendar as the instant alternative.
+  // while also pointing at the live booking page as the instant alternative.
   const payMessage = useMemo(() => {
     if (!detailLine || amount === null) return '';
     return [
@@ -100,8 +101,8 @@ export function PayFlow({
       `For: ${detailLine}.`,
       `Amount: ${formatNad(amount)}.`,
       `My reference: ${reference}.`,
-      'Please send me the account details so I can pay right away, and I will send my proof of payment straight back here, so please hold my spot on the calendar while it is verified.',
-      `(I can also reserve instantly on your live calendar: ${SITE_URL}/book.)`,
+      `I am paying by EFT into your ${PAYMENT_ACCOUNT.bank} account, or by mobile wallet to ${PAYMENT_ACCOUNT.walletNumber}. My full name is my payment reference, and I will send my proof of payment here straight after, so please hold my spot on the calendar while it is verified.`,
+      `(I can also reserve instantly on your live booking page: ${BOOKING_URL}.)`,
     ].join(' ');
   }, [detailLine, amount, reference]);
 
@@ -353,7 +354,7 @@ export function PayFlow({
                       <MessageCircle className="h-5 w-5 shrink-0" aria-hidden="true" />
                       <span>
                         <span className="block text-sm font-semibold">
-                          Get the account details and pay now
+                          Tell us you have paid, on WhatsApp
                         </span>
                         <span className="block text-xs text-white/75">
                           Opens WhatsApp with your booking and reference already typed
@@ -363,36 +364,65 @@ export function PayFlow({
                     <ArrowUpRight className="h-5 w-5 shrink-0" aria-hidden="true" />
                   </a>
 
-                  {PAYMENT_ACCOUNT ? (
-                    <div className="rounded-2xl border border-ink/15 p-5">
-                      <p className="flex items-center gap-2 text-sm font-semibold text-ink">
-                        <CreditCard className="h-4 w-4 text-emerald-700" aria-hidden="true" />
-                        Direct EFT
-                      </p>
-                      <dl className="mt-3 space-y-1.5 text-sm text-ink/75">
-                        <div className="flex justify-between gap-4">
-                          <dt className="text-ink/70">Bank</dt>
-                          <dd className="font-medium">{PAYMENT_ACCOUNT.bank}</dd>
-                        </div>
-                        <div className="flex justify-between gap-4">
-                          <dt className="text-ink/70">Account name</dt>
-                          <dd className="font-medium">{PAYMENT_ACCOUNT.accountName}</dd>
-                        </div>
-                        <div className="flex justify-between gap-4">
-                          <dt className="text-ink/70">Account number</dt>
-                          <dd className="font-medium tabular-nums">
-                            {PAYMENT_ACCOUNT.accountNumber}
-                          </dd>
-                        </div>
-                      </dl>
-                    </div>
-                  ) : (
-                    <p className="rounded-2xl border border-ink/10 bg-ground px-5 py-4 text-sm leading-relaxed text-ink/65">
-                      Pay by EFT or transfer from your banking app. Tap above and we reply
-                      with the account details in the same chat, usually within minutes
-                      during opening hours.
+                  {/* The account card (client published the details 7 Sep):
+                      pay without waiting for a reply, with a copy button for
+                      the account number. */}
+                  <div className="rounded-2xl border border-ink/15 p-5">
+                    <p className="flex items-center gap-2 text-sm font-semibold text-ink">
+                      <CreditCard className="h-4 w-4 text-emerald-700" aria-hidden="true" />
+                      Bank transfer (EFT)
                     </p>
-                  )}
+                    <dl className="mt-3 space-y-1.5 text-sm text-ink/75">
+                      <div className="flex justify-between gap-4">
+                        <dt className="text-ink/70">Bank</dt>
+                        <dd className="font-medium">
+                          {PAYMENT_ACCOUNT.bank}, {PAYMENT_ACCOUNT.branch} branch
+                        </dd>
+                      </div>
+                      <div className="flex justify-between gap-4">
+                        <dt className="text-ink/70">Account name</dt>
+                        <dd className="text-right font-medium">{PAYMENT_ACCOUNT.accountName}</dd>
+                      </div>
+                      <div className="flex justify-between gap-4">
+                        <dt className="text-ink/70">Account type</dt>
+                        <dd className="font-medium">{PAYMENT_ACCOUNT.accountType}</dd>
+                      </div>
+                      <div className="flex items-center justify-between gap-4">
+                        <dt className="shrink-0 text-ink/70">Account number</dt>
+                        <dd className="flex items-center gap-2 font-medium tabular-nums">
+                          {PAYMENT_ACCOUNT.accountNumber}
+                          <button
+                            type="button"
+                            onClick={async () => {
+                              try {
+                                await navigator.clipboard.writeText(PAYMENT_ACCOUNT.accountNumber);
+                                setAccountCopied(true);
+                                window.setTimeout(() => setAccountCopied(false), 1800);
+                              } catch {
+                                /* clipboard refused; the number is printed beside it */
+                              }
+                            }}
+                            className="inline-flex min-h-[36px] items-center gap-1.5 rounded-full border border-ink/15 px-3 text-[11px] font-semibold uppercase tracking-widest text-ink/70 transition-colors hover:border-emerald-600 hover:text-emerald-700"
+                          >
+                            {accountCopied ? (
+                              <Check className="h-3.5 w-3.5 text-emerald-600" aria-hidden="true" />
+                            ) : (
+                              <Copy className="h-3.5 w-3.5" aria-hidden="true" />
+                            )}
+                            {accountCopied ? 'Copied' : 'Copy'}
+                          </button>
+                        </dd>
+                      </div>
+                    </dl>
+                    <p className="mt-3 border-t border-ink/10 pt-3 text-xs leading-relaxed text-ink/70">
+                      {PAYMENT_ACCOUNT.referenceNote} Then send your proof of payment on
+                      WhatsApp so we can match it to your booking.
+                    </p>
+                    <p className="mt-3 rounded-xl bg-emerald-50/70 px-4 py-3 text-xs leading-relaxed text-ink/75">
+                      <span className="font-semibold text-emerald-800">Mobile wallet:</span>{' '}
+                      {PAYMENT_ACCOUNT.walletNote}
+                    </p>
+                  </div>
 
                   <p className="flex items-start gap-3 text-sm leading-relaxed text-ink/65">
                     <CreditCard
@@ -400,13 +430,13 @@ export function PayFlow({
                       aria-hidden="true"
                     />
                     <span>
-                      Booking a single treatment? The live calendar can also take your
+                      Booking a single treatment? The live booking page can also take your
                       reservation with card payment at checkout:{' '}
                       <a
-                        href="/book"
+                        href={BOOKING_URL}
                         className="font-semibold text-emerald-700 underline underline-offset-2 hover:text-emerald-800"
                       >
-                        open the calendar
+                        open the booking page
                       </a>
                       .
                     </span>

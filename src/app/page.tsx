@@ -12,7 +12,7 @@ import { FooterFull } from '@/components/FooterFull';
 import { PRODUCTS } from '@/data/products';
 import {
   BOOKING_CTA,
-  BOOKING_PATH,
+  BOOKING_URL,
   GOOGLE_REVIEW_URL,
   HOME_CAROUSEL_SLUGS,
   LISTED_SERVICE_COUNT,
@@ -418,13 +418,13 @@ export default async function HomePage() {
                 <ClipReveal>Blackett Street, Windhoek North.</ClipReveal>
               </h2>
               <FadeUp delay={0.1}>
-                <Link
-                  href={BOOKING_PATH}
+                <a
+                  href={BOOKING_URL}
                   className="mt-8 inline-flex items-center gap-2 rounded-full bg-emerald-600 px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-700"
                 >
                   {BOOKING_CTA}
                   <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
+                </a>
               </FadeUp>
             </div>
 

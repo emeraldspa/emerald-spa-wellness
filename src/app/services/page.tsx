@@ -9,7 +9,7 @@ import { ClipReveal, FadeUp } from '@/components/motion';
 import { RevealText } from '@/components/RevealText';
 import {
   BOOKING_CTA,
-  BOOKING_PATH,
+  BOOKING_URL,
   LISTED_SERVICE_COUNT,
   SITE_URL,
   WHATSAPP_PATH,
@@ -81,13 +81,13 @@ export default function ServicesPage() {
           lede={`${LISTED_SERVICE_COUNT} treatments across ${site.categories.length} categories, from a 10 minute add-on to a full day of care. Prices are in Namibian dollars and match our live booking system.`}
         />
         <div className="relative z-10 mx-auto -mt-8 max-w-3xl px-5 sm:px-8 md:px-12">
-          <Link
-            href={BOOKING_PATH}
+          <a
+            href={BOOKING_URL}
             className="inline-flex items-center gap-2 rounded-full bg-gold-300 px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-[#0A1310] shadow-[0_12px_30px_-10px_rgba(7,33,26,0.5)] transition-colors hover:bg-gold-200"
           >
             {BOOKING_CTA}
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
+          </a>
         </div>
 
         {/* Fixed on mobile, so it stays reachable through a long menu. */}
@@ -189,18 +189,18 @@ export default function ServicesPage() {
 
                 {/*
                   Two routes, offered at the end of every category rather than
-                  once at the top of the page. One books instantly on our own
+                  once at the top of the page. One opens the live booking
                   page, the other opens a real conversation for anyone who
                   would rather ask first.
                 */}
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Link
-                    href={BOOKING_PATH}
+                  <a
+                    href={BOOKING_URL}
                     className="inline-flex items-center gap-2 rounded-full bg-emerald-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-800"
                   >
                     Book {cat.name.toLowerCase()}
                     <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
+                  </a>
                   <Link
                     href={WHATSAPP_PATH}
                     className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-ink transition-colors hover:border-emerald-600 hover:text-emerald-700"

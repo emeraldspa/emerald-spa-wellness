@@ -5,21 +5,20 @@ import { CornerDownLeft, FileText, Search, Sparkles, Tag, Wrench } from 'lucide-
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { PRODUCTS } from '@/data/products';
-import { site } from '@/lib/site';
+import { BOOKING_URL, site } from '@/lib/site';
 
 /**
  * Site search, Apple-style.
  *
  * A quiet full-screen glass overlay opened from the header (or Cmd/Ctrl+K).
  * It searches the whole site from local data only: pages, treatments,
- * packages, products and the latest journal entries. Nothing leaves the
- * device, results appear as you type, arrow keys + Enter navigate, Esc
- * closes. It renders nothing until opened, and everything inside is real
- * content from the site's own data.
+ * packages and products. Nothing leaves the device, results appear as you
+ * type, arrow keys + Enter navigate, Esc closes. It renders nothing until
+ * opened, and everything inside is real content from the site's own data.
  */
 
 type Entry = {
-  type: 'Page' | 'Treatment' | 'Package' | 'Product' | 'Journal';
+  type: 'Page' | 'Treatment' | 'Package' | 'Product';
   title: string;
   subtitle: string;
   href: string;
@@ -29,11 +28,10 @@ type Entry = {
 const PAGES: Omit<Entry, 'icon'>[] = [
   { type: 'Page', title: 'Home', subtitle: 'The retreat at a glance', href: '/' },
   { type: 'Page', title: 'Services', subtitle: 'Every treatment and price', href: '/services' },
-  { type: 'Page', title: 'Book online', subtitle: 'The spa calendar', href: '/book' },
+  { type: 'Page', title: 'Book online', subtitle: 'The live booking page', href: BOOKING_URL },
   { type: 'Page', title: 'Group booking', subtitle: 'Groups, parties and the venue', href: '/book-bulk' },
   { type: 'Page', title: 'Venues', subtitle: 'Gender reveals and celebrations', href: '/venues' },
   { type: 'Page', title: 'Gallery', subtitle: 'The rooms and the garden', href: '/gallery' },
-  { type: 'Page', title: 'Journal', subtitle: 'Stories from the spa', href: '/journal' },
   { type: 'Page', title: 'Team', subtitle: 'The hands behind the calm', href: '/team' },
   { type: 'Page', title: 'Visit', subtitle: 'Address, hours and directions', href: '/visit' },
   { type: 'Page', title: 'Vouchers', subtitle: 'Gift a visit', href: '/vouchers' },
@@ -46,17 +44,14 @@ const ICONS = {
   Treatment: Wrench,
   Package: Sparkles,
   Product: Tag,
-  Journal: FileText,
 } as const;
 
 export function SearchOverlay({
   open,
   onClose,
-  journalPosts = [],
 }: {
   open: boolean;
   onClose: () => void;
-  journalPosts?: { title: string; slug: string }[];
 }) {
   const [query, setQuery] = useState('');
   const [active, setActive] = useState(0);
@@ -87,15 +82,8 @@ export function SearchOverlay({
       href: '/#products',
       icon: Tag,
     }));
-    const journal: Entry[] = journalPosts.map((p) => ({
-      type: 'Journal',
-      title: p.title,
-      subtitle: 'Journal',
-      href: `/journal/${p.slug}`,
-      icon: FileText,
-    }));
-    return [...PAGES.map((p) => ({ ...p, icon: ICONS[p.type] })), ...treatments, ...packages, ...products, ...journal];
-  }, [journalPosts]);
+    return [...PAGES.map((p) => ({ ...p, icon: ICONS[p.type] })), ...treatments, ...packages, ...products];
+  }, []);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -187,9 +175,9 @@ export function SearchOverlay({
                   setQuery(e.target.value);
                   setActive(0);
                 }}
-                placeholder="Treatments, packages, products, stories…"
+                placeholder="Treatments, packages, products…"
                 className="w-full bg-transparent text-lg text-ground placeholder:text-ground/45 focus:outline-none"
-                aria-label="Search treatments, packages, products and stories"
+                aria-label="Search treatments, packages and products"
               />
               {query ? (
                 <button

@@ -2,10 +2,11 @@ import type { Metadata, Viewport } from 'next';
 import { Poppins, Radley } from 'next/font/google';
 import type { ReactNode } from 'react';
 import { FloatingActions } from '@/components/FloatingActions';
+import { SiteAudio } from '@/components/SiteAudio';
+import { SitePopup, type PopupPromotion } from '@/components/SitePopup';
 import { StickyNav } from '@/components/StickyNav';
-import { VoucherPopup } from '@/components/VoucherPopup';
 import { GOOGLE_MAPS_URL, SITE_URL, site } from '@/lib/site';
-import { getPosts } from '@/lib/wordpress';
+import { getActivePromotions } from '@/lib/wordpress';
 import './globals.css';
 
 /**
@@ -135,13 +136,31 @@ function StructuredData() {
 }
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
-  /* The header's Journal dropdown and search are fed by WordPress when it has
-     content, and render their empty states when it does not. The fetch is
-     server-side, revalidated, and never allowed to take the site down. */
-  const journalPosts = (await getPosts(3).catch(() => [])).map((p) => ({
+  /* The header's Specials dropdown, the specials page and the site popup are
+     all fed by the one WordPress feed (the `promotion` content type). The
+     fetch is server-side, revalidated every 15 minutes, and never allowed to
+     take the site down: an unreachable back office renders the same pages
+     with the local package data and no popup. */
+  const promotions = await getActivePromotions().catch(() => []);
+  const specials = promotions.map((p) => ({
     title: p.title,
     slug: p.slug,
+    priceNad: p.priceNad,
+    duration: p.duration,
   }));
+  const popup = promotions.find((p) => p.showAsPopup);
+  const popupPromotion: PopupPromotion | null = popup
+    ? {
+        slug: popup.slug,
+        title: popup.title,
+        excerpt: popup.excerpt,
+        image: popup.image,
+        imageAlt: popup.imageAlt,
+        imageSrcset: popup.imageSrcset,
+        duration: popup.duration,
+        priceNad: popup.priceNad,
+      }
+    : null;
 
   return (
     <html lang="en-NA" className={`${display.variable} ${sans.variable}`}>
@@ -163,9 +182,10 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           Skip to content
         </a>
         {children}
-        <StickyNav journalPosts={journalPosts} />
+        <StickyNav specials={specials} />
         <FloatingActions />
-        <VoucherPopup />
+        <SitePopup promotion={popupPromotion} />
+        <SiteAudio />
       </body>
     </html>
   );

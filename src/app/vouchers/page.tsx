@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowUpRight, Phone } from 'lucide-react';
+import { ArrowUpRight, CreditCard, Phone } from 'lucide-react';
 import { FooterMinimal } from '@/components/FooterMinimal';
 import { VoucherForm } from '@/components/VoucherForm';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { EMAILS, PAY_PATH, site , SITE_URL, ogFor } from '@/lib/site';
+import { EMAILS, PAYMENT_ACCOUNT, PAY_PATH, site , SITE_URL, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Gift Vouchers',
@@ -36,6 +36,60 @@ export default function VouchersPage() {
         <section className="shell py-16 md:py-24">
           <FadeUp>
             <VoucherForm />
+          </FadeUp>
+
+          {/* The account card (client published the details 7 Sep): a guest
+              who wants to pay immediately can do it without waiting for a
+              reply. The same card appears on the pay flow. */}
+          <FadeUp delay={0.05}>
+            <div className="mt-8 grid gap-6 rounded-2xl border border-ink/15 bg-ground p-6 sm:grid-cols-2 sm:p-8">
+              <div>
+                <p className="flex items-center gap-2 text-sm font-semibold text-ink">
+                  <CreditCard className="h-4 w-4 text-emerald-700" aria-hidden="true" />
+                  Paying by bank transfer (EFT)
+                </p>
+                <dl className="mt-4 space-y-1.5 text-sm text-ink/75">
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-ink/70">Bank</dt>
+                    <dd className="text-right font-medium">
+                      {PAYMENT_ACCOUNT.bank}, {PAYMENT_ACCOUNT.branch} branch
+                    </dd>
+                  </div>
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-ink/70">Account name</dt>
+                    <dd className="text-right font-medium">{PAYMENT_ACCOUNT.accountName}</dd>
+                  </div>
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-ink/70">Account type</dt>
+                    <dd className="font-medium">{PAYMENT_ACCOUNT.accountType}</dd>
+                  </div>
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-ink/70">Account number</dt>
+                    <dd className="font-medium tabular-nums">{PAYMENT_ACCOUNT.accountNumber}</dd>
+                  </div>
+                </dl>
+                <p className="mt-3 text-xs leading-relaxed text-ink/70">
+                  {PAYMENT_ACCOUNT.referenceNote}
+                </p>
+              </div>
+              <div className="flex flex-col justify-between gap-4 border-t border-ink/10 pt-5 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
+                <p className="rounded-xl bg-emerald-50/70 px-4 py-3 text-xs leading-relaxed text-ink/75">
+                  <span className="font-semibold text-emerald-800">Mobile wallet:</span>{' '}
+                  {PAYMENT_ACCOUNT.walletNote}
+                </p>
+                <p className="text-xs leading-relaxed text-ink/70">
+                  Send your proof of payment in the same WhatsApp conversation where you
+                  ordered the voucher, and staff confirm and issue the voucher number.
+                </p>
+                <Link
+                  href={PAY_PATH}
+                  className="inline-flex min-h-[44px] items-center justify-center gap-2 self-start rounded-full border border-emerald-700/40 px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-emerald-800 transition-colors hover:border-emerald-700 hover:bg-emerald-50"
+                >
+                  Book &amp; pay now
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
           </FadeUp>
 
           {/* The faster sibling of the enquiry: pay now, send proof, get the

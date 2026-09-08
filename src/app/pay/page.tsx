@@ -5,7 +5,7 @@ import { FooterMinimal } from '@/components/FooterMinimal';
 import { PageHero } from '@/components/PageHero';
 import { PayFlow, type PayOption } from '@/components/PayFlow';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { site, ogFor } from '@/lib/site';
+import { BOOKING_URL, site, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Book & Pay',
@@ -76,7 +76,7 @@ export default function PayPage() {
               {
                 icon: ReceiptText,
                 title: 'Pay straight away',
-                body: 'We send the account details instantly and you pay from your banking app.',
+                body: 'The account details are right there: FNB, Maerua Mall. Pay from your banking app and use your full name as the reference.',
               },
               {
                 icon: BadgeCheck,
@@ -122,13 +122,13 @@ export default function PayPage() {
                   Can I pay by card instead?
                 </h3>
                 <p className="mt-2 text-ink/75 text-pretty">
-                  Yes. Single treatments can be booked and paid in the{' '}
-                  <Link
-                    href="/book"
+                  Yes. Single treatments can be booked and paid on the{' '}
+                  <a
+                    href={BOOKING_URL}
                     className="font-semibold text-emerald-700 underline underline-offset-2 hover:text-emerald-800"
                   >
-                    live calendar
-                  </Link>
+                    live booking page
+                  </a>
                   , which takes card payment at checkout. Packages and custom amounts run
                   through this page.
                 </p>

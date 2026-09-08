@@ -95,25 +95,19 @@ export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
  * the rule cannot drift as pages are edited.
  */
 export const BOOKING_CTA = 'Book Now';
-export const BOOKING_PATH = '/book';
 
 /**
- * Direct booking URL on the provider's site. Used as the fallback link when
- * the embedded frame cannot load, and never as the primary path: the client
- * requires booking to happen inside the page, not through a redirect.
+ * Direct booking URL (client, 8 Sep 2025).
+ *
+ * The embedded calendar is gone: the provider's frame protections made an
+ * in-page embed unreliable, and the client asked for a button instead. Every
+ * "Book Now" on the site opens this URL in the SAME tab, so the booking page
+ * simply takes over from ours, and the guest comes back with the back button.
+ * No new tabs, no dead frames. Group bookings never go here: they run on
+ * WhatsApp (see WHATSAPP_PATH and the /book-bulk page).
  */
 export const BOOKING_URL =
-  'https://www.fresha.com/a/emerald-spa-wellness-centre-windhoek-blackett-street-awio4ik8';
-
-/**
- * Same-origin path that serves the booking app through the proxy route at
- * src/app/api/booking/[...path]/route.ts. The provider sends
- * `Content-Security-Policy: frame-ancestors 'self' https://*.fresha.com`, so a
- * direct frame of their origin is refused by the browser. Proxying makes the
- * document same-origin, which the frame-ancestors we set allows, and the
- * guest stays on this domain for the whole flow.
- */
-export const BOOKING_EMBED_PATH = '/api/booking/a/emerald-spa-wellness-centre-windhoek-blackett-street-awio4ik8';
+  'https://www.fresha.com/book-now/emerald-spa-wellness-centre-qnp9ba1m/all-offer?share=true&pId=1477270';
 
 /**
  * Book and pay.
@@ -127,16 +121,22 @@ export const BOOKING_EMBED_PATH = '/api/booking/a/emerald-spa-wellness-centre-wi
 export const PAY_PATH = '/pay';
 
 /**
- * Bank account shown on the Pay step. The spa has not published account
- * details yet; while this is null the Pay step sends the guest straight to
- * WhatsApp with their reference, and staff reply with the account details in
- * the same chat. Set this object to render an account card instead.
+ * Bank account, published by the client on 7 Sep 2025. Shown as a card on the
+ * Pay step and on the voucher page, so a guest can pay without waiting for a
+ * reply. Full name as reference is the client's own rule, stated in the same
+ * message, so it is printed beside the account details.
  */
-export const PAYMENT_ACCOUNT: {
-  bank: string;
-  accountName: string;
-  accountNumber: string;
-} | null = null;
+export const PAYMENT_ACCOUNT = {
+  bank: 'FNB (First National Bank)',
+  branch: 'Maerua Mall',
+  accountName: 'Emerald Spa Gold Business',
+  accountNumber: '64287404716',
+  accountType: 'Gold Business Account',
+  referenceNote: 'Please use your full name as the payment reference.',
+  walletNumber: '+264 81 607 7143',
+  walletNote:
+    'Send the payment to +264 81 607 7143, then share the proof of payment with us on WhatsApp.',
+} as const;
 
 /** Reference prefix for pay-and-voucher requests. */
 export const PAY_REFERENCE_PREFIX = 'EMR';
@@ -346,16 +346,37 @@ export const LEGAL_LINKS = [
 /** Prefilled WhatsApp enquiry. Kept here so every entry point sends the same text. */
 export const WHATSAPP_PATH = '/whatsapp';
 
+/**
+ * Site-wide soundtrack (client request, 8 Sep 2025).
+ *
+ * One looping ambience track for the whole site, controlled by the floating
+ * sound button. The file ships as /public/media/audio/ambience.m4a; the
+ * client supplied the reference track as a YouTube link, which cannot be
+ * fetched from a server, so the file is drop-in replaceable: swap that one
+ * file (same name, AAC in an m4a container) and no code changes.
+ *
+ * The shipped loop is "Healing" by Kevin MacLeod (incompetech.com), licensed
+ * CC BY 4.0, so the credit below is printed in the footer for as long as it
+ * plays. If the client swaps in their own track, the credit object should be
+ * updated or the footer line removed with it.
+ */
+export const AMBIENCE_PATH = '/media/audio/ambience.m4a';
+export const MUSIC_CREDIT = {
+  title: 'Healing',
+  artist: 'Kevin MacLeod',
+  source: 'incompetech.com',
+  license: 'CC BY 4.0',
+  url: 'https://incompetech.com/music/royalty-free/music.html',
+} as const;
+
 export const NAV_LINKS = [
   { href: '/vouchers', label: 'Vouchers' },
   { href: '/services', label: 'Services' },
   { href: '/venues', label: 'Venues' },
   { href: '/specials', label: 'Specials' },
   { href: '/gallery', label: 'Gallery' },
-  { href: '/journal', label: 'Journal' },
   { href: '/team', label: 'Team' },
   { href: '/visit', label: 'Visit' },
-  { href: '/book', label: 'Book' },
   { href: '/book-bulk', label: 'Group booking' },
 ] as const;
 

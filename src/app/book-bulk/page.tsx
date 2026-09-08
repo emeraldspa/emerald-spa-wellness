@@ -8,7 +8,7 @@ import { WhatsAppFlow } from '@/components/WhatsAppFlow';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import { RevealText } from '@/components/RevealText';
 import { FooterFull } from '@/components/FooterFull';
-import { site, SITE_URL, WHATSAPP_PATH, ogFor } from '@/lib/site';
+import { site, WHATSAPP_NUMBER, WHATSAPP_PATH, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Group Booking',
@@ -156,7 +156,10 @@ export default function BookBulkPage() {
           </div>
         </section>
 
-        {/* Online calendar fallback */}
+        {/* Groups are a conversation, not a checkout: the single action on
+            this page is WhatsApp (client directive, 8 Sep 2025). Individual
+            treatments still have the live booking page for anyone who would
+            rather book alone and instantly. */}
         <section className="shell py-14 md:py-16">
           <div
             className="relative flex flex-col items-start justify-between gap-6 overflow-hidden rounded-2xl bg-emerald-900 px-8 py-8 text-ground sm:flex-row sm:items-center md:px-12"
@@ -170,20 +173,23 @@ export default function BookBulkPage() {
           >
             <div>
               <h2 className="display text-2xl text-balance sm:text-3xl">
-                Prefer the online calendar?
+                One message, and we start planning.
               </h2>
               <p className="mt-2 max-w-xl text-ground/75 text-pretty">
-                Individual bookings and smaller groups can also be made straight in the spa
-                &rsquo;s booking system.
+                Group bookings run on WhatsApp: tell us the date, the group size and the
+                occasion, and we come back with a plan and a price.
               </p>
             </div>
             <a
-              href={site.bookingUrl}
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                `Hello ${site.legalName}. I would like to plan a group booking.`,
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[48px] shrink-0 items-center gap-2 rounded-full bg-gold-300 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-emerald-950 transition-colors hover:bg-gold-200"
+              className="inline-flex min-h-[48px] shrink-0 items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-xs font-semibold uppercase tracking-widest text-[#07211A] transition-transform hover:scale-[1.03]"
             >
-              Book online
+              <MessageCircle className="h-4 w-4" aria-hidden="true" />
+              Plan it on WhatsApp
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </a>
           </div>

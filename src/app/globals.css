@@ -129,40 +129,6 @@
   .hairline {
     border-color: rgb(7 33 26 / 0.12);
   }
-
-  /* Article prose for journal posts. */
-  .prose-serif {
-    font-family: var(--font-display), Georgia, 'Times New Roman', serif;
-  }
-  .prose-serif h1, .prose-serif h2, .prose-serif h3 {
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: -0.015em;
-    margin-top: 2.2em;
-    margin-bottom: 0.6em;
-  }
-  .prose-serif h1 { font-size: 2rem; }
-  .prose-serif h2 { font-size: 1.6rem; }
-  .prose-serif h3 { font-size: 1.25rem; }
-  .prose-serif p { margin-bottom: 1.2em; }
-  .prose-serif ul, .prose-serif ol { margin: 0 0 1.2em 1.4em; }
-  .prose-serif ul { list-style: disc; }
-  .prose-serif ol { list-style: decimal; }
-  .prose-serif li { margin-bottom: 0.4em; }
-  .prose-serif img { border-radius: 1rem; margin: 1.5em 0; }
-  .prose-serif blockquote {
-    border-left: 2px solid rgb(var(--c-gold-300) / 1);
-    padding-left: 1.25rem;
-    margin: 1.5em 0;
-    font-style: italic;
-    color: rgb(7 33 26 / 0.75);
-  }
-  .prose-serif a {
-    color: rgb(var(--c-emerald-600) / 1);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-  .prose-serif a:hover { color: rgb(var(--c-emerald-700) / 1); }
 }
 
 @layer utilities {
@@ -409,6 +375,17 @@ body > * {
 .voucher-pop { animation: voucher-pop-in 0.45s cubic-bezier(0.19, 1, 0.22, 1) both; }
 @media (prefers-reduced-motion: reduce) {
   .voucher-pop { animation: none; }
+}
+
+/*
+  The music button's breathing ring, shown while the soundtrack plays.
+  A quiet pulse so the control is findable (client: the mute icon must be
+  obvious), without drawing attention away from the page. Honours
+  prefers-reduced-motion through the motion-safe: prefix on the utility.
+*/
+@keyframes emerald-pulse {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50%      { opacity: 0.3;  transform: scale(1.12); }
 }
 
 /*

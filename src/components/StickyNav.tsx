@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowUpRight,
   CalendarCheck,
@@ -12,6 +12,7 @@ import {
   MessageCircle,
   Phone,
   Search,
+  Sparkles,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -21,9 +22,10 @@ import { Wordmark } from '@/components/Wordmark';
 import { EASE_REVEAL } from '@/components/motion';
 import {
   BOOKING_CTA,
-  BOOKING_PATH,
+  BOOKING_URL,
   NAV_LINKS,
   WHATSAPP_PATH,
+  formatNad,
   site,
 } from '@/lib/site';
 
@@ -39,12 +41,25 @@ import {
  * under the pill (no off-canvas drawer) with the full menu, contact and
  * hours; search opens its own overlay. One header, one system, nothing
  * competing.
+ *
+ * Specials is a dropdown (client request, 8 Sep 2025): its items are the
+ * current specials edited in WordPress, passed in from the server layout,
+ * and each one deep-links to its card on the specials page. Book opens the
+ * live booking page in the same tab, so the booking takes over from this
+ * site without a stray extra tab.
  */
 
-type DropdownKey = 'services' | 'venues' | 'journal' | null;
+export type NavSpecial = {
+  title: string;
+  slug: string;
+  priceNad: number | null;
+  duration: string | null;
+};
+
+type DropdownKey = 'services' | 'venues' | 'specials' | null;
 
 const PLAIN_LINKS = NAV_LINKS.filter((l) =>
-  ['gallery', 'team', 'visit', 'vouchers', 'specials'].includes(l.href.replace('/', '')),
+  ['gallery', 'team', 'visit', 'vouchers'].includes(l.href.replace('/', '')),
 );
 
 const drawerItems = [
@@ -56,7 +71,6 @@ const drawerItems = [
       { href: '/venues', label: 'Venues' },
       { href: '/specials', label: 'Specials' },
       { href: '/gallery', label: 'Gallery' },
-      { href: '/journal', label: 'Journal' },
       { href: '/team', label: 'Team' },
       { href: '/visit', label: 'Visit' },
       { href: '/vouchers', label: 'Vouchers' },
@@ -65,20 +79,19 @@ const drawerItems = [
   {
     group: 'Book',
     links: [
-      { href: '/book', label: 'Book online' },
-      { href: '/book-bulk', label: 'Group booking' },
-      { href: '/whatsapp', label: 'Book on WhatsApp' },
+      { href: BOOKING_URL, label: 'Book online', external: true },
+      { href: '/book-bulk', label: 'Group booking', external: false },
+      { href: '/whatsapp', label: 'Book on WhatsApp', external: false },
     ],
   },
 ];
 
 export function StickyNav({
-  journalPosts = [],
+  specials = [],
 }: {
-  journalPosts?: { title: string; slug: string }[];
+  specials?: NavSpecial[];
 }) {
   const pathname = usePathname();
-  const reduce = useReducedMotion();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<DropdownKey>(null);
@@ -301,56 +314,61 @@ export function StickyNav({
                 </DropdownPanel>
               </li>
 
-              {/* Journal */}
+              {/* Specials: the current offers, straight from WordPress. */}
               <li
                 className="relative"
-                onMouseEnter={() => hoverOpen('journal')}
+                onMouseEnter={() => hoverOpen('specials')}
                 onMouseLeave={hoverClose}
               >
                 <button
                   type="button"
-                  onClick={() => setOpenDropdown(openDropdown === 'journal' ? null : 'journal')}
+                  onClick={() => setOpenDropdown(openDropdown === 'specials' ? null : 'specials')}
                   aria-haspopup='true'
-                  aria-expanded={openDropdown === 'journal'}
+                  aria-expanded={openDropdown === 'specials'}
                   className={`flex min-h-[44px] items-center gap-1.5 rounded-full px-3.5 text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors ${
-                    pathname.startsWith('/journal')
+                    pathname.startsWith('/specials')
                       ? 'text-gold-200'
                       : 'text-ground/90 hover:text-gold-200'
                   }`}
                 >
-                  Journal
+                  Specials
                   <ChevronDown
                     className={`h-3.5 w-3.5 transition-transform duration-300 ${
-                      openDropdown === 'journal' ? 'rotate-180' : ''
+                      openDropdown === 'specials' ? 'rotate-180' : ''
                     }`}
                     aria-hidden="true"
                   />
                 </button>
-                <DropdownPanel open={openDropdown === 'journal'}>
+                <DropdownPanel open={openDropdown === 'specials'}>
                   <div className="w-80 space-y-1">
-                    {journalPosts.length ? (
-                      journalPosts.slice(0, 3).map((p) => (
+                    {specials.length ? (
+                      specials.slice(0, 6).map((sp) => (
                         <Link
-                          key={p.slug}
-                          href={`/journal/${p.slug}`}
+                          key={sp.slug}
+                          href={`/specials#sp-${sp.slug}`}
                           onClick={closeAll}
                           className="block rounded-xl px-3.5 py-3 transition-colors hover:bg-white/6"
                         >
-                          <span className="block text-sm leading-snug text-ground">{p.title}</span>
-                          <span className="mt-1 block text-[11px] uppercase tracking-widest text-ground/45">
-                            Journal
+                          <span className="block text-sm leading-snug text-ground">{sp.title}</span>
+                          <span className="mt-1 flex items-center gap-2 text-[11px] uppercase tracking-widest text-ground/60">
+                            <Sparkles className="h-3 w-3 text-gold-300" aria-hidden="true" />
+                            {sp.duration ? <span>{sp.duration}</span> : null}
+                            {sp.priceNad ? <span>{formatNad(sp.priceNad)}</span> : null}
+                            {!sp.duration && !sp.priceNad ? <span>Current offer</span> : null}
                           </span>
                         </Link>
                       ))
                     ) : (
-                      <p className="px-3.5 py-3 text-sm text-ground/75">Stories are on the way.</p>
+                      <p className="px-3.5 py-3 text-sm text-ground/75">
+                        New specials are posted here as they are announced.
+                      </p>
                     )}
                     <Link
-                      href="/journal"
+                      href="/specials"
                       onClick={closeAll}
                       className="flex items-center gap-1.5 rounded-xl border border-white/10 px-3.5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-200 transition-colors hover:border-gold-300/60 hover:bg-gold-300/10"
                     >
-                      All stories
+                      All specials
                       <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                     </Link>
                   </div>
@@ -389,7 +407,8 @@ export function StickyNav({
 
               {/* Two CTAs, desktop only. The primary Book Now joins the row
                   from xl; the secondary Group booking waits for 2xl, where
-                  both plus the links still leave air to spare. */}
+                  both plus the links still leave air to spare. Both are real
+                  destinations: Book opens the live booking page in this tab. */}
               <Link
                 href="/book-bulk"
                 className="hidden min-h-[44px] items-center gap-1.5 rounded-full border border-gold-300/45 px-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-gold-200 transition-colors hover:border-gold-300 hover:bg-gold-300/10 2xl:flex"
@@ -397,13 +416,13 @@ export function StickyNav({
                 <CalendarCheck className="h-3.5 w-3.5" aria-hidden="true" />
                 Group booking
               </Link>
-              <Link
-                href={BOOKING_PATH}
+              <a
+                href={BOOKING_URL}
                 className="hidden min-h-[44px] items-center gap-1.5 rounded-full bg-gold-300 px-5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#0A1310] transition-colors hover:bg-gold-200 xl:flex"
               >
                 {BOOKING_CTA}
                 <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-              </Link>
+              </a>
 
               {/* Hamburger: two lines morph into an X, never disappear. */}
               <button
@@ -461,7 +480,7 @@ export function StickyNav({
                   className="flex min-h-[52px] w-full items-center gap-3 rounded-xl border border-white/15 bg-white/6 px-4 text-left text-sm text-ground/80 transition-colors hover:border-gold-200/50 hover:text-gold-200"
                 >
                   <Search className="h-4 w-4 shrink-0" aria-hidden="true" />
-                  <span className="flex-1">Search treatments, packages, stories</span>
+                  <span className="flex-1">Search treatments, packages, pages</span>
                   <kbd className="rounded-md border border-white/25 px-2 py-0.5 text-[10px] uppercase tracking-widest text-ground/75">
                     ⌘K
                   </kbd>
@@ -496,14 +515,14 @@ export function StickyNav({
                   <ul className="mt-2 space-y-1">
                     {drawerItems[1].links.map((item) => (
                       <li key={item.href}>
-                        <Link
+                        <a
                           href={item.href}
                           onClick={() => setDrawerOpen(false)}
                           className="flex min-h-[44px] items-center gap-2 rounded-lg px-2.5 text-sm text-ground transition-colors hover:text-gold-200"
                         >
                           {item.label}
                           <ArrowUpRight className="h-3.5 w-3.5 text-ground/40" aria-hidden="true" />
-                        </Link>
+                        </a>
                       </li>
                     ))}
                   </ul>
@@ -578,11 +597,7 @@ export function StickyNav({
         </div>
       </div>
 
-      <SearchOverlay
-        open={searchOpen}
-        onClose={() => setSearchOpen(false)}
-        journalPosts={journalPosts}
-      />
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }

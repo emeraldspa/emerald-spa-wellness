@@ -7,7 +7,7 @@ import { Picture } from '@/components/Picture';
 import { Faq } from '@/components/Faq';
 import { PageHero } from '@/components/PageHero';
 import { ClipReveal, FadeUp } from '@/components/motion';
-import { BOOKING_CTA, BOOKING_PATH, GOOGLE_REVIEW_URL, WHATSAPP_PATH, getImage, site , SITE_URL, ogFor } from '@/lib/site';
+import { BOOKING_CTA, BOOKING_URL, GOOGLE_REVIEW_URL, WHATSAPP_PATH, getImage, site , SITE_URL, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Visit and Contact',
@@ -148,13 +148,13 @@ export default function VisitPage() {
               </a>
             </div>
 
-            <Link
-              href={BOOKING_PATH}
+            <a
+              href={BOOKING_URL}
               className="mt-12 inline-flex items-center gap-2 rounded-full bg-emerald-600 px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-700"
             >
               {BOOKING_CTA}
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
+            </a>
           </div>
 
           <div className="md:col-span-7">

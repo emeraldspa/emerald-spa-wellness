@@ -8,7 +8,7 @@ import { VenueEnquiry } from '@/components/VenueEnquiry';
 import { ClipReveal, FadeUp } from '@/components/motion';
 import { RevealText } from '@/components/RevealText';
 import { FooterFull } from '@/components/FooterFull';
-import { SITE_URL, WHATSAPP_PATH, site, ogFor } from '@/lib/site';
+import { BOOKING_URL, SITE_URL, WHATSAPP_PATH, site, ogFor } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Venues and Events',
@@ -181,9 +181,7 @@ export default function VenuesPage() {
                 WhatsApp
               </Link>
               <a
-                href={site.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={BOOKING_URL}
                 className="inline-flex items-center gap-1.5 rounded-full border border-gold-300/45 px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-gold-200 transition-colors hover:border-gold-300 hover:bg-gold-300/10"
               >
                 Book a treatment
