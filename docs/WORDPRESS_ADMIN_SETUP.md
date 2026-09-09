@@ -110,3 +110,25 @@ content, per the headless design rules.
 - **Automation:** application password "Emerald Frontend Automation 2" on
   the Emerald account (editor scope). Revoke under Users -> Profile ->
   Application Passwords when this round's flows are retired.
+
+## Round 28 addendum (9 Sep 2026) — The Emerald Website Handbook
+
+- **The guidebook**: a 27 page PDF, `The Emerald Website Handbook`, teaching
+  the spa team every screen they own (sign in, dashboard, promotions,
+  treatments, reviews, media, profile) with numbered screenshots taken from
+  this exact back office. No credentials inside.
+- **Live now**: uploaded to the media library (attachment 146,
+  `emerald-wordpress-guidebook.pdf`, 2026/09). The staff portal page
+  (id 17, `Emerald Portal`) carries a third action, **Staff guidebook**,
+  beside Visit the website and Staff sign in. It opens the PDF with
+  `target="_blank"`, so the page the reader is on never moves.
+- **Ready, pending deploy**: `wordpress/plugins/emerald-backoffice.php`
+  v1.1.3 adds the same **Staff guidebook** action to the dashboard quick
+  actions grid and a matching button on the front splash. The URL is
+  resolved at runtime from the attachment slug, with the media path as a
+  fallback. Upload the zip via Plugins, Add New, Upload, and choose
+  **Replace current with uploaded**. Blocked on this round only because the
+  superadmin password had been rotated as the handover advised; the editor
+  account correctly sees no plugin screen.
+- The handbook itself is a client deliverable and stays out of this public
+  repository, like every other artifact that shows the back office.
