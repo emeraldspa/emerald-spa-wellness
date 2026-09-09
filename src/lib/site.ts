@@ -129,6 +129,7 @@ export const PAY_PATH = '/pay';
 export const PAYMENT_ACCOUNT = {
   bank: 'FNB (First National Bank)',
   branch: 'Maerua Mall',
+  branchCode: '282273',
   accountName: 'Emerald Spa Gold Business',
   accountNumber: '64287404716',
   accountType: 'Gold Business Account',

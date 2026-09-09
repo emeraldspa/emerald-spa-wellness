@@ -183,3 +183,33 @@ fingerprint, renders the page in Chromium to confirm the slideshow mounts, and
 requests every photograph. Expect ORIGIN to pass on every line. BARE URL will
 keep failing until the Hostinger edge cache is flushed, which is the one step
 that needs hPanel access.
+
+---
+
+## Round 27 addendum - 9 September 2026 (WordPress + banking delta)
+
+Companion to the PDF handover ("Emerald Handover - 9 Sep 2026", delivered
+privately). Round 25 (ec5d8f9) carried the frontend; this round finishes the
+client's 8-9 Sep order on the back-office side and today's banking detail.
+
+- **WordPress specials rewritten:** all three running promotions now carry
+  realistic share photography (1200x630, built from the spa's own photos,
+  generator in scripts/gen_special_og.py), honest was-prices, structured
+  include lists, badges (enum: popular/new/seasonal), and searchable tags
+  (Couples, Groups, Celebration, Seasonal, Popular).
+- **Holiday specials drafted** in WordPress, invisible until published:
+  Christmas Grace Package, New Year Renewal, Valentine's for Two, Mother's
+  Day Pamper, Independence Retreat, Midweek Escape - each with price,
+  guests, duration, includes, badge, date window, tags and share image.
+- **Roles swapped per client order:** Tangison = Administrator (superadmin,
+  fresh password delivered privately and flagged changeable), Emerald
+  admin@ account = Editor, site email = admin@emeraldspacc.com.
+- **Back office presentation:** branded splash on the front page and login
+  (no theme headers or footers), via Emerald Back Office v1.1.2
+  (wordpress/plugins/emerald-backoffice.php). Free custom code only.
+- **Banking:** FNB Maerua Mall branch code 282273 added to the payment card
+  alongside the account details and the full-name reference rule.
+- **Site music:** loop shipped (see docs/AMBIENCE_MUSIC.md for the YouTube
+  block and the exact drop-in swap for the Yellow Brick Cinema track).
+- **Maintenance:** WPGraphQL 2.22.3 applied; WPGraphQL for ACF 3.0.0
+  deferred to a tested round (breaking changes).

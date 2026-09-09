@@ -75,3 +75,38 @@ content, per the headless design rules.
 - Account provisioning code and the reproducible Playground blueprint live
   with the client (delivered alongside the playbook); they contain
   credentials and stay out of this public repository.
+
+## Round 27 addendum (9 Sep 2026, afternoon)
+
+- **Role swap (client order executed):** `tangi@tangison.com` is Administrator
+  again (superadmin; a fresh password was set and delivered privately - the
+  old TheGreat.07 password no longer logged in, so rotate after first login).
+  The Emerald account `admin@emeraldspacc.com` is now **Editor** (content
+  only). Site notification email (`admin_email`) is now
+  `admin@emeraldspacc.com`, per the instruction that the Emerald address
+  replaces the Tangison one.
+- **Emerald Back Office v1.1.2** (deployed as the `emerald-backoffice`
+  plugin; source copy in `wordpress/plugins/emerald-backoffice.php`):
+  branded login (light lockup served from the public site), front splash
+  (the back-office root renders one calm branded card with no theme header
+  or footer), tags enabled on the promotion CPT (`post_tag` registered at
+  init priority 99, after CPT UI), and a one-time activation hook that
+  moved `admin_email` off the Tangison address.
+- **Specials content:** the three running promotions were rewritten (copy,
+  was-prices, includes lists, badge enum values, tags, featured 1200x630
+  share images, media ids 125-133) and six holiday specials were created as
+  drafts with full ACF data, tags and share images: Christmas Grace Package
+  (1 Dec-5 Jan), New Year Renewal (27 Dec-31 Jan), Valentine's for Two
+  (7-14 Feb), Mother's Day Pamper (1-9 May), Independence Retreat
+  (15-22 Mar), Midweek Escape (evergreen). Drafts are invisible until an
+  editor publishes them in season.
+- **Banking:** branch code 282273 (Maerua Mall) confirmed by the client and
+  added to the payment card.
+- **Update state:** WPGraphQL patched to 2.22.3.
+  **WPGraphQL for ACF 3.0.0 deliberately deferred** - breaking changes
+  (explicit show_in_graphql opt-in). Upgrade in a tested round: hPanel
+  backup, update, GraphiQL verification, public-site check. The ASE
+  settings-page 500 remains a known pre-existing host issue.
+- **Automation:** application password "Emerald Frontend Automation 2" on
+  the Emerald account (editor scope). Revoke under Users -> Profile ->
+  Application Passwords when this round's flows are retired.

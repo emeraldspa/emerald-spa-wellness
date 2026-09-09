@@ -376,7 +376,7 @@ export function PayFlow({
                       <div className="flex justify-between gap-4">
                         <dt className="text-ink/70">Bank</dt>
                         <dd className="font-medium">
-                          {PAYMENT_ACCOUNT.bank}, {PAYMENT_ACCOUNT.branch} branch
+                          {PAYMENT_ACCOUNT.bank}, {PAYMENT_ACCOUNT.branch} branch ({PAYMENT_ACCOUNT.branchCode})
                         </dd>
                       </div>
                       <div className="flex justify-between gap-4">
