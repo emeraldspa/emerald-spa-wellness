@@ -150,6 +150,8 @@ export default function VisitPage() {
 
             <a
               href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-12 inline-flex items-center gap-2 rounded-full bg-emerald-600 px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-700"
             >
               {BOOKING_CTA}

@@ -434,6 +434,8 @@ export function PayFlow({
                       reservation with card payment at checkout:{' '}
                       <a
                         href={BOOKING_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="font-semibold text-emerald-700 underline underline-offset-2 hover:text-emerald-800"
                       >
                         open the booking page

@@ -127,7 +127,15 @@ export function SearchOverlay({
         e.preventDefault();
         setActive((a) => (results.length ? (a - 1 + results.length) % results.length : 0));
       } else if (e.key === 'Enter' && results[active]) {
-        window.location.href = results[active].href;
+        e.preventDefault();
+        onClose();
+        if (results[active].href.startsWith('http')) {
+          /* External destinations (the Fresha booking page) open in a new
+             tab so the site stays put. */
+          window.open(results[active].href, '_blank', 'noopener,noreferrer');
+        } else {
+          window.location.href = results[active].href;
+        }
       }
     };
     window.addEventListener('keydown', onKey);
@@ -227,6 +235,33 @@ export function SearchOverlay({
                   const isActive = i === active;
                   return (
                     <li key={`${r.type}-${r.title}-${i}`}>
+                      {r.href.startsWith('http') ? (
+                        <a
+                          href={r.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={onClose}
+                          data-idx={i}
+                          onMouseEnter={() => setActive(i)}
+                          className={`flex min-h-[56px] items-center gap-4 rounded-xl px-3 py-3 transition-colors ${
+                            isActive ? 'bg-ground/10' : 'hover:bg-ground/5'
+                          }`}
+                        >
+                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ground/10 text-emerald-300">
+                            <Icon className="h-4 w-4" aria-hidden="true" />
+                          </span>
+                          <span className="min-w-0 flex-1">
+                            <span className="block truncate text-[15px] text-ground">{r.title}</span>
+                            <span className="block truncate text-xs text-ground/55">{r.subtitle}</span>
+                          </span>
+                          <span className="shrink-0 text-[10px] font-semibold uppercase tracking-widest text-ground/40">
+                            {r.type}
+                          </span>
+                          {isActive ? (
+                            <CornerDownLeft className="h-4 w-4 shrink-0 text-gold-200" aria-hidden="true" />
+                          ) : null}
+                        </a>
+                      ) : (
                       <Link
                         href={r.href}
                         onClick={onClose}
@@ -250,6 +285,7 @@ export function SearchOverlay({
                           <CornerDownLeft className="h-4 w-4 shrink-0 text-gold-200" aria-hidden="true" />
                         ) : null}
                       </Link>
+                      )}
                     </li>
                   );
                 })}

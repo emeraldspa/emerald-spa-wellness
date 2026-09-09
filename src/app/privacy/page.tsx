@@ -37,9 +37,9 @@ export default function PrivacyPage() {
             <div>
               <h2 className="display text-2xl text-ink">Booking through Fresha</h2>
               <p className="mt-3 leading-relaxed">
-                Online booking happens on Fresha, the booking platform we use. On the
-                booking page the Fresha schedule is embedded in this site, and the other
-                booking options send you there directly; either way, once you are inside
+                Online booking happens on Fresha, the booking platform we use. Every
+                Book now button on this site opens the Fresha booking page in a new
+                tab, so our website stays open behind it; once you are inside
                 Fresha their privacy terms apply to the information you give them,
                 including your name, contact details, and appointment history. We
                 receive your booking details from Fresha so we can prepare for your visit.

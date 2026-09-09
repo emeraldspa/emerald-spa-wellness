@@ -182,6 +182,8 @@ export default function VenuesPage() {
               </Link>
               <a
                 href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-full border border-gold-300/45 px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-gold-200 transition-colors hover:border-gold-300 hover:bg-gold-300/10"
               >
                 Book a treatment

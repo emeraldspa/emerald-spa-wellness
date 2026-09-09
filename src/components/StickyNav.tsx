@@ -408,7 +408,8 @@ export function StickyNav({
               {/* Two CTAs, desktop only. The primary Book Now joins the row
                   from xl; the secondary Group booking waits for 2xl, where
                   both plus the links still leave air to spare. Both are real
-                  destinations: Book opens the live booking page in this tab. */}
+                  destinations: Book opens the live booking page in a new tab, so
+                  the site stays right where it is. */}
               <Link
                 href="/book-bulk"
                 className="hidden min-h-[44px] items-center gap-1.5 rounded-full border border-gold-300/45 px-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-gold-200 transition-colors hover:border-gold-300 hover:bg-gold-300/10 2xl:flex"
@@ -418,6 +419,8 @@ export function StickyNav({
               </Link>
               <a
                 href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hidden min-h-[44px] items-center gap-1.5 rounded-full bg-gold-300 px-5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#0A1310] transition-colors hover:bg-gold-200 xl:flex"
               >
                 {BOOKING_CTA}
@@ -518,6 +521,8 @@ export function StickyNav({
                         <a
                           href={item.href}
                           onClick={() => setDrawerOpen(false)}
+                          target={item.href.startsWith('http') ? '_blank' : undefined}
+                          rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                           className="flex min-h-[44px] items-center gap-2 rounded-lg px-2.5 text-sm text-ground transition-colors hover:text-gold-200"
                         >
                           {item.label}

@@ -83,6 +83,8 @@ export default function ServicesPage() {
         <div className="relative z-10 mx-auto -mt-8 max-w-3xl px-5 sm:px-8 md:px-12">
           <a
             href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-gold-300 px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-[#0A1310] shadow-[0_12px_30px_-10px_rgba(7,33,26,0.5)] transition-colors hover:bg-gold-200"
           >
             {BOOKING_CTA}
@@ -196,6 +198,8 @@ export default function ServicesPage() {
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
                     href={BOOKING_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-full bg-emerald-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-800"
                   >
                     Book {cat.name.toLowerCase()}

@@ -120,6 +120,8 @@ export function Hero() {
 
             <a
               href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="hero-up flex min-h-[44px] items-center gap-1 whitespace-nowrap font-semibold text-emerald-300 transition-opacity hover:opacity-75"
               style={{ animationDelay: '0.72s', fontWeight: 600 }}
             >

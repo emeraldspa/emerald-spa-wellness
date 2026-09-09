@@ -72,6 +72,8 @@ export function FooterFull() {
             </Link>
             <a
               href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-3 inline-flex items-center gap-2 rounded-full bg-ground px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-emerald-900 transition-colors hover:bg-gold-200"
             >
               {BOOKING_CTA}

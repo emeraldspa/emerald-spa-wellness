@@ -125,6 +125,8 @@ export default function PayPage() {
                   Yes. Single treatments can be booked and paid on the{' '}
                   <a
                     href={BOOKING_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="font-semibold text-emerald-700 underline underline-offset-2 hover:text-emerald-800"
                   >
                     live booking page

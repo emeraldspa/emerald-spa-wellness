@@ -129,6 +129,8 @@ export default async function PromotionsPage() {
                         </a>
                         <a
                           href={BOOKING_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-ink/20 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-widest text-ink transition-colors hover:border-emerald-600 hover:text-emerald-700"
                         >
                           Book now
@@ -146,6 +148,8 @@ export default async function PromotionsPage() {
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
                 href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-emerald-600 px-8 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-emerald-700"
               >
                 {BOOKING_CTA}
