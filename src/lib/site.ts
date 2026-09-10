@@ -97,14 +97,15 @@ export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 export const BOOKING_CTA = 'Book Now';
 
 /**
- * Direct booking URL (client, 8 Sep 2025).
+ * Direct booking URL (client, 8 Sep 2025; new-tab rule confirmed 9 Sep 2026).
  *
  * The embedded calendar is gone: the provider's frame protections made an
  * in-page embed unreliable, and the client asked for a button instead. Every
- * "Book Now" on the site opens this URL in the SAME tab, so the booking page
- * simply takes over from ours, and the guest comes back with the back button.
- * No new tabs, no dead frames. Group bookings never go here: they run on
- * WhatsApp (see WHATSAPP_PATH and the /book-bulk page).
+ * "Book Now" on the site opens this URL in a NEW tab (target="_blank",
+ * rel="noopener noreferrer"), so the Fresha checkout never disturbs the page
+ * the guest was reading; our site stays exactly where it was. No dead frames.
+ * Group bookings never go here: they run on WhatsApp (see WHATSAPP_PATH and
+ * the /book-bulk page).
  */
 export const BOOKING_URL =
   'https://www.fresha.com/book-now/emerald-spa-wellness-centre-qnp9ba1m/all-offer?share=true&pId=1477270';
