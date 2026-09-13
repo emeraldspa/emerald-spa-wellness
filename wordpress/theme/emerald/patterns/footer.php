@@ -14,6 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
+<!-- wp:emerald/popup /-->
 <!-- wp:group {"tagName":"footer","className":"em-footer","layout":{"type":"constrained"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|xl","bottom":"var:preset|spacing|l"}}}} -->
 <footer class="wp-block-group em-footer">
 	<!-- wp:group {"className":"em-shell em-footer__grid","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
