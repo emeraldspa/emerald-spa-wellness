@@ -127,20 +127,29 @@ facade, muted start, 48px mobile-visible mute target.
 | Fields | Advanced Custom Fields (free) | Price, duration, popup flag; already populated |
 | SEO | Rank Math SEO (free) | Meta, sitemap, robots, canonical, OG/Twitter, LocalBusiness JSON-LD, redirects |
 | Caching | LiteSpeed Cache | Origin page cache (Hostinger = LiteSpeed), minify, WebP, lazy load |
-| Security | Wordfence (free) | Login throttle, scan, request rate limiting |
-| Hardening | Emerald Admin Suite (mu-plugin) | Existing robots rules, XML-RPC off, REST enumeration off, login branding |
+| Admin config | Admin Site Enhancements (ASE, free) | Admin dashboard and login-adjacent configuration (client decision, 14 Sep 2026: ASE instead of Wordfence) |
+| Hardening + login security | Emerald Admin Suite (mu-plugin) | Premium login, login throttling (5 attempts / 15 min), XML-RPC off, REST enumeration off, security headers, bot discouragement, dashboard polish, editor scope |
 | Backups | Hostinger snapshots + UpdraftPlus (free) | Daily restore points; manual backup before cutover |
 | Redirects | Redirection (free) | 301 map incl. every /journal path |
 | Images | Existing WebP pipeline + Converter for Media (free) | WebP uploads with fallbacks |
 | Mail | WP Mail SMTP (free) or Hostinger mail | Admin notices only; no forms by design |
+| Content types | Emerald Core (free, bundled) | promotion, treatment + category, testimonial, staff - registers a type only when absent |
+| Back office | Emerald Back Office (free, bundled) | Quick actions, staff guidebook door, back-office splash (self-retires on the public host) |
 
 Policy: free only, no page builders, nothing outside this table without sign-off.
+Wordfence is deliberately excluded (client decision, 14 Sep 2026). Its two useful
+jobs are covered without it: throttling and hardening live in the Emerald Admin
+Suite mu-plugin, and dashboard configuration lives in ASE.
 
 ## 9. SEO Continuity
 
 - **URL map:** permalinks mirror current routes (/, /treatments, /specials, /team, /contact);
   every differing path (incl. all /journal) gets a 301. Full URL inventory crawled before
-  cutover; redirect table proven on staging.
+  cutover; redirect table proven on staging. Route decisions: every public route keeps its
+  own template (front-page, page-services, page-specials, page-team, page-visit, page-gallery,
+  page-venues, page-vouchers, page-pay, page-book-bulk, page-whatsapp, page-sitemap,
+  page-privacy, page-terms via the generic page template); /brand is a low-value internal
+  page and is 301'd to the homepage in the Redirection table.
 - **Structured data:** LocalBusiness JSON-LD (address, geo, phone, hours, sameAs), ported OG
   images, Rich Results test on staging before the switch.
 - **Sitemap/robots:** Rank Math sitemap + robots; Emerald Admin Suite bot blocks replicated;
