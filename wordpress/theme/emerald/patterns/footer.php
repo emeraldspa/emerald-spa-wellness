@@ -70,6 +70,8 @@ defined( 'ABSPATH' ) || exit;
 			<a href="<?php echo esc_url( home_url( '/terms/' ) ); ?>"><?php esc_html_e( 'Terms', 'emerald' ); ?></a>
 			<span aria-hidden="true">&middot;</span>
 			<span class="em-footer__credit"><?php esc_html_e( 'Ambient track: Healing by Kevin MacLeod, incompetech.com, CC BY 4.0', 'emerald' ); ?></span>
+			<span aria-hidden="true">&middot;</span>
+			<span class="em-footer__madeby"><?php esc_html_e( 'Made by ', 'emerald' ); ?><a href="https://studio.tangison.com" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Tangison Studio', 'emerald' ); ?></a></span>
 		</p>
 		<!-- /wp:html -->
 	</div>
