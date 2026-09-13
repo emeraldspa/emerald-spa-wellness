@@ -17,6 +17,7 @@ defined( 'ABSPATH' ) || exit;
 define( 'EMERALD_VERSION', '1.0.0' );
 define( 'EMERALD_DIR', get_template_directory() );
 define( 'EMERALD_URI', get_template_directory_uri() );
+define( 'EMERALD_FRESHA_URL', 'https://www.fresha.com/book-now/emerald-spa-wellness-centre-qnp9ba1m/all-offer?share=true&pId=1477270' );
 
 /* -------------------------------------------------------------------------
  * 1. THEME SETUP
@@ -27,41 +28,41 @@ add_action( 'after_setup_theme', 'emerald_setup' );
  * Register theme supports.
  */
 function emerald_setup() {
-	load_theme_textdomain( 'emerald', EMERALD_DIR . '/languages' );
+        load_theme_textdomain( 'emerald', EMERALD_DIR . '/languages' );
 
-	add_theme_support( 'title-tag' );
-	add_theme_support( 'automatic-feed-links' );
-	add_theme_support( 'post-thumbnails' );
-	add_theme_support( 'align-wide' );
-	add_theme_support( 'responsive-embeds' );
-	add_theme_support( 'wp-block-styles' );
-	add_theme_support( 'editor-styles' );
-	add_editor_style( 'assets/css/main.css' );
+        add_theme_support( 'title-tag' );
+        add_theme_support( 'automatic-feed-links' );
+        add_theme_support( 'post-thumbnails' );
+        add_theme_support( 'align-wide' );
+        add_theme_support( 'responsive-embeds' );
+        add_theme_support( 'wp-block-styles' );
+        add_theme_support( 'editor-styles' );
+        add_editor_style( 'assets/css/main.css' );
 
-	add_theme_support(
-		'html5',
-		array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script', 'navigation-widgets' )
-	);
+        add_theme_support(
+                'html5',
+                array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script', 'navigation-widgets' )
+        );
 
-	add_theme_support(
-		'custom-logo',
-		array(
-			'height'      => 204,
-			'width'       => 168,
-			'flex-height' => true,
-			'flex-width'  => true,
-		)
-	);
+        add_theme_support(
+                'custom-logo',
+                array(
+                        'height'      => 204,
+                        'width'       => 168,
+                        'flex-height' => true,
+                        'flex-width'  => true,
+                )
+        );
 
-	add_image_size( 'emerald-card', 640, 480, true );
-	add_image_size( 'emerald-wide', 1600, 900, true );
+        add_image_size( 'emerald-card', 640, 480, true );
+        add_image_size( 'emerald-wide', 1600, 900, true );
 
-	register_nav_menus(
-		array(
-			'primary' => __( 'Primary Menu', 'emerald' ),
-			'footer'  => __( 'Footer Menu', 'emerald' ),
-		)
-	);
+        register_nav_menus(
+                array(
+                        'primary' => __( 'Primary Menu', 'emerald' ),
+                        'footer'  => __( 'Footer Menu', 'emerald' ),
+                )
+        );
 }
 
 add_action( 'after_setup_theme', 'emerald_content_width', 0 );
@@ -69,7 +70,7 @@ add_action( 'after_setup_theme', 'emerald_content_width', 0 );
  * Content width.
  */
 function emerald_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'emerald_content_width', 1200 );
+        $GLOBALS['content_width'] = apply_filters( 'emerald_content_width', 1200 );
 }
 
 /* -------------------------------------------------------------------------
@@ -81,25 +82,25 @@ add_action( 'wp_enqueue_scripts', 'emerald_enqueue_assets' );
  * Front-end assets. One stylesheet, one deferred script, preloaded fonts.
  */
 function emerald_enqueue_assets() {
-	wp_enqueue_style( 'emerald-main', EMERALD_URI . '/assets/css/main.css', array(), EMERALD_VERSION );
-	wp_style_add_data( 'emerald-main', 'rtl', 'replace' );
+        wp_enqueue_style( 'emerald-main', EMERALD_URI . '/assets/css/main.css', array(), EMERALD_VERSION );
+        wp_style_add_data( 'emerald-main', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'emerald-main', EMERALD_URI . '/assets/js/main.js', array(), EMERALD_VERSION, true );
-	wp_script_add_data( 'emerald-main', 'defer', true );
+        wp_enqueue_script( 'emerald-main', EMERALD_URI . '/assets/js/main.js', array(), EMERALD_VERSION, true );
+        wp_script_add_data( 'emerald-main', 'defer', true );
 
-	wp_localize_script(
-		'emerald-main',
-		'EmeraldData',
-		array(
-			'youtubeId'   => 'Q5u2Ddbvocc',
-			'reduced'     => (bool) apply_filters( 'emerald_reduced_motion_default', false ),
-			'bookingUrl'  => 'https://www.fresha.com/book-now/emerald-spa-wellness-centre-qnp9ba1m/all-offer?share=true&pId=1477270',
-		)
-	);
+        wp_localize_script(
+                'emerald-main',
+                'EmeraldData',
+                array(
+                        'youtubeId'   => 'Q5u2Ddbvocc',
+                        'reduced'     => (bool) apply_filters( 'emerald_reduced_motion_default', false ),
+                        'bookingUrl'  => EMERALD_FRESHA_URL,
+                )
+        );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+        if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+                wp_enqueue_script( 'comment-reply' );
+        }
 }
 
 add_action( 'wp_head', 'emerald_preload_assets', 1 );
@@ -107,17 +108,17 @@ add_action( 'wp_head', 'emerald_preload_assets', 1 );
  * Preload the two fonts that paint the hero, before CSS arrives.
  */
 function emerald_preload_assets() {
-	$fonts = array(
-		EMERALD_URI . '/assets/fonts/radley-400.woff2'  => 'font/woff2',
-		EMERALD_URI . '/assets/fonts/poppins-400.woff2' => 'font/woff2',
-	);
-	foreach ( $fonts as $url => $type ) {
-		printf(
-			'<link rel="preload" href="%s" as="font" type="%s" crossorigin>' . "\n",
-			esc_url( $url ),
-			esc_attr( $type )
-		);
-	}
+        $fonts = array(
+                EMERALD_URI . '/assets/fonts/radley-400.woff2'  => 'font/woff2',
+                EMERALD_URI . '/assets/fonts/poppins-400.woff2' => 'font/woff2',
+        );
+        foreach ( $fonts as $url => $type ) {
+                printf(
+                        '<link rel="preload" href="%s" as="font" type="%s" crossorigin>' . "\n",
+                        esc_url( $url ),
+                        esc_attr( $type )
+                );
+        }
 }
 
 add_filter( 'body_class', 'emerald_body_class' );
@@ -127,13 +128,13 @@ add_filter( 'body_class', 'emerald_body_class' );
  * @param array $classes Body classes.
  */
 function emerald_body_class( $classes ) {
-	if ( is_front_page() ) {
-		$classes[] = 'emerald-home';
-	}
-	if ( is_page( array( 'services', 'specials', 'venues' ) ) ) {
-		$classes[] = 'emerald-menu-page';
-	}
-	return $classes;
+        if ( is_front_page() ) {
+                $classes[] = 'emerald-home';
+        }
+        if ( is_page( array( 'services', 'specials', 'venues' ) ) ) {
+                $classes[] = 'emerald-menu-page';
+        }
+        return $classes;
 }
 
 /* -------------------------------------------------------------------------
@@ -150,15 +151,15 @@ function emerald_body_class( $classes ) {
  * @return mixed
  */
 function emerald_content( $key ) {
-	static $data = null;
-	if ( null === $data ) {
-		$file = EMERALD_DIR . '/assets/data/emerald-content.json';
-		$data = file_exists( $file ) ? json_decode( (string) file_get_contents( $file ), true ) : array();
-		if ( ! is_array( $data ) ) {
-			$data = array();
-		}
-	}
-	return isset( $data[ $key ] ) ? $data[ $key ] : array();
+        static $data = null;
+        if ( null === $data ) {
+                $file = EMERALD_DIR . '/assets/data/emerald-content.json';
+                $data = file_exists( $file ) ? json_decode( (string) file_get_contents( $file ), true ) : array();
+                if ( ! is_array( $data ) ) {
+                        $data = array();
+                }
+        }
+        return isset( $data[ $key ] ) ? $data[ $key ] : array();
 }
 
 /**
@@ -172,60 +173,66 @@ function emerald_content( $key ) {
  * @return array[] Each item: id, slug, title, excerpt, permalink, image, image_alt, price_nad, duration, show_as_popup.
  */
 function emerald_get_active_promotions() {
-	$query = new WP_Query(
-		array(
-			'post_type'           => 'promotion',
-			'post_status'         => 'publish',
-			'posts_per_page'      => 20,
-			'orderby'             => 'date',
-			'order'               => 'DESC',
-			'no_found_rows'       => true,
-			'ignore_sticky_posts' => true,
-			'update_post_term_cache' => false,
-		)
-	);
+        static $cache = null;
+        if ( null !== $cache ) {
+                return $cache;
+        }
 
-	$today = gmdate( 'Y-m-d' );
-	$items = array();
+        $query = new WP_Query(
+                array(
+                        'post_type'           => 'promotion',
+                        'post_status'         => 'publish',
+                        'posts_per_page'      => 20,
+                        'orderby'             => 'date',
+                        'order'               => 'DESC',
+                        'no_found_rows'       => true,
+                        'ignore_sticky_posts' => true,
+                        'update_post_term_cache' => false,
+                )
+        );
 
-	if ( $query->have_posts() ) {
-		foreach ( $query->posts as $post ) {
-			if ( 0 === strpos( (string) $post->post_name, 'demo-' ) ) {
-				continue;
-			}
+        $today = gmdate( 'Y-m-d' );
+        $items = array();
 
-			$starts_on = (string) get_post_meta( $post->ID, 'starts_on', true );
-			$ends_on   = (string) get_post_meta( $post->ID, 'valid_until', true );
-			if ( '' === $ends_on ) {
-				$ends_on = (string) get_post_meta( $post->ID, 'ends_on', true );
-			}
-			if ( '' !== $starts_on && $starts_on > $today ) {
-				continue;
-			}
-			if ( '' !== $ends_on && $ends_on < $today ) {
-				continue;
-			}
+        if ( $query->have_posts() ) {
+                foreach ( $query->posts as $post ) {
+                        if ( 0 === strpos( (string) $post->post_name, 'demo-' ) ) {
+                                continue;
+                        }
 
-			$price = get_post_meta( $post->ID, 'price_nad', true );
-			$image = get_the_post_thumbnail_url( $post, 'emerald-card' );
+                        $starts_on = (string) get_post_meta( $post->ID, 'starts_on', true );
+                        $ends_on   = (string) get_post_meta( $post->ID, 'valid_until', true );
+                        if ( '' === $ends_on ) {
+                                $ends_on = (string) get_post_meta( $post->ID, 'ends_on', true );
+                        }
+                        if ( '' !== $starts_on && $starts_on > $today ) {
+                                continue;
+                        }
+                        if ( '' !== $ends_on && $ends_on < $today ) {
+                                continue;
+                        }
 
-			$items[] = array(
-				'id'            => $post->ID,
-				'slug'          => $post->post_name,
-				'title'         => get_the_title( $post ),
-				'excerpt'       => wp_strip_all_tags( (string) $post->post_excerpt ),
-				'permalink'     => get_permalink( $post ),
-				'image'         => $image ? $image : '',
-				'image_alt'     => get_post_meta( get_post_thumbnail_id( $post ), '_wp_attachment_image_alt', true ),
-				'price_nad'     => ( '' !== $price && is_numeric( $price ) ) ? (int) $price : null,
-				'duration'      => (string) get_post_meta( $post->ID, 'duration', true ),
-				'show_as_popup' => (bool) get_post_meta( $post->ID, 'show_as_popup', true ),
-			);
-		}
-	}
-	wp_reset_postdata();
+                        $price = get_post_meta( $post->ID, 'price_nad', true );
+                        $image = get_the_post_thumbnail_url( $post, 'emerald-card' );
 
-	return $items;
+                        $items[] = array(
+                                'id'            => $post->ID,
+                                'slug'          => $post->post_name,
+                                'title'         => get_the_title( $post ),
+                                'excerpt'       => wp_strip_all_tags( (string) $post->post_excerpt ),
+                                'permalink'     => get_permalink( $post ),
+                                'image'         => $image ? $image : '',
+                                'image_alt'     => get_post_meta( get_post_thumbnail_id( $post ), '_wp_attachment_image_alt', true ),
+                                'price_nad'     => ( '' !== $price && is_numeric( $price ) ) ? (int) $price : null,
+                                'duration'      => (string) get_post_meta( $post->ID, 'duration', true ),
+                                'show_as_popup' => (bool) get_post_meta( $post->ID, 'show_as_popup', true ),
+                        );
+                }
+        }
+        wp_reset_postdata();
+
+        $cache = $items;
+        return $items;
 }
 
 /**
@@ -234,12 +241,12 @@ function emerald_get_active_promotions() {
  * @return array|null
  */
 function emerald_get_popup_promotion() {
-	foreach ( emerald_get_active_promotions() as $item ) {
-		if ( ! empty( $item['show_as_popup'] ) ) {
-			return $item;
-		}
-	}
-	return null;
+        foreach ( emerald_get_active_promotions() as $item ) {
+                if ( ! empty( $item['show_as_popup'] ) ) {
+                        return $item;
+                }
+        }
+        return null;
 }
 
 /* -------------------------------------------------------------------------

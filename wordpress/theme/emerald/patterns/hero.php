@@ -18,8 +18,8 @@ defined( 'ABSPATH' ) || exit;
 <!-- wp:group {"tagName":"section","className":"em-hero","align":"full","layout":{"type":"constrained"},"style":{"spacing":{"padding":{"top":"0","bottom":"0"}}}} -->
 <section class="wp-block-group em-hero">
         <!-- wp:html -->
-        <div class="em-hero__media" data-hero data-poster="<?php echo esc_url( EMERALD_URI . '/assets/img/hero-poster-1600.jpg' ); ?>" data-video-desktop="<?php echo esc_url( EMERALD_URI . '/assets/video/hero-desktop.webm' ); ?>" data-video-mobile="<?php echo esc_url( EMERALD_URI . '/assets/video/hero-mobile.webm' ); ?>">
-                <img class="em-hero__poster" src="<?php echo esc_url( EMERALD_URI . '/assets/img/hero-poster-1600.jpg' ); ?>" alt="<?php esc_attr_e( 'The treatment suite at Emerald Spa and Wellness Centre', 'emerald' ); ?>" width="1600" height="900" fetchpriority="high" decoding="async" />
+        <div class="em-hero__media" data-hero data-poster="<?php echo esc_url( EMERALD_URI . '/assets/img/hero-poster-1600.webp' ); ?>" data-video-desktop="<?php echo esc_url( EMERALD_URI . '/assets/video/hero-desktop.webm' ); ?>" data-video-mobile="<?php echo esc_url( EMERALD_URI . '/assets/video/hero-mobile.webm' ); ?>">
+                <img class="em-hero__poster" src="<?php echo esc_url( EMERALD_URI . '/assets/img/hero-poster-1600.webp' ); ?>" srcset="<?php echo esc_url( EMERALD_URI . '/assets/img/hero-poster-800.webp' ); ?> 800w, <?php echo esc_url( EMERALD_URI . '/assets/img/hero-poster-1600.webp' ); ?> 1600w" sizes="100vw" alt="<?php esc_attr_e( 'The treatment suite at Emerald Spa and Wellness Centre', 'emerald' ); ?>" width="1600" height="900" fetchpriority="high" decoding="async" />
                 <span class="em-hero__veil" aria-hidden="true"></span>
         </div>
         <!-- /wp:html -->
@@ -40,7 +40,7 @@ defined( 'ABSPATH' ) || exit;
 
                 <!-- wp:html -->
                 <div class="em-hero__actions em-reveal">
-                        <a class="em-btn em-btn--solid em-btn--lg" href="https://www.fresha.com/book-now/emerald-spa-wellness-centre-qnp9ba1m/all-offer?share=true&amp;pId=1477270" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Book Now', 'emerald' ); ?></a>
+                        <a class="em-btn em-btn--solid em-btn--lg" href="<?php echo esc_url( EMERALD_FRESHA_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Book Now', 'emerald' ); ?></a>
                         <a class="em-btn em-btn--ghost em-btn--lg" href="<?php echo esc_url( emerald_whatsapp_url( 'Hi Emerald Spa! I would like to plan a visit.' ) ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Ask on WhatsApp', 'emerald' ); ?></a>
                 </div>
                 <!-- /wp:html -->

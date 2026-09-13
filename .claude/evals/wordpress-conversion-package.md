@@ -13,7 +13,7 @@ runtime (which fatals on any syntax error) as the authoritative syntax grader.
 
 - [ ] CAP-1 theme-json-valid: `wordpress/theme/emerald/theme.json` parses; `version` is 3; palette slugs ink, ground, emerald, emerald-deep, rose-gold, cream, muted, hairline all present; fontFace entries reference radley + poppins files that exist on disk.
 - [ ] CAP-2 php-syntax: every `.php` file under `wordpress/` passes `php -l` if php exists, else passes bracket/tag balance check, else must be covered by a clean blueprint run (BP-1).
-- [ ] CAP-3 fresha-anchor: the exact Fresha booking URL `https://www.fresha.com/book-now/emerald-spa-wellness-centre-qnp9ba1m/all-offer?share=true&pId=1477270` appears in the theme with `target="_blank"` and `rel="noopener noreferrer"` on the Book Now anchors.
+- [ ] CAP-3 fresha-anchor: `EMERALD_FRESHA_URL` is defined exactly once in functions.php with the exact Fresha booking URL `https://www.fresha.com/book-now/emerald-spa-wellness-centre-qnp9ba1m/all-offer?share=true&pId=1477270`, and the Book Now anchors (header, hero, home-sections CTA, specials cards, popup, treatment menu) emit it through `esc_url()` with `target="_blank"` and `rel="noopener noreferrer"`.
 - [ ] CAP-4 banking-parity: the footer contains Emerald Spa Gold Business, FNB, 64287404716, Maerua Mall, 282273, full-name reference note, wallet 081 607 7143, proof-of-payment via WhatsApp.
 - [ ] CAP-5 youtube-music: track id `Q5u2Ddbvocc` present; music JS starts muted; mute control is at least 48x48 px on mobile (CSS check).
 - [ ] CAP-6 specials-dropdown: a server-rendered specials dropdown (querying the `promotion` post type) is registered by the theme and referenced in the header part; JS supports click + keyboard (Enter/Escape) on the dropdown.
@@ -53,5 +53,11 @@ runtime (which fatals on any syntax error) as the authoritative syntax grader.
 (append run history below)
 
 - 14 Sep 2026 run: 19/24 PASS (10/14 CAP, 3/4 REG, 6/6 BP). Report: wordpress-conversion-package-report.md
+
+- 14 Sep 2026 run: 24/24 PASS (14/14 CAP, 4/4 REG, 6/6 BP). Report: wordpress-conversion-package-report.md
+
+- 14 Sep 2026 run: 23/24 PASS (13/14 CAP, 4/4 REG, 6/6 BP). Report: wordpress-conversion-package-report.md
+
+- 14 Sep 2026 run: 23/24 PASS (13/14 CAP, 4/4 REG, 6/6 BP). Report: wordpress-conversion-package-report.md
 
 - 14 Sep 2026 run: 24/24 PASS (14/14 CAP, 4/4 REG, 6/6 BP). Report: wordpress-conversion-package-report.md

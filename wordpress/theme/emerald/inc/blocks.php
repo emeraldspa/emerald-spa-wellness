@@ -98,7 +98,7 @@ function emerald_promo_card( $item ) {
                                 <p class="em-card__text"><?php echo esc_html( wp_trim_words( $item['excerpt'], 28 ) ); ?></p>
                         <?php endif; ?>
                         <div class="em-card__actions">
-                                <a class="em-btn em-btn--solid" href="<?php echo esc_url( 'https://www.fresha.com/book-now/emerald-spa-wellness-centre-qnp9ba1m/all-offer?share=true&pId=1477270' ); ?>" target="_blank" rel="noopener noreferrer">Book Now</a>
+                                <a class="em-btn em-btn--solid" href="<?php echo esc_url( EMERALD_FRESHA_URL ); ?>" target="_blank" rel="noopener noreferrer">Book Now</a>
                                 <a class="em-btn em-btn--ghost em-wa-enquire"
                                         href="<?php echo esc_url( emerald_whatsapp_url( 'Hi Emerald Spa! I am interested in the special: ' . $item['title'] . '.' ) ); ?>"
                                         target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a>
@@ -146,14 +146,14 @@ function emerald_render_specials_nav() {
         ob_start();
         ?>
         <div class="em-nav-item em-dropdown" data-dropdown>
-                <button type="button" class="em-nav-link em-dropdown__toggle" aria-expanded="false" aria-haspopup="true">
+                <button type="button" class="em-nav-link em-dropdown__toggle" aria-expanded="false" aria-controls="em-specials-panel">
                         <?php esc_html_e( 'Specials', 'emerald' ); ?>
                         <svg class="em-dropdown__caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true" focusable="false"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
                 </button>
-                <div class="em-dropdown__panel" role="menu" hidden>
+                <div class="em-dropdown__panel" id="em-specials-panel" hidden>
                         <?php if ( ! empty( $items ) ) : ?>
                                 <?php foreach ( $items as $item ) : ?>
-                                        <a role="menuitem" href="<?php echo esc_url( $anchor . $item['slug'] ); ?>">
+                                        <a href="<?php echo esc_url( $anchor . $item['slug'] ); ?>">
                                                 <span class="em-dropdown__label"><?php echo esc_html( $item['title'] ); ?></span>
                                                 <?php if ( null !== $item['price_nad'] ) : ?>
                                                         <span class="em-dropdown__price"><?php echo esc_html( emerald_format_nad( (int) $item['price_nad'] ) ); ?></span>
@@ -161,7 +161,7 @@ function emerald_render_specials_nav() {
                                         </a>
                                 <?php endforeach; ?>
                         <?php endif; ?>
-                        <a role="menuitem" href="<?php echo esc_url( home_url( '/specials/' ) ); ?>" class="em-dropdown__all">
+                        <a href="<?php echo esc_url( home_url( '/specials/' ) ); ?>" class="em-dropdown__all">
                                 <?php esc_html_e( 'See all specials', 'emerald' ); ?>
                         </a>
                 </div>
@@ -229,7 +229,7 @@ function emerald_render_popup() {
                                 <p class="em-popup__text"><?php echo esc_html( wp_trim_words( $promo['excerpt'], 36 ) ); ?></p>
                         <?php endif; ?>
                         <div class="em-popup__actions">
-                                <a class="em-btn em-btn--solid" href="<?php echo esc_url( 'https://www.fresha.com/book-now/emerald-spa-wellness-centre-qnp9ba1m/all-offer?share=true&pId=1477270' ); ?>" target="_blank" rel="noopener noreferrer">Book Now</a>
+                                <a class="em-btn em-btn--solid" href="<?php echo esc_url( EMERALD_FRESHA_URL ); ?>" target="_blank" rel="noopener noreferrer">Book Now</a>
                                 <a class="em-btn em-btn--ghost" href="<?php echo esc_url( $promo['permalink'] ); ?>"><?php esc_html_e( 'View details', 'emerald' ); ?></a>
                         </div>
                 </div>
@@ -334,7 +334,7 @@ function emerald_render_treatment_menu( $attributes ) {
                 }
                 echo '</ul>';
         }
-        echo '<div class="em-menu__cta"><a class="em-btn em-btn--solid" href="https://www.fresha.com/book-now/emerald-spa-wellness-centre-qnp9ba1m/all-offer?share=true&pId=1477270" target="_blank" rel="noopener noreferrer">Book Now</a></div>';
+        echo '<div class="em-menu__cta"><a class="em-btn em-btn--solid" href="' . esc_url( EMERALD_FRESHA_URL ) . '" target="_blank" rel="noopener noreferrer">Book Now</a></div>';
         echo '</div>';
         return trim( ob_get_clean() );
 }
@@ -506,7 +506,7 @@ function emerald_render_reviews( $attributes ) {
  */
 function emerald_render_hours() {
         $hours = emerald_content( 'hours' );
-        $today = gmdate( 'l' );
+        $today = wp_date( 'l' );
         ob_start();
         echo '<ul class="em-hours">';
         foreach ( $hours as $row ) {

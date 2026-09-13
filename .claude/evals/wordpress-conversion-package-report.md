@@ -4,7 +4,7 @@ EVAL REPORT: wordpress-conversion-package
 Capability Evals:  14/14 passed
   CAP-1: PASS  theme.json valid, v3, palette slugs, fontFace refs
   CAP-2: PASS  PHP 8.1 parse gate over 13 files (glayzzle/php-parser)  [SUMMARY 13/13 parse clean]
-  CAP-3: PASS  Fresha anchor exact URL + target/rel in header and hero
+  CAP-3: PASS  Fresha anchor exact URL via EMERALD_FRESHA_URL constant + target/rel  [constant defined once; 4 anchor sites use it]
   CAP-4: PASS  banking block parity (all seven details + WhatsApp proof)
   CAP-5: PASS  YouTube Q5u2Ddbvocc facade, muted start, 48px mute target
   CAP-6: PASS  server-rendered specials dropdown + keyboard/click JS + header wiring
