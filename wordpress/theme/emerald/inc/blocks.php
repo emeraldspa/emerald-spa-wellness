@@ -28,9 +28,6 @@ function emerald_register_blocks() {
                 'emerald/specials-cards' => array(
                         'render_callback' => 'emerald_render_specials_cards',
                 ),
-                'emerald/popup'          => array(
-                        'render_callback' => 'emerald_render_popup',
-                ),
                 'emerald/ambience'       => array(
                         'render_callback' => 'emerald_render_ambience',
                 ),
@@ -192,54 +189,7 @@ function emerald_render_specials_cards() {
 }
 
 /* -------------------------------------------------------------------------
- * 3. Promo popup
- * ---------------------------------------------------------------------- */
-
-/**
- * The interrupting popup for a promotion flagged show_as_popup. Markup only;
- * main.js handles the focus trap, Escape and the once-per-day dismissal.
- */
-function emerald_render_popup() {
-        $promo = emerald_get_popup_promotion();
-        if ( ! $promo ) {
-                return '';
-        }
-        ob_start();
-        ?>
-        <div class="em-popup" id="emerald-popup" role="dialog" aria-modal="true" aria-labelledby="emerald-popup-title" hidden data-popup>
-                <div class="em-popup__backdrop" data-popup-close></div>
-                <div class="em-popup__card" role="document">
-                        <button type="button" class="em-popup__close" data-popup-close aria-label="<?php esc_attr_e( 'Close special offer', 'emerald' ); ?>">&times;</button>
-                        <?php if ( ! empty( $promo['image'] ) ) : ?>
-                                <img class="em-popup__image" src="<?php echo esc_url( $promo['image'] ); ?>" alt="<?php echo esc_attr( $promo['image_alt'] ); ?>" width="640" height="480" decoding="async" />
-                        <?php endif; ?>
-                        <p class="em-eyebrow"><?php esc_html_e( 'Current special', 'emerald' ); ?></p>
-                        <h2 id="emerald-popup-title" class="em-popup__title"><?php echo esc_html( $promo['title'] ); ?></h2>
-                        <?php if ( '' !== (string) $promo['duration'] || null !== $promo['price_nad'] ) : ?>
-                                <p class="em-popup__meta">
-                                        <?php if ( '' !== (string) $promo['duration'] ) : ?>
-                                                <span><?php echo esc_html( $promo['duration'] ); ?></span>
-                                        <?php endif; ?>
-                                        <?php if ( null !== $promo['price_nad'] ) : ?>
-                                                <strong><?php echo esc_html( emerald_format_nad( (int) $promo['price_nad'] ) ); ?></strong>
-                                        <?php endif; ?>
-                                </p>
-                        <?php endif; ?>
-                        <?php if ( '' !== (string) $promo['excerpt'] ) : ?>
-                                <p class="em-popup__text"><?php echo esc_html( wp_trim_words( $promo['excerpt'], 36 ) ); ?></p>
-                        <?php endif; ?>
-                        <div class="em-popup__actions">
-                                <a class="em-btn em-btn--solid" href="<?php echo esc_url( EMERALD_FRESHA_URL ); ?>" target="_blank" rel="noopener noreferrer">Book Now</a>
-                                <a class="em-btn em-btn--ghost" href="<?php echo esc_url( $promo['permalink'] ); ?>"><?php esc_html_e( 'View details', 'emerald' ); ?></a>
-                        </div>
-                </div>
-        </div>
-        <?php
-        return trim( ob_get_clean() );
-}
-
-/* -------------------------------------------------------------------------
- * 4. Ambience player
+ * 3. Ambience player
  * ---------------------------------------------------------------------- */
 
 /**
@@ -540,11 +490,11 @@ function emerald_render_banking() {
                         <div><dt><?php esc_html_e( 'Bank', 'emerald' ); ?></dt><dd><?php esc_html_e( 'FNB (First National Bank)', 'emerald' ); ?></dd></div>
                         <div><dt><?php esc_html_e( 'Account number', 'emerald' ); ?></dt><dd><?php esc_html_e( '64287404716', 'emerald' ); ?></dd></div>
                         <div><dt><?php esc_html_e( 'Branch', 'emerald' ); ?></dt><dd><?php esc_html_e( 'Maerua Mall, 282273', 'emerald' ); ?></dd></div>
-                        <div><dt><?php esc_html_e( 'Reference', 'emerald' ); ?></dt><dd><?php esc_html_e( 'Please use your full name as the payment reference.', 'emerald' ); ?></dd></div>
+                        <div><dt><?php esc_html_e( 'Reference', 'emerald' ); ?></dt><dd><?php esc_html_e( 'Your full name', 'emerald' ); ?></dd></div>
                         <div><dt><?php esc_html_e( 'Mobile wallet', 'emerald' ); ?></dt><dd><?php esc_html_e( '081 607 7143', 'emerald' ); ?></dd></div>
                 </dl>
                 <p class="em-bank__note">
-                        <?php esc_html_e( 'Send your proof of payment to us on WhatsApp', 'emerald' ); ?>
+                        <?php esc_html_e( 'Use your full name as the payment reference, then send the proof of payment', 'emerald' ); ?>
                         <a href="<?php echo esc_url( $wa ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'via WhatsApp', 'emerald' ); ?></a>.
                 </p>
         </div>

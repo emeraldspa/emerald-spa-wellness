@@ -831,64 +831,6 @@ em-shell { display: contents; }
         text-align: center;
 }
 
-/* 15. POPUP ------------------------------------------------------------------------------ */
-
-.em-popup {
-        position: fixed;
-        inset: 0;
-        z-index: 200;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 1.25rem;
-}
-.em-popup__backdrop {
-        position: absolute;
-        inset: 0;
-        background: rgba(7, 33, 26, 0.62);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-}
-.em-popup__card {
-        position: relative;
-        width: 100%;
-        max-width: 26rem;
-        max-height: calc(100vh - 2.5rem);
-        overflow: auto;
-        background: var(--em-paper);
-        border-radius: var(--em-radius-lg);
-        box-shadow: 0 40px 90px -30px rgba(7, 33, 26, 0.6);
-        padding: 1.75rem;
-        text-align: center;
-}
-.em-popup__image {
-        width: 100%;
-        height: auto;
-        border-radius: var(--em-radius);
-        margin-bottom: 1rem;
-}
-.em-popup__title { font-size: 1.7rem; margin: 0 0 0.5rem; }
-.em-popup__meta { display: flex; justify-content: center; gap: 1rem; color: var(--em-muted); font-size: 0.85rem; margin: 0 0 0.75rem; }
-.em-popup__meta strong { color: var(--em-emerald-deep); }
-.em-popup__text { color: var(--em-muted); font-size: 0.9rem; }
-.em-popup__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1.25rem; }
-.em-popup__close {
-        position: absolute;
-        top: 0.7rem;
-        right: 0.7rem;
-        width: 44px;
-        height: 44px;
-        border: 0;
-        border-radius: 999px;
-        background: var(--em-cream);
-        color: var(--em-ink);
-        font-size: 1.4rem;
-        line-height: 1;
-        cursor: pointer;
-        transition: background-color 0.2s ease, transform 0.2s ease;
-}
-.em-popup__close:hover { background: var(--em-mist); transform: rotate(90deg); }
-
 /* 16. AMBIENCE ---------------------------------------------------------------------------- */
 
 .em-ambience {
@@ -1001,8 +943,7 @@ em-shell { display: contents; }
         .em-team__card,
         .em-btn,
         .em-ambience__toggle,
-        .em-dropdown__panel,
-        .em-popup__close {
+        .em-dropdown__panel {
                 transition: none !important;
         }
         .em-card:hover,
@@ -1012,7 +953,7 @@ em-shell { display: contents; }
 /* 20. PRINT (ink-light, grayscale readable) ------------------------------------------------------ */
 
 @media print {
-        .em-header, .em-ambience, .em-popup, .em-footer__legal { display: none !important; }
+        .em-header, .em-ambience, .em-footer__legal { display: none !important; }
         body { background: var(--em-ground); color: var(--em-ink); }
         .em-card, .em-bank, .em-review { box-shadow: none; border: 1px solid var(--em-muted); }
 }

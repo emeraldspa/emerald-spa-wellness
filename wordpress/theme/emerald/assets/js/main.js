@@ -1,9 +1,10 @@
 /**
  * Emerald: front-end behaviour. Vanilla JS only, no jQuery, no frameworks.
  *
- * Modules: mobile nav, specials dropdown, promo popup (focus trap, Escape,
- * once-per-day dismissal), hero reel deferral, reveal-on-scroll, ambience
- * player (YouTube facade, muted start, 48px mute target).
+ * Modules: mobile nav, specials dropdown, hero reel deferral,
+ * reveal-on-scroll, ambience player (YouTube facade, muted start, 48px
+ * mute target). The promo popup was removed on client order and its code
+ * must not come back.
  */
 (function () {
         "use strict";
@@ -63,78 +64,7 @@
         });
 
         /* ----------------------------------------------------------------
-         * 3. Promo popup: focus trap, Escape, dismissal stored per day
-         * ------------------------------------------------------------- */
-        var popup = doc.querySelector("[data-popup]");
-        if (popup) {
-                var KEY = "emerald-popup-dismissed";
-                var today = new Date().toISOString().slice(0, 10);
-                var dismissed = null;
-                try {
-                        dismissed = window.localStorage.getItem(KEY);
-                } catch (e) {
-                        dismissed = "unavailable";
-                }
-
-                var focusables = popup.querySelectorAll(
-                        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
-                );
-                var lastFocused = null;
-
-                function openPopup() {
-                        lastFocused = doc.activeElement;
-                        popup.hidden = false;
-                        doc.body.style.overflow = "hidden";
-                        (focusables[0] || popup).focus();
-                        doc.addEventListener("keydown", onPopupKeydown, true);
-                }
-                function closePopup() {
-                        popup.hidden = true;
-                        doc.body.style.overflow = "";
-                        doc.removeEventListener("keydown", onPopupKeydown, true);
-                        try {
-                                window.localStorage.setItem(KEY, today);
-                        } catch (e) {
-                                /* Storage unavailable; the popup simply returns next load. */
-                        }
-                        if (lastFocused && lastFocused.focus) {
-                                lastFocused.focus();
-                        }
-                }
-                function onPopupKeydown(event) {
-                        if ("Escape" === event.key) {
-                                event.stopPropagation();
-                                closePopup();
-                                return;
-                        }
-                        if ("Tab" !== event.key) {
-                                return;
-                        }
-                        var first = focusables[0];
-                        var last = focusables[focusables.length - 1];
-                        if (!first || !last) {
-                                return;
-                        }
-                        if (event.shiftKey && doc.activeElement === first) {
-                                event.preventDefault();
-                                last.focus();
-                        } else if (!event.shiftKey && doc.activeElement === last) {
-                                event.preventDefault();
-                                first.focus();
-                        }
-                }
-
-                popup.querySelectorAll("[data-popup-close]").forEach(function (el) {
-                        el.addEventListener("click", closePopup);
-                });
-
-                if (dismissed !== today) {
-                        window.setTimeout(openPopup, 1600);
-                }
-        }
-
-        /* ----------------------------------------------------------------
-         * 4. Hero reel: attach after window load; skip under reduced
+         * 3. Hero reel: attach after window load; skip under reduced
          *    motion or Data Saver so the poster stays the LCP element.
          * ------------------------------------------------------------- */
         var hero = doc.querySelector("[data-hero]");

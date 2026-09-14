@@ -166,11 +166,11 @@ function emerald_content( $key ) {
  * Every published promotion running today, newest first.
  *
  * Mirrors the headless contract: a promotion with no dates is always on;
- * slugs starting with demo- never reach the site; the ACF fields price_nad,
- * duration, starts_on / valid_until (or ends_on) and show_as_popup carry the
- * card details. Fail-open: an empty result is a valid result.
+ * slugs starting with demo- never reach the site; the ACF fields price_nad
+ * and duration carry the card details. Fail-open: an empty result is a
+ * valid result.
  *
- * @return array[] Each item: id, slug, title, excerpt, permalink, image, image_alt, price_nad, duration, show_as_popup.
+ * @return array[] Each item: id, slug, title, excerpt, permalink, image, image_alt, price_nad, duration.
  */
 function emerald_get_active_promotions() {
         static $cache = null;
@@ -225,7 +225,6 @@ function emerald_get_active_promotions() {
                                 'image_alt'     => get_post_meta( get_post_thumbnail_id( $post ), '_wp_attachment_image_alt', true ),
                                 'price_nad'     => ( '' !== $price && is_numeric( $price ) ) ? (int) $price : null,
                                 'duration'      => (string) get_post_meta( $post->ID, 'duration', true ),
-                                'show_as_popup' => (bool) get_post_meta( $post->ID, 'show_as_popup', true ),
                         );
                 }
         }
@@ -233,20 +232,6 @@ function emerald_get_active_promotions() {
 
         $cache = $items;
         return $items;
-}
-
-/**
- * The one promotion, if any, flagged to interrupt the visitor.
- *
- * @return array|null
- */
-function emerald_get_popup_promotion() {
-        foreach ( emerald_get_active_promotions() as $item ) {
-                if ( ! empty( $item['show_as_popup'] ) ) {
-                        return $item;
-                }
-        }
-        return null;
 }
 
 /* -------------------------------------------------------------------------
