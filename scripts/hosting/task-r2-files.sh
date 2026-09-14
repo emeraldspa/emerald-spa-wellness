@@ -2,6 +2,9 @@
 # Round 31 R2: deploy popup-free theme + branded maintenance gate, flip gates.
 exec 2>&1
 U=/home/u202309731
+D=$U/cron-out/r2.done
+[ -f "$D" ] && { echo "r2 already done, skip"; exit 0; }
+mkdir -p "$U/cron-out"
 W=$U/domains/emeraldspacc.com/public_html/admin
 WP="php $U/wp-cli.phar --path=$W"
 TS=$(date +%s)
@@ -34,4 +37,5 @@ echo "emerald_maintenance_mode=[$($WP option get emerald_maintenance_mode)]"
 echo "--- flush caches ---"
 $WP cache flush
 $WP rewrite flush --hard 2>/dev/null || true
+touch "$D"
 echo "R2 DONE"
