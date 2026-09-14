@@ -1,0 +1,223 @@
+{
+  "meta": {
+    "name": "emerald-spa-wordpress-conversion-master-prompt",
+    "version": "2.0.0",
+    "created": "2026-09-14",
+    "author": "Emerald Webmaster <Webmaster@emeraldspacc.com>",
+    "objective": "Redo the Next.js to WordPress conversion of emeraldspacc.com properly: a single, fully native, fully optimised WordPress site served from Hostinger, with native updates, no external deployment dependency, and zero regressions against the audited Next.js baseline.",
+    "how_to_use": "Feed this JSON to the executing agent as the single source of instruction. Every field is binding. If reality contradicts this prompt, stop and report instead of improvising."
+  },
+  "client_facts": {
+    "business": "Emerald Spa & Wellness Centre",
+    "domain": "emeraldspacc.com",
+    "address": "7 Blackett Street, Windhoek North, Windhoek, Namibia",
+    "timezone": "Africa/Windhoek",
+    "phone": "+264 85 607 7143",
+    "whatsapp_number": "264856077143",
+    "wallet_number": "081 607 7143",
+    "banking": {
+      "account_name": "Emerald Spa Gold Business",
+      "bank": "FNB (First National Bank)",
+      "account_number": "64287404716",
+      "branch": "Maerua Mall, 282273",
+      "reference_rule": "Customer full name as payment reference",
+      "proof_channel": "WhatsApp"
+    },
+    "booking_url": "https://www.fresha.com/book-now/emerald-spa-wellness-centre-qnp9ba1m/all-offer?share=true&pId=1477270",
+    "booking_rule": "Every Book Now anchor opens Fresha in a new tab with target=_blank rel=noopener noreferrer. The live site must never be disturbed.",
+    "hours": {
+      "monday_to_saturday": "09:00 to 18:00",
+      "sunday": "10:00 to 16:00"
+    },
+    "staff": [
+      { "name": "Evelyne Mulilo", "role": "CEO" },
+      { "name": "Laurensia Post", "role": "Spa Manager" },
+      { "name": "Merie-Ann (Lulu)", "role": "Spa Therapist" }
+    ],
+    "socials": {
+      "facebook": "https://www.facebook.com/p/Emerald-Spa-and-Wellness-Center-61571981360103/",
+      "instagram": "https://www.instagram.com/emerald_spa_and_wellness/"
+    },
+    "ambience_track": { "youtube_id": "Q5u2Ddbvocc", "credit": "Healing by Kevin MacLeod, incompetech.com, CC BY 4.0", "rules": "YouTube facade only, nothing loads from YouTube until opt in, starts muted, mute control always visible with a minimum 48px touch target." },
+    "language": "English only. Zero em dashes anywhere in content, code comments or UI copy. No AI slop phrasing."
+  },
+  "current_state": {
+    "hosting": "Hostinger Premium plan, account u202309731. WordPress lives at /home/u202309731/domains/emeraldspacc.com/public_html/admin, the apex docroot public_html forwards to it.",
+    "dns": "emeraldspacc.com zone is on Hostinger (ns1/ns2.dns-parking.com), apex and www A records point at the two Hostinger serving IPs with TTL 300. Vercel is fully detached from the serving path and must stay out.",
+    "live_surface": "The WordPress site is held behind the Emerald Maintenance Gate v1.1.2 (branded 503 with Fresha and WhatsApp reachable). This gate stays ON for the entire redo.",
+    "repository": "github.com/emeraldspa/emerald-spa-wellness branch main, rolled back to the pure Next.js codebase at commit 2c3987b. The WordPress conversion artifacts are removed from main; a verified package remains archived locally for reference only. Do not redeploy it blindly.",
+    "wordpress_backend": "admin.emeraldspacc.com serves wp-login and wp-admin. Documented logins exist for a superadmin and a content editor. Passwords are never written into this repository or any file inside it."
+  },
+  "non_negotiables": [
+    "Fully native WordPress on Hostinger. No headless frontend, no Vercel, no CI deployment pipeline. Updates are native WordPress core/plugin/theme auto-updates.",
+    "Free plugins only. The admin stack is Admin & Site Enhancements (ASE) plus the Emerald Admin Suite mu-plugin. No Wordfence, no paid anything.",
+    "The wp-login screen and the admin dashboard must look premium: ink ground, emerald glow, glass card, stacked brand lockup, Poppins.",
+    "No page builders. The theme is a custom block theme built on theme.json with the brand tokens.",
+    "The promo popup must never be reintroduced anywhere. It was removed on explicit client order. Any popup requires a new written instruction.",
+    "Journals stay removed site wide. The nav is: Services, Specials dropdown, Venues, Gallery, Team, Visit, Book Now.",
+    "Sub 500KB transferred budget per page. Core Web Vitals targets: LCP under 2.5s, INP under 200ms, CLS under 0.1.",
+    "WCAG 2.2 AA: skip link, focus indicators, labeled inputs, 4.5:1 body contrast, 3:1 large text and UI, keyboard operable menus, prefers-reduced-motion honored, print stylesheet readable in grayscale.",
+    "The Made by Tangison Studio credit linking to studio.tangison.com stays in the footer.",
+    "Banking details, hours, address, phone numbers, Fresha URL and staff roles are exact and may not drift by a single character."
+  ],
+  "source_of_truth": {
+    "nextjs_app": "The rolled back repo at main is the design and content baseline: every route, component, copy block, asset and interaction in src/ and public/ is the contract. The WordPress output must match it, then beat it.",
+    "brand": "BRAND.md governs palette and type. Cascade discipline: ink 07211A, emerald 087452 and 0A5A45, muted 4F6B62, hairline D7E3DD, paper F7F5F1. Fonts Radley for display and Poppins for interface, self hosted woff2 with preloads and font-display swap. Never redraw or recolor brand artwork.",
+    "content_snapshot": "The audited content parity snapshot (93 treatment menu items over 13 categories, 3 published promotions, team, reviews, hours, venues) is bundled with the archived package and mirrored in the live WordPress database. Reconcile database against snapshot during the rebuild, never invent content.",
+    "never_invent": "No placeholder copy, no lorem ipsum, no invented prices, no invented reviews. If a datum is missing, mark the gap and ask."
+  },
+  "conversion_method": {
+    "approach": "Native block theme conversion. React components are translated into block patterns and server rendered blocks, not shipped as React. This is the pasted Method 3 executed with modern block themes instead of classic PHP templates.",
+    "template_mapping": [
+      { "nextjs": "app/page.tsx (home)", "wordpress": "templates/front-page.html with patterns: hero, home sections (intro, treatment menu, specials, reviews, visit CTA)" },
+      { "nextjs": "app/services/page.tsx", "wordpress": "templates/page-services.html + treatment-menu block (CPT first, JSON fallback)" },
+      { "nextjs": "app/specials/page.tsx", "wordpress": "templates/page-specials.html + specials-cards block from promotion CPT" },
+      { "nextjs": "app/venues/page.tsx", "wordpress": "templates/page-venues.html + venues pattern" },
+      { "nextjs": "app/gallery/page.tsx", "wordpress": "templates/page-gallery.html" },
+      { "nextjs": "app/team/page.tsx", "wordpress": "templates/page-team.html + team-grid block from staff CPT" },
+      { "nextjs": "app/visit/page.tsx", "wordpress": "templates/page-visit.html + hours block + banking block" },
+      { "nextjs": "app/pay/page.tsx", "wordpress": "templates/page-pay.html + banking block + WhatsApp proof link" },
+      { "nextjs": "app/book-bulk/page.tsx", "wordpress": "templates/page-book-bulk.html" },
+      { "nextjs": "app/vouchers/page.tsx", "wordpress": "templates/page-vouchers.html" },
+      { "nextjs": "app/whatsapp/page.tsx", "wordpress": "templates/page-whatsapp.html" },
+      { "nextjs": "app/privacy/page.tsx and app/terms/page.tsx", "wordpress": "templates/page-plain.html with the real policy copy" },
+      { "nextjs": "app/sitemap/page.tsx and not-found.tsx", "wordpress": "templates/page-sitemap.html and templates/404.html" },
+      { "nextjs": "components/SiteHeader.tsx", "wordpress": "patterns/header.php + parts/header.html: sticky frosted strip, brand mark plus wordmark, nav pills with hover and focus states, server rendered Specials dropdown, Book Now to Fresha" },
+      { "nextjs": "components/SiteFooter.tsx", "wordpress": "patterns/footer.php + parts/footer.html: brand column, open today hours, banking card, socials, legal row with Tangison credit, ambience widget. No popup line, ever." }
+    ],
+    "block_rules": [
+      "Every dynamic section is a server rendered block: content exists in the first paint HTML, there is no client fetch that can fail.",
+      "Fail open: an empty content type renders an empty section, never an error.",
+      "All output escaped. All strings translation ready with the emerald text domain.",
+      "Every image has width and height, lazy loading below the fold, alt text, valid src. Hero poster is the LCP element and is not lazy.",
+      "Every icon is a real inline SVG. No emoji as icons."
+    ]
+  },
+  "content_model": {
+    "post_types": [
+      { "name": "promotion", "fields": ["price_nad", "duration", "starts_on", "valid_until", "ends_on"], "rules": "No dates means always on. Slugs starting with demo- never render. Registered guarded, skip if exists." },
+      { "name": "treatment", "taxonomy": "treatment_category", "count": 93, "categories": 13 },
+      { "name": "testimonial", "use": "Guest reviews block" },
+      { "name": "staff", "use": "Team grid and header dropdown needs" }
+    ],
+    "pages": ["home", "services", "specials", "venues", "gallery", "team", "visit", "pay", "book-bulk", "vouchers", "whatsapp", "sitemap", "privacy", "terms"],
+    "front_page_rule": "show_on_front must be page and page_on_front must be the Home page ID. Verify in the same deploy step that the homepage renders front-page.html (body class home page-template-front-page, NOT home blog). This exact misconfiguration emptied the homepage last time.",
+    "reading_settings_check": "Automated post-deploy check: GET / returns hero plus all home sections; body class contains page-template-front-page; no query-no-results element on the homepage."
+  },
+  "test_harness": {
+    "principle": "Evals are defined before implementation. Write the grader file first, then build against it. Code graders are scripts, not opinions.",
+    "wp_browser": {
+      "use_for": "Integration tests: hooks, WP_Query driven blocks, REST behaviour, user flows.",
+      "why": "Runs WordPress against SQLite with PHP's built-in server. No Docker, no MySQL, tiny memory. Install: composer require --dev lucatume/wp-browser then vendor/bin/codecept init wpbrowser."
+    },
+    "wp_playground_cli": {
+      "use_for": "Zero setup end to end: boot the theme and plugins in a throwaway WordPress, run the blueprint, verify the DOM.",
+      "how": "npx @wp-playground/cli@3.1.52 server --blueprint=<blueprint.json> with mounted files. Blueprint must install theme plus plugins, seed content, and execute a runPHP assertion set. Every deploy candidate passes the blueprint before it ships.",
+      "notes": "wp-cli.phar is 403 blocked on this host. Verification inside Playground uses runPHP plus direct checks. Use pluginPath not pluginName. writeFile does not create parent directories."
+    },
+    "wp_phpunit": {
+      "use_for": "Unit tests of pure logic: price formatter, date window logic for promotions, slug rules, escappers.",
+      "how": "composer require --dev yoast/phpunit-polyfills:^1.0 wp-phpunit/wp-phpunit. Hooks and filters tested in isolation with minimal memory."
+    },
+    "frontend_checks": {
+      "playwright": "Route sweep of every template at 1440 and 375 viewports, zero console errors, no horizontal overflow at 375, hero deferral under reduced motion, ambience facade behaviour, dropdown keyboard operability.",
+      "http": "Every route returns 200 in under 2s, robots.txt with sitemap line, wp-sitemap.xml, canonicals, OG and Twitter cards, JSON-LD DaySpa matching visible content, favicon, 404 template."
+    }
+  },
+  "quality_gates": [
+    "Eval suite green before any deploy: content parity graders, contrast math on tokens, weight budget inventory, PHP parse gate, a11y static checks, em dash scan, slop scan.",
+    "Blueprint run exit 0 with all assertions true on the deploy candidate.",
+    "Playwright sweep green at 1440 and 375 on the staging surface.",
+    "Webmaster checklist: robots, sitemap, canonicals, OG, Twitter cards, favicon, brand and privacy and terms and 404 pages, skip link, Made by Tangison Studio footer, zero em dashes, no AI slop, sub 500KB, demo vs full mode decided.",
+    "Final gate: side by side comparison against wearecollins.com fetched live, not described. The Emerald output must hold its own next to it.",
+    "Zero unresolved P0 and P1. Severity by real user impact.",
+    "Proof rule: every claim of done is backed by a fetched, rendered or measured artifact. Screenshots of the live surface are the receipt. Self reported should work is not evidence."
+  ],
+  "deployment_channel": {
+    "hostinger_api": {
+      "base": "https://developers.hostinger.com",
+      "token_env": "HOSTINGER_API_TOKEN (never commit it)",
+      "paths": {
+        "cron_jobs": "/api/hosting/v1/accounts/u202309731/cron-jobs",
+        "cron_output": "/api/hosting/v1/accounts/u202309731/cron-jobs/{uid}/output",
+        "files": "/api/hosting/v1/accounts/u202309731/domains/admin.emeraldspacc.com/files/content?path=/home/u202309731/...",
+        "dns_zone": "/api/dns/v1/zones/emeraldspacc.com",
+        "cache_purge": "server level clear for emeraldspacc.com"
+      },
+      "cloudflare_rule": "The API is behind Cloudflare bot protection. python-requests user agents get a Just a moment challenge on POST. Use curl with a curl user agent for every API call, or route through the proven cron_run.sh wrapper. Retry creates up to 6 times with backoff."
+    },
+    "cron_channel": {
+      "pattern": "Create a one minute cron whose command fetches a task script from raw.githubusercontent.com/emeraldspa/emerald-spa-wellness and runs it. Command must fit 255 characters. Poll the output endpoint every 20s, then delete the job. Zero cron leftovers.",
+      "idempotency": "Every task script starts with a done-guard file check and ends by touching the done file, so the every-minute refire is harmless.",
+      "raw_cache": "raw.githubusercontent caches per path. Always append a ?v=timestamp cache buster."
+    },
+    "wordpress_runtime": {
+      "wp_cli": "php /home/u202309731/wp-cli.phar --path=/home/u202309731/domains/emeraldspacc.com/public_html/admin",
+      "lint_before_install": "php -l on every changed PHP file and unzip -t plus a popup-string scan on every theme zip, inside the task script, before install. Abort on any failure.",
+      "cache": "wp cache flush plus server level purge after file deploys. LiteSpeed has served stale pages including stale admin pages; verify every change on a fresh request with a cache-busting query string.",
+      "admin_ui_fallback": "When the API path is degraded, wp-admin over the browser session is the fallback: plugin upload with Replace current with uploaded, bulk actions for plugin state, and fresh-load verification after every single step because list pages have served stale state."
+    }
+  },
+  "seo_continuity": {
+    "slugs": "Keep the exact public slugs: /services/ /specials/ /venues/ /gallery/ /team/ /visit/ /pay/ /book-bulk/ /vouchers/ /whatsapp/ /sitemap/ /privacy/ /terms/. No slug may change during the redo.",
+    "redirects": "Any legacy URL that must die gets a 301 to its living equivalent. The retired popup details link maps to /specials/.",
+    "technical": "robots.txt with sitemap line, wp-sitemap.xml live, unique titles and meta descriptions per page, canonicals, OG and Twitter cards with a real 1200x630 OG image, DaySpa JSON-LD with exact hours, geo, telephone and socials matching visible content, favicon set.",
+    "during_maintenance": "The gate sends 503 with Retry-After and noindex so the downtime does not poison rankings. The moment the redo ships, the gate goes off and those headers disappear."
+  },
+  "security_and_updates": {
+    "native_updates": "WP_AUTO_UPDATE_CORE true (major and minor), auto_update_plugins all, auto_update_themes the emerald theme, translations on. The z-emerald-updates mu-plugin removes Hostinger's disable filters and keeps Hostinger's wp.org proxy. Verify after each deploy: wp core is on auto, plugin auto-update option contains all slugs.",
+    "hardening": "XML-RPC off, REST user enumeration hidden, login throttle 5 per 15 minutes per IP plus username, generic login errors, security headers on every response, scanner and bot 403s, editor role scoped to content only.",
+    "premium_login": "Ink ground with emerald radial glow, glass card, stacked lockup above the form, Poppins interface type, styled error states, fully keyboard accessible.",
+    "plugins_after_cleanup": "Exactly eight: ASE, Advanced Custom Fields, Custom Post Type UI, Emerald Back Office, Emerald Back Office Hardening, Emerald Core, Emerald Maintenance Gate, LiteSpeed Cache. The five headless era plugins (WPGraphQL, WPGraphQL for ACF, Emerald Headless GraphQL, MCP Adapter, Enable Abilities for MCP) were deleted on client order and stay deleted unless a written order says otherwise."
+  },
+  "maintenance_gate_spec": {
+    "plugin": "Emerald Maintenance Gate v1.1.2, single file, active.",
+    "behaviour": "503 with Retry-After 3600 and noindex on every public front-end request while option emerald_maintenance_mode is not 0. Bypasses: logged in users, wp-login.php, wp-admin, admin-ajax.php, wp-cron.php, WP-CLI. REST closed to logged out traffic via rest_authentication_errors at priority 1.",
+    "hook": "send_headers at priority 0, which beats the ASE maintenance screen on the same hook at priority 10 regardless of plugin load order.",
+    "design": "Ink ground, emerald radial glow, brand lockup, Windhoek North eyebrow, headline We are giving the site a polish, spa is open line, Book on Fresha solid pill, WhatsApp us ghost pill, address and phone footer. Mobile first, reduced motion safe.",
+    "toggle": "To bring the site back: set option emerald_maintenance_mode to 0. To hold again: set it to 1 or delete the option.",
+    "leave_on": "The client ordered the maintenance kept ON during the redo. Only the final go-live step of the redo turns it off, after every gate above is green."
+  },
+  "lessons_from_the_failed_conversion": [
+    { "lesson": "The popup block lived in the footer template part, so it rendered on every page.", "rule": "Global parts must be audited for per-page intent. Anything interruptive is scoped to explicit pages and needs a written order to exist at all." },
+    { "lesson": "main.js shipped an invalid querySelectorAll selector, threw, and killed every close handler; the CSS lacked a [hidden] guard, so the popup was unclosable on every page.", "rule": "JS ships with node --check and a runtime smoke test in the harness. Overlay CSS always pairs display with an explicit [hidden] rule. Interactive close paths are Playwright tested." },
+    { "lesson": "show_on_front stayed post with page_on_front 0, so the homepage rendered an empty posts index instead of front-page.html.", "rule": "Reading settings are part of the deploy checklist with an automated post-deploy assertion on the body class and rendered sections." },
+    { "lesson": "The front end relied on the headless GraphQL bridge and a Vercel quota, so the site died with them.", "rule": "The redo is single platform. No page depends on a second platform being awake." },
+    { "lesson": "raw.githubusercontent served a stale artifact once.", "rule": "Always cache bust raw fetches with a timestamp query." },
+    { "lesson": "Hostinger API calls from python-requests hit Cloudflare challenges.", "rule": "All API calls go through curl with a curl UA, wrapped in cron_run.sh with retries." },
+    { "lesson": "Cron commands longer than 255 characters are rejected.", "rule": "Tasks live as scripts fetched by a short cron command." },
+    { "lesson": "LiteSpeed served stale pages, including stale wp-admin lists, which produced false verifications.", "rule": "Purge after every change and verify on a fresh request with a unique query string." },
+    { "lesson": "WPGraphQL had dependents, so deletion order mattered and appsero modals intercepted deactivation.", "rule": "Delete dependents first; drive wp-admin through direct action URLs or bulk actions; verify on fresh loads." }
+  ],
+  "forbidden_patterns": [
+    "No ellipsis placeholders: no // ... , no rest of code, no TODO in shipped files, no <!-- rest of sections -->, no for brevity, no and so on, no skeletons or wireframes standing in for implementations.",
+    "Lock the deliverable count before building and cross check at the end: every locked section, template, block and page exists complete.",
+    "If output must pause, stop at a clean breakpoint and print: [PAUSED - X of Y complete. Send \"continue\" to resume from: next section name].",
+    "No invented code, credentials, endpoints or assets. If it is unavailable, say so and ask.",
+    "No new plugins during the redo without an explicit written order. No popup. No journals. No Vercel."
+  ],
+  "required_skill_runs": [
+    { "skill": "npx skills use https://github.com/launchdarkly/ai-tooling --skill snippets", "note": "Read complete output; the runtime part needs the LaunchDarkly MCP which is not configured, acknowledge and continue." },
+    { "skill": "npx skills use https://github.com/jeffallan/claude-skills --skill wordpress-pro", "note": "Read all reference files completely before writing theme code." },
+    { "skill": "npx skills use https://github.com/affaan-m/ecc --skill eval-harness", "note": "Evals before implementation, code graders only." },
+    { "skill": "npx skills use https://github.com/guia-matthieu/clawfu-skills --skill website-finishing-director", "note": "Five pass scored audit on the live result before go-live." }
+  ],
+  "execution_phases": [
+    { "phase": "P0 recon", "work": "Re-verify tokens, cron channel health, wp-cli, theme and plugin states, content parity against the snapshot, live weight and CWV baseline of the maintenance surface.", "exit": "Written recon note with evidence." },
+    { "phase": "P1 harness", "work": "Stand up wp-browser SQLite suite, WP Playground blueprint harness, wp-phpunit unit scaffold. Write the eval definition file for the full conversion before building.", "exit": "Harnesses run green on an empty theme; eval file committed." },
+    { "phase": "P2 theme", "work": "Rebuild the Emerald block theme against the eval file: theme.json tokens, all templates per the mapping, patterns, server rendered blocks, main.js modules with syntax and runtime gates, CSS with budgets. No popup code anywhere.", "exit": "Eval suite green locally, blueprint run exit 0." },
+    { "phase": "P3 content", "work": "Reconcile database content with the snapshot: promotions, treatments, staff, reviews, pages, menus, widgets, front page reading settings, per page SEO meta.", "exit": "Content parity grader green against the live database." },
+    { "phase": "P4 gates", "work": "Run the full quality gate list on the staging surface behind the maintenance gate: blueprint, Playwright sweeps, HTTP checks, budget inventory, a11y, finishing audit passes.", "exit": "Zero P0, zero P1, receipts captured." },
+    { "phase": "P5 cutover", "work": "Deploy theme and plugins via the cron channel, set reading settings, purge caches, keep the maintenance gate ON.", "exit": "Staging checks green on the real host." },
+    { "phase": "P6 go-live", "work": "Turn the gate off (option emerald_maintenance_mode to 0), verify 200s with correct headers, re-run the route sweep logged out, Collins side by side as the final gate, capture client-facing screenshots.", "exit": "Live site public, every receipt in the report." },
+    { "phase": "P7 handover", "work": "Update the client guidebook and developer handover documents, verify native auto-updates one final time, append the worklog.", "exit": "Documents delivered in download/." }
+  ],
+  "definition_of_done": [
+    "emeraldspacc.com serves every route as a fully native WordPress page from Hostinger with zero Vercel involvement.",
+    "Homepage renders front-page.html with all seven landing sections, verified by body class and rendered section count.",
+    "No popup code exists anywhere in the theme, plugins or database flags.",
+    "Weight under 500KB transferred on the homepage, CWV in budget measured on the live host.",
+    "All quality gates green with artifacts, Collins side by side passed, client answered with screenshots rather than claims.",
+    "Maintenance gate off, native auto-updates verified on, worklog appended."
+  ]
+}
